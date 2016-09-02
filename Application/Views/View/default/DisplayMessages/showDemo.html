@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>ShowMessages</title>
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-2.2.4.min.js"></script>
+</head>
+<style type="text/css">
+    table.gridtable {
+        width: 100%;
+        font-family: verdana,arial,sans-serif;
+        font-size:11px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+    table.gridtable th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+    table.gridtable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+    .checkbox {
+        width: 19px;
+        height: 25px;
+        padding: 0 5px 0 0;
+        /*display: block;*/
+        /*clear: left;*/
+        /*float: left;*/
+    }
+    .checkbox2 {
+        width: 35px;
+        height: 30px;
+        padding: 0 5px 0 0;
+        /*display: block;*/
+        /*clear: left;*/
+        /*float: left;*/
+    }
+    .lable1{
+        margin-right: 5%;
+    }
+    .lable2{
+    }
+</style>
+<body>
+
+    <div align="center">
+        <input type="button" value="上一条" id="prevM" name="prevM" onclick="location.href='{$prev}'"  style="width: 10%;flex: auto;margin-bottom: 20px;height: 30px"/>
+        <input type="button" value="下一条" id="nextM" name="nextM" onclick="location.href='{$next}'"  style="width: 10%;flex: auto;margin-bottom: 20px;height: 30px"/>
+    </div>
+        <span style="font-size: 25px">您好 <i>{$username}！</i></span>
+        <a href="__ROOT__/Views/StaffsLogin/logout" style="float: right;font-size: 15px">登出</a>
+
+
+    <table class="gridtable" style="font-size: 25px">
+    	<thead>
+    		<tr>
+    			<th>id</th>
+    			<th>标题</th>
+    			<th>记录时间</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<td>{$data['id']}</td>
+    			<td>{$data['title']}</td>
+    			<td>{$data['record_time']}</td>
+    		</tr>
+            <th colspan="3">内容</th>
+            <tr>
+                <td colspan="3" align="center">{$data['content']}</td>
+            </tr>
+    	</tbody>
+    </table>
+
+    <!--<form id="formid1" onsubmit="alert(this.test.value);return false;">-->
+
+    <!--</form>-->
+        <div style="text-align: center;margin-top: 20px;margin-bottom: 20px">
+            <input type="button" id="Button1" name="Button1" onclick="delete_confirm()" value="删除" style="width:10%;height: 30px"><br/>
+        </div>
+    <form action="{:U('Views/DisplayMessages/check')}?id={$id}" method="post">
+        <!--删除按钮-->
+
+        <!--标签复选框-->
+        <fieldset style="font-size: 30px">
+            <legend>选择标签</legend>
+            <label class="label1" style="margin-right: 5%"><input type="checkbox" name="tag[]" value="求购" class="checkbox2"/>求购</label>
+            <label class="label1" style="margin-right: 5%"><input type="checkbox" name="tag[]" value="供应" class="checkbox2"/>供应</label>
+            <label class="label1" style="margin-right: 5%"><input type="checkbox" name="tag[]" value="求车" class="checkbox2"/>求车</label>
+            <label class="label1" style="margin-right: 5%"><input type="checkbox" name="tag[]" value="其他" class="checkbox2"/>其他</label><br/><br/>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="陕西" class="checkbox"/>陕西</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="山西" class="checkbox"/>山西</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="河北" class="checkbox"/>河北</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="河北" class="checkbox"/>河北</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="天津" class="checkbox"/>天津</label><br/>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="河南" class="checkbox"/>河南</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="山东" class="checkbox"/>山东</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="江苏" class="checkbox"/>江苏</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="安徽" class="checkbox"/>安徽</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="湖北" class="checkbox"/>湖北</label><br/>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="湖南" class="checkbox"/>湖南</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="四川" class="checkbox"/>四川</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="重庆" class="checkbox"/>重庆</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="云南" class="checkbox"/>云南</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="贵州" class="checkbox"/>贵州</label><br/>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="西部" class="checkbox"/>西部</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="东北" class="checkbox"/>东北</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="南方" class="checkbox"/>南方</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="内蒙古" class="checkbox"/>内蒙古</label>
+            <br/><br/>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="二手车" class="checkbox"/>二手车</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="招聘求职" class="checkbox"/>招聘求职</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="运费咨询" class="checkbox"/>运费咨询</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="咨询" class="checkbox"/>咨询</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="设备" class="checkbox"/>设备</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="托盘" class="checkbox"/>托盘</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="车源找货" class="checkbox"/>车源找货</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="发票" class="checkbox"/>发票</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="保险" class="checkbox"/>保险</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="承兑" class="checkbox"/>承兑</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="求助" class="checkbox"/>求助</label>
+            <label style="margin-right: 10%"><input type="checkbox" name="tag[]" value="贷款" class="checkbox"/>贷款</label>
+
+        </fieldset>
+            <center><input type="submit" name="submit" value="提交" style="width: 10%;height: 30px;margin-top: 20px"/></center>
+    </form>
+
+    <script>
+        function delete_confirm() {
+            if (!confirm("确认要删除？")) {
+//                取消不变
+                window.event.returnValue = false;
+//                alert('notdel');
+            }else {
+//                处理数据
+//                alert(window.location.search);
+//                $urlpram=window.location.search;      //获得当前url网址
+//                $id=window.location.search.substr(4);         //取得ID字段
+                $id = {$data['id']};
+//                $id=1;
+//                alert($id);
+                $.ajax({
+//                    url:"{$next}",
+                    url:"__CONTROLLER__/delete",
+                    type:"POST",
+                    data:{"id":$id},
+//                    dataType:"ja/son",
+                    error:function(){
+                        alert('Error');
+                    },
+                    success:function(data){
+                        //$a=$result;
+//                        $b=json_decode(data);
+//                        alert(2);
+//                        $a = jsonPac
+//                        alert(data);
+//                      跳转到下个id
+                        alert('删除成功');
+                        window.location='{$next}';
+                    }
+                });
+            }
+        }
+
+//        function tip(){
+//            alert('提交成功');
+////            document.location='{$next}';
+//            window.open('{$next}');
+//
+//        }
+    </script>
+
+
+</body>
+
+</html>

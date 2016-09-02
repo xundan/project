@@ -1,0 +1,392 @@
+2015-07-10 15:06:48 释放结果集
+2015-07-10 15:06:48 完成整个查询任务,所用时间为0.00077509880065918
+2015-07-10 15:06:49 释放结果集
+2015-07-10 15:06:49 完成整个查询任务,所用时间为0.40464806556702
+2015-07-10 15:06:50 释放结果集
+2015-07-10 15:06:50 完成整个查询任务,所用时间为0.38322496414185
+2015-07-10 15:11:00 释放结果集
+2015-07-10 15:11:00 完成整个查询任务,所用时间为0.00075507164001465
+2015-07-10 15:11:02 释放结果集
+2015-07-10 15:11:02 完成整个查询任务,所用时间为0.44794702529907
+2015-07-10 15:11:02 释放结果集
+2015-07-10 15:11:02 完成整个查询任务,所用时间为0.41145300865173
+2015-07-10 15:11:15 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710031054
+2015-07-10 15:11:15 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710031054
+2015-07-10 15:11:15 释放结果集
+2015-07-10 15:11:15 完成整个查询任务,所用时间为0.024893045425415
+2015-07-10 15:13:13 释放结果集
+2015-07-10 15:13:13 完成整个查询任务,所用时间为0.0073459148406982
+2015-07-10 15:13:15 释放结果集
+2015-07-10 15:13:15 完成整个查询任务,所用时间为0.38595390319824
+2015-07-10 15:13:16 释放结果集
+2015-07-10 15:13:16 完成整个查询任务,所用时间为0.33503007888794
+2015-07-10 15:13:27 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710031307
+2015-07-10 15:13:27 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710031307
+2015-07-10 15:13:27 释放结果集
+2015-07-10 15:13:27 完成整个查询任务,所用时间为0.0011401176452637
+2015-07-10 15:15:35 释放结果集
+2015-07-10 15:15:35 完成整个查询任务,所用时间为0.00078296661376953
+2015-07-10 15:15:37 释放结果集
+2015-07-10 15:15:37 完成整个查询任务,所用时间为0.00077295303344727
+2015-07-10 15:15:39 释放结果集
+2015-07-10 15:15:39 完成整个查询任务,所用时间为0.41924381256104
+2015-07-10 15:15:48 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710031530
+2015-07-10 15:15:48 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710031530
+2015-07-10 15:15:48 释放结果集
+2015-07-10 15:15:48 完成整个查询任务,所用时间为0.0011410713195801
+2015-07-10 15:24:32 释放结果集
+2015-07-10 15:24:32 完成整个查询任务,所用时间为0.00076198577880859
+2015-07-10 15:28:31 释放结果集
+2015-07-10 15:28:31 完成整个查询任务,所用时间为0.0009770393371582
+2015-07-10 15:28:32 释放结果集
+2015-07-10 15:28:32 完成整个查询任务,所用时间为0.37620496749878
+2015-07-10 15:28:33 释放结果集
+2015-07-10 15:28:33 完成整个查询任务,所用时间为0.42518711090088
+2015-07-10 15:28:53 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710032825
+2015-07-10 15:28:53 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710032825
+2015-07-10 15:28:53 释放结果集
+2015-07-10 15:28:53 完成整个查询任务,所用时间为0.0011329650878906
+2015-07-10 15:34:57 释放结果集
+2015-07-10 15:34:57 完成整个查询任务,所用时间为0.00077295303344727
+2015-07-10 15:34:59 释放结果集
+2015-07-10 15:34:59 完成整个查询任务,所用时间为0.0007169246673584
+2015-07-10 15:34:59 释放结果集
+2015-07-10 15:34:59 完成整个查询任务,所用时间为0.37479400634766
+2015-07-10 15:35:11 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710033443
+2015-07-10 15:35:11 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710033443
+2015-07-10 15:35:11 释放结果集
+2015-07-10 15:35:11 完成整个查询任务,所用时间为0.0011200904846191
+2015-07-10 15:35:16 释放结果集
+2015-07-10 15:35:16 完成整个查询任务,所用时间为0.00072002410888672
+2015-07-10 15:37:40 释放结果集
+2015-07-10 15:37:40 完成整个查询任务,所用时间为0.00077199935913086
+2015-07-10 15:37:42 释放结果集
+2015-07-10 15:37:42 完成整个查询任务,所用时间为0.40124201774597
+2015-07-10 15:37:57 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710033724
+2015-07-10 15:37:57 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150710033724
+2015-07-10 15:37:57 释放结果集
+2015-07-10 15:37:57 完成整个查询任务,所用时间为0.001194953918457
+2015-07-10 15:42:04 释放结果集
+2015-07-10 15:42:04 完成整个查询任务,所用时间为0.00091409683227539
+2015-07-10 15:51:08 释放结果集
+2015-07-10 15:51:08 完成整个查询任务,所用时间为0.00076198577880859
+2015-07-10 16:46:10 释放结果集
+2015-07-10 16:46:10 完成整个查询任务,所用时间为0.00079584121704102
+2015-07-10 16:46:14 释放结果集
+2015-07-10 16:46:14 完成整个查询任务,所用时间为1.9729928970337
+2015-07-10 17:46:58 释放结果集
+2015-07-10 17:46:58 完成整个查询任务,所用时间为0.00084304809570312
+2015-07-10 17:46:58 释放结果集
+2015-07-10 17:46:58 完成整个查询任务,所用时间为0.00071191787719727
+2015-07-11 09:14:19 释放结果集
+2015-07-11 09:14:19 完成整个查询任务,所用时间为0.000762939453125
+2015-07-11 09:14:20 释放结果集
+2015-07-11 09:14:20 完成整个查询任务,所用时间为0.00069999694824219
+2015-07-11 09:14:21 释放结果集
+2015-07-11 09:14:21 完成整个查询任务,所用时间为0.00073099136352539
+2015-07-11 09:14:22 释放结果集
+2015-07-11 09:14:22 完成整个查询任务,所用时间为0.00078916549682617
+2015-07-11 09:29:54 查询 select id,cost from fd_order_info where order_sn = 20150711092942 and openid = otCX2s8TDkovmQl0GUIwdESafq60 limit 0,1
+2015-07-11 09:29:54 Query Error: select id,cost from fd_order_info where order_sn = 20150711092942 and openid = otCX2s8TDkovmQl0GUIwdESafq60 limit 0,1
+Unknown column 'otCX2s8TDkovmQl0GUIwdESafq60' in 'where clause'
+2015-07-11 09:29:54 释放结果集
+2015-07-11 09:29:54 完成整个查询任务,所用时间为0.055233001708984
+2015-07-11 09:29:55 查询 select id,cost from fd_order_info where order_sn = 20150711092942 and openid = otCX2s8TDkovmQl0GUIwdESafq60 limit 0,1
+2015-07-11 09:29:55 Query Error: select id,cost from fd_order_info where order_sn = 20150711092942 and openid = otCX2s8TDkovmQl0GUIwdESafq60 limit 0,1
+Unknown column 'otCX2s8TDkovmQl0GUIwdESafq60' in 'where clause'
+2015-07-11 09:29:55 释放结果集
+2015-07-11 09:29:55 完成整个查询任务,所用时间为0.0010089874267578
+2015-07-11 09:29:55 查询 select id,cost from fd_order_info where order_sn = 20150711092942 and openid = otCX2s8TDkovmQl0GUIwdESafq60 limit 0,1
+2015-07-11 09:29:55 Query Error: select id,cost from fd_order_info where order_sn = 20150711092942 and openid = otCX2s8TDkovmQl0GUIwdESafq60 limit 0,1
+Unknown column 'otCX2s8TDkovmQl0GUIwdESafq60' in 'where clause'
+2015-07-11 09:29:55 释放结果集
+2015-07-11 09:29:55 完成整个查询任务,所用时间为0.0010619163513184
+2015-07-11 09:29:56 查询 select id,cost from fd_order_info where order_sn = 20150711092942 and openid =  limit 0,1
+2015-07-11 09:29:56 Query Error: select id,cost from fd_order_info where order_sn = 20150711092942 and openid =  limit 0,1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit 0,1' at line 1
+2015-07-11 09:29:56 释放结果集
+2015-07-11 09:29:56 完成整个查询任务,所用时间为0.0009160041809082
+2015-07-11 09:36:32 查询 select id,cost from fd_order_info where order_sn = 20150711093626 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1
+2015-07-11 09:36:32 Query Error: select id,cost from fd_order_info where order_sn = 20150711093626 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1' at line 1
+2015-07-11 09:36:32 释放结果集
+2015-07-11 09:36:32 完成整个查询任务,所用时间为0.00096011161804199
+2015-07-11 09:36:33 查询 select id,cost from fd_order_info where order_sn = 20150711093626 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1
+2015-07-11 09:36:33 Query Error: select id,cost from fd_order_info where order_sn = 20150711093626 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1' at line 1
+2015-07-11 09:36:33 释放结果集
+2015-07-11 09:36:33 完成整个查询任务,所用时间为0.00096607208251953
+2015-07-11 09:36:33 查询 select id,cost from fd_order_info where order_sn = 20150711093626 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1
+2015-07-11 09:36:33 Query Error: select id,cost from fd_order_info where order_sn = 20150711093626 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''otCX2s8TDkovmQl0GUIwdESafq60'' limit 0,1' at line 1
+2015-07-11 09:36:33 释放结果集
+2015-07-11 09:36:33 完成整个查询任务,所用时间为0.00096607208251953
+2015-07-11 09:36:53 查询 select id,cost from fd_order_info where order_sn = 20150711093626 and openid = ''' limit 0,1
+2015-07-11 09:36:53 Query Error: select id,cost from fd_order_info where order_sn = 20150711093626 and openid = ''' limit 0,1
+You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '''' limit 0,1' at line 1
+2015-07-11 09:36:53 释放结果集
+2015-07-11 09:36:53 完成整个查询任务,所用时间为0.00093793869018555
+2015-07-11 09:38:11 查询 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:38:11 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:38:11 释放结果集
+2015-07-11 09:38:11 完成整个查询任务,所用时间为0.0012340545654297
+2015-07-11 09:38:11 查询 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:38:11 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:38:11 查询 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = '' limit 0,1
+2015-07-11 09:38:11 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = '' limit 0,1
+2015-07-11 09:38:11 释放结果集
+2015-07-11 09:38:11 完成整个查询任务,所用时间为0.0011720657348633
+2015-07-11 09:38:12 释放结果集
+2015-07-11 09:38:12 完成整个查询任务,所用时间为0.40244603157043
+2015-07-11 09:38:12 查询 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:38:12 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:38:12 释放结果集
+2015-07-11 09:38:12 完成整个查询任务,所用时间为0.35000514984131
+2015-07-11 09:38:27 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150711093806
+2015-07-11 09:38:27 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150711093806
+2015-07-11 09:38:27 释放结果集
+2015-07-11 09:38:27 完成整个查询任务,所用时间为0.0012688636779785
+2015-07-11 09:38:35 查询 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = '' limit 0,1
+2015-07-11 09:38:35 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = '' limit 0,1
+2015-07-11 09:38:35 释放结果集
+2015-07-11 09:38:35 完成整个查询任务,所用时间为0.0011520385742188
+2015-07-11 09:38:37 查询 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = '' limit 0,1
+2015-07-11 09:38:37 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711093806 and openid = '' limit 0,1
+2015-07-11 09:38:37 释放结果集
+2015-07-11 09:38:37 完成整个查询任务,所用时间为0.00096583366394043
+2015-07-11 09:46:27 查询 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:27 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:27 释放结果集
+2015-07-11 09:46:27 完成整个查询任务,所用时间为0.0011968612670898
+2015-07-11 09:46:28 查询 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:28 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:28 释放结果集
+2015-07-11 09:46:28 完成整个查询任务,所用时间为0.38475394248962
+2015-07-11 09:46:33 查询 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:33 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:33 释放结果集
+2015-07-11 09:46:33 完成整个查询任务,所用时间为0.3865749835968
+2015-07-11 09:46:33 查询 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:33 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:33 释放结果集
+2015-07-11 09:46:33 完成整个查询任务,所用时间为0.001025915145874
+2015-07-11 09:46:34 查询 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:34 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = 'otCX2s8TDkovmQl0GUIwdESafq60' limit 0,1
+2015-07-11 09:46:35 释放结果集
+2015-07-11 09:46:35 完成整个查询任务,所用时间为0.35684299468994
+2015-07-11 09:47:21 查询 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = '' limit 0,1
+2015-07-11 09:47:21 获取一条记录 select id,cost from fd_order_info where order_sn = 20150711094621 and openid = '' limit 0,1
+2015-07-11 09:47:21 释放结果集
+2015-07-11 09:47:21 完成整个查询任务,所用时间为0.0011351108551025
+2015-07-13 17:29:29 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = 'otCX2s_Lu-7USC8EcnFF_zL7i5Sc' limit 0,1
+2015-07-13 17:29:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = 'otCX2s_Lu-7USC8EcnFF_zL7i5Sc' limit 0,1
+2015-07-13 17:29:29 释放结果集
+2015-07-13 17:29:29 完成整个查询任务,所用时间为0.0012657642364502
+2015-07-13 17:29:29 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = 'otCX2s_Lu-7USC8EcnFF_zL7i5Sc' limit 0,1
+2015-07-13 17:29:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = 'otCX2s_Lu-7USC8EcnFF_zL7i5Sc' limit 0,1
+2015-07-13 17:29:30 释放结果集
+2015-07-13 17:29:30 完成整个查询任务,所用时间为0.38212394714355
+2015-07-13 17:29:30 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = 'otCX2s_Lu-7USC8EcnFF_zL7i5Sc' limit 0,1
+2015-07-13 17:29:30 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = 'otCX2s_Lu-7USC8EcnFF_zL7i5Sc' limit 0,1
+2015-07-13 17:29:30 释放结果集
+2015-07-13 17:29:30 完成整个查询任务,所用时间为0.382807970047
+2015-07-13 17:42:56 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 17:42:56 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 17:42:56 释放结果集
+2015-07-13 17:42:56 完成整个查询任务,所用时间为0.0011320114135742
+2015-07-13 17:42:57 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 17:42:57 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 17:42:57 释放结果集
+2015-07-13 17:42:57 完成整个查询任务,所用时间为0.00090289115905762
+2015-07-13 18:02:16 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 18:02:16 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 18:02:16 释放结果集
+2015-07-13 18:02:16 完成整个查询任务,所用时间为0.00093507766723633
+2015-07-13 18:08:29 查询 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 18:08:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150713052924 and openid = '' limit 0,1
+2015-07-13 18:08:29 释放结果集
+2015-07-13 18:08:29 完成整个查询任务,所用时间为0.00095510482788086
+2015-07-15 11:48:14 查询 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-15 11:48:14 获取一条记录 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-15 11:48:14 释放结果集
+2015-07-15 11:48:14 完成整个查询任务,所用时间为0.0076558589935303
+2015-07-15 11:48:14 查询 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = '' limit 0,1
+2015-07-15 11:48:14 获取一条记录 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = '' limit 0,1
+2015-07-15 11:48:14 释放结果集
+2015-07-15 11:48:14 完成整个查询任务,所用时间为0.0011661052703857
+2015-07-15 11:48:14 查询 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-15 11:48:14 获取一条记录 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-15 11:48:15 释放结果集
+2015-07-15 11:48:15 完成整个查询任务,所用时间为0.42466902732849
+2015-07-15 11:48:15 查询 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-15 11:48:15 获取一条记录 select id,cost from fd_order_info where order_sn = 20150715114803 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-15 11:48:15 释放结果集
+2015-07-15 11:48:15 完成整个查询任务,所用时间为0.37214803695679
+2015-07-15 12:39:29 查询 select id,cost from fd_order_info where order_sn = 20150715123923 and openid = 'otCX2s-S_gMuyUjpHT2pWWYBqPwA' limit 0,1
+2015-07-15 12:39:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150715123923 and openid = 'otCX2s-S_gMuyUjpHT2pWWYBqPwA' limit 0,1
+2015-07-15 12:39:29 释放结果集
+2015-07-15 12:39:29 完成整个查询任务,所用时间为0.0011839866638184
+2015-07-15 12:39:29 查询 select id,cost from fd_order_info where order_sn = 20150715123923 and openid = 'otCX2s-S_gMuyUjpHT2pWWYBqPwA' limit 0,1
+2015-07-15 12:39:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150715123923 and openid = 'otCX2s-S_gMuyUjpHT2pWWYBqPwA' limit 0,1
+2015-07-15 12:39:30 释放结果集
+2015-07-15 12:39:30 完成整个查询任务,所用时间为0.33739113807678
+2015-07-16 09:50:54 查询 select id,cost from fd_order_info where order_sn = 20150716095047 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-16 09:50:54 获取一条记录 select id,cost from fd_order_info where order_sn = 20150716095047 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-16 09:50:54 释放结果集
+2015-07-16 09:50:54 完成整个查询任务,所用时间为0.016452074050903
+2015-07-16 09:50:54 查询 select id,cost from fd_order_info where order_sn = 20150716095047 and openid = '' limit 0,1
+2015-07-16 09:50:54 获取一条记录 select id,cost from fd_order_info where order_sn = 20150716095047 and openid = '' limit 0,1
+2015-07-16 09:50:54 释放结果集
+2015-07-16 09:50:54 完成整个查询任务,所用时间为0.0011239051818848
+2015-07-16 09:50:55 查询 select id,cost from fd_order_info where order_sn = 20150716095047 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-16 09:50:55 获取一条记录 select id,cost from fd_order_info where order_sn = 20150716095047 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-16 09:50:55 释放结果集
+2015-07-16 09:50:55 完成整个查询任务,所用时间为0.38346099853516
+2015-07-21 15:03:41 查询 select id,cost from fd_order_info where order_sn = 20150721030326 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:03:41 获取一条记录 select id,cost from fd_order_info where order_sn = 20150721030326 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:03:41 释放结果集
+2015-07-21 15:03:41 完成整个查询任务,所用时间为0.0012569427490234
+2015-07-21 15:03:41 查询 select id,cost from fd_order_info where order_sn = 20150721030326 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:03:41 获取一条记录 select id,cost from fd_order_info where order_sn = 20150721030326 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:03:42 释放结果集
+2015-07-21 15:03:42 完成整个查询任务,所用时间为0.4174427986145
+2015-07-21 15:17:07 查询 select id,cost from fd_order_info where order_sn = 20150721030326 and openid = '' limit 0,1
+2015-07-21 15:17:07 获取一条记录 select id,cost from fd_order_info where order_sn = 20150721030326 and openid = '' limit 0,1
+2015-07-21 15:17:07 释放结果集
+2015-07-21 15:17:07 完成整个查询任务,所用时间为0.0011529922485352
+2015-07-21 15:18:16 查询 select id,cost from fd_order_info where order_sn = 20150721031755 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:18:16 获取一条记录 select id,cost from fd_order_info where order_sn = 20150721031755 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:18:16 释放结果集
+2015-07-21 15:18:16 完成整个查询任务,所用时间为0.0012438297271729
+2015-07-21 15:18:16 查询 select id,cost from fd_order_info where order_sn = 20150721031755 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:18:16 获取一条记录 select id,cost from fd_order_info where order_sn = 20150721031755 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-21 15:18:17 释放结果集
+2015-07-21 15:18:17 完成整个查询任务,所用时间为0.38702607154846
+2015-07-22 09:59:49 查询 select id,cost from fd_order_info where order_sn = 20150722095928 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-22 09:59:49 获取一条记录 select id,cost from fd_order_info where order_sn = 20150722095928 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-22 09:59:49 释放结果集
+2015-07-22 09:59:49 完成整个查询任务,所用时间为0.0013430118560791
+2015-07-22 09:59:50 查询 select id,cost from fd_order_info where order_sn = 20150722095928 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-22 09:59:50 获取一条记录 select id,cost from fd_order_info where order_sn = 20150722095928 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-07-22 09:59:50 释放结果集
+2015-07-22 09:59:50 完成整个查询任务,所用时间为0.35804510116577
+2015-07-22 10:13:24 查询 select id,cost from fd_order_info where order_sn = 20150722095928 and openid = '' limit 0,1
+2015-07-22 10:13:24 获取一条记录 select id,cost from fd_order_info where order_sn = 20150722095928 and openid = '' limit 0,1
+2015-07-22 10:13:24 释放结果集
+2015-07-22 10:13:24 完成整个查询任务,所用时间为0.0011579990386963
+2015-07-27 17:48:46 查询 select id,cost from fd_order_info where order_sn = 20150727054843 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-27 17:48:46 获取一条记录 select id,cost from fd_order_info where order_sn = 20150727054843 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-27 17:48:46 释放结果集
+2015-07-27 17:48:46 完成整个查询任务,所用时间为0.012702941894531
+2015-07-27 17:48:47 查询 select id,cost from fd_order_info where order_sn = 20150727054843 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-27 17:48:47 获取一条记录 select id,cost from fd_order_info where order_sn = 20150727054843 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-27 17:48:47 释放结果集
+2015-07-27 17:48:47 完成整个查询任务,所用时间为0.46498012542725
+2015-07-27 17:48:48 查询 select id,cost from fd_order_info where order_sn = 20150727054843 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-27 17:48:48 获取一条记录 select id,cost from fd_order_info where order_sn = 20150727054843 and openid = 'otCX2s-aoRfvV3vXUlIw9k07lsfc' limit 0,1
+2015-07-27 17:48:48 释放结果集
+2015-07-27 17:48:48 完成整个查询任务,所用时间为0.38945317268372
+2015-08-22 12:50:29 查询 select id,cost from fd_order_info where order_sn = 20150822125012 and openid = 'otCX2swVnbra_fjmLZTFnOMocLJA' limit 0,1
+2015-08-22 12:50:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150822125012 and openid = 'otCX2swVnbra_fjmLZTFnOMocLJA' limit 0,1
+2015-08-22 12:50:29 释放结果集
+2015-08-22 12:50:29 完成整个查询任务,所用时间为0.032211065292358
+2015-08-22 12:50:29 查询 select id,cost from fd_order_info where order_sn = 20150822125012 and openid = '' limit 0,1
+2015-08-22 12:50:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150822125012 and openid = '' limit 0,1
+2015-08-22 12:50:29 释放结果集
+2015-08-22 12:50:29 完成整个查询任务,所用时间为0.0011789798736572
+2015-08-22 12:50:29 查询 select id,cost from fd_order_info where order_sn = 20150822125012 and openid = 'otCX2swVnbra_fjmLZTFnOMocLJA' limit 0,1
+2015-08-22 12:50:29 获取一条记录 select id,cost from fd_order_info where order_sn = 20150822125012 and openid = 'otCX2swVnbra_fjmLZTFnOMocLJA' limit 0,1
+2015-08-22 12:50:30 释放结果集
+2015-08-22 12:50:30 完成整个查询任务,所用时间为0.38976693153381
+2015-08-22 12:50:55 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150822125012
+2015-08-22 12:50:55 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20150822125012
+2015-08-22 12:50:55 释放结果集
+2015-08-22 12:50:55 完成整个查询任务,所用时间为0.013925075531006
+2015-08-24 15:58:48 查询 select id,cost from fd_order_info where order_sn = 20150824035827 and openid = 'otCX2s2p3HehBUYRsadeQNyHtdSI' limit 0,1
+2015-08-24 15:58:48 获取一条记录 select id,cost from fd_order_info where order_sn = 20150824035827 and openid = 'otCX2s2p3HehBUYRsadeQNyHtdSI' limit 0,1
+2015-08-24 15:58:48 释放结果集
+2015-08-24 15:58:48 完成整个查询任务,所用时间为0.027381181716919
+2015-08-24 15:58:48 查询 select id,cost from fd_order_info where order_sn = 20150824035827 and openid = 'otCX2s2p3HehBUYRsadeQNyHtdSI' limit 0,1
+2015-08-24 15:58:48 获取一条记录 select id,cost from fd_order_info where order_sn = 20150824035827 and openid = 'otCX2s2p3HehBUYRsadeQNyHtdSI' limit 0,1
+2015-08-24 15:58:49 释放结果集
+2015-08-24 15:58:49 完成整个查询任务,所用时间为0.35895800590515
+2015-09-20 10:22:17 查询 select id,cost from fd_order_info where order_sn = 20150920102149 and openid = '' limit 0,1
+2015-09-20 10:22:17 获取一条记录 select id,cost from fd_order_info where order_sn = 20150920102149 and openid = '' limit 0,1
+2015-09-20 10:22:17 释放结果集
+2015-09-20 10:22:17 完成整个查询任务,所用时间为0.01610803604126
+2015-09-20 10:30:24 查询 select id,cost from fd_order_info where order_sn = 20150920103018 and openid = '' limit 0,1
+2015-09-20 10:30:24 获取一条记录 select id,cost from fd_order_info where order_sn = 20150920103018 and openid = '' limit 0,1
+2015-09-20 10:30:24 释放结果集
+2015-09-20 10:30:24 完成整个查询任务,所用时间为0.0012211799621582
+2015-12-14 09:50:57 查询 select id,cost from fd_order_info where order_sn = 20151214095047 and openid = '' limit 0,1
+2015-12-14 09:50:57 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214095047 and openid = '' limit 0,1
+2015-12-14 09:50:57 释放结果集
+2015-12-14 09:50:57 完成整个查询任务,所用时间为0.075443029403687
+2015-12-14 10:36:19 查询 select id,cost from fd_order_info where order_sn = 20151214103606 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-14 10:36:19 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214103606 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-14 10:36:19 释放结果集
+2015-12-14 10:36:19 完成整个查询任务,所用时间为0.0012068748474121
+2015-12-14 10:36:19 查询 select id,cost from fd_order_info where order_sn = 20151214103606 and openid = '' limit 0,1
+2015-12-14 10:36:19 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214103606 and openid = '' limit 0,1
+2015-12-14 10:36:19 释放结果集
+2015-12-14 10:36:19 完成整个查询任务,所用时间为0.0011289119720459
+2015-12-14 10:36:27 查询 select id,cost from fd_order_info where order_sn = 20151214103606 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-14 10:36:27 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214103606 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-14 10:36:28 释放结果集
+2015-12-14 10:36:28 完成整个查询任务,所用时间为0.48413395881653
+2015-12-14 10:36:46 更新 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20151214103606
+2015-12-14 10:36:46 查询 update fd_order_info set status = '2',status = '2' where 1=1 and order_sn=20151214103606
+2015-12-14 10:36:46 释放结果集
+2015-12-14 10:36:46 完成整个查询任务,所用时间为0.0010581016540527
+2015-12-14 11:35:55 查询 select id,cost from fd_order_info where order_sn = 20151214113546 and openid = '' limit 0,1
+2015-12-14 11:35:55 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214113546 and openid = '' limit 0,1
+2015-12-14 11:35:55 释放结果集
+2015-12-14 11:35:55 完成整个查询任务,所用时间为0.0011429786682129
+2015-12-14 11:38:36 查询 select id,cost from fd_order_info where order_sn = 20151214113831 and openid = '' limit 0,1
+2015-12-14 11:38:36 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214113831 and openid = '' limit 0,1
+2015-12-14 11:38:36 释放结果集
+2015-12-14 11:38:36 完成整个查询任务,所用时间为0.0012059211730957
+2015-12-14 11:38:41 查询 select id,cost from fd_order_info where order_sn = 20151214113831 and openid = '' limit 0,1
+2015-12-14 11:38:41 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214113831 and openid = '' limit 0,1
+2015-12-14 11:38:41 释放结果集
+2015-12-14 11:38:41 完成整个查询任务,所用时间为0.0009160041809082
+2015-12-14 14:11:54 查询 select id,cost from fd_order_info where order_sn = 20151214021148 and openid = '' limit 0,1
+2015-12-14 14:11:54 获取一条记录 select id,cost from fd_order_info where order_sn = 20151214021148 and openid = '' limit 0,1
+2015-12-14 14:11:54 释放结果集
+2015-12-14 14:11:54 完成整个查询任务,所用时间为0.0012390613555908
+2015-12-15 09:18:36 查询 select id,cost from fd_order_info where order_sn = 20151215091831 and openid = '' limit 0,1
+2015-12-15 09:18:36 获取一条记录 select id,cost from fd_order_info where order_sn = 20151215091831 and openid = '' limit 0,1
+2015-12-15 09:18:36 释放结果集
+2015-12-15 09:18:36 完成整个查询任务,所用时间为0.046276092529297
+2015-12-15 10:35:51 查询 select id,cost from fd_order_info where order_sn = 20151215103534 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 10:35:51 获取一条记录 select id,cost from fd_order_info where order_sn = 20151215103534 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 10:35:51 释放结果集
+2015-12-15 10:35:51 完成整个查询任务,所用时间为0.0011708736419678
+2015-12-15 10:35:53 查询 select id,cost from fd_order_info where order_sn = 20151215103534 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 10:35:53 获取一条记录 select id,cost from fd_order_info where order_sn = 20151215103534 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 10:35:53 释放结果集
+2015-12-15 10:35:53 完成整个查询任务,所用时间为0.0009920597076416
+2015-12-15 11:24:11 查询 select id,cost from fd_order_info where order_sn = 20151215112400 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 11:24:11 获取一条记录 select id,cost from fd_order_info where order_sn = 20151215112400 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 11:24:11 释放结果集
+2015-12-15 11:24:11 完成整个查询任务,所用时间为0.001284122467041
+2015-12-15 11:24:11 查询 select id,cost from fd_order_info where order_sn = 20151215112400 and openid = '' limit 0,1
+2015-12-15 11:24:11 获取一条记录 select id,cost from fd_order_info where order_sn = 20151215112400 and openid = '' limit 0,1
+2015-12-15 11:24:11 释放结果集
+2015-12-15 11:24:11 完成整个查询任务,所用时间为0.001129150390625
+2015-12-15 11:24:14 查询 select id,cost from fd_order_info where order_sn = 20151215112400 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 11:24:14 获取一条记录 select id,cost from fd_order_info where order_sn = 20151215112400 and openid = 'otCX2s1rwDKzDJHEFiZcNeuKAcoo' limit 0,1
+2015-12-15 11:24:15 释放结果集
+2015-12-15 11:24:15 完成整个查询任务,所用时间为0.42291808128357
+2015-12-21 16:25:54 查询 select id,cost from fd_order_info where order_sn = 20151221042544 and openid = 'otCX2sw_xdRyXS2WuqreDQarC0EE' limit 0,1
+2015-12-21 16:25:54 获取一条记录 select id,cost from fd_order_info where order_sn = 20151221042544 and openid = 'otCX2sw_xdRyXS2WuqreDQarC0EE' limit 0,1
+2015-12-21 16:25:54 释放结果集
+2015-12-21 16:25:54 完成整个查询任务,所用时间为0.14674401283264
+2015-12-21 16:25:57 查询 select id,cost from fd_order_info where order_sn = 20151221042544 and openid = 'otCX2sw_xdRyXS2WuqreDQarC0EE' limit 0,1
+2015-12-21 16:25:57 获取一条记录 select id,cost from fd_order_info where order_sn = 20151221042544 and openid = 'otCX2sw_xdRyXS2WuqreDQarC0EE' limit 0,1
+2015-12-21 16:26:01 释放结果集
+2015-12-21 16:26:01 完成整个查询任务,所用时间为3.1522550582886
+2015-12-21 16:26:12 查询 select id,cost from fd_order_info where order_sn = 20151221042544 and openid = 'otCX2sw_xdRyXS2WuqreDQarC0EE' limit 0,1
+2015-12-21 16:26:12 获取一条记录 select id,cost from fd_order_info where order_sn = 20151221042544 and openid = 'otCX2sw_xdRyXS2WuqreDQarC0EE' limit 0,1
+2015-12-21 16:26:12 释放结果集
+2015-12-21 16:26:12 完成整个查询任务,所用时间为0.00080180168151855

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>{$current['title']}-{$Think.CONFIG.title}</title>
+
+		<meta name="keywords" content="{$Think.CONFIG.keywords}" />
+		<meta name="description" content="{$Think.CONFIG.description}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<include file="Public/head" />
+   </head>
+
+	<body class="no-skin">
+		<include file="Public/header" />
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<include file="Public/sidebar" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<!-- #section:basics/content.breadcrumbs -->
+					<include file="Public/breadcrumbs" />
+
+					<!-- /section:basics/content.breadcrumbs -->
+					<div class="page-content">
+						<include file="Public/set" />
+
+						<!-- /section:settings.box -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+									<form class="form-horizontal" role="form" action="" method="post">
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 订单编号 </label>
+										<div class="col-sm-9">
+											<input type="text"  name="order_num" class="rcol-xs-10 col-sm-5" placeholder="订单编号" value="{$list.order_num}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">订单编号。</span>
+											</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 发货地址 </label>
+										<div class="col-sm-9">
+											<input type="text" name="own_phone" id="own_phone" placeholder="发货地址" class="col-xs-10 col-sm-5" value="{$list.area1_str}--{$list.detail_area1}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">发货地址。</span>
+											</span>
+										</div>
+									</div>
+
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 收货地址 </label>
+										<div class="col-sm-9">
+											<input type="text" name="take_area" id="take_area" placeholder="收货地址" class="col-xs-10 col-sm-5" value="{$list.area2_str}--{$list.detail_area2}">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">收货地址。</span>
+										</span>
+										</div>
+									</div>
+
+										<div class="space-4"></div>
+
+										<div class="form-group">
+											<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 所属人 </label>
+											<div class="col-sm-9">
+												<input type="text" name="remark" id="name" placeholder="所属人" class="col-xs-10 col-sm-5" value="{$list.name}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">所属人。</span>
+											</span>
+											</div>
+										</div>
+
+										<div class="space-4"></div>
+
+										<div class="form-group">
+											<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 订单备注 </label>
+											<div class="col-sm-9">
+												<input type="text" name="remark" id="remark" placeholder="订单备注" class="col-xs-10 col-sm-5" value="{$list.remark}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">订单备注。</span>
+											</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 价格 </label>
+											<div class="col-sm-9">
+												<input type="text" name="price" id="price" placeholder="价格" class="col-xs-10 col-sm-5" value="{$list.price}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">价格。</span>
+											</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 订单创建时间 </label>
+											<div class="col-sm-9">
+												<input type="text" name="ctime" id="ctime" placeholder="订单创建时间" class="col-xs-10 col-sm-5" value="<if condition="$list.ctime eq ''">暂无时间<else/>{$list['ctime']|date="Y-m-d ",###}</if>">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">订单创建时间。</span>
+											</span>
+											</div>
+										</div>
+								</form>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+			<include file="Public/footer" />
+			
+		</div><!-- /.main-container -->
+
+		<include file="Public/footerjs" />
+		<!-- inline scripts related to this page -->
+		<script src="__PUBLIC__/qwadmin/js/date-time/bootstrap-datepicker.js"></script>
+		<script type="text/javascript">
+		jQuery(function($){
+			$('#birthday').datepicker({
+				  format: 'yyyy-mm-dd',
+						weekStart: 1,
+						autoclose: true,
+						todayBtn: 'linked',
+						language: 'cn'
+				 });
+			});
+		
+		</script>
+	</body>
+</html>

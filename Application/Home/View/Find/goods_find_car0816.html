@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>货源找车</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+    <style>
+        *{ margin: 0;padding: 0}
+        .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 45%;
+            left: 10%;;
+            width: 80%;
+            height:25%;
+            margin: 0 auto;
+
+            background-color: #FFF;
+            z-index:1002;
+            overflow: auto;
+            text-align:center;
+        }
+        .white_content .worn{
+            color: #FF5A3E; font-size: 0.9em; border-bottom: #CCC 1px solid;
+            height: 35px; line-height: 35px; margin-bottom:8%}
+        .white_content p{
+            font:18px 微软雅黑;
+            text-align:center;
+            margin-bottom:10px;
+        }
+        .white_content a{
+            font:18px 微软雅黑 !important;
+            text-decoration:none !important;
+            background:#4AC9F6;
+            padding:3px 30px;
+            color:#fff;
+            border-radius:5px;
+
+        }
+        .white_content a:hover{
+            font:18px 微软雅黑 !important;
+            text-decoration:none !important;
+            background:#666;
+            padding:3px 30px;
+            color:#fff;
+            border-radius:5px;
+        }
+    </style>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#tabhost li:eq(0)").addClass("current3");
+$("#content .point:not(:first)").hide();
+$("#tabhost li").click(function(){
+$(this).addClass("current3").siblings().removeClass("current3");
+var index=$(this).index();
+$("#content .point").eq(index).show().siblings().hide();
+ })
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".padlock").click(function(){
+		$(".filtrate").hide()
+		});
+		
+	})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".screen").click(function(){
+		$(".filtrate").show()
+		});
+		
+	})
+</script>
+
+</head>
+
+<body style="background:#EBEBEB">
+<include file="Common:common"/>
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+          <a href="{:U('Index/index')}">
+             <div class="return">
+                 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+             </div>
+          </a>
+              <div class="indent">货源找车</div>
+              
+       </div>
+    <div class="tab">
+            <ul id="tabhost">
+                <li>全部</li>
+                <li>
+                  <select class="wipe">
+                      <option selected="selected">默认排序</option>
+                      <option>按时间排序</option>
+                      <option>按类型排序</option>
+                    </select>
+                </li>
+                <li style="border-right:none" class="screen">
+                 <select class="wipe">
+                      <option selected="selected">筛选</option>
+                      <option>按时间排序</option>
+                      <option>按类型排序</option>
+                    </select>
+                </li>
+            </ul>
+            <div id="content">
+                <volist name="list" id="mes_vo">
+                    <?php
+                        $uid = $mes_vo['uid'];
+                        $lists=M();
+                        $grade = $lists->query("select avg(so.comment_star) as avg from su_orders as so where so.clients_id='$uid'");
+                    $list_str = substr($grade['0']['avg'],0,3);
+                    ?>
+               <div class="point">
+                    <div class="personne" style="margin-top: 0px;">
+                      <dl class="personne-left">
+                        <dt><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" style="border-radius:50%;" height="57" /></dt>
+                        <dd>{$mes_vo['name']}  <img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" />{$list_str}</dd>
+                        <dd><if condition="$mes_vo['role_id'] eq 0">车主
+                            <elseif condition="$mes_vo['role_id'] eq 1"/>货主
+                            <else />信息部
+                        </if></dd>
+                      </dl>
+
+                        <div class="item-right">
+                            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']});" style="color:#333;">
+                                <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
+                            </a>
+                        </div>
+
+                   </div>
+                   <div style="border:#C2C2C2 1px solid"></div>
+                   <div class="describe"> 
+                   <div class="dizhi">
+                       <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+                       <span>{$mes_vo['area1_str']}{$mes_vo['detail_area1']}</span>
+                   </div>
+                      <div class="describe-left" style="width:100%">
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/buy.png"width="22" height="20" /> 车辆类型
+                              <span>{$mes_vo['car_type']}</span>
+                          </div>
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 发布时间
+                              <if condition="$mes_vo['publish_time'] eq ''">暂无时间<else/>{$mes_vo['publish_time']}</if>
+                          </div>
+                      </div>
+                   </div>
+                 </div>
+                </volist>
+      </div>
+   </div>
+</div>
+ <!--电话弹层-->
+<div id="light" class="white_content">
+    <p class="worn">小矿建议您谨慎交易，"货"比三家哦！</p>
+    <p class="tanceng_res" style=" margin-bottom: 8%">15020011277</p>
+    <a href="tel:15020011277" class="call_you">拨号</a>
+</div>
+<div id="fade" class="black_overlay" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
+</body>
+</html>
+<script type="text/javascript">
+    function call_js(obj,class_id,message)
+    {
+        var phone_res = class_id;
+        $(".tanceng_res").html(phone_res);
+        var link = "tel:"+phone_res;
+        $('.call_you').attr('href',link);
+        url="__CONTROLLER__/ajax_order";
+        $.ajax({
+            type:"post",
+            url:url,
+            data:{message:message},
+            success:function(data){
+                if(data==0)
+                {
+                    tanchu('可在我的订单查询');
+                }
+                else if(data==1)
+                {
+                    tanchu('接单成功');
+                }
+                else{
+                    tanchu('接单失败');
+                }
+            },
+            error:function(XMLHttpRequest,textStatus,errorThrown){
+                alert("出现错误！！！");
+            }
+        });
+    }
+</script>

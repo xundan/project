@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>车主订单</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<style type="text/css">
+    .name_ceng{
+        border:1px solid #ccc;
+        width:auto;
+        text-align: center;
+        z-index: 99999;
+        margin-top: -25px;
+        display:none;
+    }
+</style>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+    <!--<script type="text/javascript">
+        $(function(){
+            var company = $('.company_vo').html();
+            //alert(company.length);
+            var company_name = $('.company_name').val();
+            company_name = company_name.substring(0,4);alert(company_name);
+            if(company.length>4)
+            {
+                $('.company_vo').html(company_name+'...')
+            }
+        });
+    </script>-->
+    <!--点击名称全显示-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".yaopin").click(function(){
+                $(".goos-info").show()
+            });
+
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".goos-info").click(function(){
+                $(".goos-info").hide()
+            });
+
+        })
+    </script>
+
+</head>
+
+<body style=" background:#EAECEB">
+<include file="Common:common"/>
+ <div id="box">
+    <div id="header">
+         <div class="return">
+             <a href="{:U('Send/vip_center')}"><img src="__PUBLIC__/home/images/fanhui.png" width="33" height="33" /></a>
+         </div>
+          <div class="indent">我的订单</div>
+     </div>
+     <volist name="order_list" id="vo">
+     <div id="matter">
+          <div class="headline">
+             <div class="date">{$vo['ctime']}</div>
+          </div>
+          <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+              <span>{$vo['area1_str']}{$vo['detail_area1']}</span>
+          </div>
+          <div class="address"><img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+              <span>{$vo['area2_str']}{$vo['detail_area2']}</span>
+          </div>
+           <div class="nom">
+               <input type="hidden" class="company_name" value="{$vo['name']}">
+              <div class="yaopin">货主名称:<span class="company_vo">{$vo['name']}</span></div>
+              <div class="count">货物数量:{$vo['purchasing_tonnage']}</div>
+               <a href="{:U('Order/order_car_car')}?ids={$vo['id']}">
+              <div class="skip"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" /></div>
+               </a>
+           </div>
+         <!--全称层-->
+        <!-- <div class="name_ceng">{$company['name']}</div>-->
+         <div class="goos-info" style="width:100%;height:200%;border:1px solid #ccc;margin-top:-30px;">
+         <div class="chenggong" style="width:100%;height:auto;border:1px solid #ccc;text-align: center;width:50%;">
+             {$vo['name']}
+         </div>
+     </div>
+     </div>
+     </volist>
+    <span id="orderPoint"></span>
+
+     <div class="rank"></div>
+     <input type="hidden" id="dealPage" value="{$nextPage}"/>
+     <div onclick="getDeal()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div>
+ </div>
+ <div style="display:none" id="cloneObj">
+       <div id="matter">
+          <div class="headline">
+             <div class="date">{$vo['ctime']}</div>
+          </div>
+          <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+            <input type="text" value="{$vo['area1_str']}{$vo['detail_area1']}" /></div>
+          <div class="address"><img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+           <input type="text" value="{$vo['area2_str']}{$vo['detail_area2']}" /></div>
+           <div class="nom">
+               <input type="hidden" class="company_name" value="{$vo['name']}">
+              <div class="yaopin">货主名称:<span class="company_vo">{$vo['name']}</span></div>
+              <div class="count">货物数量:<span>{$vo['purchasing_tonnage']}</span></div>
+               <a href="{:U('Order/order_car_car')}?ids={$vo['id']}">
+              <div class="skip"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" /></div>
+               </a>
+           </div>
+         <!--全称层-->
+        <!-- <div class="name_ceng">{$company['name']}</div>-->
+         <div class="goos-info" style="width:100%;height:auto;border:1px solid #ccc;margin-top:-30px;">
+         <div class="chenggong" style="width:100%;height:auto;border:1px solid #ccc;text-align: center;width:50%;">
+             {$vo['name']}
+         </div>
+     </div>
+     </div>
+ </div>
+ <script type="text/javascript">
+                        /*
+                        * 我的订单
+                        */
+                        function getDeal(){
+                            var url="__CONTROLLER__/order_car";
+                            var page=$("#dealPage").val();
+                            $.ajax({
+                                type:"post",
+                                url:url,
+                                data:{page:page,isAjax:1},
+                                success:function(data){
+                                    var jsonObj=eval("("+data+")");
+                                    if(jsonObj.data==null){
+                                          tanchu("暂无数据");
+                                     }else{
+                                          jQuery.each(jsonObj.data, function(k, val)
+                                          {
+                                               var tempObj=$("#cloneObj").children("div #matter").clone(true);
+                                               tempObj.find(".date").html(val.ctime);
+                                               tempObj.find(".address").eq(0).children("input").val(val.area1_str+val.detail_area1);
+                                               tempObj.find(".address").eq(1).children("input").val(val.area2_str+val.detail_area2);
+                                               tempObj.find(".yaopin1").children("span").html(val.name);
+                                               tempObj.find(".nom").children("a").attr("href","{:U('Order/order_car_car')}?ids="+val.id);
+                                               tempObj.appendTo("#orderPoint");
+                                          });
+                                          $("#dealPage").val(jsonObj.nextPage);
+                                     }
+                                },
+                         error:function(XMLHttpRequest,textStatus,errorThrown){
+                            tanchu("操作失败。");
+                          }
+                         });
+                        }
+ </script>
+</body>
+</html>

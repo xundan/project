@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head" title="模板包含"/>
+</head>
+<body>
+<include file="Public/navbar" home="主页"/>
+
+<div class="container">
+
+    <div class="alert alert-warning">
+    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    	<strong>默认</strong> 默认主题
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>姓名（原生表达式）</th>
+            <th>年龄</th>
+            <th>计算年龄</th>
+            <th>手机</th>
+            <th>项目目录</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{$user.name|strtoupper|str_replace='CL',"Chenlong",###}</td>
+            <td>{:str_replace('CL',' Chenlong',strtoupper($user['name']))}</td>
+            <!--<td>{$user.age-1}</td>-->
+            <!--运算时数组应使用索引方式调用-->
+            <td>{$user['age']-1}</td>
+            <td>{$year|getAge}</td>
+            <td>{$user.mobile|default="没有手机号"}</td>
+            <td>{$Think.server.DOCUMENT_ROOT}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<include file="Public/js"/>
+</body>
+</html>

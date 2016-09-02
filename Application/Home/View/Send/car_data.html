@@ -1,0 +1,850 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>车主资料</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/common.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#tabhost li:eq(0)").addClass("current4");
+$("#content .point:not(:first)").hide();
+$("#tabhost li").click(function(){
+$(this).addClass("current4").siblings().removeClass("current4");
+var index=$(this).index();
+$("#content .point").eq(index).show().siblings().hide();
+var title = $('.current4').html();
+$('.indent').html(title);
+ })
+})
+</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".glad p").click(function(){
+	 rsfv = $(this).text();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+       $('.hrwr').html(rsfv);
+  });
+         $('.awake').click(function(){
+             $(".glad").show();
+         });
+         $(".turnoff").click(function(){
+             $(".glad").hide();
+             $('.hrwr').html('');
+         });
+
+     })
+	 
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".ercial p").click(function(){
+         rsfv = $(this).text();
+       $(this).addClass("yangshi").siblings().removeClass("yangshi");
+           $('.oyer').html(rsfv);
+      });
+         $('.voiture').click(function(){
+             $(".ercial").show();
+         });
+         $(".turnoff").click(function(){
+             $(".ercial").hide();
+             $('.oyer').html('');
+         });
+})
+	 
+	</script>
+    <script type="text/javascript">
+ $(document).ready(function(){
+	$(".turnoff").click(function(){
+		$(".exam").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function() {
+		var rsfv = "";
+	    $('.railway').click(function(){
+			$(".exam").show();	
+			});
+		});
+	</script>
+<script type="text/javascript">
+    $(function()
+    {
+        var choice = "";
+        $('.slip').click(function()
+        {
+            $("#location").show();
+        });
+        //yangshi
+        $(".state span p").click(function(){
+            $("#fbqcFh").val($(this).attr("attr"));
+            pro_res = $(this).text();
+            $(this).addClass("yangshi").siblings().removeClass("yangshi");
+            $(".send").html(pro_res);
+        });
+        $("#off").click(function()
+        {
+            $('.send').html('');
+            $("#location").hide();
+        });
+    });
+</script>
+    <!--省市联动-->
+    <script type="text/javascript">
+
+        /*************区域联动开始lisy*****************/
+        function getMyAddress()
+        {
+            $('.send').html($("#districtSelected").text());
+            $("#location").hide();
+
+        }
+        $(function()
+        {
+             //点层消失
+            $('#location').click(function(e){
+                         e = window.event || e;
+                         obj = $(e.srcElement || e.target);
+                         if (obj.attr('class') == 'syfclass') {
+                             $('.send').html('');
+                             $('#location').hide();
+                         }
+             });
+            //车辆类型
+            $('.ercial').click(function(e){
+                e = window.event || e;
+                obj = $(e.srcElement || e.target);
+                if (obj.attr('class') == 'ercial') {
+                    $('.oyer').html('');
+                    $('.ercial').hide();
+                }
+            });
+            //验车照
+            $('.exam').click(function(e){
+                e = window.event || e;
+                obj = $(e.srcElement || e.target);
+                if (obj.attr('class') == 'exam') {
+                    $('.exam').hide();
+                }
+            });
+            $(".province p").click(test);
+            $(".province1 p").click(test1);
+            $(".shengfen p").click(room);
+            $(".shengfen-one p").click(shengfenOne);
+            $(".sweden p").click(sweden);
+            $(".province").find("span #provinceNameStr").click(test);
+            $(".province").find("span #cityNameStr").click(test);
+            $(".province").find("span #districtNameStr").click(test);
+            $(".province1").find("span #provinceNameStr").click(test1);
+            $(".province1").find("span #cityNameStr").click(test1);
+            $(".province1").find("span #districtNameStr").click(test1);
+            $(".shengfen").find("span #provinceNameStr").click(room);
+            $(".shengfen").find("span #cityNameStr").click(room);
+            $(".shengfen").find("span #districtNameStr").click(room);
+            $(".shengfen-one").find("span #provinceNameStr").click(shengfenOne);
+            $(".shengfen-one").find("span #cityNameStr").click(shengfenOne);
+            $(".shengfen-one").find("span #districtNameStr").click(shengfenOne);
+            $(".sweden").find("span #provinceNameStr").click(sweden);
+            $(".sweden").find("span #cityNameStr").click(sweden);
+            $(".sweden").find("span #districtNameStr").click(sweden);
+        });
+
+        function test(){
+            var pro_id = $(this).attr('attr');
+            var obj=$(this);
+            url="__CONTROLLER__/ajax_sheng";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{pro_id:pro_id},
+                success:function(data){
+                    if(data!=0){
+                        var a = eval(data);
+                        var proStr="";
+                        jQuery.each(a, function(k, val)
+                        {
+                            //console.log(val.area);
+                            proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+                        });
+                        obj.parent().parent().find("#getAllCity").html(proStr);
+                        $(".province p").click(test);
+                        $('.state p').click(function(){
+                            //alert($(this).parent().parent().children("span").html());
+                            choice = $(this).text();
+                            var pid=$(this).attr('pid');
+                            var realId=$(this).attr('attr');
+                            $('.send').html(choice);
+                            var type1=$(this).attr('dis_type');
+                            if(type1){
+                                if(type1=='1'){
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #provinceNameStr").html(choice);
+                                    $(this).parent().parent().find("span #cityNameStr").html("");
+                                    $(this).parent().parent().find("span #districtNameStr").html("");
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                    $("#fbqcFh").val(realId);
+                                }
+                                if(type1=='2'){
+                                    $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                    $(this).parent().parent().children("span").find("#cityNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #cityNameStr").html(choice);
+                                    $(this).parent().parent().find("span #districtNameStr").html("");
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                    $("#fbqcFh").val(realId);
+                                }
+                                if(type1=='3'){
+                                    $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',realId);
+                                    $("#fbqcFh").val($(this).val());
+                                    $(this).parent().parent().find("span #districtNameStr").html(choice);
+                                    $("#fbqcFh").val(realId);
+                                }
+                            }
+                            $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                        });
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    alert("出现错误！！！");
+                }
+            });
+        }
+
+        function test1(){
+            var pro_id = $(this).attr('attr');
+            var obj=$(this);
+            url="__CONTROLLER__/ajax_sheng";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{pro_id:pro_id},
+                success:function(data){
+                    if(data!=0){
+                        var a = eval(data);
+                        var proStr="";
+                        jQuery.each(a, function(k, val)
+                        {
+                            console.log(val.area);
+                            proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+                        });
+                        obj.parent().parent().find("#getAllCity").html(proStr);
+                        $(".province1 p").click(test1);
+                        $('.state1 p').click(function(){
+                            choice = $(this).text();
+                            var pid=$(this).attr('pid');
+                            var realId=$(this).attr('attr');
+                            $('.back').html(choice);
+                            var type1=$(this).attr('dis_type');
+                            if(type1){
+                                if(type1=='1'){
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #provinceNameStr").html(choice);
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                    $(this).parent().parent().find("span #cityNameStr").html("市");
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+
+                                }
+                                if(type1=='2'){
+                                    $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #cityNameStr").html(choice);
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                }
+                                if(type1=='3'){
+                                    $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #districtNameStr").html(choice);
+                                }
+                            }
+                            $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                        });
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    alert("出现错误！！！");
+                }
+            });
+        }
+
+        function room(){
+            var pro_id = $(this).attr('attr');
+            var obj=$(this);
+            url="__CONTROLLER__/ajax_sheng";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{pro_id:pro_id},
+                success:function(data){
+                    if(data!=0){
+                        var a = eval(data);
+                        var proStr="";
+                        jQuery.each(a, function(k, val)
+                        {
+                            console.log(val.area);
+                            proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+                        });
+                        obj.parent().parent().find("#getAllCity").html(proStr);
+                        $(".shengfen p").click(room);
+                        $('.shengfen p').click(function(){
+                            var choiceP = $(this).text();
+                            var pid=$(this).attr('pid');
+                            var realId=$(this).attr('attr');
+                            $('.areas').html(choiceP);
+                            var type1=$(this).attr('dis_type');
+                            if(type1){
+                                if(type1=='1'){
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #provinceNameStr").html(choiceP);
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                    $(this).parent().parent().find("span #cityNameStr").html("市");
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+
+                                }
+                                if(type1=='2'){
+                                    $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #cityNameStr").html(choiceP);
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                }
+                                if(type1=='3'){
+                                    $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #districtNameStr").html(choiceP);
+                                }
+                            }
+                            $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                        });
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    tanchu("出现错误！！！");
+                }
+            });
+        }
+
+        function shengfenOne(){
+            // alert(1);
+            var pro_id = $(this).attr('attr');
+            var obj=$(this);
+            url="__CONTROLLER__/ajax_sheng";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{pro_id:pro_id},
+                success:function(data){
+                    if(data!=0){
+                        var a = eval(data);
+                        var proStr="";
+                        jQuery.each(a, function(k, val)
+                        {
+                            console.log(val.area);
+                            proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+                        });
+                        obj.parent().parent().find("#getAllCity").html(proStr);
+                        $(".shengfen-one p").click(shengfenOne);
+                        $('.shengfen-one p').click(function(){
+                            var choiceP = $(this).text();
+                            var pid=$(this).attr('pid');
+                            var realId=$(this).attr('attr');
+                            $('.hands').html(choiceP);
+                            var type1=$(this).attr('dis_type');
+                            if(type1){
+                                if(type1=='1'){
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #provinceNameStr").html(choiceP);
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                    $(this).parent().parent().find("span #cityNameStr").html("市");
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+                                }
+                                if(type1=='2'){
+                                    $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #cityNameStr").html(choiceP);
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                }
+                                if(type1=='3'){
+                                    $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #districtNameStr").html(choiceP);
+                                }
+                            }
+                            $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                        });
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    tanchu("出现错误！！！");
+                }
+            });
+        }
+
+        function sweden(){
+            var pro_id = $(this).attr('attr');
+            var obj=$(this);
+            url="__CONTROLLER__/ajax_sheng";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{pro_id:pro_id},
+                success:function(data){
+                    if(data!=0){
+                        var a = eval(data);
+                        var proStr="";
+                        jQuery.each(a, function(k, val)
+                        {
+                            console.log(val.area);
+                            proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+                        });
+                        obj.parent().parent().find("#getAllCity").html(proStr);
+                        $(".sweden p").click(sweden);
+                        $('.sweden p').click(function(){
+                            var choiceP = $(this).text();
+                            var pid=$(this).attr('pid');
+                            var realId=$(this).attr('attr');
+                            $('.siew').html(choiceP);
+                            var type1=$(this).attr('dis_type');
+                            if(type1){
+                                if(type1=='1'){
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                    $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #provinceNameStr").html(choiceP);
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                    $(this).parent().parent().find("span #cityNameStr").html("市");
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+                                }
+                                if(type1=='2'){
+                                    $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #cityNameStr").html(choiceP);
+                                    $(this).parent().parent().find("span #districtNameStr").html("区");
+                                    $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                }
+                                if(type1=='3'){
+                                    $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                    $(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+                                    $(this).parent().parent().find("span #districtNameStr").html(choiceP);
+                                }
+                            }
+                            $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                        });
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    tanchu("出现错误！！！");
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            /*******************修改lisy*******************/
+            $(".state p").click(function()
+            {
+                choice = $(this).text();
+                $('.send').html(choice);
+                var type=0;
+                if(type){
+                }else{
+                    $(this).parent().parent().find("span #provinceNameStr").html(choice);
+                }
+                $(this).addClass("yangshi").siblings().removeClass("yangshi");
+            })
+            /*******************修改lisy*******************/
+        });
+    </script>
+</head>
+<body style="background:#EBEBEB">
+<include file="Common:common"/>
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+          <a href="{:U('Send/vip_center')}">
+             <div class="return">
+                 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+             </div>
+          </a>
+              <div class="indent">我的资料</div>
+       </div>
+    <div class="tab">
+            <ul id="tabhost">
+                <li style="width:50%; border-right:none; background:#FFF">基本信息</li>
+                <li  style="width:50%; border-right:none; background:#FFF">从业经验</li>
+            </ul>
+            <div id="content">
+                   <div class="point">
+                       <form action="{:U('car_data_do')}" method="post" id="form_id" enctype="multipart/form-data">
+					   <!--性别input-->
+					   <input type="hidden" name="sex" value="{$invite['sex']}">
+					   <!--车辆类别input-->
+					   <input type="hidden" name="type_id" value="{$carInfo['type_id']}">
+                       <!--地址input-->
+                       <input type="hidden" name="dizhi" value="">
+                         <div class="myple" style="margin-top:2%;margin-bottom:2%">
+                                <div class="myple-left" style="position:relative">
+                                    <if condition="$invite['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="26" style="border-radius:50%;" height="26" />
+                                        <else/>
+                                    <img src="__ROOT__{$invite['headimgurl']}" width="26" style="border-radius:50%;" height="26" />
+                                    </if>
+                                    　<input type="file"  name="headimgurl" style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" />我的头像
+                                </div>
+                                <div class="myple-right">
+                                    <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                                </div>
+                          </div> 
+                          <div class="freight">姓名<input name="name" type="text"  style="font-size:1em;color:black;" value="{$invite['name']}"/></div>
+                             <div style="border-bottom:#F0F0F0 1px solid; "></div> 
+                             <div id="launch" style="margin-top:0%">
+                                 <div class="launch-left">电话
+                                     <input type="text" name="phone1" placeholder="请输入电话" value="{$invite['phone_number']}" style="font-size:1em; color:black;margin-left:2%"/>
+                                 </div>
+                                 <div class="launch-right">
+                                     <img src="__PUBLIC__/home/images/addji.png" width="14" height="14" />
+                                 </div>
+                      </div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                      <div id="atom">
+                           <div class="trait" style="padding-left:10%;">
+                               <input type="text" name="phone2" value="" placeholder="请输入电话" style="height:45px; line-height:45px;color:#a1a1a1; font-size:1em;border-bottom:#F0F0F0 1px solid;"/>
+                           </div>
+                          <div class="trait" style="padding-left:10%;">
+                              <input type="text" name="phone3" value="" placeholder="请输入电话" style="height:45px; line-height:45px;color:#a1a1a1; font-size:1em;border-bottom:#F0F0F0 1px solid;"/>
+                          </div>
+                          <div class="trait" style="padding-left:10%;">
+                              <input type="text" name="phone4" value="" placeholder="请输入电话" style="height:45px; line-height:45px;color:#a1a1a1; font-size:1em;border-bottom:#F0F0F0 1px solid;"/>
+                          </div>
+                           <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       </div>
+                       <div class="awake">
+                          <div class="awake-left">性别<span class="hrwr"><if condition="$invite['sex'] eq 0">保密<elseif condition="$invite['sex'] eq '1' "/>男<else/>女</if></span></span></div>
+                          <div class="awake-right">
+                              <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                          </div>
+             
+                       </div>
+
+                           <div class="slip">
+                               <div class="slip-left">我的地址
+                                   <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                                   <span class="send"></span>
+                                   <input type="hidden" name="district_id" id="fbqcFh" value="{$invite['district_id']}">
+                               </div>
+                               <div class="slip-right">
+                                   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                               </div>
+                           </div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                        <div id="launch" style="margin-top:0%">
+                            <!--<div class="launch-left">生日<input type="date" name="birthday" style="font-size:1em; margin-left:2%;color:#a1a1a1"/></div>-->
+
+
+                            <div class="sdskl" style="background:#FFF; height:45px; line-height:45px;">
+                                <div class="demo" style="margin:10px auto 0 auto; background:#FFF">
+                                    <div class="lie">生日&nbsp;&nbsp;<input  id="beginTime" name="birthday" value="{$invite['birthday']|date='Y-m-d',###}"  class="kbtn" /></div>
+                                    <!--<div class="lie">日期设置-2:<input id="endTime" class="kbtn" /></div>-->
+                                </div>
+                                <div id="datePlugin"></div>
+
+                            </div>
+
+                            <div class="launch-right">
+                                <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                            </div>
+                        </div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                      <div class="freight">邀请人<input type="text" value="{$name}" style="font-size:1em;color:black;"/></div>
+                      <div class="freight" style="margin-top:2%">身份证号
+                          <input type="text"  style="font-size:1em;width:60%;color:black;" name="id_card" placeholder="370258187405029875" value="{$invite['id_card']}"></div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                      <div class="freight">驾驶证号
+                          <input type="text"  style="font-size:1em;color:black;" name="jiashi_card" value="{$invite['jiashi_card']}" placeholder="输入证件号码"/></div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                      <div class="myple">
+                                <div class="myple-left" style="position:relative">上传驾驶证照片
+                                    <input type="file" name="jiashi_card_pic" style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" /></div>
+                                <div class="myple-right">
+                                    <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                                </div>
+                      </div>
+                           <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                           <div class="myple">
+                               <div class="myple-left" style="position:relative">上传行驶证照片
+                                   <input type="file" name="xingshi_card_pic" style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" /></div>
+                               <div class="myple-right">
+                                   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                               </div>
+                           </div>
+
+
+
+                           <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                           <div class="freight" style="margin-top:2%">车牌号<input type="text" name="plate_number" value="{$carInfo['plate_number']}" style="font-size:1em;color:black;"/></div>
+                           <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                           <div class="voiture" >
+                              <div class="voiture-left">车辆类型<span class="oyer"><if condition="$carInfo['type_id'] eq 1">箱式货车<elseif condition="$carInfo['type_id'] eq '2' "/>卡车<else/>其他</if></span></div>
+                              <div class="voiture-right">
+                                  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                              </div>
+             
+                           </div>
+                           <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                            <div class="railway" style="margin-top:0%">
+                          <div class="railway-left">验车照<span class="oyer"></span></div>
+                          <div class="railway-right">
+                              <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                          </div>
+             
+                      </div>
+                      <div class="photo">
+                          <p style="margin-left:0%"><img src="__ROOT__{$invite['photo_right']}" width="84" height="47"/></p>
+                          <p><img src="__ROOT__{$invite['photo_front']}" width="84" height="47"/></p>
+                          <p><img src="__ROOT__{$invite['photo_after']}" width="84" height="47"/></p>
+                          <p><img src="__ROOT__{$invite['photo_left']}"width="84" height="47"/></p>
+                       </div>
+                            
+                            <div class="issue"><input type="button" name="data_sub" value="确 认"/></div>
+                       
+                              <div class="glad">
+                                    <div class="repture" style="position: fixed;z-index:99999999;">
+                                     <p>男<input type="hidden" value="1"></p>
+                                     <p>女<input type="hidden" value="2"></p>
+                                     <p>保密<input type="hidden" value="0"></p>
+                                  
+                                   <div class="turnoff">
+                                       <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
+                                   </div>
+                                        <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displays()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                                   </div>
+                               </div>   
+                                  <div class="exam" style="height:105%;">
+                                    <div class="smoky" style="position: fixed;z-index:99999999;">
+                                     <p>从相机中选择(前)
+                                         <input type="file" name="photo_front" style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" /></p>
+                                     <p>从相机中选择(后)
+                                         <input type="file" name="photo_after" style="position:absolute;
+ right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" /></p>
+                                     <p>从相机中选择(左)
+                                         <input type="file" name="photo_left" style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" /></p>
+                                     <p>从相机中选择(右)
+                                         <input type="file" name="photo_right" style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" /></p>
+                                   <div class="turnoff">
+                                       <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
+                                   </div>
+                                        <div style="text-align: center;position:absolute;top:69%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displayss()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                                   </div>
+                               </div>
+
+                           <!--发货地址省的显示-->
+                           <div id="location" class="syfclass">
+                               <div class="state province" style="position: fixed;z-index:99999999;">
+                                   <!--lisy-->
+                                   <span id="districtSelected">
+                                       <span id="provinceNameStr"  attr="0" val=""></span>&nbsp;&nbsp;
+                                       <span id="cityNameStr" val=""></span>&nbsp;&nbsp;
+                                       <span id="districtNameStr" val=""></span></span>
+                                       <span id="getAllCity">
+                                           <volist name="province" id="pro_vo">
+                                               <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+                                           </volist>
+                                       </span>
+                                   <div id="off">
+                                       <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
+                                   </div>
+                                   <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="getMyAddress()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                               </div>
+
+                           </div>
+
+                               <div class="ercial">
+                                    <div class="ance" style="position: fixed;z-index:99999999;">
+									<volist name="car_type" id="car_vo">
+                                     <p>{$car_vo['car_type']}<input type="hidden" value="{$car_vo['id']}"></p>                                  
+									</volist>
+                                   <div class="turnoff">
+                                       <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
+                                   </div>
+                                        <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaysss()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                                   </div>
+                               </div>   
+                           </form>
+                  </div>
+                   <div class="point">
+				   <form action="{:U('car_data_do_do')}" method="post" id="form_id2" enctype="multipart/form-data">
+                       <!--从业时间input-->
+                       <input type="hidden" name="work_time" value="">
+                   <div class="timeTitle" style="margin-top:2%">从业时间<span class="year"></span></div>
+                   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+			       <div class="riqi" style="background:#FFF">
+                       <input id="begin" type="month" name="work_time_start">　至　 &nbsp;
+                       <input id="end" type="month" name="work_time_end">
+                   </div>
+                      <div id="launch" style="margin-top:2%">
+                            <div class="launch-left">车辆购买时间<input type="date" name="buy_car_time" style="font-size:1em; margin-left:2%;color:black;"/></div>
+                            <div class="launch-right">
+                                <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                            </div>
+                      </div>
+                         <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       <div id="expand" style="height:150px;"><span style="position: relative;vertical-align: top;">行业描述</span>
+                           <textarea class="reda" name="work_description" style=" height:80%;color:black;">{$invite['work_description']}</textarea>
+                     </div>
+                     <div class="issue"><input type="button" name="data_work" value="确 认"/></div>
+					 </form>
+                   </div>
+            </div>
+  </div>
+ </div>
+<script type="text/javascript">
+    /*性别确定消失*/
+    function displays()
+    {
+        $('.glad').hide();
+    }
+    /*车辆类型*/
+    function displaysss()
+    {
+        $('.ercial').hide();
+    }
+    //验车照
+    function displayss()
+    {
+        $('.exam').hide();
+    }
+</script>
+ <script type="text/javascript">				     
+     $(function()
+	 {
+		/*性别value获取*/
+		$('.repture').click(function()
+		{
+			var sex = $(this).find('.yangshi').find('input').val();
+			$('input[name=sex]').val(sex);
+		});
+		/*车辆类型获取*/
+		$('.ance').click(function()
+		{
+			var car_type = $(this).find('.yangshi').find('input').val();
+			$('input[name=type_id]').val(car_type);
+		});
+		/*第一个表单验证提交*/
+         $('input[name=data_sub]').click(function()
+		 {
+             var dizhi = $('#districtNameStr').attr('val');
+             $('input[name=dizhi]').val(dizhi);
+             var name = $('input[name=name]').val();
+             if(name=='')
+             {
+                 tanchu('还不知道您的尊姓大名');
+                 return;
+             }
+             $('#form_id').submit();
+        });
+		/*第二个表单提交*/
+         $('input[name=data_work]').click(function()
+         {
+             var year = $('.year').html();
+             $('input[name=work_time]').val(year);
+             $('#form_id2').submit();
+         });
+         //性别
+         $('.glad').click(function(e) {
+             e = window.event || e;
+             obj = $(e.srcElement || e.target);
+             if (obj.attr('class') == 'glad') {
+                 $('.hrwr').html('');
+                 $('.glad').hide();
+             }
+         });
+     });
+ </script>
+ <script type="text/javascript">
+	  $(function(){
+	  $("#atom").hide();
+	  $("#launch").click(function(){
+			  <!--$("#atom").toggle();-->
+			  $("#atom").slideToggle("slow");
+		  }
+	  )
+	  });
+</script>
+<script type="text/javascript">
+$(function() {
+			$(function() {
+			$("#begin").change(
+				function() {
+					Veri();
+				}
+			);
+			$("#end").change(
+				function() {
+					Veri();
+				}
+				);
+				function Veri() {
+					var beginTime = $("#begin").val();
+					var endTime = $("#end").val();
+					var result = "";
+					var date = new Date();
+					var month = parseInt(date.getMonth());
+					if(month < 10) {
+						month = "0" + month;
+					}
+					var time = parseInt(date.getFullYear() + month);
+					if(beginTime == "" || endTime == "") {
+						return;
+					} else {
+						beginTime = beginTime.split("-");
+						endTime = endTime.split("-");
+						var write = parseInt(endTime[0] + endTime[1]);
+						if(write > time) {
+							alert("截止年月不能大于当前年月");
+							$("#end").val("");
+							$("#begin").val("");
+							return;
+						}
+						beginTime = new Date(beginTime[0], beginTime[1], "01").getTime();
+						endTime = new Date(endTime[0], endTime[1], "01").getTime();
+						result = parseFloat((endTime - beginTime) / (365 * 24 * 60 * 60 * 1000)).toFixed(1);
+						if(result < 1) {
+							result = (endTime - beginTime) / (30 * 24 * 60 * 60 * 1000);
+							if(result > 0) {
+								result = "不足一个月";
+							} else {
+								result = "";
+								$("#end").val("");
+								$("#begin").val("");
+								alert("起始日期要早于截止日期");
+							}
+						} else {
+							result += "年";
+						}
+						//alert(result);
+					}
+					$(".year").html(result);
+				}
+		});
+		});
+ </script>
+<script type="text/javascript" src="__PUBLIC__/home/js/date.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/iscroll.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#beginTime').date();
+        $('#endTime').date({theme:"datetime"});
+    });
+</script>
+</body>
+</html>

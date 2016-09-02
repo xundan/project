@@ -1,0 +1,1334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>发布求车</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#tabhost li:eq(0)").addClass("current3");//使第一个li追加css样式，（做到最原始的样子）
+	$("#content .point:not(:first)").hide();//使内容除了第一个都隐藏，先写出原来的的样式
+	$("#tabhost li").click(function()//点击li
+	{
+		$(this).addClass("current3").siblings().removeClass("current3");//点击的li追加样式并找到其它的兄弟元素使它去掉样式
+		var index=$(this).index();//得到点击的li的序列号
+		$("#content .point").eq(index).show().siblings().hide();//找到所有的P，然后找到与li相对应的p使其显示，其它兄弟元素隐藏
+		var title = $('.current3').html();
+		$('.indent').html(title);
+	})
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#off").click(function()
+	{
+		$("#location").hide();
+	});
+		
+});
+	//标题显示
+
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var choice = "";
+	    $('.slip').click(function()
+		{
+			$("#location").show();	
+		});
+	});
+	</script>
+
+    <script type="text/javascript">
+	 $(function()
+	 {
+		 var choice = "";
+	    $('.state').click(function()
+		{
+			if(choice)
+			{
+				$('.send').html(choice);
+			}
+
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	 	/*******************修改lisy*******************/
+		   $(".state p").click(function()
+		   {
+			  choice = $(this).text();
+			   $('.send').html(choice);
+			   var type=0;
+			   if(type){
+			   }else{
+			   	$(this).parent().parent().find("span #provinceNameStr").html(choice);
+			   }
+		      $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		  })
+		/*******************修改lisy*******************/
+	});
+	</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#off1").click(function()
+	{
+		$("#location1").hide();
+	});
+		
+})
+</script>
+   <script type="text/javascript">
+	 $(function()
+	 {
+		var gsge = "";
+	    $('.delivery').click(function()
+		{
+			$("#location1").show();	
+		});
+	});
+	</script>
+   
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	   $(".state1 p").click(function()
+	   {
+		   gsge = $(this).text();
+		   var type=0;
+			   if(type){
+			   }else{
+			   	//$(this).parent().parent().find("span #provinceNameStr").html(choice);
+			   	$(this).parent().parent().find("span #provinceNameStr").html(gsge);
+		  }
+		   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+	   })
+	})
+ </script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$(".issue").click(function()
+	{
+		//$("#intact").show();
+	});
+		
+})
+</script>
+ <script type="text/javascript">
+$(document).ready(function()
+{
+	$("#vanish").click(function()
+	{
+		$("#intact").hide();
+	});
+		
+})
+</script>
+
+
+
+
+<!--发布货源-->
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#off2").click(function()
+	{
+		$("#location2").hide();
+	});
+		
+})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var adka = "";
+	    $('.coal').click(function()
+		{
+			$("#location2").show();	
+		});
+	});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function()
+	 {    adka="";
+	    $('.state3').click(function()
+		{
+			if(adka)
+			{
+				$('.typess').html(adka);
+			}
+			
+		});
+	});
+	</script>
+  <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".state3 p").click(function()
+		   {
+		   	   $("#col_type_Str").val($(this).attr("attr"));
+			   adka = $(this).text();
+			   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		  })
+	})
+	 
+  </script>
+ <script type="text/javascript">
+$(document).ready(function(){
+	$(".turnoff").click(function(){
+		$(".room").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var sgsg = "";
+	    $('.origin').click(function()
+		{
+			$(".room").show();	
+		});
+	});
+ </script>
+   
+    
+    <script type="text/javascript">
+	 $(function()
+	 {
+	 //    $('.shengfen').click(function()
+		// {
+		// 	if(sgsg)
+		// 	{
+		// 	   	$(this).parent().parent().find("span #provinceNameStr").html(sgsg);
+		// 		$('.areas').html(sgsg);
+		// 	}
+			
+		// });
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".shengfen p").click(function()
+		   {
+			   var sgsg = $(this).text();
+			   $(this).parent().parent().find("span #provinceNameStr").html(sgsg);
+			   $('.areas').html(sgsg);
+			   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		  })
+	})
+	 
+	</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$(".turnoff").click(function()
+	{
+		$(".room-one").hide();
+	});
+		
+})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var faaa = "";
+	    $('.business').click(function()
+		{
+			$(".room-one").show();	
+		});
+	});
+</script>
+   
+    
+    <script type="text/javascript">
+	 // $(function() {
+	 //    $('.shengfen-one').click(function(){
+		// 	if(faaa)
+		// 	{
+		// 		$('.hands').html(faaa);
+		// 	}
+			
+		// 	});
+		// });
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".shengfen-one p").click(function(){
+	 var faaa = $(this).text();
+	 $(this).parent().parent().find("span #provinceNameStr").html(faaa);
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+	$(".turnoff").click(function()
+	{
+		$(".kind").hide();
+	});
+		
+ })
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var dgsq = "";
+	    $('.purchase').click(function()
+		{
+			$(".kind").show();	
+		});
+
+	 });
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	   $(".speci p").click(function()
+	   {
+		    $("#col_type_Str_new").val($(this).attr("attr"));
+		    dgsq = $(this).text();
+		    $('.snes').html(dgsq);
+		   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+	   });
+	})
+	 
+</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+	$(".turnoff").click(function()
+	{
+		$(".field").hide();
+	});
+		
+})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var dfgsac = "";
+	    $('.tech').click(function()
+		{
+			$(".field").show();	
+		});
+	});
+ </script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	   $(".sweden p").click(function()
+	   {
+	                var dfgsac = $(this).text();
+	                $(this).parent().parent().find("span #provinceNameStr").html(dfgsac);
+		     $(this).addClass("yangshi").siblings().removeClass("yangshi");
+	   })
+	})
+	 
+	</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+	$(".turnoff").click(function()
+	{
+		$(".pay").hide();
+	});
+		
+ })
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var rsfv = "";
+	    $('.manner').click(function()
+		{
+			$(".pay").show();	
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".wechet p").click(function()
+		   {
+				 var rsfv = $(this).text();
+				 $("#pay_method_str").val($(this).attr("val"));
+				 $('.wrtay').html(rsfv);
+			           $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		   })
+	})
+	 
+	</script>
+	<script type="text/javascript">
+	           /*************区域联动开始lisy*****************/
+	           function getMyAddress(){
+				   $('.send').html($("#districtSelected").text());
+				   var districtStrIdNo=$("#districtSelected").children("span #districtNameStr").attr("val");
+				   if(districtStrIdNo==""||districtStrIdNo==null){
+					   tanchu("请选择所在区域");
+					   return;
+				   }
+				   $("#fbqcFh").val(districtStrIdNo);
+				   $("#location").hide();
+
+			   }
+	           function getMyAddress1(){
+	           	var addressMainStr=$("#districtSelected1").text();
+	           	var districtStrIdNo=$("#districtSelected1").children("span #districtNameStr").attr("val");
+	           	if(districtStrIdNo==""||districtStrIdNo==null){
+	           		tanchu("请选择所在区域");
+	           	           return;
+	           	}
+	           	$("#fbqcSh").val(districtStrIdNo);
+	           	$('.back').html(addressMainStr);
+	           	$("#location1").hide();
+	           }
+	           function getMyAddress2(){
+	           	var addressMainStr=$("#districtSelected2").text();
+	           	var districtStrIdNo=$("#districtSelected2").children("span #districtNameStr").attr("val");
+	           	if(districtStrIdNo==""||districtStrIdNo==null){
+	           		tanchu("请选择所在区域");
+	           	           return;
+	           	}
+	           	$("#orginPlaceStr").val(districtStrIdNo);
+	           	$('.areas').html(addressMainStr);
+	           	$(".room").hide();
+	           }
+	           function getMyAddress3(){
+	           	var addressMainStr=$("#districtSelected3").text();
+	           	var districtStrIdNo=$("#districtSelected3").children("span #districtNameStr").attr("val");
+	           	if(districtStrIdNo==""||districtStrIdNo==null){
+	           		tanchu("请选择所在区域");
+	           	           return;
+	           	}
+	           	$("#jgPlaceStr").val(districtStrIdNo);
+	           	$('.hands').html(addressMainStr);
+	           	$(".room-one").hide();
+	           }
+	           function getMyAddress4(){
+	           	var addressMainStr=$("#districtSelected4").text();
+	           	var districtStrIdNo=$("#districtSelected4").children("span #districtNameStr").attr("val");
+	           	if(districtStrIdNo==""||districtStrIdNo==null){
+	           		tanchu("请选择所在区域");
+	           	           return;
+	           	}
+	           	$("#changdiStrDing").val(districtStrIdNo);
+	           	$('.siew').html(addressMainStr);
+	           	$(".field").hide();
+	           }
+	            $(function()
+	            {
+	            $(".province p").click(test);
+	            $(".province1 p").click(test1);
+	            $(".shengfen p").click(room);
+	            $(".shengfen-one p").click(shengfenOne);
+	            $(".sweden p").click(sweden);
+	            $(".province").find("span #provinceNameStr").click(test);
+	            $(".province").find("span #cityNameStr").click(test);
+	            $(".province").find("span #districtNameStr").click(test);
+	            $(".province1").find("span #provinceNameStr").click(test1);
+	            $(".province1").find("span #cityNameStr").click(test1);
+	            $(".province1").find("span #districtNameStr").click(test1);
+	            $(".shengfen").find("span #provinceNameStr").click(room);
+	            $(".shengfen").find("span #cityNameStr").click(room);
+	            $(".shengfen").find("span #districtNameStr").click(room);
+	            $(".shengfen-one").find("span #provinceNameStr").click(shengfenOne);
+	            $(".shengfen-one").find("span #cityNameStr").click(shengfenOne);
+	            $(".shengfen-one").find("span #districtNameStr").click(shengfenOne);
+	            $(".sweden").find("span #provinceNameStr").click(sweden);
+	            $(".sweden").find("span #cityNameStr").click(sweden);
+	            $(".sweden").find("span #districtNameStr").click(sweden);
+	             });
+	            function test(){
+	            		var pro_id = $(this).attr('attr');
+	            		var obj=$(this);
+				url="__CONTROLLER__/ajax_sheng";
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{pro_id:pro_id},
+					success:function(data){
+						if(data!=0){
+							var a = eval(data);
+							var proStr="";
+							jQuery.each(a, function(k, val)
+							{
+								console.log(val.area);
+								proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+							});
+							obj.parent().parent().find("#getAllCity").html(proStr);
+							$(".province p").click(test);
+							$('.state p').click(function(){
+								//alert($(this).parent().parent().children("span").html());
+								 choice = $(this).text();
+								 var pid=$(this).attr('pid');
+								 var realId=$(this).attr('attr');
+			                                                      $('.send').html(choice);
+			                                                           var type1=$(this).attr('dis_type');
+			                                                              if(type1){
+			                                                              	if(type1=='1'){
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #provinceNameStr").html(choice);
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html("市");
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+
+			                                                                     }
+			                                                              	if(type1=='2'){
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+			                                                              		$(this).parent().parent().children("span").find("#cityNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html(choice);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			                                                                     }
+			   	                                                          if(type1=='3'){
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+			                                                                     	$(this).parent().parent().children("span").find("#districtNameStr").attr('val',realId);
+			                                                                     	$("#fbqcFh").val($(this).val());
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html(choice);
+			                                                                     }
+			                                                                }
+		                                                                 $(this).addClass("yangshi").siblings().removeClass("yangshi");
+							});
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						alert("出现错误！！！");
+					}
+				});
+	            }
+	            function test1(){
+	            		var pro_id = $(this).attr('attr');
+	            		var obj=$(this);
+				url="__CONTROLLER__/ajax_sheng";
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{pro_id:pro_id},
+					success:function(data){
+						if(data!=0){
+							var a = eval(data);
+							var proStr="";
+							jQuery.each(a, function(k, val)
+							{
+								console.log(val.area);
+								proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+							});
+							obj.parent().parent().find("#getAllCity").html(proStr);
+							$(".province1 p").click(test1);
+							$('.state1 p').click(function(){
+								 choice = $(this).text();
+								 var pid=$(this).attr('pid');
+								 var realId=$(this).attr('attr');
+			                                                      $('.back').html(choice);
+			                                                           var type1=$(this).attr('dis_type');
+			                                                              if(type1){
+			                                                              	if(type1=='1'){
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #provinceNameStr").html(choice);
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html("市");
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+
+			                                                                     }
+			                                                              	if(type1=='2'){
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html(choice);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			                                                                     }
+			   	                                                          if(type1=='3'){
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html(choice);
+			                                                                     }
+			                                                                }
+		                                                                 $(this).addClass("yangshi").siblings().removeClass("yangshi");
+							});
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						alert("出现错误！！！");
+					}
+				});
+	            }
+	            function room(){
+	            		var pro_id = $(this).attr('attr');
+	            		var obj=$(this);
+				url="__CONTROLLER__/ajax_sheng";
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{pro_id:pro_id},
+					success:function(data){
+						if(data!=0){
+							var a = eval(data);
+							var proStr="";
+							jQuery.each(a, function(k, val)
+							{
+								console.log(val.area);
+								proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+							});
+							obj.parent().parent().find("#getAllCity").html(proStr);
+							$(".shengfen p").click(room);
+							$('.shengfen p').click(function(){
+								 var choiceP = $(this).text();
+								 var pid=$(this).attr('pid');
+								 var realId=$(this).attr('attr');
+			                                                      $('.areas').html(choiceP);
+			                                                           var type1=$(this).attr('dis_type');
+			                                                              if(type1){
+			                                                              	if(type1=='1'){
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #provinceNameStr").html(choiceP);
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html("市");
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+
+			                                                                     }
+			                                                              	if(type1=='2'){
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html(choiceP);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			                                                                     }
+			   	                                                          if(type1=='3'){
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html(choiceP);
+			                                                                     }
+			                                                                }
+		                                                                 $(this).addClass("yangshi").siblings().removeClass("yangshi");
+							});
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						tanchu("出现错误！！！");
+					}
+				});
+	            }
+	            function shengfenOne(){
+	            	          // alert(1);
+	            		var pro_id = $(this).attr('attr');
+	            		var obj=$(this);
+				url="__CONTROLLER__/ajax_sheng";
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{pro_id:pro_id},
+					success:function(data){
+						if(data!=0){
+							var a = eval(data);
+							var proStr="";
+							jQuery.each(a, function(k, val)
+							{
+								console.log(val.area);
+								proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+							});
+							obj.parent().parent().find("#getAllCity").html(proStr);
+							$(".shengfen-one p").click(shengfenOne);
+							$('.shengfen-one p').click(function(){
+								 var choiceP = $(this).text();
+								 var pid=$(this).attr('pid');
+								 var realId=$(this).attr('attr');
+			                                                      $('.hands').html(choiceP);
+			                                                           var type1=$(this).attr('dis_type');
+			                                                              if(type1){
+			                                                              	if(type1=='1'){
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #provinceNameStr").html(choiceP);
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html("市");
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			                                                                     }
+			                                                              	if(type1=='2'){
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html(choiceP);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			                                                                     }
+			   	                                                          if(type1=='3'){
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html(choiceP);
+			                                                                     }
+			                                                                }
+		                                                                 $(this).addClass("yangshi").siblings().removeClass("yangshi");
+							});
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						tanchu("出现错误！！！");
+					}
+				});
+	            }
+	            function sweden(){
+	            		var pro_id = $(this).attr('attr');
+	            		var obj=$(this);
+				url="__CONTROLLER__/ajax_sheng";
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{pro_id:pro_id},
+					success:function(data){
+						if(data!=0){
+							var a = eval(data);
+							var proStr="";
+							jQuery.each(a, function(k, val)
+							{
+								console.log(val.area);
+								proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+							});
+							obj.parent().parent().find("#getAllCity").html(proStr);
+							$(".sweden p").click(sweden);
+							$('.sweden p').click(function(){
+								 var choiceP = $(this).text();
+								 var pid=$(this).attr('pid');
+								 var realId=$(this).attr('attr');
+			                                                      $('.siew').html(choiceP);
+			                                                           var type1=$(this).attr('dis_type');
+			                                                              if(type1){
+			                                                              	if(type1=='1'){
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+			                                                                     	$(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #provinceNameStr").html(choiceP);
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html("市");
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			                                                                     }
+			                                                              	if(type1=='2'){
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+			                                                              		$(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #cityNameStr").html(choiceP);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html("区");
+			   	                                                                $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+			                                                                     }
+			   	                                                          if(type1=='3'){
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+			                                                                     	$(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+			   	                                                                $(this).parent().parent().find("span #districtNameStr").html(choiceP);
+			                                                                     }
+			                                                                }
+		                                                                 $(this).addClass("yangshi").siblings().removeClass("yangshi");
+							});
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						tanchu("出现错误！！！");
+					}
+				});
+	            }
+	            /*************区域联动结束*****************/
+	</script>
+</head>
+
+<body style="background:#EBEBEB">
+<include file="Common:common"/>
+ <div id="box">
+       <div id="header" style="margin-bottom:0%">
+             <div class="return">
+				 <a href="{:U('Index/index')}"><img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" /></a>
+			 </div>
+              <div class="indent">发布求车</div>
+              
+       </div>
+    <div class="tab">
+            <ul id="tabhost">
+                <li>发布求车</li>
+                <li>发布货源</li>
+                <li style="border-right:none">发布采购</li>
+            </ul>
+            <div id="content">
+               <div class="point">
+				   <form action="{:U('send_forcar_action')}" method="POST" id="form1">
+                 <div class="slip">
+					  <div class="slip-left">发货地址
+						  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						  <span class="send"></span>
+						  <input type="hidden" name="area1" id="fbqcFh">
+					  </div>
+					  <div class="slip-right">
+						  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+					  </div>
+				 </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                   <div class="place">
+					   <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />　
+					   <input type="text" placeholder="请填写详细信息" name="detail_area1" id="detail_area1"/>
+				   </div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="delivery">
+                          <div class="delivery-left">收货地址
+							  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+							  <span id="back" class="back"></span>
+							  <input type="hidden" name="area2" id="fbqcSh">
+							  <input type="hidden" name="origin" value="3">
+						  </div>
+                          <div class="delivery-right">
+							  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						  </div>
+                  </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                  <div class="place">
+					  <img src="__PUBLIC__/home/images/cheng.png" width="20" height="23" />　
+					  <input type="text" placeholder="请填写详细信息" name="detail_area2" id="detail_area2"/>
+				  </div>
+                   <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                   <div class="measure">发煤量
+					   <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+					   <input type="text" placeholder="12656262" name="coal_quantity" id="coal_quantity"/>吨
+				   </div>
+                   <div class="freight">运费<input type="text" name="path_price" id="path_price"/></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="freight">装车时间<input type="date" style="width:70%;" name="loading_time" id="loading_time"/></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="freight">装车费<input type="text" name="loading_expense" id="loading_expense"/></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="freight">卸车费<input type="text" name="unloading_expense" id="unloading_expense"/></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="telephone">发货人电话
+						<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						<input type="text" name="phone" id="phoneNum"/>
+					</div>
+                    <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                    <div class="telephone" style="margin-top:0%">收货人电话
+						<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						<input type="text"  name="save_phone" id="save_phone"/>
+					</div>
+                    <div class="issue"><input type="button" value="发 布" onclick="subAction()" /></div>
+					   </form>
+               </div>
+               <script type="text/javascript">
+                     function subAction(){
+                     	    var subData=$("#form1").serialize();
+                     	    if($("#detail_area1").val()==""){
+                     	    	tanchu("发货地址不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#detail_area2").val()==""){
+                     	    	tanchu("收货详情不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#coal_quantity").val()==""){
+                     	    	tanchu("发货量不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#coal_quantity").val()==""){
+                     	    	tanchu("发煤量不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#path_price").val()==""){
+                     	    	tanchu("运费不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#loading_time").val()==""){
+                     	    	tanchu("装车时间不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#loading_expense").val()==""){
+                     	    	tanchu("装车费不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#unloading_expense").val()==""){
+                     	    	tanchu("卸车费不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#phoneNum").val()==""){
+                     	    	tanchu("发货人电话不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#save_phone").val()==""){
+                     	    	tanchu("收货人电话不能为空。");
+                     	    	return;
+                     	    }
+                     	    var url="{:U('send_forcar_action')}";
+                     	    $.ajax({
+					type:"post",
+					url:url,
+					data:subData,
+					success:function(data){
+						if(data!=""){
+						  var jsonObj=eval("("+data+")");
+						  if(jsonObj.status){
+						  	$("#intact").show();
+						  }else{
+						  	tanchu(jsonObj.msg);
+						  }
+						}
+					}
+			   });
+                     }
+               </script>
+
+               <div id="intact">
+               <div class="chenggong">
+					 <div id="vanish">
+						 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="26" />
+					 </div>
+					  <a href="#">
+						  <div class="wancheng">
+							  <input type="button" onclick="reloadPage(0)" value="发布完成">
+						  </div>
+					  </a>
+					  <a href="#">
+						  <div class="geren">
+							  <input type="button" value="继续发布" onclick="reloadPage(1)">
+						  </div>
+					  </a>
+			   </div>
+                  
+               </div>
+				<!--发货地址省的显示-->
+               <div id="location">
+				<div class="state province">
+					<!--lisy-->
+					<span id="districtSelected"><span id="provinceNameStr"  attr="0" val="">省</span>&nbsp;&nbsp;<span id="cityNameStr" val="">市</span>&nbsp;&nbsp;<span id="districtNameStr" val="">区</span></span>
+                                                         <span id="getAllCity">
+					   <volist name="province" id="pro_vo">
+						   <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+					   </volist>
+					   </span>
+					<div id="off">
+						<img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+					</div>
+					<span onclick="getMyAddress()" >确定</span>
+				</div>
+			</div>
+				<!--收货地址省的显示-->
+               <div id="location1">
+				      <div class="state1 province1">
+                                                  <!--lisy-->
+                                                  <span id="districtSelected1"><span id="provinceNameStr"  attr="0" val="">省</span>&nbsp;&nbsp;<span id="cityNameStr" val="" >市</span>&nbsp;&nbsp;<span id="districtNameStr" val="" >区</span></span>
+                                                         <span id="getAllCity">
+					   <volist name="province" id="pro_vo">
+						 <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+					   </volist>
+					   </span>
+						 <div id="off1">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+						 <span onclick="getMyAddress1()" >确定</span>
+                                                </div>
+               </div>
+               <!--发布货源开始-->
+               <div class="point">
+               <form action="{:U('send_proinfo_action')}" method="POST" id="form2">
+					   <div class="coal" style="margin-top: 0%">
+							  <div class="coal-left">煤炭种类
+								  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+								  <span class="typess"></span>
+								  <input type="hidden" name="product_type_id" id="col_type_Str">
+								  <input type="hidden" name="origin" value="0">
+							  </div>
+							 <div class="coal-right">
+								 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							 </div>
+					   </div>
+					   <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+						<div class="trait">品质
+							<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+							<input type="text" name="type_str_new" id="type_str_new"/>
+						</div>
+						<div style="border-bottom:#F0F0F0 1px solid; "></div>
+						<div class="trait">供货公司
+							<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+							<input type="text" name="company_supply" id="company_supply"/>
+						</div>
+						<div style="border-bottom:#F0F0F0 1px solid; "></div>
+						<div class="origin">
+							  <div class="origin-left">产地
+								  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+								  <span class="areas"></span>
+								  <input type="hidden" name="area1" id="orginPlaceStr">
+							  </div>
+							 <div class="origin-right">
+								 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							 </div>
+						</div>
+						 <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						 <div class="business">
+							  <div class="business-left">交割地
+								  <span class="hands"></span>
+							  </div>
+							  <input type="hidden" name="area2" id="jgPlaceStr">
+							 <div class="business-right">
+								 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							 </div>
+						</div>
+						<div class="price">价格
+							<input type="text" placeholder="12656262" name="price" id="valPriceSt"/>元/吨
+						</div>
+						 <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						 <div class="opan">公开价格
+							 <div id="div1" class="open1">
+								<div id="div2" class="open2"></div>
+							</div>
+							<input type="hidden" name="is_open" id="is_open" value="0">
+						  </div>
+						   <div class="trait" style="margin-top:2%">吨数
+							   <input type="text" name="purchasing_tonnage" id="purchasing_tonnage"/>
+						   </div>
+						   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							<div class="trait">热值（高位）
+								<input type="text" name="rezhi_max"/>
+							</div>
+
+							<div id="launch">
+								<div class="launch-left">详细描述</div>
+									<div class="launch-right">
+										<img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+									</div>
+						  </div>
+						  <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						  <div id="atom">
+							   <div class="trait">热值低位
+								   <input type="text" name="rezhi_min" id="rezhi_min"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							   <div class="trait">全水份
+								   <input type="text" name="total_water" id="water_percent"/></div>
+							   <div style="border-bottom:#F0F0F0 1px solid; ">
+
+							   </div>
+							   <div class="trait">灰份
+								   <input type="text" name="ash_content" />
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							   <div class="trait">硫份
+								   <input type="text" name="sulfur"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							   <div class="trait">挥发份
+								   <input type="text" name="volatile_parts"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						  </div>
+						 <div class="trait">有效期
+							 <input type="date" style="width:70%;" name="goods_validity_period" />
+						 </div>
+						 <div style="border-bottom:#F0F0F0 1px solid;"></div>
+						 <div id="expand">详细描述
+							 <textarea class="reda" name="remark">
+							 </textarea>
+						 </div>
+						 <div id="location2">
+							  <div class="state3">
+							   <volist name="productTypes" id="productType">
+							            <p attr="{$productType['id']}">{$productType['type']}</p>
+							   </volist>
+							 <div id="off2">
+								 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+							 </div>
+						   </div>
+					</div>
+				   <div class="room">
+					 <div class="shengfen">
+						   <span id="districtSelected2"><span id="provinceNameStr"  attr="0" val="">省</span>&nbsp;&nbsp;<span id="cityNameStr" val="">市</span>&nbsp;&nbsp;<span id="districtNameStr" val="">区</span></span>
+                                                         <span id="getAllCity">
+					   <volist name="province" id="pro_vo">
+						 <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+					   </volist>
+					   </span>
+						 <div class="turnoff">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+						 <span onclick="getMyAddress2()" >确定</span>
+					   </div>
+				   </div>
+				   <div class="room-one">
+						  <div class="shengfen-one">
+						      <span id="districtSelected3"><span id="provinceNameStr"  attr="0" val="">省</span>&nbsp;&nbsp;<span id="cityNameStr" val="">市</span>&nbsp;&nbsp;<span id="districtNameStr" val="">区</span></span>
+                                                         <span id="getAllCity">
+					   <volist name="province" id="pro_vo">
+						 <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+					   </volist>
+					   </span>
+						 <div class="turnoff">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+						<span onclick="getMyAddress3()" >确定</span>
+					   </div>
+				   </div>
+
+						  <div class="issue"><input type="button" value="发 布"  onclick="subActionForm()" /></div>
+						  </form>
+               </div>
+               <script>
+                        function subActionForm(){
+                         var is_open=$("#div1").attr("class");
+                         if(is_open=="open1"){
+                         	$("#is_open").val(0);
+                         }else{
+                         	$("#is_open").val(1);
+                         }
+                         var subData=$("#form2").serialize();
+                     	    if($("#col_type_Str").val()==""){
+                     	    	tanchu("煤炭种类不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#type_str_new").val()==""){
+                     	    	tanchu("煤炭品质不能为空。");
+                     	    	return;
+                     	    } 
+                     	    if($("#company_supply").val()==""){
+                     	    	tanchu("供货公司不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#orginPlaceStr").val()==""){
+                     	    	tanchu("请选择产地。");
+                     	    	return;
+                     	    }
+                     	    if($("#jgPlaceStr").val()==""){
+                     	    	tanchu("请选择交割地。");
+                     	    	return;
+                     	    }
+                     	    if($("#valPriceSt").val()==""){
+                     	    	tanchu("价格不能为空。");
+                     	    	return;
+                     	    }
+                     	    if($("#purchasing_tonnage").val()==""){
+                     	    	tanchu("吨数不能为空。");
+                     	    	return;
+                     	    }
+                     	    // if($("#rezhi_max").val()==""){
+                     	    // 	tanchu("高位热值不能为空。");
+                     	    // 	return;
+                     	    // }
+                     	    // if($("#rezhi_min").val()==""){
+                     	    // 	tanchu("低位热值不能为空。");
+                     	    // 	return;
+                     	    // }
+                     	    // if($("#water_percent").val()==""){
+                     	    // 	tanchu("全水位不能为空。");
+                     	    // 	return;
+                     	    // }
+                     	    var url="{:U('send_proinfo_action')}";
+                     	    $.ajax({
+					type:"post",
+					url:url,
+					data:subData,
+					success:function(data){
+						// alert(data);return;
+						if(data!=""){
+						  var jsonObj=eval("("+data+")");
+						  if(jsonObj.status){
+						  	$("#intact").show();
+						  }else{
+						  	tanchu(jsonObj.msg);
+						  }
+						}else{
+							tanchu("返回结果错误。");
+						}
+					}
+			   });
+                        }
+               </script>
+               <!--发布货源结束-->
+               <!--发布采购开始-->
+               <div class="point">
+                  <form action="{:U('send_buy_action')}" method="POST" id="form4">
+                   <div class="purchase"style="margin-top: 0%">
+                            <div class="purchase-left">煤炭种类
+								<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+								<span class="snes"></span>
+							</div>
+							<input type="hidden" name="protype_id" id="col_type_Str_new">
+							<input type="hidden" name="origin" value="2">
+                           <div class="purchase-right">
+							   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						   </div>
+                    </div>
+                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+						 <div class="tech">
+								<div class="tech-left">产地
+									<span class="siew"></span>
+								</div>
+								<input type="hidden" name="place_origin_id" id="changdiStrDing">
+							   <div class="tech-right">
+								   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							   </div>
+						</div>
+                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                       <div class="trait">热值（低位）
+						   <input type="text" name="rezhi_min" id="rezhi_min_pick"/>
+					   </div>
+                       <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                       <div class="trait">吨数
+						   <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						   <input type="text" name="purchasing_tonnage" id="purchasing_tonnage_pick"/>
+					   </div>
+                       <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                        <div id="expand" style="margin-bottom:2%">详细描述
+							<textarea class="reda" name="remark"></textarea>
+						</div>
+                       <div class="hope">期望价格
+						   <input type="text" placeholder="最低价" name="product_min_price" id="product_min_price_pick"/>———<input type="text" placeholder="最高价" name="product_max_price" id="product_max_price_pick"/>
+					   </div>
+                        <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                       <div class="manner">
+                            <div class="manner-left">付款方式
+								<span class="wrtay"></span>
+								<input type="hidden"  name="pay_method" id="pay_method_str"
+								value="0" />
+							</div>
+                           <div class="manner-right">
+							   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						   </div>
+                       </div>
+                       <div class="issue"><input type="button" value="发 布" onclick="publishPick()" /></div>
+                       </form>
+                       <!--发布采购结束-->
+                    <div class="kind">
+                          <div class="speci">
+                           <volist name="productTypes" id="productType">
+			 <p attr="{$productType['id']}">{$productType['type']}</p>
+		      </volist>
+                         <div class="turnoff">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+                       </div>
+               </div>
+                <div class="field">
+                      <div class="sweden">
+                       <span id="districtSelected4"><span id="provinceNameStr"  attr="0" val="">省</span>&nbsp;&nbsp;<span id="cityNameStr" val="">市</span>&nbsp;&nbsp;<span id="districtNameStr" val="">区</span></span>
+                       <span id="getAllCity">
+					   <volist name="province" id="pro_vo">
+						 <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+					   </volist>
+		</span>
+                     <div class="turnoff">
+						 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+					 </div>
+					 <span onclick="getMyAddress4()" >确定</span>
+                   </div>
+               </div>
+               <script>
+                        function publishPick(){
+                         var subData=$("#form4").serialize();
+                     	    if($("#col_type_Str_new").val()==""){
+                     	    	tanchu("请选择煤炭种类。");
+                     	    	return;
+                     	    }
+                     	    if($("#changdiStrDing").val()==""){
+                     	    	tanchu("请选择产地。");
+                     	    	return;
+                     	    }
+                     	    if($("#rezhi_min_pick").val()==""){
+                     	    	tanchu("请填写热值。");
+                     	    	return;
+                     	    }
+                     	    if($("#purchasing_tonnage_pick").val()==""){
+                     	    	tanchu("请填写吨数。");
+                     	    	return;
+                     	    }
+                     	    if($("#product_min_price_pick").val()==""||$("#product_max_price_pick").val()==""){
+                     	    	tanchu("请填写期望价格。");
+                     	    	return;
+                     	    }
+                     	    if($("#pay_method_str").val()==""){
+                     	    	tanchu("请选择支付方式。");
+                     	    	return;
+                     	    }
+                     	    var url="{:U('send_buy_action')}";
+                     	    $.ajax({
+					type:"post",
+					url:url,
+					data:subData,
+					success:function(data){
+						if(data!=""){
+						  var jsonObj=eval("("+data+")");
+						  if(jsonObj.status){
+						  	$("#intact").show();
+						  }else{
+						  	tanchu(jsonObj.msg);
+						  }
+						}else{
+							tanchu("返回结果错误。");
+						}
+					}
+			   });
+                        }
+               </script>
+               <div class="pay">
+                      <div class="wechet">
+                       <p val="0">面谈</p>
+                       <p val="1">支付宝</p>
+                       <p val="2">微信支付</p>
+                       <p val="3">支付宝</p>
+                     <div class="turnoff">
+                                   <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+	          </div>
+                   </div>
+               </div>
+               
+           </div>
+               
+          </div>
+    </div>
+ </div>
+ 
+ 
+ 
+ <script type="text/javascript">
+	  $(function(){
+	  $("#atom").hide();
+	  $("#launch").click(function(){
+			  <!--$("#atom").toggle();-->
+			  $("#atom").slideToggle("slow");;
+		  }
+	  )
+	  
+	  });
+	  function reloadPage(val){
+	  	if(val){
+	  	      window.location.href="{:U('send_forcar',array('key'=>1))}";
+	  	}else{
+	  	      window.location.href="{:U('send_forcar')}";
+	  	}
+	  }
+</script>
+
+
+  <script type="text/javascript">
+    	
+    	window.onload=function(){
+        var div2=document.getElementById("div2");
+        var div1=document.getElementById("div1");
+        div2.onclick=function(){
+          div1.className=(div1.className=="close1")?"open1":"close1";
+          div2.className=(div2.className=="close2")?"open2":"close2";
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>司机找活</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+    <style>
+        *{ margin: 0;padding: 0}
+        .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 35%;
+            left: 10%;;
+            width: 80%;
+            height:25%;
+            margin: 0 auto;
+
+            background-color: #FFF;
+            z-index:1002;
+            overflow: auto;
+            text-align:center;
+        }
+        .white_content .worn{
+            color: #FF5A3E; font-size: 0.9em; border-bottom: #CCC 1px solid;
+            height: 35px; line-height: 35px; margin-bottom:8%}
+        .white_content p{
+            font:18px 微软雅黑;
+            text-align:center;
+
+            margin-bottom:10px;
+        }
+        .white_content a{
+            font:18px 微软雅黑 !important;
+            text-decoration:none !important;
+            background:#4AC9F6;
+            padding:3px 30px;
+            color:#fff;
+            border-radius:5px;
+
+        }
+        .white_content a:hover{
+            font:18px 微软雅黑 !important;
+            text-decoration:none !important;
+            background:#666;
+            padding:3px 30px;
+            color:#fff;
+            border-radius:5px;
+        }
+    </style>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#tabhost li:eq(0)").addClass("current3");//使第一个li追加css样式，（做到最原始的样子）
+    $('#tabhost li').click(function(){
+       $(this).addClass("current3").siblings().removeClass("current3");
+        var index = $(this).index();
+        $("#content .point").eq(index).show().siblings().hide();
+    });
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".padlock").click(function(){
+		$(".filtrate").hide()
+		});
+	})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".screen").click(function(){
+		$(".filtrate").show()
+		});
+		
+	})
+</script>
+
+</head>
+
+<body style="background:#EBEBEB">
+<include file="Common:common"/>
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+          <a href="{:U('Index/index')}">
+             <div class="return">
+                 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+             </div>
+          </a>
+          <div class="indent">司机找活</div>
+       </div>
+    <div class="tab">
+            <ul id="tabhost">
+                <li><a href="">全部</a></li>
+                <li>
+                    <div style="display:none">
+                        <form action="{:U('driver_find_live')}" method="post" id="orderCondition">
+                            <input name="orderCondition" value="1" id="selectOrder">
+                            <input name="index" value="2" id="selectType">
+                            <input name="whereCondition" value="{$tempWhereConditon}" id="selectType">
+                        </form>
+                        <form action="{:U('driver_find_live')}" method="post" id="orderCondition2">
+                            <input name="whereCondition" value="1" id="selectWhere">
+                            <input name="index" value="2" id="selectType">
+                            <input name="orderCondition" value="{$orderCase}" id="selectType">
+                        </form>
+                    </div>
+                  <select class="wipe" onchange="selectVal(this)">
+                      <option <if condition="$orderCase eq 1">selected="selected"</if> value="1">按时间排序</option>
+                      <option <if condition="$orderCase eq 2">selected="selected"</if> value="2">就近排序</option>
+                  </select>
+                </li>
+                <li style="border-right:none" class="screen">
+                 <select class="wipe" onchange="selectYes(this)">
+                         <option class="option" value="-1"><a href="">筛选(全部)</a></option>
+                        <option <if condition="$tempWhereConditon eq 1">selected="selected"</if> value="1"><100吨</option>
+                        <option <if condition="$tempWhereConditon eq 2">selected="selected"</if>  value="2">100-1000</option>
+                        <option <if condition="$tempWhereConditon eq 3">selected="selected"</if>  value="3">1000以上</option>
+                 </select>
+                </li>
+            </ul>
+            <div id="content">
+               <div class="point">
+                   <volist name="lists" id="mes_vo">
+                  <div class="personne" style="margin-top: 0">
+                      <dl class="personne-left">
+                        <dt><if condition="$mes_vo['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" height="57" style="border-radius:50%;"/></if></dt>
+                        <dd>{$mes_vo['name']} <img src="__PUBLIC__/home/images/xing.png" width="16" height="15" />{$mes_vo['avg']}</dd>
+                        <dd>{$mes_vo['role_name']}</dd>
+                      </dl>
+
+                      <div class="personne-right" style="color:#333;">
+                          <if condition="$list['role_id'] eq '0'">
+                              <a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                                  <img src="__PUBLIC__/home/images/tel.png" width="22" height="22" />&nbsp;拨打电话
+                              </a>
+                              <else/>
+                              <a href="javascript:void(0)" onclick = "call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                                  <img src="__PUBLIC__/home/images/tel.png" width="22" height="22" />&nbsp;拨打电话
+                              </a>
+                              </if>
+
+                      </div>
+                   </div>
+
+                   <div class="describe"> 
+                   <div class="dizhi">
+                       <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+                       <span>{$mes_vo['area1_str']}{$mes_vo['detail_area1']}</span>
+                   </div>
+                   <div class="dizhi">
+                       <img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+                       <span>{$mes_vo['area2_str']}{$mes_vo['detail_area2']}</span>
+                   </div>
+                   <div class="describe-left" style="width:100%">
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 发煤量
+                              <span>{$mes_vo['coal_quantity']}</span>
+                          </div>
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 发货日期
+                              <span>{$mes_vo['loading_time']}</span>
+                          </div>
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 发布时间
+                              <span>{$mes_vo['publish_time']}</span>
+                          </div>
+                      </div>
+                   </div>
+                       <div style="border:#C2C2C2 1px solid"></div>
+                </volist>
+
+                <span id="insertPoint"></span>
+                <input type="hidden" id="dealPage" value="{$nextPage}" />
+                <input type="hidden" id="orderCaseId" value="{$orderCase}" />
+      </div>
+      <div onclick="getMore()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div>
+   </div>
+</div>
+<!--克隆对象开始-->
+<span style="display:none" id="cloneObj">
+  <span>
+                      <div class="personne" style="margin-top: 0">
+                      <dl class="personne-left">
+                        <dt><if condition="$mes_vo['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" height="57" style="border-radius:50%;"/></if></dt>
+                        <dd><span>{$mes_vo['name']} </span><img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /><span>{$mes_vo['avg']}</span></dd>
+                        <dd>{$mes_vo['role_name']}</dd>
+                      </dl>
+
+                      <div class="personne-right" style="color:#333;">
+                          <a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                          <img src="__PUBLIC__/home/images/tel.png" width="22" height="22" />&nbsp;拨打电话
+                          </a>
+                      </div>
+                   </div>
+                   <div style="border:#C2C2C2 1px solid"></div>
+                   <div class="describe"> 
+                   <div class="dizhi">
+                       <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+                       <span>{$mes_vo['area1_str']}{$mes_vo['detail_area1']}</span>
+                   </div>
+                   <div class="dizhi">
+                       <img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+                       <span>{$mes_vo['area2_str']}{$mes_vo['detail_area2']}</span>
+                   </div>
+                   <div class="describe-left" style="width:100%">
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 发煤量
+                              <span>{$mes_vo['coal_quantity']}</span>
+                          </div>
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 发货日期
+                              <span>{$mes_vo['loading_time']}</span>
+                          </div>
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 发布时间
+                              <span>{$mes_vo['publish_time']}</span>
+                          </div>
+                      </div>
+                   </div>
+  </span>
+  </span>
+<!--克隆对象结束-->
+<!--电话弹层-->
+<div id="light" class="white_content" style="position:fixed;">
+    <p class="worn">小矿建议您谨慎交易，"货"比三家哦！</p>
+    <p class="tanceng_res" style=" margin-bottom: 8%">15020011277</p>
+    <a href="tel:15020011277" class="call_you">拨号</a>
+</div>
+<div id="fade" class="black_overlay" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
+</body>
+</html>
+<script type="text/javascript">
+                        /*
+                        * 加载更多
+                        */
+                        function getMore(){
+                            var url="__CONTROLLER__/driver_find_live";
+                            var page=$("#dealPage").val();
+                            var orderCaseStr=$("#orderCaseId").val();
+                            var whereCondition="{$tempWhereConditon}"
+                            $.ajax({
+                                type:"post",
+                                url:url,
+                                data:{page:page,isAjax:1,orderCondition:orderCaseStr,whereCondition:whereCondition},
+                                success:function(data){
+                                    var jsonObj=eval("("+data+")");
+                                    console.log(jsonObj.sql);
+                                    if(jsonObj.data==null||jsonObj.data==""){
+                                          tanchu("暂无数据");
+                                     }else{
+                                          jQuery.each(jsonObj.data, function(k, val)
+                                          {
+                                               var tempObj=$("#cloneObj").children("span").clone(true);
+                                               if(val.headimgurl==null||val.headimgurl==''){
+                                                  tempObj.find(".personne-left").children("dt").children("img").attr("src","__PUBLIC__/home/images/touxiang.png");    
+                                               }else{
+                                                    tempObj.find(".personne-left").children("dt").children("img").attr("src","__ROOT__"+val.headimgurl);  
+                                               }
+                                               tempObj.find(".personne-left").children("dd").children("span").eq(0).html(val.name); 
+                                               tempObj.find(".personne-left").children("dd").children("span").eq(1).html(val.avg);
+                                               tempObj.find(".personne-left").children("dd").eq(1).html(val.role_name);
+                                               tempObj.find(".personne-right").children("a").attr("onclick","document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,"+val.phone_number+","+val.id+","+val.role_id+");");
+                                               if(val.area1_str=="undefined"){
+                                                      val.area1_str="";
+                                               }
+                                               if(val.detail_area1=="undefined"){
+                                                      val.detail_area1="";
+                                               }
+                                               if(val.area2_str=="undefined"){
+                                                      val.area2_str="";
+                                               }
+                                               if(val.detail_area2=="undefined"){
+                                                      val.detail_area2="";
+                                               }
+                                               tempObj.find(".dizhi").eq(0).children("span").html(val.area1_str+val.detail_area1);
+                                               tempObj.find(".dizhi").eq(1).children("span").html(val.area2_str+val.detail_area2);
+                                               tempObj.find(".column").eq(0).children("span").html(val.coal_quantity);
+                                               tempObj.find(".column").eq(1).children("span").html(val.loading_time);
+                                               tempObj.find(".column").eq(2).children("span").html(val.publish_time);
+                                               tempObj.appendTo("#insertPoint");
+                                          });
+                                          $("#dealPage").val(jsonObj.nextPage);
+                                          $("#orderCaseId").val(jsonObj.orderCase);
+                                          whereCondition=jsonObj.whereCondition;
+                                     }
+                                },
+                         error:function(XMLHttpRequest,textStatus,errorThrown){
+                            tanchu("操作失败。");
+                          }
+                         });
+                        }
+    function call_js(obj,class_id,message,role)
+    {
+		if(role=='0')
+		{
+			var phone_res = class_id;
+			$(".tanceng_res").html(phone_res);
+			var link = "tel:"+phone_res;
+			$('.call_you').attr('href',link);
+			url="__CONTROLLER__/ajax_order";
+			$.ajax
+			({
+				type:"post",
+				url:url,
+				data:{message:message},
+				success:function(data)
+				{
+					if(data==0)
+					{
+						tanchu('可在我的订单查询');
+					}
+					else if(data==1)
+					{
+						tanchu('接单成功');
+					}
+                           else if(data==1024)
+                           {
+                             tanchu('没有接单权限');
+                           }
+                           else if(data==2048)
+                           {
+                             tanchu('消息不存在或已撤销。');
+                           }
+					else
+					{
+						tanchu('接单失败');
+					}
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown)
+				{
+					alert("出现错误！！！");
+				}
+		   
+			});
+		}
+		else
+		{
+			tanchu('抱歉~无法接单哟');
+		}
+    }
+</script>
+<script type="text/javascript">
+    function selectVal(obj){
+        //alert($(obj).find("option:selected").val());
+        $("#selectOrder").val($(obj).find("option:selected").val());
+        $("#orderCondition").submit();
+    }
+    function selectYes(obj){
+        $("#selectWhere").val($(obj).find("option:selected").val());
+        $("#orderCondition2").submit();
+    }
+</script>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>{$current['title']}-{$Think.CONFIG.title}</title>
+
+		<meta name="keywords" content="{$Think.CONFIG.keywords}" />
+		<meta name="description" content="{$Think.CONFIG.description}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<include file="Public/head" />
+   </head>
+
+	<body class="no-skin">
+		<include file="Public/header" />
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<include file="Public/sidebar" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<!-- #section:basics/content.breadcrumbs -->
+					<include file="Public/breadcrumbs" />
+
+					<!-- /section:basics/content.breadcrumbs -->
+					<div class="page-content">
+						<include file="Public/set" />
+
+						<!-- /section:settings.box -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+									<form class="form-horizontal" id="form" method="post" action="{:U('sign_update')}">
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 标签名 </label>
+										<div class="col-sm-9">
+											<input type="text" name="label_name" id="title" placeholder="标签名" class="col-xs-10 col-sm-5" value="">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">标签名不能为空。</span>
+											</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 标签备注 </label>
+										<div class="col-sm-9">
+											<input type="text" name="remark" id="keywords" placeholder="标签备注" class="col-xs-10 col-sm-5" value="">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">标签备注。</span>
+											</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="col-md-offset-2 col-md-9">
+										<button class="btn btn-info submit" type="button">
+											<i class="icon-ok bigger-110"></i>
+											提交
+										</button>
+
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn" type="reset">
+											<i class="icon-undo bigger-110"></i>
+											重置
+										</button>
+									</div>
+								</form>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+			<include file="Public/footer" />
+			
+		</div><!-- /.main-container -->
+
+		<include file="Public/footerjs" />
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+		$(function() {
+
+			//判断标签名是否重复
+			$("input[name=label_name]").blur(function(){
+				url="__CONTROLLER__/ajax_sign";
+				var sign_name=$("input[name=label_name]").val();
+				//alert(sign_name);
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{sign_name:sign_name},
+					success:function(data){
+						if(data==2)
+						{
+							tanchu('标签名重复，请重新填写！');
+							return false;
+						}
+						else
+						{
+							$(".submit").click(function(){
+								var title = $("#title").val();
+								if(title==''){
+									bootbox.dialog({
+										title: '友情提示：',
+										message: "文章标题必须填写。",
+										buttons: {
+											"success" : {
+												"label" : "确定",
+												"className" : "btn-danger"
+											}
+										}
+									});
+									return;
+								}
+								$("#form").submit();
+							});
+
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						alert("出现错误！！！");
+					}
+				});
+
+			});
+
+			var editor = KindEditor.create('textarea[name="content"]',{
+				uploadJson : '__PUBLIC__/kindeditor/php/upload_json.php',
+				fileManagerJson : '__PUBLIC__/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterBlur:function(){this.sync();}  
+				});
+
+		});
+		</script>
+	</body>
+</html>

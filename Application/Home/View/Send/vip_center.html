@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>个人中心</title>
+	</head>
+	<script src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+	<script>
+		var height = 0;
+		window.onload = function() {
+			height = $(document).height();
+			$("body").css("height", height);
+		}
+		window.onresize = function() {
+			window.location.reload();
+			height = $(document).height();
+			$("body").css("height", height);
+		}
+	</script>
+	<style>
+		body {
+			Overflow: Hidden;
+			background-color: RGB(235, 235, 235);
+		}
+		
+		.head {
+			width: 100%;
+			height: 33%;
+			background-color: RGB(73, 201, 246);
+		}
+		
+		.body {
+			width: 100%;
+			height: 130px;
+			background-color: RGB(44, 121, 149);
+		}
+		
+		.foot {
+			width: 100%;
+			height: 65%;
+			background-color: RGB(235, 235, 235);
+		}
+		
+		.list-group {
+			width: inherit;
+			height: 90%;
+			background-color: transparent;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+		
+		.list-group-item {
+			width: inherit;
+			height: 12%;
+			background-color: RGB(255, 255, 255);
+			list-style-type: none;
+			border: 1px solid rgb(220, 220, 220);
+			background-image: url(__PUBLIC__/home/img/arrow.png);
+			background-repeat: no-repeat;
+			background-position: 95% 50%;
+		}
+		
+		.head-back {
+			height: 50%;
+			background-image: url(__PUBLIC__/home/img/return.png);
+			background-repeat: no-repeat;
+			background-position: 10% 45%;
+			background-size: 5%;
+			z-index: 1;
+		}
+		
+		.head-vehicle {
+			height: 40%;
+			background-image: url(__PUBLIC__/home/img/vehicle.png);
+			background-repeat: no-repeat;
+			background-size: 3%;
+			background-position: 54% 15%;
+			position: relative;
+			z-index: 1;
+		}
+		
+		.head-png {
+			height: 70%;
+			background-image: url(__PUBLIC__/home/img/h.png);
+			background-repeat: no-repeat;
+			background-size: 9%;
+			background-position: 50% 50%;
+			position: relative;
+			z-index: 20;
+		}
+		.head-top1 a{
+			font-size: 40px;
+			font-weight: bold;
+			position: relative;
+			color:#fff;
+			text-decoration:none;
+			top:-85px;
+			float:right;
+		}
+		
+		.list-group-item img {
+			margin: 20px 0 0 1%;
+			height: 70%;
+		}
+		
+		.list-group-item font {
+			position: relative;
+			left: 20px;
+			top: -30px;
+			color: rgb(126, 126, 126);
+			font-family: "Microsoft YaHei";
+			font-size: 40px;
+		}
+		
+		.bageOne {
+			color: rgb(255, 255, 255);
+			font-weight: bold;
+			width: 33%;
+			height: 100%;
+			background-image: url(__PUBLIC__/home/img/star.png);
+			background-repeat: no-repeat;
+			background-size: 80px;
+			background-position: 50% 15%;
+			float: left;
+			border-right-color: #064884;
+			border-right: 1px solid RGB(223, 223, 223);
+		}
+		
+		.bageTwo {
+			color: rgb(255, 255, 255);
+			font-weight: bold;
+			font-size: 100%;
+			width: 33%;
+			height: 100%;
+			background-image: url(__PUBLIC__/home/img/money.png);
+			background-repeat: no-repeat;
+			background-size: 80px;
+			background-position: 50% 15%;
+			float: left;
+			border-right-color: #064884;
+			border-right: 1px solid RGB(223, 223, 223);
+		}
+		
+		.bageThree {
+			color: rgb(255, 255, 255);
+			font-weight: bold;
+			font-size: 100%;
+			width: 33%;
+			height: 100%;
+			background-image: url(__PUBLIC__/home/img/royal.png);
+			background-repeat: no-repeat;
+			background-size: 80px;
+			background-position: 50% 15%;
+			float: left;
+		}
+		
+		.bageOne div {
+			text-align: center;
+		}
+		
+		.bageTwo div {
+			text-align: center;
+		}
+		
+		.bageThree div {
+			text-align: center;
+		}
+		
+		.head-png {
+						margin-top: 30px;
+			background-color: red;
+			height: 190px;
+			width: 190px;
+			border: 15px solid RGB(182, 233, 251);
+			border-radius: 50%;
+		}
+		
+		.headOne {
+			left: -5px;
+			position: relative;
+			top: -50px;
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+		}
+		
+		.head-s {
+			position: relative;
+			left: 50px;
+			top: -85px;
+		}
+		
+		.return {
+			height:60px;
+			position: relative;
+			left: 20px;
+			top: 20px;
+		}
+		.head-top{
+			font-size: 40px;
+			font-weight: bold;
+			position: relative;
+			color:RGB(255,255,255);
+			top: -95px;
+		}
+		.head-bottom{
+			font-size: 35px;
+			font-weight: bold;
+			position: relative;
+			color:RGB(255,255,255);
+			top: 0px;
+		}
+		.recom{
+			margin-top:80px;
+			font-size:30px;
+		}
+			.grade{
+			margin-top:80px;
+			font-size:30px;
+		}
+		.integral{
+					margin-top:80px;
+			font-size:30px;
+		}
+	</style>
+	<style type="text/css">
+		#line-chart {
+			height:300px;
+			width:800px;
+			margin: 0px auto;
+			margin-top: 1em;
+		}
+		.brand { font-family: georgia, serif; }
+		.brand .first {
+			color: #ccc;
+			font-style: italic;
+		}
+		.brand .second {
+			color: #fff;
+			font-weight: bold;
+		}
+		#tanchuang{
+			display:none;
+			font-size:50px;
+			font-weight: bold;
+			text-align:center;
+			border-radius:10px;
+			color:white;
+			position:fixed;
+			top:35%;
+			left:33%;
+			right:40%;
+			bottom:40%;
+			min-width:350px;
+			height:100px;
+			line-height:100px;
+			margin:0 auto;
+			background:rgba(0,0,0,0.8);
+			z-index:9999999999;
+		}
+		input {
+			border:1;
+		}
+
+	</style>
+	<script>
+		function tanchu(text){
+			$("#tanchuang").html(text);
+			$("#tanchuang").show();
+			setTimeout(function(){$("#tanchuang").fadeOut(2000)},2000);
+		}
+	</script>
+	<div id="tanchuang">
+		错误
+	</div>
+	<body>
+		<div class="head">
+			<a href="{:U('Index/index')}"><img src="__PUBLIC__/home/img/return.png" class="return"></a>
+			<div align="center">
+				<div>
+					<font class="head-top1"><a href="{:U('quit_do')}">退出</a></font>
+				</div>
+				<div class="head-png"><font class="head-top">个人中心</font>
+					<if condition="$user_info['headimgurl'] eq ''">
+						<img src="__PUBLIC__/home/img/h.png" class="headOne">
+						<else/>
+						<img src="__ROOT__{$xianshi['headimgurl']}" class="headOne">
+					</if><if condition="$user_info['role_id'] eq 0">
+						<img src="__PUBLIC__/home/img/vehicle.png" style="height:55px;width:60px;" class="head-s">
+						<else/><img src="__PUBLIC__/home/img/huozhu.png" style="height:75px;width:80px;" class="head-s"></if>
+				</div>
+			<br>
+			<table style="margin-top: 30px;">
+			<tr><td><font class="head-bottom">用户名：</font></td><td><font class="head-bottom">{$xianshi['name']}</font><td><br>
+			<tr><td><font class="head-bottom">&emsp;角色：</font></td><td><font class="head-bottom">{$user_info['role_name']}</font><td><br>
+			</table>
+			</div>
+		</div>
+		<div class="body">
+			<div class="bageOne">
+				<div class="recom">我的认证</div>
+			</div>
+			<div class="bageTwo">
+				<div class="grade">我的积分</div>
+			</div>
+			<a href="{:U('my_rate')}">
+			<div class="bageThree">
+				<div class="integral">我的评级</div>
+			</div>
+			</a>
+		</div>
+		<br>
+		<div class="foot">
+			<ul class="list-group">
+				<if condition="$user_info['role_id'] eq 1">
+				<a href="{:U('Send/owner_data')}" style="text-decoration: none;">
+					<li class="list-group-item"><img src="__PUBLIC__/home/img/doc.png">
+						<font>我的资料</font>
+					</li>
+				</a><else/>
+					<a href="{:U('Send/car_data')}" style="text-decoration: none;">
+						<li class="list-group-item"><img src="__PUBLIC__/home/img/doc.png">
+							<font>我的资料</font>
+						</li>
+					</a>
+				</if>
+				<a href="{:U('Send/my_area')}" style="text-decoration: none;">
+					<li class="list-group-item"><img src="__PUBLIC__/home/img/address.png">
+						<font>我的地址</font>
+					</li>
+				</a>
+				<if condition="$user_info['role_id'] eq 0">
+				<a href="{:U('Order/order_car')}" style="text-decoration: none;">
+					<li class="list-group-item"><img src="__PUBLIC__/home/img/order.png">
+						<font>我的订单</font>
+					</li>
+				</a>
+					<else/>
+					<a href="{:U('Order/order_goods')}" style="text-decoration: none;">
+						<li class="list-group-item"><img src="__PUBLIC__/home/img/order.png">
+							<font>我的订单</font>
+						</li>
+					</a>
+				</if>
+				<a href="{:U('Send/my_recommend')}" style="text-decoration: none;">
+					<li class="list-group-item"><img src="__PUBLIC__/home/img/recom.png">
+						<font>推荐好友</font>
+					</li>
+				</a>
+				<a href="{:U('Send/set_password')}" style="text-decoration: none;">
+					<li class="list-group-item"><img src="__PUBLIC__/home/img/pwd.png">
+						<font>设置密码</font>
+					</li>
+				</a>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		$('.grade').click(function(){
+			$('#tanchuang').css('font-size','50px');
+			tanchu('系统正在维护');
+		});
+
+		$('.recom').click(function(){
+			$('#tanchuang').css('font-size','50px');
+			tanchu('系统正在维护');
+		});
+	});
+</script>

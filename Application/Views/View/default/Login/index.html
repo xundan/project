@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="Page Description">
+        <meta name="author" content="CLEVO">
+        <title>快煤网注册</title>
+
+        <!-- Bootstrap -->
+        <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <!--bodystyle-->
+    <!--style="background-image: url(__PUBLIC__/images/background.gif)">-->
+        <!--<label style="text-align: center">欢迎注册快煤网</label>-->
+        <!--<p style="text-align: center; font-size: 500%; font-family: 微软雅黑">快煤网</p>-->
+        <div style="text-align: center">
+            <img src="__PUBLIC__/images/kuaimei.jpg" style="width: 60%;height: 20%;">
+        </div>
+        <form action="{:U('Views/Login/register_do')}" method="post" role="form" class="form-horizontal" style="padding-left: 3%; padding-right: 3%" id="form_id">
+            <input type="hidden" name="channel" id="channel">
+            <div>
+                <input required="required" class="form-control" type="text"  name="phone" id="phone_id" placeholder="请输入手机号..." style="width: 97%;padding-left: 2%">
+            </div>
+            <br>
+
+            <div>
+                <input type="password" class="form-control" name="password" id="password" placeholder="请输入6-20位密码..." style="width: 97%;padding-left: 2%">
+            </div>
+            <br>
+
+            <div>
+                <input type="text" class="form-control" name="verification" id="verification" placeholder="请输入验证码..." style="width: 55%;padding-left: 2%;display: inline">
+                <span id="login_div">
+                    <button type="button" id="codeRandom" onclick="createRandomCode()" class="btn btn-default" style="width: 35%;float: right;margin-right: 3%;border-color: #eaeaea;background-color:#eaeaea;color: #666">获取验证码</button>
+                </span>
+            </div>
+            <br>
+        		<!--<input type="password" class="form-control" name="password2" id="password2" placeholder="确认密码..." style="width: 100%">-->
+
+
+
+        	<div class="radio" style="margin-top: 3%;font-size: 1.4em;margin-left: 30%">
+                <dl>
+                    <dt style="width: 100%">
+                        <label>
+                            <input type="radio" name="role_name" id="supplier" value="supplier" style="width: 1.1em;height: 1.1em; ">
+                            煤场、煤矿
+                        </label>
+                    </dt>
+                    <dt style="width: 100%;margin-top: 1em">
+                    <label>
+                        <input type="radio" name="role_name" id="seller" value="seller" style="width: 1.1em;height: 1.1em">
+                        贸易商、信息部
+                    </label>
+                    </dt>
+                    <dt style="width: 100%;margin-top: 1em">
+                        <label>
+                            <input type="radio" name="role_name" id="buyer" value="buyer"style="width: 1.1em;height: 1.1em" >
+                            工厂用煤用户
+                        </label>
+                    </dt>
+                </dl>
+        	</div>
+
+            <div style="text-align: center;margin-top: 10%">
+                <button type="button" id="login" class="btn" style="width: 100%;background-color: #0BB20C;color: #FFFFFF;font-size: 2em " ><b>注册并下载</b></button>
+            </div>
+        </form>
+
+            <div style="width:100%;margin-top:5%">
+                <a href="http://www.51kuaimei.com/download?media=8810"  target="_self">
+                    <p style="text-align:center;font-size: 1.4em;font-family: 黑体;text-decoration:underline;">
+                        我已注册，点击前往下载
+                    </p>
+                </a>
+            </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="__PUBLIC__/js/jquery-2.2.4.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    </body>
+</html>
+<script type="text/javascript">
+    document.getElementById('login').onclick=function(){
+        var phoneCodeInput=document.getElementById('phone_id');
+        var phoneCode = phoneCodeInput.value;
+        var codeInput = document.getElementById('verification');
+        var code = codeInput.value;
+        var pswdInput = document.getElementById('password');
+        var pswd = pswdInput.value;
+        if(phoneCode==''||phoneCode==null){
+            alert('请填写手机号');
+            return;
+        }
+        else if(phoneCode.length!=11)
+        {
+            alert('请确认手机号位数');
+            return;
+        }
+        else if(pswd==''||pswd==null)
+        {
+            alert('请填写密码');
+            return;
+        }
+        else if(pswd.length<6||pswd.length>20)
+        {
+            alert('密码应在6-12位之间');
+            return;
+        }
+        else if(code==''||code==null)
+        {
+            alert('请填写验证码');
+            return;
+        }
+        else
+        {
+            var temp = document.getElementsByName("role_name");
+            var role = null;
+            for(var i=0;i<temp.length;i++)
+            {
+                if(temp[i].checked){
+                    role = temp[i].value;
+                }
+            }
+            if (role==null||role==''){
+                alert('请选择身份：买家、卖家、供应商');
+                return;
+            }else{
+                document.getElementById('form_id').submit();
+            }
+        }
+    };
+</script>
+<script type="text/javascript">
+    function createRandomCode(){
+        var phoneCodeInput=document.getElementById('phone_id');
+        var phoneCode = phoneCodeInput.value;
+        if(phoneCode==''||phoneCode==null){
+            alert('请填写手机号');
+            return;
+        }
+        else if(phoneCode.length!=11)
+        {
+            alert('请确认手机号位数');
+            return;
+        }
+        url="{:U('Views/Login/send_code')}";
+        $.ajax({
+            type: "post",
+            data:{phone:phoneCode},
+            url:url,
+            success: function (data){
+//                alert(data);
+                document.getElementById('codeRandom').remove();
+                setTimeout(clearSession, 1000*60);
+                var num = 60;
+                var numStr = ""+num;
+                var i = setInterval(function() {
+                    num--;
+                    if(num<10){
+                        numStr="0"+num;
+                    }else{
+                        numStr = ""+num;
+                    }
+                    $("#login_div").html("&nbsp;&nbsp;&nbsp;&nbsp;"+numStr+"秒后重新发送...");
+//                    document.getElementById('codeRandom').disabled=false;
+//                    document.getElementById('codeRandom').value=''+num+'秒后重新发送';
+//                    document.getElementById('codeRandom').disabled=true;
+                    if (num==0){
+                        clearInterval(i);
+                        $("#login_div").html("<button type='button' id='codeRandom' onclick='createRandomCode()' class='btn btn-default' style='width: 35%;float: right;margin-right: 3%;border-color: #eaeaea;background-color:#eaeaea;color: #666'>获取验证码</button>");
+//                        document.getElementById('codeRandom').value='测试成功';
+//                        document.getElementById('codeRandom').disabled=false;
+                    }
+                },1000);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("出现错误！！！");
+            }
+        });
+    }
+
+    function clearSession(){
+        url="{:U('Views/Login/clearSession')}";
+        $.ajax({
+            type: "get",
+            url:url,
+            success: function (data){
+                //alert(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("出现错误！！！");
+            }
+        });
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    document.getElementById('channel').value=getQueryString('channel');
+</script>

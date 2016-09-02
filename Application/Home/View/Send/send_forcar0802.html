@@ -1,0 +1,812 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>发布求车</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#tabhost li:eq(0)").addClass("current3");//使第一个li追加css样式，（做到最原始的样子）
+	$("#content .point:not(:first)").hide();//使内容除了第一个都隐藏，先写出原来的的样式
+	$("#tabhost li").click(function()//点击li
+	{
+		$(this).addClass("current3").siblings().removeClass("current3");//点击的li追加样式并找到其它的兄弟元素使它去掉样式
+		var index=$(this).index();//得到点击的li的序列号
+		$("#content .point").eq(index).show().siblings().hide();//找到所有的P，然后找到与li相对应的p使其显示，其它兄弟元素隐藏
+		var title = $('.current3').html();
+		$('.indent').html(title);
+	})
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#off").click(function()
+	{
+		$("#location").hide();
+	});
+		
+});
+	//标题显示
+
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var choice = "";
+	    $('.slip').click(function()
+		{
+			$("#location").show();	
+		});
+	});
+	</script>
+
+    <script type="text/javascript">
+	 $(function()
+	 {
+		 var choice = "";
+	    $('.state').click(function()
+		{
+			if(choice)
+			{
+				$('.send').html(choice);
+			}
+
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".state p").click(function()
+		   {
+			  choice = $(this).text();
+			   $('.send').html(choice);
+		      $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		  })
+	});
+	</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#off1").click(function()
+	{
+		$("#location1").hide();
+	});
+		
+})
+</script>
+   <script type="text/javascript">
+	 $(function()
+	 {
+		var gsge = "";
+	    $('.delivery').click(function()
+		{
+			$("#location1").show();	
+		});
+	});
+	</script>
+     <script type="text/javascript">
+	 $(function()
+	 {
+	    $('.state1').click(function()
+		{
+			if(gsge)
+			{
+				$('.back').html(gsge);
+			}
+			
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	   $(".state1 p").click(function()
+	   {
+		   gsge = $(this).text();
+		   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+	   })
+	})
+ </script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$(".issue").click(function()
+	{
+		$("#intact").show();
+	});
+		
+})
+</script>
+ <script type="text/javascript">
+$(document).ready(function()
+{
+	$("#vanish").click(function()
+	{
+		$("#intact").hide();
+	});
+		
+})
+</script>
+
+
+
+
+<!--发布货源-->
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#off2").click(function()
+	{
+		$("#location2").hide();
+	});
+		
+})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var adka = "";
+	    $('.coal').click(function()
+		{
+			$("#location2").show();	
+		});
+	});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function()
+	 {    adka="";
+	    $('.state3').click(function()
+		{
+			if(adka)
+			{
+				$('.typess').html(adka);
+			}
+			
+		});
+	});
+	</script>
+  <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".state3 p").click(function()
+		   {
+			   adka = $(this).text();
+			   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		  })
+	})
+	 
+  </script>
+ <script type="text/javascript">
+$(document).ready(function(){
+	$(".turnoff").click(function(){
+		$(".room").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var sgsg = "";
+	    $('.origin').click(function()
+		{
+			$(".room").show();	
+		});
+	});
+ </script>
+   
+    
+    <script type="text/javascript">
+	 $(function()
+	 {
+	    $('.shengfen').click(function()
+		{
+			if(sgsg)
+			{
+				$('.areas').html(sgsg);
+			}
+			
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".shengfen p").click(function()
+		   {
+			   sgsg = $(this).text();
+			   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		  })
+	})
+	 
+	</script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$(".turnoff").click(function()
+	{
+		$(".room-one").hide();
+	});
+		
+})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var faaa = "";
+	    $('.business').click(function()
+		{
+			$(".room-one").show();	
+		});
+	});
+</script>
+   
+    
+    <script type="text/javascript">
+	 $(function() {
+	    $('.shengfen-one').click(function(){
+			if(faaa)
+			{
+				$('.hands').html(faaa);
+			}
+			
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".shengfen-one p").click(function(){
+	 faaa = $(this).text();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+	$(".turnoff").click(function()
+	{
+		$(".kind").hide();
+	});
+		
+ })
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var dgsq = "";
+	    $('.purchase').click(function()
+		{
+			$(".kind").show();	
+		});
+	 });
+	</script>
+    
+    <script type="text/javascript">
+	 $(function() {
+		 var dgsq = "";
+	    $('.speci').click(function()
+		{
+			if(dgsq)
+			{
+				$('.snes').html(dgsq);
+			}
+			
+		});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	   $(".speci p").click(function()
+	   {
+		   dgsq = $(this).text();
+		   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+	   });
+	})
+	 
+</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+	$(".turnoff").click(function()
+	{
+		$(".field").hide();
+	});
+		
+})
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var dfgsac = "";
+	    $('.tech').click(function()
+		{
+			$(".field").show();	
+		});
+	});
+ </script>
+    
+    <script type="text/javascript">
+	 $(function()
+	 {
+	    $('.sweden').click(function()
+		{
+			if(dfgsac)
+			{
+				$('.siew').html(dfgsac);
+			}
+			
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+	   $(".sweden p").click(function()
+	   {
+			 dfgsac = $(this).text();
+		     $(this).addClass("yangshi").siblings().removeClass("yangshi");
+	   })
+	})
+	 
+	</script>
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+	$(".turnoff").click(function()
+	{
+		$(".pay").hide();
+	});
+		
+ })
+</script>
+
+ <script type="text/javascript">
+	 $(function()
+	 {
+		var rsfv = "";
+	    $('.manner').click(function()
+		{
+			$(".pay").show();	
+		});
+	});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function()
+	 {
+	    $('.wechet').click(function()
+		{
+			if(rsfv)
+			{
+				$('.wrtay').html(rsfv);
+			}
+			
+		});
+	});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function()
+	 {
+		   $(".wechet p").click(function()
+		   {
+				 rsfv = $(this).text();
+			     $(this).addClass("yangshi").siblings().removeClass("yangshi");
+		   })
+	})
+	 
+	</script>
+	<!--<script type="text/javascript">
+		$(function(){
+			$('.province').click(function(){
+				var pro_id = $('.yangshi').attr('attr');
+				url="__CONTROLLER__/ajax_sheng";
+				//var hi=$(".select").attr("link");
+				//alert(class_id);
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{pro_id:pro_id},
+					success:function(data){
+						if(data!=0){
+							//alert($("#off").html());
+							//alert(data['area']);
+							//$("#off").siblings().html(data.area);
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						alert("出现错误！！！");
+					}
+				});
+			});
+		})
+	</script>-->
+</head>
+
+<body style="background:#EBEBEB">
+ <div id="box">
+       <div id="header" style="margin-bottom:0%">
+             <div class="return">
+				 <a href="{:U('Index/index')}"><img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" /></a>
+			 </div>
+              <div class="indent">发布求车</div>
+              
+       </div>
+    <div class="tab">
+            <ul id="tabhost">
+                <li>发布求车</li>
+                <li>发布货源</li>
+                <li style="border-right:none">发布采购</li>
+            </ul>
+            <div id="content">
+               <div class="point">
+				   <form>
+                 <div class="slip">
+					  <div class="slip-left">发货地址
+						  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						  <span class="send"></span>
+					  </div>
+					  <div class="slip-right">
+						  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+					  </div>
+				 </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                   <div class="place">
+					   <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />　
+					   <input type="text" placeholder="请填写详细信息" />
+				   </div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="delivery">
+                          <div class="delivery-left">收货地址
+							  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+							  <span class="back"></span>
+						  </div>
+                          <div class="delivery-right">
+							  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						  </div>
+                  </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                  <div class="place">
+					  <img src="__PUBLIC__/home/images/cheng.png" width="20" height="23" />　
+					  <input type="text" placeholder="请填写详细信息" />
+				  </div>
+                   <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                   <div class="measure">发煤量
+					   <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+					   <input type="text" placeholder="12656262" />吨
+				   </div>
+                   <div class="freight">运费<input type="text" /></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="freight">装车时间<input type="date" style="width:70%;"/></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="freight">装车费<input type="text" /></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="freight">卸车费<input type="text" /></div>
+                    <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="telephone">发货人电话
+						<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						<input type="text"/>
+					</div>
+                    <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                    <div class="telephone" style="margin-top:0%">收货人电话
+						<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						<input type="text"  />
+					</div>
+                    <div class="issue"><input type="button" value="发 布"/></div>
+					   </form>
+               </div>
+
+               <div id="intact">
+               <div class="chenggong">
+					 <div id="vanish">
+						 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="26" />
+					 </div>
+					  <a href="#">
+						  <div class="wancheng">
+							  <input type="button" value="发布完成">
+						  </div>
+					  </a>
+					  <a href="#">
+						  <div class="geren">
+							  <input type="button" value="继续发布">
+						  </div>
+					  </a>
+			   </div>
+                  
+               </div>
+				<!--发货地址省的显示-->
+               <div id="location">
+                   <div class="state province">
+					   <volist name="province" id="pro_vo">
+						 <p attr="{$pro_vo.id}">{$pro_vo.area}</p>
+					   </volist>
+						 <div id="off">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+                   </div>
+               </div>
+				<!--收货地址省的显示-->
+               <div id="location1">
+					   <div class="state1">
+						   <volist name="province" id="pro_vo">
+							   <p>{$pro_vo.area}</p>
+						   </volist>
+						 <div id="off1">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+					   </div>
+               </div>
+
+
+               <div class="point">
+					   <div class="coal">
+							  <div class="coal-left">煤炭种类
+								  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+								  <span class="typess"></span>
+							  </div>
+							 <div class="coal-right">
+								 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							 </div>
+					   </div>
+					   <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+						<div class="trait">品质
+							<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+							<input type="text"/>
+						</div>
+						<div style="border-bottom:#F0F0F0 1px solid; "></div>
+						<div class="trait">供货公司
+							<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+							<input type="text"/>
+						</div>
+						<div style="border-bottom:#F0F0F0 1px solid; "></div>
+						<div class="origin">
+							  <div class="origin-left">产地
+								  <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+								  <span class="areas"></span>
+							  </div>
+							 <div class="origin-right">
+								 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							 </div>
+						</div>
+						 <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						 <div class="business">
+							  <div class="business-left">交割地
+								  <span class="hands"></span>
+							  </div>
+							 <div class="business-right">
+								 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							 </div>
+						</div>
+						<div class="price">价格
+							<input type="text" placeholder="12656262" />元/吨
+						</div>
+						 <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						 <div class="opan">公开价格
+							 <div id="div1" class="open1">
+								<div id="div2" class="open2"></div>
+							</div>
+						  </div>
+						   <div class="trait" style="margin-top:2%">吨数
+							   <input type="text"/>
+						   </div>
+						   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							<div class="trait">热值（高位）
+								<input type="text"/>
+							</div>
+
+							<div id="launch">
+								<div class="launch-left">详细描述</div>
+									<div class="launch-right">
+										<img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+									</div>
+						  </div>
+						  <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						  <div id="atom">
+							   <div class="trait">热值低位
+								   <input type="text"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							   <div class="trait">全水份
+								   <input type="text"/></div>
+							   <div style="border-bottom:#F0F0F0 1px solid; ">
+
+							   </div>
+							   <div class="trait">灰份
+								   <input type="text"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							   <div class="trait">硫份
+								   <input type="text"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+							   <div class="trait">挥发份
+								   <input type="text"/>
+							   </div>
+							   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+						  </div>
+						 <div class="trait">有效期
+							 <input type="date" style="width:70%;"/>
+						 </div>
+						 <div style="border-bottom:#F0F0F0 1px solid;"></div>
+						 <div id="expand">详细描述
+							 <textarea class="reda">
+
+							 </textarea>
+						 </div>
+						 <div id="location2">
+							  <div class="state3">
+							   <p>煤炭类</p>
+							   <p>岩石类</p>
+							   <p>山东省</p>
+							   <p>煤炭类</p>
+							   <p>陕西省</p>
+							   <p>岩石类</p>
+							 <div id="off2">
+								 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+							 </div>
+						   </div>
+					</div>
+					<div class="room">
+						  <div class="shengfen">
+						   <p>河北省</p>
+						   <p>陕西省</p>
+						   <p>山东省</p>
+						   <p>湖南省</p>
+						   <p>江苏省</p>
+						   <p>安徽省</p>
+						 <div class="turnoff">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+					   </div>
+				   </div>
+				   <div class="room-one">
+						  <div class="shengfen-one">
+						   <p>河北省</p>
+						   <p>陕西省</p>
+						   <p>山东省</p>
+						   <p>湖南省</p>
+						   <p>江苏省</p>
+						   <p>安徽省</p>
+						 <div class="turnoff">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+					   </div>
+				   </div>
+
+						  <div class="issue"><input type="button" value="发 布"/></div>
+               </div>
+               <div class="point">
+                   <div class="purchase">
+                            <div class="purchase-left">煤炭种类
+								<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+								<span class="snes"></span>
+							</div>
+                           <div class="purchase-right">
+							   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						   </div>
+                    </div>
+                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+						 <div class="tech">
+								<div class="tech-left">产地
+									<span class="siew"></span>
+								</div>
+							   <div class="tech-right">
+								   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							   </div>
+						</div>
+                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                       <div class="trait">热值（低位）
+						   <input type="text"/>
+					   </div>
+                       <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                       <div class="trait">吨数
+						   <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+						   <input type="text"/>
+					   </div>
+                       <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                        <div id="expand" style="margin-bottom:2%">详细描述
+							<textarea class="reda"></textarea>
+						</div>
+                       <div class="hope">期望价格
+						   <input type="text" placeholder="最低价" />———<input type="text" placeholder="最高价" />
+					   </div>
+                        <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                       <div class="manner">
+                            <div class="manner-left">付款方式
+								<span class="wrtay"></span>
+							</div>
+                           <div class="manner-right">
+							   <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						   </div>
+                       </div>
+                       <div class="issue"><input type="button" value="发 布"/></div>
+                    <div class="kind">
+                          <div class="speci">
+                           <p>煤炭类</p>
+                           <p>岩石类</p>
+                           <p>山东省</p>
+                           <p>煤炭类</p>
+                           <p>陕西省</p>
+                           <p>岩石类</p>
+                         <div class="turnoff">
+							 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+						 </div>
+                       </div>
+               </div>
+                <div class="field">
+                      <div class="sweden">
+                       <p>河北省</p>
+                       <p>陕西省</p>
+                       <p>山东省</p>
+                       <p>湖南省</p>
+                       <p>江苏省</p>
+                       <p>安徽省</p>
+                     <div class="turnoff">
+						 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+					 </div>
+                   </div>
+               </div>
+               <div class="pay">
+                      <div class="wechet">
+                       <p>微信支付</p>
+                       <p>银行卡</p>
+                       <p>支付宝</p>
+                       <p>QQ支付</p>
+                       <p>银行卡</p>
+                       <p>支付宝</p>
+                     <div class="turnoff">
+						 <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+					 </div>
+                   </div>
+               </div>
+               
+           </div>
+               
+          </div>
+    </div>
+ </div>
+ 
+ 
+ 
+ <script type="text/javascript">
+	  $(function(){
+	  $("#atom").hide();
+	  $("#launch").click(function(){
+			  <!--$("#atom").toggle();-->
+			  $("#atom").slideToggle("slow");;
+		  }
+	  )
+	  
+	  });
+</script>
+
+
+  <script type="text/javascript">
+    	
+    	window.onload=function(){
+        var div2=document.getElementById("div2");
+        var div1=document.getElementById("div1");
+        div2.onclick=function(){
+          div1.className=(div1.className=="close1")?"open1":"close1";
+          div2.className=(div2.className=="close2")?"open2":"close2";
+        }
+    }
+    </script>
+</body>
+</html>

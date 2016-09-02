@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>超级资源首页</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/style/normalize.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/style/default.css">
+<link rel="stylesheet" href="__PUBLIC__/home/style/assets/css/sangarSlider.css" type="text/css" media="all">
+<link rel="stylesheet" href="__PUBLIC__/home/style/assets/themes/default/default.css" type="text/css" media="all">
+<link rel="stylesheet" href="__PUBLIC__/home/style/assets/css/demo.css" type="text/css" media="all">
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+        var t = n =0, count;
+        $(document).ready(function(){ 
+        count=$("#banner_list a").length;
+        $("#banner_list a:not(:first-child)").hide();
+        $("#banner_info").html($("#banner_list a:first-child").find("img").attr('alt'));
+        $("#banner_info").click(function(){window.open($("#banner_list a:first-child").attr('href'), "_blank")});
+        $(".tuoyuan li").click(function() {
+        var i = $(this).text() -1;//获取Li元素内的值，即1，2，3，4
+        n = i;
+        if (i >= count) return;
+        
+        $("#banner_list a").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
+        document.getElementById("banner").style.background="";
+        $(this).toggleClass("on");
+        $(this).siblings().removeAttr("class");
+        });
+        t = setInterval("showAuto()", 4000);
+        $("#banner").hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
+        })
+
+        function showAuto()
+        {
+        n = n >=(count -1) ?0 : ++n;
+        $(".tuoyuan li").eq(n).trigger('click');
+        }
+    </script>
+
+</head>
+
+<body>
+<include file="Common:common"/>
+ <div id="box">
+    <!-- 轮播 -->
+   <!--<div class="bannerall">
+          <div id="banner"> 
+              <div id="banner_list">
+                  <a href="#"><img src="__PUBLIC__/home/images/index_yes.jpg" width="640" height="531" /></a>
+                  <a href="#"><img src="__PUBLIC__/home/images/index_yes.jpg" width="640" height="531" /></a>
+                  <a href="#"><img src="__PUBLIC__/home/images/index_yes.jpg" width="640" height="531" /></a>
+                  <a href="#"><img src="__PUBLIC__/home/images/index_yes.jpg" width="640" height="531" /></a>
+              </div>
+          </div>
+          <div class="tuoyuan">
+              <ul>
+                  <li class="on"><span>1</span></li>
+                  <li><span>2</span></li>
+                  <li><span>3</span></li>
+                  <li><span>4</span></li>
+              </ul>
+          </div>
+   </div>-->
+     <!--轮播-->
+     <div class="jq22-container" >
+         <div class="jq22-content bgcolor-3" style="height:247px;">
+             <div class='sangar-slideshow-container' id='sangar-example'>
+                 <div class='sangar-content-wrapper' style='display:none;'>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+
+                 </div>
+             </div>
+         </div>
+
+     </div>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/jquery.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/jquery.touchSwipe.min.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/imagesloaded.min.js"></script>
+     <!-- jQuery Sangar Slider -->
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarBaseClass.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarSetupLayout.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarSizeAndScale.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarShift.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarSetupBulletNav.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarSetupNavigation.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarSetupSwipeTouch.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarSetupTimer.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarBeforeAfter.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarLock.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarResponsiveClass.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarResetSlider.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider/sangarTextbox.js"></script>
+     <script type="text/javascript" src="__PUBLIC__/home/style/assets/js/sangarSlider.js"></script>
+     <script type='text/javascript'>
+         jQuery(document).ready(function($) {
+             /**
+              * identifier variable must be unique ID
+              */
+             var sangar = $('#sangar-example').sangarSlider({
+                 animation : 'vertical-slide', // horizontal-slide, vertical-slide, fade
+                 timer : true, // true or false to have the timer
+                 width : 850, // slideshow width
+                 height : 650, // slideshow height
+                 scaleSlide : false, // slider will scale to the container size
+                 scaleImage : true, // images will scale to the slider size
+                 pagination : 'bullet' // bullet, content-horizontal, content-vertical, none
+             });
+         })
+     </script>
+      <div id="information">
+            <dl>
+                <if condition="$_SESSION['user_info']['role_id'] eq '1'">
+              <dt>
+                  <a href="{:U('Send/send_forcar')}"><img src="__PUBLIC__/home/images/index2.png" width="80" height="80" /></a>
+              </dt>
+                    <else/>
+            <dt>
+                <a href="{:U('Order/send_car_source')}">
+                <img src="__PUBLIC__/home/images/index2.png" width="80" height="80" />
+                </a>
+            </dt>
+                </if>
+                <dd><a href="#">发布信息</a></dd>
+            </dl>
+             <dl>
+                <dt><a href="{:U('Find/driver_find_live')}"><img src="__PUBLIC__/home/images/index_05.png" width="80" height="80" /></a></dt>
+                <dd><a href="#">司机找活</a></dd>
+            </dl>
+             <dl>
+               <dt><a href="{:U('Find/goods_find_car')}"><img src="__PUBLIC__/home/images/index_07.png" width="80" height="80" /></a></dt>
+                <dd><a href="#">货源找车</a></dd>
+        </dl>
+          <input type="hidden" class="role_do" value="{$user_info['role_id']}">
+             <dl>
+               <dt>
+                   <a href="#" class="parent_img">
+                       <img src="__PUBLIC__/home/images/index_09.png" class="role_img" width="80" height="80"/>
+                   </a>
+               </dt>
+                <dd><a href="#">买卖查询</a></dd>
+        </dl>
+      </div>
+      <!--<div id="inquire">
+         <a href="{:U('Send/vip_center')}"class="persona">个人中心<br /><span>订单查询</span></a>
+         <a href="#"class="service">客服<br /><span>服务咨询</span></a>
+         <a href="#"class="guide">指南<br /><span>使用攻略</span></a>
+         <a href="#" class="clothing">增服<br /><span>实用工具</span></a>
+      </div>-->
+
+     <div id="inquire-one">
+         <div class="main-center">
+             <a href="{:U('Send/vip_center')}"class="persona"><img src="__PUBLIC__/home/images/index_15.png"  width="138" height="63"/><span class="webpage">个人中心</span><span class="enquiry">订单查询</span></a>
+             <a href="#"class="service" ><img src="__PUBLIC__/home/images/index_18.png" width="138" height="63"/><span class="webpage">客服</span><span class="enquiry">服务咨询</span></a>
+         </div>
+         <div class="main-center">
+             <a href="#"class="guide"><img src="__PUBLIC__/home/images/index_22.png" width="138" height="63" /><span class="webpage">指南</span><span class="enquiry">实用攻略</span></a>
+             <a href="#" class="clothing"><img src="__PUBLIC__/home/images/index_24.png" width="138" height="63"/><span class="webpage">增服</span><span class="enquiry">实用工具</span></a>
+         </div>
+     </div>
+    
+ </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+        $('.service').click(function(){
+            tanchu('亲~该功能还在就位哟~');
+            return;
+        });
+        $('.guide').click(function(){
+            tanchu('亲~该功能还在就位哟~');
+            return;
+        });
+        $('.clothing').click(function(){
+            tanchu('亲~该功能还在就位哟~');
+            return;
+        });
+        $('.role_img').click(function(){
+            var role_else = $('.role_do').val();
+            if(role_else==0)
+            {
+                tanchu('亲,不能操作哟~');
+                return;
+            }
+            else
+            {
+                $(this).parent('.parent_img').attr('href',"{:U('Info/index')}");
+            }
+        });
+    });
+</script>

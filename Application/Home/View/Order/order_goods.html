@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>我的订单</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+    <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $("#tabhost li:eq(0)").addClass("current3");//使第一个li追加css样式，（做到最原始的样子）
+            $("#content .point:not(:first)").hide();//使内容除了第一个都隐藏，先写出原来的的样式
+            $("#tabhost li").click(function()//点击li
+            {
+                $(this).addClass("current3").siblings().removeClass("current3");//点击的li追加样式并找到其它的兄弟元素使它去掉样式
+                var index=$(this).index();//得到点击的li的序列号
+                $("#content .point").eq(index).show().siblings().hide();//找到所有的P，然后找到与li相对应的p使其显示，其它兄弟元素隐藏
+                var title = $('.current3').html();
+                //$('.indent').html(title);
+            })
+        })
+    </script>
+</head>
+
+<body style="background:#EBEBEB">
+<include file="Common:common"/>
+<div id="box">
+    <div id="header" style="margin-bottom:0%">
+        <div class="return">
+            <a href="{:U('Send/vip_center')}"><img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" /></a>
+        </div>
+        <div class="indent">我的订单</div>
+
+    </div>
+    <div class="tab">
+        <ul id="tabhost">
+            <li style="width:49.5%;">配货订单</li>
+            <li style="width:49.5%;">交易订单</li>
+        </ul>
+        <div id="content">
+            <div class="point">
+               <div style="display:none" id="objParent">
+                      <div id="matter">
+                        <div class="headline">
+                            <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
+                            <a href="#"><div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></a>
+                        </div>
+                        <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+                            <span>{$vo['area1_str']}{$vo['detail_area1']}</span>
+                           </div>
+                        <div class="address"><img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+                           <span>{$vo['area2_str']}{$vo['detail_area2']}</span>
+                            </div>
+                        <div class="nom">
+                            <div class="yaopin1">煤炭种类：<span>{$vo['type']}</span></div>
+                            <div class="count1">车辆类型：<span>{$vo['car_type']}</span></div>
+                            <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
+                                <div class="skip">
+                                    <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--配货订单-->
+                <volist name="order_list" id="vo">
+                    <div id="matter">
+                        <div class="headline">
+                            <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
+                            <a href="#"><div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></a>
+                        </div>
+                        <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+                            <span>{$vo['area1_str']}{$vo['detail_area1']}</span>
+                           </div>
+                        <div class="address"><img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+                           <span>{$vo['area2_str']}{$vo['detail_area2']}</span>
+                            </div>
+                        <div class="nom">
+                            <div class="yaopin1">煤炭种类：<span>{$vo['type']}</span></div>
+                            <div class="count1">车辆类型：<span>{$vo['car_type']}</span></div>
+                            <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
+                                <div class="skip">
+                                    <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </volist>
+                  <span id="phPoint"></span>
+                <div class="rank"></div>
+                <input type="hidden" id="phPage" value="{$nextPage}"/>
+                <div onclick="getDelivery()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div>
+            </div>
+            <div class="point">
+                <!--交易订单-->
+                <volist name="order_info" id="vo_order">
+                <div id="matter">
+                    <div class="headline">
+                        <div class="date"><if condition="$vo_order.ctime eq ''">暂无时间<else/>{$vo_order['ctime']|date='Y-m-d H:i:s',###}</if></div>
+                        <a href="#"><div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div></a>
+                    </div>
+                    <div class="firm">
+                        煤炭种类<span style="margin-left:20px;">{$vo_order['type']}</span>
+                    </div>
+                    <div class="firm">
+                        煤炭粒度<span style="margin-left:20px;">{$vo_order['granularity']}</span>
+                    </div>
+                    <div class="firm">
+                        交易对象<span style="margin-left:20px;">{$vo_order['name']}</span>
+                    </div>
+                    <div class="firm">
+                        价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['price']}</span>
+                        <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                            <div class="skip">
+                                <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </volist>
+                <div style="display:none" id="orderCloneObj">
+                    <div id="matter">
+                    <div class="headline">
+                        <div class="date"><if condition="$vo_order.ctime eq ''">暂无时间<else/>{$vo_order['ctime']|date='Y-m-d H:i:s',###}</if></div>
+                        <a href="#"><div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div></a>
+                    </div>
+                    <div class="firm">
+                        煤炭种类<span style="margin-left:20px;">{$vo_order['type']}</span>
+                    </div>
+                    <div class="firm">
+                        煤炭粒度<span style="margin-left:20px;">{$vo_order['granularity']}</span>
+                    </div>
+                    <div class="firm">
+                        交易对象<span style="margin-left:20px;">{$vo_order['name']}</span>
+                    </div>
+                    <div class="firm">
+                        价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['price']}</span>
+                        <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                            <div class="skip">
+                                <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                 <span id="jyPoint"></span>
+                 <input type="hidden" id="dealPage" value="{$nextPage}"/>
+               <div onclick="getDeal()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                        /*
+                        * 交易订单
+                        */
+                        function getDeal(){
+                            var url="__CONTROLLER__/order_goods";
+                            var page=$("#dealPage").val();
+                            $.ajax({
+                                type:"post",
+                                url:url,
+                                data:{page:page,isAjax:1,getType:2},
+                                success:function(data){
+                                    var jsonObj=eval("("+data+")");
+                                    if(jsonObj.data==null){
+                                          tanchu("暂无数据");
+                                     }else{
+                                          jQuery.each(jsonObj.data, function(k, val)
+                                          {
+                                               var tempObj=$("#orderCloneObj").children("div #matter").clone(true);
+                                               tempObj.find(".date").html(val.ctime);
+                                               tempObj.find(".firm").eq(0).children("span").html(val.type);
+                                               tempObj.find(".firm").eq(1).children("span").html(val.granularity);
+                                               tempObj.find(".firm").eq(2).children("span").html(val.name);
+                                               tempObj.find(".firm").eq(3).children("span").html(val.price);
+                                               tempObj.find(".firm").eq(3).children("a").attr("href","{:U('Order/order_goods_car')}?ids="+val.id);
+                                               tempObj.appendTo("#jyPoint");
+                                          });
+                                          $("#dealPage").val(jsonObj.nextPage);
+                                     }
+                                },
+                         error:function(XMLHttpRequest,textStatus,errorThrown){
+                            tanchu("操作失败。");
+                          }
+                         });
+                        }
+                        /*
+                        * 配货订单分页加载
+                        */
+                        function getDelivery(){
+                            var url="__CONTROLLER__/order_goods";
+                            var page=$("#phPage").val();
+                            $.ajax({
+                                type:"post",
+                                url:url,
+                                data:{page:page,isAjax:1,getType:1},
+                                success:function(data){
+                                    var jsonObj=eval("("+data+")");
+                                    if(jsonObj.data==null){
+                                          tanchu("暂无数据");
+                                     }else{
+                                          jQuery.each(jsonObj.data, function(k, val)
+                                          {
+                                               var tempObj=$("#objParent").children("div #matter").clone(true);
+                                               tempObj.find(".date").html(val.ctime);
+                                               tempObj.find(".address").eq(0).children("span").html(val.area1_str+val.detail_area1);
+                                               tempObj.find(".address").eq(1).children("span").html(val.area2_str+val.detail_area2);
+                                               tempObj.find(".yaopin1").children("span").html(val.type);
+                                               tempObj.find(".count1").children("span").html(val.car_type);
+                                               tempObj.find(".nom").children("a").attr("href","{:U('Order/order_goods_sale')}?ids="+val.id);
+                                               tempObj.appendTo("#phPoint");
+                                          });
+                                          $("#phPage").val(jsonObj.nextPage);
+                                     }
+                                },
+                         error:function(XMLHttpRequest,textStatus,errorThrown){
+                            tanchu("操作失败。");
+                          }
+                         });
+                        }
+                </script>
+</body>
+</html>

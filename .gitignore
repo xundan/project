@@ -1,0 +1,4 @@
+.idea/
+Application/Runtime/
+Application/Views/Conf/config.php
+Application/Common/Conf/config.php

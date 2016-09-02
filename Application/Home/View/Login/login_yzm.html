@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>手机验证码登录</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+</head>
+<style type="text/css">
+   input::-webkit-input-placeholder,
+   textarea::-webkit-input-placeholder {
+      color: #fff;
+   }
+</style>
+<body style=" background:#2CB8F3">
+<include file="Common:common"/>
+ <div id="box">
+    <div id="login">
+       <div class="write" style="margin-top: -25%;">
+          <div style="text-align: center;width:100%;margin-top:-30%;"><img src="__PUBLIC__/home/images/logo_yes.gif" style="width:250px;height:250px;"/></div>
+          <form method="post" action="{:U('login_yzm_do')}" id="form_id">
+          <div class="gain" style="position: relative">
+             <input type="text" placeholder="请输入您的手机号" value="" style="width:60%;" name="phone" class="phone"/>
+              <span class="fasong" style="cursor:pointer">
+                             <span id="pin">
+                                 <span id="codeRandom" class="code" onclick="creatRandomCode()" style="position: absolute;top:0;left:65%;  width: 35%; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;获取验证码</span>
+                             </span>
+             </span>
+          </div>
+             <div class="pass">
+                <input type="text"  placeholder="请输入您的验证码" style="width:90%;" value="" name="code" class="codeNew"/>
+             </div>
+          <div class="forget">
+             <a href="{:U(login_pas)}">使用密码登录</a>
+          </div>
+          <div class="enter">
+             <input type="button" style="width:100%;" value="登录" class="login"/>
+          </div>
+          <div class="without">还没有账号,<a href="{:U(register)}">点击注册</a></div>
+          </form>
+       </div>
+    </div>
+ </div>
+</body>
+</html>
+<script type="text/javascript">
+   $('.login').click(function(){
+      var phoneCode=$("input[name=phone]").val();
+      var code = $('.codeNew').val();
+      // alert(phoneCode+" "+code);
+      if(phoneCode==''||phoneCode==null){
+         tanchu('请填写手机号！');
+         return;
+      }
+      else if(phoneCode.length!=11)
+      {
+         tanchu('请确认位数');
+         return;
+      }
+      else if(code==''||code==null)
+      {
+         tanchu('请填写验证码');
+         return;
+      }
+      else
+      {
+         $("#form_id").submit();
+      }
+   });
+</script>
+<script type="text/javascript">
+   var allowClike=1;
+   function creatRandomCode(){
+      if(allowClike==0){
+         return;
+      }
+      console.log(allowClike);
+      var phoneCode=$("input[name=phone]").val();
+      if(phoneCode==''||phoneCode==null){
+         tanchu('请填写手机号！');
+         return;
+      }
+      else if(phoneCode.length!=11)
+      {
+         tanchu('请确认位数');
+         return;
+      }
+      allowClike=0;
+     url="{:U('Home/Login/randomCode')}";
+      $.ajax({
+         type: "post",
+         data:{phone:phoneCode},
+         url:url,
+         success: function (data){
+             // alert(data);return;
+            $("#codeRandom").remove();
+           setTimeout(clearSession, 1000*60);
+            var num = 61;
+            var i = setInterval(function() {
+               num--;
+               if(num<10){
+                  num="0"+num;
+               }
+               $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num+"秒！");
+               if (num==0){
+                  allowClike=1;
+                  clearInterval(i);
+                  $(".fasong").html("<span id='pin'><span id='codeRandom' class='code' style='position: absolute;top:0;left:65%;  width: 35%; text-align: center;' onclick='creatRandomCode()'>&nbsp;&nbsp;&nbsp;&nbsp;发送验证码</span></span>");
+               }
+            },1000);
+         },
+         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("出现错误！！！");
+         }
+      });
+   }
+
+   function clearSession(){
+      var url="{:U('Home/Login/clearSession')}";
+      $.ajax({
+         type: "get",
+         url:url,
+         success: function (data){
+            //alert(data);
+         },
+         error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("出现错误！！！");
+         }
+      });
+   }
+</script>

@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>我的资料货主</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#tabhost li:eq(0)").addClass("current4");
+$("#content .point:not(:first)").hide();
+$("#tabhost li").click(function(){
+$(this).addClass("current4").siblings().removeClass("current4");
+var index=$(this).index();
+$("#content .point").eq(index).show().siblings().hide();
+var title = $('.current4').html();
+$('.indent').html(title);
+ })
+})
+</script>
+<script type="text/javascript">
+ $(document).ready(function(){
+	$(".turnoff").click(function(){
+		$(".icon").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function() {
+		var rsfv = "";
+	    $('.sex').click(function(){
+			$(".icon").show();	
+			});
+		});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function() {
+	    $('.women').click(function(){
+			if(rsfv)
+			{
+				$('.fmale').html(rsfv);
+			}
+			
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".women p").click(function(){
+	 rsfv = $(this).text();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+	$(".turnoff").click(function(){
+		$(".ubiety").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function() {
+		var rsfv = "";
+	    $('.region').click(function(){
+			$(".ubiety").show();	
+			});
+		});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function() {
+	    $('.ences').click(function(){
+			if(rsfv)
+			{
+				$('.yjyr').html(rsfv);
+			}
+			
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".ences p").click(function(){
+	 rsfv = $(this).text();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+     <script type="text/javascript">
+ $(document).ready(function(){
+	$(".turnoff").click(function(){
+		$(".genre").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function() {
+		var rsfv = "";
+	    $('.rule').click(function(){
+			$(".genre").show();	
+			});
+		});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function() {
+	    $('.genre').click(function(){
+			if(rsfv)
+			{
+				$('.whrw').html(rsfv);
+			}
+			
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".genre p").click(function(){
+	 rsfv = $(this).text();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+</head>
+
+<body style="background:#EBEBEB">
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+		  <a href="{:U('Send/vip_center')}">
+             <div class="return">
+				 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+			 </div>
+              <div class="indent">我的资料</div>
+          </a>
+       </div>
+    <div class="tab">
+            <ul id="tabhost">
+                <li style="width:50%; border-right:none; background:#FFF">基本信息</li>
+                <li  style="width:50%; border-right:none; background:#FFF">从业经验</li>
+            </ul>
+            <div id="content">
+                   <div class="point">
+                         <div class="myple" style="margin-top:2%;margin-bottom:2%">
+                                <div class="myple-left" style="position:relative">
+									<img src="__PUBLIC__/home/images/pour.png" width="26" height="26" />　
+									<input type="file"  style="position:absolute;right:0; top:0%; font-size:30px; opacity:0; filter:alpha(opacity=0);" />我的头像
+								</div>
+                                <div class="myple-right">
+									<img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+								</div>
+                          </div> 
+                          <div class="freight">姓名<input type="text"  style="font-size:1em"/></div>
+                             <div style="border-bottom:#F0F0F0 1px solid; "></div> 
+                             <div id="launch" style="margin-top:0%">
+								 <div class="launch-left">电话
+									 <input type="text" placeholder="15268784527" style="font-size:1em; margin-left:2%"/>
+								 </div>
+								 <div class="launch-right">
+									 <img src="__PUBLIC__/home/images/addji.png" width="14" height="14" />
+								 </div>
+                      </div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                      <div id="atom">
+                           <div class="trait" style="padding-left:10%;">
+							   <input type="text" placeholder="15268784527" style="height:45px; line-height:45px;color:#a1a1a1; font-size:1em;border-bottom:#F0F0F0 1px solid;"/>
+						   </div>
+                           <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       </div>
+                       <div class="sex">
+                          <div class="sex-left">性别<span class="fmale"></span></div>
+                          <div class="sex-right">
+							  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						  </div>
+             
+                       </div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                        <div id="launch" style="margin-top:0%">
+                            <div class="launch-left">生日<input type="date" style="font-size:1em; margin-left:2%;color:#a1a1a1"/></div>
+                            <div class="launch-right">
+								<img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+							</div>
+                        </div>
+                      <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                      <div class="freight">邀请人<input type="text"  style="font-size:1em"/></div>
+                       <div class="region" style="margin-top:2%">
+                          <div class="region-left">所在地区<span class="yjyr"></span></div>
+                          <div class="region-right">
+							  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						  </div>
+             
+                      </div>
+                       <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       <div class="freight">详细地址
+						   <input type="text"  style="font-size:1em;width:60%;" placeholder="输入公司或者货物所在详细地址1"/>
+					   </div>
+                    <div class="issue"><input type="button" value="确 认"/></div>
+                      
+                     
+                               <div class="icon">
+                                    <div class="women">
+                                     <p>男<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>女<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>保密<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                  
+                                   <div class="turnoff">
+									   <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+								   </div>
+                                   </div>
+                               </div>   
+                                <div class="ubiety">
+                                    <div class="ences">
+                                     <p>山东<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>广西<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>上海<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>北京<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                  
+                                   <div class="turnoff"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
+                                   </div>
+                               </div>   
+                  </div>
+                    
+                   <div class="point"> 
+                    
+                   <div class="rule" style="margin-top:2%">
+                          <div class="rule-left">行业类型<span class="whrw"></span></div>
+                          <div class="rule-right">
+							  <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+						  </div>
+             
+                      </div>
+                       <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                   <div class="timeTitle">从业时间<span class="year"></span></div>
+                   <div style="border-bottom:#F0F0F0 1px solid; "></div>
+			       <div class="riqi" style="background:#FFF"><input id="begin" type="month">　至　 &nbsp; <input id="end" type="month"></div>
+                       <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       <div class="freight">公司名称<input type="text"  style="font-size:1em" placeholder="请输入您的公司名称"/></div>
+                       <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       <div class="freight">所属部门<input type="text"  style="font-size:1em" placeholder="请输入您职位"/></div>
+                       <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       <div class="freight">职位<input type="text"  style="font-size:1em" placeholder="请输您的职位"/></div>
+                         <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                       <div id="expand" style="height:150px">行业描述<textarea class="reda" style=" height:80%;"></textarea>
+                     </div>
+                     <div class="issue"><input type="button" value="确 认"/></div>
+                     
+                           <div class="genre">
+                                    <div class="qita">
+                                     <p>行业1<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>行业2<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                     <p>行业3<!--<img src="images/27.jpg" width="23" height="20"  class="curenrt"/>--></p>
+                                  
+                                   <div class="turnoff">
+									   <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+								   </div>
+                                   </div>
+                               </div>   
+                   </div>
+            </div>
+              
+            
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+   
+    
+    
+    
+    
+  </div>  
+    
+    
+ </div>
+ 
+ <script type="text/javascript">
+	  $(function(){
+	  $("#atom").hide();
+	  $("#launch").click(function(){
+			  <!--$("#atom").toggle();-->
+			  $("#atom").slideToggle("slow");;
+		  }
+	  )
+	  
+	  });
+</script>
+<script type="text/javascript">
+$(function() {
+			
+			$(function() {
+			$("#begin").change(
+				function() {
+					Veri();
+				}
+			);
+			$("#end").change(
+				function() {
+					Veri();
+				}
+				);
+
+				function Veri() {
+					var beginTime = $("#begin").val();
+					var endTime = $("#end").val();
+					var result = "";
+					var date = new Date();
+					var month = parseInt(date.getMonth());
+					if(month < 10) {
+						month = "0" + month;
+					}
+					var time = parseInt(date.getFullYear() + month);
+					if(beginTime == "" || endTime == "") {
+						return;
+					} else {
+						beginTime = beginTime.split("-");
+						endTime = endTime.split("-");
+						var write = parseInt(endTime[0] + endTime[1]);
+						if(write > time) {
+							alert("截止年月不能大于当前年月");
+							$("#end").val("");
+							$("#begin").val("");
+							return;
+						}
+						beginTime = new Date(beginTime[0], beginTime[1], "01").getTime();
+						endTime = new Date(endTime[0], endTime[1], "01").getTime();
+						result = parseFloat((endTime - beginTime) / (365 * 24 * 60 * 60 * 1000)).toFixed(1);
+						if(result < 1) {
+							result = (endTime - beginTime) / (30 * 24 * 60 * 60 * 1000);
+							if(result > 0) {
+								result = "不足一个月";
+							} else {
+								result = "";
+								$("#end").val("");
+								$("#begin").val("");
+								alert("起始日期要早于截止日期");
+							}
+						} else {
+							result += "年";
+						}
+						alert(result);
+					}
+					$(".year").html(result);
+				}
+			
+			
+			
+		});
+		});
+ 
+ </script>
+</body>
+</html>

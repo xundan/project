@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的评级</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/tagscloud.js"></script>
+<body style="background:#EBEBEB">
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+          <a href="{:U('vip_center')}">
+             <div class="return">
+                 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+             </div>
+              <div class="indent">我的评级</div>
+          </a>
+       </div>
+       <div class="buler">
+          <div class="cence">
+             <dl>
+               <dt><if condition="$list['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="90" height="90" style="border-radius:50%;"/><else/><img src="__ROOT__{$list['headimgurl']}" width="90" height="90" style="border-radius:50%;"/></if></dt>
+               <dd>我的评级 <img src="__PUBLIC__/home/images/xing.png" width="14" height="15" /><span>{$list['avg']}</span></dd>
+                 <if condition="$list['role_id'] eq 0"><img src="__PUBLIC__/home/img/vehicle.png" width="30" height="23" class="car-po" /><else/><img src="__PUBLIC__/home/img/huozhu.png" width="30" height="23" class="car-po" /></if>
+             </dl>
+          </div>
+       </div>
+       <div class="than">
+          <div class="than-left">订单数量</div><div class="than-right">{$list['count']}<span>单</span></div>
+       </div>
+       <div class="than">
+          <div class="than-left">评价人数</div><div class="than-right">{$list['comment_men']}<span>人</span></div>
+       </div>
+       <div class="than">
+          <div class="than-left">五星评价人数</div><div class="than-right">{$list['five']}<span>人</span></div>
+       </div>
+       <div class="major">
+          <p>评价内容</p>
+          <div id="tagscloud">
+              <volist name="comment" id="comment_vo">
+                  <a href="#" class="tagc5">{$comment_vo['comment_content']}</a>
+              </volist>
+          </div>
+       </div>
+</div>
+</body>
+</html>

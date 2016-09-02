@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>{$current['title']}-{$Think.CONFIG.title}</title>
+
+		<meta name="keywords" content="{$Think.CONFIG.keywords}" />
+		<meta name="description" content="{$Think.CONFIG.description}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<include file="Public/head" />
+   </head>
+
+	<body class="no-skin">
+		<include file="Public/header" />
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<include file="Public/sidebar" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<!-- #section:basics/content.breadcrumbs -->
+					<include file="Public/breadcrumbs" />
+
+					<!-- /section:basics/content.breadcrumbs -->
+					<div class="page-content">
+						<include file="Public/set" />
+
+						<!-- /section:settings.box -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+									<form class="form-horizontal" id="form" method="post" action="{:U('roles_update')}?id={$article.id}">
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 角色名称 </label>
+										<div class="col-sm-9">
+											<input type="text" name="type" id="title" placeholder="角色名称" class="col-xs-10 col-sm-5" value="{$article.type}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">角色名称。</span>
+											</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 角色描述 </label>
+										<div class="col-sm-9">
+											<input type="text" name="descri" id="descri" placeholder="角色描述" class="col-xs-10 col-sm-5" value="{$article.descri}">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">角色描述。</span>
+										</span>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 自己人 </label>
+										<div class="col-sm-9">
+											<input type="radio" name="is_us" id="is_us1"  class="" value="0" <eq name="article.is_us" value="0"> checked<else/></eq>>是&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="is_us" id="is_us2"  class="" value="1" <eq name="article.is_us" value="1"> checked<else/></eq>>否
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 司机 </label>
+										<div class="col-sm-9">
+											<input type="radio" name="is_driver" id="is_driver1"  class="" value="0" <eq name="article.is_driver" value="0"> checked<else/></eq>>是&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="is_driver" id="is_driver2"  class="" value="1" <eq name="article.is_driver" value="1"> checked<else/></eq>>否
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 推送 </label>
+										<div class="col-sm-9">
+											<input type="radio" name="need_push" id="need_push1"  class="" value="0" <eq name="article.need_push" value="0"> checked<else/></eq>>不需要&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" name="need_push" id="need_push2"  class="" value="1" <eq name="article.need_push" value="1"> checked<else/></eq>>需要
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+
+									<div class="col-md-offset-2 col-md-9">
+										<button class="btn btn-info submit" type="button">
+											<i class="icon-ok bigger-110"></i>
+											提交
+										</button>
+
+										&nbsp; &nbsp; &nbsp;
+										<button class="btn" type="reset">
+											<i class="icon-undo bigger-110"></i>
+											重置
+										</button>
+									</div>
+								</form>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+			<include file="Public/footer" />
+			
+		</div><!-- /.main-container -->
+
+		<include file="Public/footerjs" />
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+		$(function() {
+			//判断角色名是否重复
+			$("input[name=type]").blur(function(){
+				url="__CONTROLLER__/ajax_roles";
+				var sign_name=$("input[name=type]").val();
+				$.ajax({
+					type:"post",
+					url:url,
+					data:{sign_name:sign_name},
+					success:function(data){
+						console.log(data);
+						if(data==2)
+						{
+							tanchu('角色名重复，请重新填写！');
+							return false;
+						}
+						else
+						{
+							$(".submit").click(function(){
+								var title = $("#title").val();
+								var descri = $("#descri").val();
+								if(title==''){
+									bootbox.dialog({
+										title: '友情提示：',
+										message: "角色名称必须填写。",
+										buttons: {
+											"success" : {
+												"label" : "确定",
+												"className" : "btn-danger"
+											}
+										}
+									});
+									return;
+								}
+								else if(descri==''){
+									bootbox.dialog({
+										title: '友情提示：',
+										message: "角色描述必须填写。",
+										buttons: {
+											"success" : {
+												"label" : "确定",
+												"className" : "btn-danger"
+											}
+										}
+									});
+									return;
+								}
+								$("#form").submit();
+							});
+
+						}
+					},
+					error:function(XMLHttpRequest,textStatus,errorThrown){
+						alert("出现错误！！！");
+					}
+				});
+
+			});
+
+			var editor = KindEditor.create('textarea[name="content"]',{
+				uploadJson : '__PUBLIC__/kindeditor/php/upload_json.php',
+				fileManagerJson : '__PUBLIC__/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterBlur:function(){this.sync();}  
+				});
+
+		});
+		</script>
+	</body>
+</html>

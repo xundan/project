@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>订单详情车主</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/Home/style/style.css"/>
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.5.1.js"></script>
+<script type="text/javascript" src="js/jquery.raty.js"></script>
+<script type="text/javascript" >
+$(function(){
+//$(".donym a").click(function(){
+//$(this).css("background-image","url(../images/short-on.png)");
+//},function(){
+//$(this).css("background-image","url(../images/short.png)");
+
+
+//});-->
+$(".donym a").click(function(){
+var imgUrl = $(this).css("background-image");
+if(imgUrl.indexOf("-on")>0){
+	imgUrl = imgUrl.replace("-on.png",".png");
+	$(this).css("background-image",imgUrl);
+	}else{
+		imgUrl = imgUrl.replace(".png","-on.png");
+	$(this).css("background-image",imgUrl);
+		}
+}); 
+}); 
+</script>
+<body style="background:#EBEBEB">
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+             <div class="return"><img src="images/fanhui.png" width="26" height="26" /></div>
+              <div class="indent">订单详情</div>
+              
+       </div>
+    <div class="tab">
+            <div id="content">
+               <div class="point">
+                  <div class="item">
+                      <dl class="item-left">
+                        <dt><img src="images/header.png"width="55" height="57" /></dt>
+                        <dd>苗翠翠 <img src="images/xing.png" width="16" height="15" /> 4.9</dd>
+                        <dd class="plate" style="color:#A1A1A1"><span style="border:none">农副产品</span> 12吨</dd>
+                      </dl>
+                      <div class="item-right"><img src="images/tel.png" width="22" height="22" /> 拨打电话</div>
+                   </div>
+                   <div class="pump" style="margin-top:2%">
+                      <div class="pump-left"></div>
+                      <div class="pump-center">匿名评价</div>
+                      <div class="pump-right"></div>
+                   </div>
+                  <div class="anonymity">
+		           <p>
+				     <div class="imgupload">
+                        <a href="##" id="up1"><input id="file_input" type="file" name="upload" multiple></a>
+				      </div>
+                    <div class="juzhong">
+				     <div class="pingjiaxing">
+					      <div class="star2"></div>
+                          <div class="result2"></div>
+						 <span ></span>
+			       </p>
+                     </div>
+                   </div>
+                </div> 
+                <div class="donym">
+                   <a href="#">工作负责</a>
+                   <a href="#">工作负责</a>
+                   <a href="#">工作负责</a>
+                   <a href="#" class="long">车内整洁/卫生</a>　&nbsp;&nbsp;
+                   <a href="#" class="long">车内整洁/卫生</a>
+                   <a href="#">工作负责</a>
+                   <a href="#">工作负责</a>
+                   <a href="#">工作负责</a>
+                 </div>
+                 <div class="depict"><textarea></textarea></div>
+                 <div class="commit" style="padding-bottom:50%"><input type="button"  value="提交评价"/></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+   </div>
+</div>
+<script type="text/javascript">
+var result = document.getElementById("result"); 
+var input = document.getElementById("file_input"); 
+if(typeof FileReader==='undefined'){ 
+    result.innerHTML = "抱歉，你的浏览器不支持 FileReader"; 
+    input.setAttribute('disabled','disabled'); 
+}else{ 
+    input.addEventListener('change',readFile,false); 
+} 
+function readFile(){ 
+	var len = this.files.length;
+	var html= '<div class="uploadimg" id="result">';
+	var x = 0;
+	for(var i=0;i<len;i++){
+		var file = this.files[i]; 
+		if(!/image\/\w+/.test(file.type)){ 
+			alert("文件必须为图片！"); 
+			return false; 
+		} 
+		var reader = new FileReader(); 
+		reader.readAsDataURL(file); 
+		reader.onload = function(e){ 
+			var h = '<img src="'+this.result+'" />';
+			html+=h;
+			x++;
+			if(x==len){
+				html=html+'</div>';
+				$("#up1").after(html);
+			}
+		}
+	}
+	<!-- html=html+'</div>'; -->
+	<!-- $("#up1").after(html); -->
+} 
+ <!-- $("#first").live("change", function() { -->
+    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
+	
+<!-- }); -->
+
+
+rat('star2','result2',1);
+function rat(star,result,m){
+
+	star= '.' + star;
+	result= '.' + result;
+	$(result).hide();//将结果DIV隐藏
+
+	$(star).raty({
+		hints: ['10','20', '30', '40', '50'],
+		path: "images",
+		starOff: 'star-off-big.png',
+		starOn: 'star-on-big.png',
+		size: 100,
+		start: 10,
+		showHalf: true,
+		target: result,
+		targetKeep : true,//targetKeep 属性设置为true，用户的选择值才会被保持在目标DIV中，否则只是鼠标悬停时有值，而鼠标离开后这个值就会消失
+		click: function (score, evt) {
+			//第一种方式：直接取值
+			//alert();
+			//alert('你的评分是'+score*m+'.0分');
+			//$("#eee").html(score*m+".0分");
+		$(this).parents().siblings("span").html(score*m+".0");
+		}
+	});
+
+	/*第二种方式可以设置一个隐蔽的HTML元素来保存用户的选择值，然后可以在脚本里面通过jQuery选中这个元素来处理该值。 弹出结果
+	var text = $(result).text();
+	$('img').click(function () {
+		if ($(result).text() != text) {
+			alert('你的评分是'+$(result).text()/m+'分');
+			alert(result);
+			return;
+		}
+	});*/
+}
+</script>
+</body>
+</html>

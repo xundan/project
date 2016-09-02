@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>用户注册</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+    <script src="__PUBLIC__/home/js/jquery.validationEngine-zh_CN.js"></script>
+    <script src="__PUBLIC__/home/js/jquery.validationEngine.js"></script>
+ <script type="text/javascript">
+$(function() {
+  $('.bud label').click(function(){
+    var radioId = $(this).attr('name');
+	$('.bud label').removeAttr('class') && $(this).attr('class', 'checked').addClass("current");
+    $('input[type="radio"]').removeAttr('checked') && $('#' + radioId).attr('checked', 'checked');
+  });
+});
+</script>
+    <script type="text/javascript">
+        $('#form_id').validationEngine();
+    </script>
+
+<style type="text/css">
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder
+    {
+        color: #fff;
+    }
+</style>
+</head>
+<body style=" background:#2CB8F3">
+<include file="Common:common"/>
+ <div id="box">
+    <div id="login">
+
+       <div class="write" style="margin-top: -25%;">
+          <div style="text-align: center;width:100%;margin-top:-30%;"><img src="__PUBLIC__/home/images/logo_yes.gif" style="width:250px;height:250px;"/></div>
+           <form action="" method="post" id="form_id" style="margin-top: -8%;">
+          <div class="gain" style="position: relative">
+              <input type="text"  placeholder="请输入您的手机号" style="width:60%;" value="" name="phone_number" class="phone"/>
+              <span class="fasong" style="cursor:pointer">
+                 <span id="pin">
+                     <span id="codeRandom" class="code" onclick="creatRandomCode()" style="position: absolute;top:0;left:65%;  width: 35%; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;获取验证码</span>
+                 </span>
+              </span>
+          </div>
+          <div class="pass">
+              <input type="text"  placeholder="请输入您的验证码" style="width:90%;" value="" name="code" id="codeNew"/>
+          </div>
+          <div class="pass">
+              <input type="text"  placeholder="请输入邀请人编号" style="width:90%;" value="<?php echo $_GET['invitation_code'];?>" name="invitation_code" id="invitation_code"/>
+          </div>
+          <div class="xuanze">选择角色</div>
+           <div class="xuanze" style="margin-top:2%">
+               <img src="__PUBLIC__/home/images/heng.png" width="252" height="1" />
+           </div>
+               <div class="bud">
+               <span>　
+                   <input type="radio" id="nba"  name="" value="0">
+                   <label name="nba" for="" id=""></label>车主
+               </span>
+               <span>　　
+                   <input type="radio" name="" value="1" id="wolail">
+                   <label name="cba" ></label>货主
+               </span>　
+               <!--<span>
+                   <input type="radio" name="" value="2" >
+                   <label name="cba" id="message"></label>信息部
+               </span>-->
+               </div>
+               <input type="hidden" name="type" value="" id="typeVal">
+           <div class="agree">
+             <label class="demo--label"><input class="demo--radio" type="checkbox" name="demo-checkbox1">
+        <span class="demo--checkbox demo--radioInput"></span>阅读并同意服务条款
+    </label>
+            </div>
+          <div class="enter"  style="margin-top:2%" id="click"><input type="button" style="width:100%;" class="login" value="注册" /></div>
+           </form>
+       </div>
+    </div>
+    <div id="succ">
+       <div class="chenggong">
+          <div class="phrase">
+              <img src="__PUBLIC__/home/images/chenggong.png" width="37" height="41" />　注册成功！
+          </div>
+          <a href="{:U('Index/index')}">
+              <div class="wancheng"><input type="button" value="完成并登录"/>
+              </div>
+          </a>
+           <if condition="$user_info eq 0">
+          <a href="{:U('Send/car_data')}">
+              <div class="geren"><input type="button"  value="完成个人信息"/>
+              </div>
+          </a>
+           <else/>
+               <a href="{:U('Send/owner_data')}">
+                   <div class="geren"><input type="button"  value="完成个人信息"/>
+                   </div>
+               </a>
+               </if>
+       </div>
+    </div>
+  
+ </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+
+        $('.enter').click(function()
+        {
+            if(!$(".demo--radio").prop("checked"))
+            {
+                tanchu('请阅读服务条款');
+            }
+            else if($('#code').val()=="")
+            {
+                tanchu("请填写验证码");
+            }
+            /*else if(!$(".checked").siblings().val())
+            {
+                tanchu("请选择角色");
+            }*/
+
+            else
+            {
+                var typeVal=$(".checked").siblings().val();
+                $("#typeVal").val(typeVal);
+                var phone_number = $('.phone').val();
+                var code = $('#codeNew').val();
+                var invitation_code = $('#invitation_code').val();
+                // alert(invitation_code);
+                url="__CONTROLLER__/register_do";
+                $.ajax({
+                    type:"post",
+                    url:url,
+                    data:{code:code,phone_number:phone_number,invitation_code:invitation_code,type:typeVal},
+                    success:function(data){
+                        if(data!="")
+                        {
+                            var jsonObj=eval("("+data+")");
+                            if(jsonObj.status==1){
+                               $("#succ").show();
+                            }else{
+                                tanchu(jsonObj.msg);
+                            }
+                        }
+                        else
+                        {
+                            tanchu('网络错误。');
+                        }
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                        //alert("出现错误！！！");
+                    }
+                });
+            }
+        });
+        $('#message').click(function(){
+           tanchu('亲~该角色还在就位');
+        });
+
+
+    });
+</script>
+<script type="text/javascript">
+    var allowClike=1;
+    function creatRandomCode(){
+        if(allowClike==0){
+            return;
+        }
+        var phoneCode=$("input[name=phone_number]").val();
+        if(phoneCode==''||phoneCode==null){
+            tanchu('请填写手机号！');
+            return;
+        }
+        else if(phoneCode.length!=11)
+        {
+            tanchu('请确认位数');
+            return;
+        }
+        allowClike=0;
+        url="{:U('Home/Login/randomCodeReg')}";
+        $.ajax({
+            type: "post",
+            data:{phone:phoneCode},
+            url:url,
+            success: function (data){
+                 // alert(data);
+                $("#codeRandom").remove();
+                setTimeout(clearSession, 1000*60);
+                var num = 61;
+                var i = setInterval(function() {
+                    num--;
+                    if(num<10){
+                        num="0"+num;
+                    }
+                    $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num+"秒！");
+                    if (num==0){
+                        allowClike=1;
+                        clearInterval(i);
+                        $(".fasong").html("<span id='pin'><span id='codeRandom' class='code' onclick='creatRandomCode()'>&nbsp;&nbsp;&nbsp;&nbsp;发送验证码</span></span>");
+                    }
+                },1000);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("出现错误！！！");
+            }
+        });
+    }
+
+    function clearSession(){
+        url="{:U('Home/Login/clearSession')}";
+        $.ajax({
+            type: "get",
+            url:url,
+            success: function (data){
+                //alert(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("出现错误！！！");
+            }
+        });
+    }
+</script>

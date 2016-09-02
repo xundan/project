@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>订单详情货主</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+	<style>
+		.black_overlay{
+			display: none;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=88);
+		}
+		.white_content {
+			display: none;
+			position: absolute;
+			top: 25%;
+			left: 10%;;
+			width: 70%;
+			height:35%;
+			padding: 20px;
+			border: 2px solid #000000;
+			background-color: #ccc;
+			z-index:1002;
+			overflow: auto;
+			text-align:center;
+		}
+		.white_content p{
+			font:18px 微软雅黑;
+			text-align:center;
+			margin-top:20px;
+			margin-bottom:10px;
+		}
+		.white_content a{
+			font:18px 微软雅黑 !important;
+			text-decoration:none !important;
+			background:#372e2e;
+			padding:3px 30px;
+			color:#fff;
+			border-radius:5px;
+		}
+		.white_content a:hover{
+			font:18px 微软雅黑 !important;
+			text-decoration:none !important;
+			background:#666;
+			padding:3px 30px;
+			color:#fff;
+			border-radius:5px;
+		}
+	</style>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.5.1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.raty.js"></script>
+<script type="text/javascript" >
+$(function(){
+
+	$(".donym a").click(function(){
+		var imgUrl = $(this).css("background-image");
+		if(imgUrl.indexOf("-on")>0){
+			imgUrl = imgUrl.replace("-on.png",".png");
+			$(this).css("background-image",imgUrl);
+			}else{
+				imgUrl = imgUrl.replace(".png","-on.png");
+			$(this).css("background-image",imgUrl);
+				}
+	});
+}); 
+</script>
+<body style="background:#EBEBEB">
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+             <a href="{:U('Order/order_goods')}">
+				 <div class="return">
+					 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+				 </div>
+			 </a>
+              <div class="indent">订单详情</div>
+       </div>
+    <div class="tab">
+            <div id="content">
+
+               <div class="point">
+                  <div class="item">
+                      <dl class="item-left">
+                        <dt><img src="__ROOT__{$order_list.headimgurl}"width="55" height="57" style="border-radius:50%;"/></dt>
+                        <dd>{$order_list.uname} <img src="__PUBLIC__/home/images/xing.png" width="16" height="15" />{$list_str} &nbsp;<span style="color:#000">{$order_count}单</span></dd>
+                        <dd style="color:#000"><if condition="$order_list.role_id eq 0">车主
+							<elseif condition="$order_list.role_id eq 1"/>货主
+							<else />信息部
+						</if></dd>
+                      </dl>
+                      <div class="item-right"><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" style="color:#333;"><img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话</a></div>
+                   </div>
+                   <div class="pump">
+                      <div class="pump-left"></div>
+                      <div class="pump-center">订单详情</div>
+                      <div class="pump-right"></div>
+                   </div>
+                  <?php
+                  if($order_list['pid']!=0){
+                  	$temp['id'] = $order_list['pid'];
+                  	$result = M('districts')->where($temp)->find();
+				   	if($result['pid']!=0){
+				   		$asp['id'] = $result['pid'];
+				   		$results = M('districts')->where($asp)->find();
+				   }else{
+				   		$results = '';
+				   }
+                  }else{
+                  	$result = '';
+                  }
+                  ?>
+                   <div class="describe" style="padding-bottom:4%; padding-top:0%"> 
+                    <div class="column"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 煤炭种类 <span>{$order_list.type}</span></div>
+                          <div class="column"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 品质&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{$order_list.descri}</span></div>
+                          <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 供货公司 <span>{$order_list.name}</span></div>
+                   <div class="dizhi" style="margin-top:2%"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />&nbsp;产地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{$results.area}{$result.area}{$order_list.area}</span></div>
+                   <div class="dizhi"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" />&nbsp;吨数 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{$order_list.purchasing_tonnage}</span></div>
+                  </div>
+                   <div class="pump" style="margin-top:2%">
+                      <div class="pump-left"></div>
+                      <div class="pump-center">匿名评价</div>
+                      <div class="pump-right"></div>
+                   </div>
+			   <form action="{:U('order_good_sale_do')}" method="post" id="form_id">
+                  <div class="anonymity">
+		           <p>
+				     <div class="imgupload">
+                        <a href="##" id="up1"><input id="file_input" type="file" name="upload" multiple></a>
+				      </div>
+                    <div class="juzhong">
+				     <div class="pingjiaxing">
+					      <div class="star2"></div>
+                          <div class="result2"></div>
+						 <span ></span>
+			       </p>
+                     </div>
+                   </div>
+                </div> 
+                <div class="donym">
+					<!--显示星级-->
+					<input type="hidden" name="star_info" value="">
+					<!--订单id-->
+					<input type="hidden" name="order_infos" value="{$order_list['id']}">
+				<volist name="comment_info" id="com_vo">
+                   <a href="#" class="long" attr="{$com_vo['id']}">{$com_vo['comment_content']}<input type="hidden" name="official_comment_id[]" value=""></a>
+				</volist>
+                   <!--<a href="#">工作负责</a>
+                   <a href="#" class="long">车内整洁/卫生</a>　&nbsp;&nbsp;
+                   <a href="#" class="long">车内整洁/卫生</a>
+                   <a href="#">工作负责</a>-->
+                 </div>
+                 <div class="depict"><textarea name="comment"></textarea></div>
+                 <div class="commit"><input type="button" class="tijiao" value="提交评价"/></div>
+			   </form>
+        </div>
+
+      </div>
+   </div>
+</div>
+ <div id="light" class="white_content">
+	 <p>15020011277</p>
+	 <a href="tel:15020011277">拨号</a>
+	 <br/><br/>
+	 <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">取消</a></div>
+ <div id="fade" class="black_overlay"></div>
+ <script type="text/javascript">
+	 $(function(){
+		 //星级显示
+		 $('.star2 img').click(function(){
+			var star_num = $(this).attr('alt');
+			 //alert(star_num);
+			$("input[name=star_info]").val(star_num);
+		 });
+		 //所选评价项显示
+		 $('.long').click(function(){
+			 var css = $(this).css('background-image');
+			var str = $(this).attr('attr');
+			 css = css.substr(-8,2);
+			 if(css=="on"){
+				 	$(this).find('input').val(str);
+			 }else{
+				 	$(this).find("input").val("");
+			 }
+		 });
+
+		 //验证表单元素
+		$('.tijiao').click(function(){
+			$('#form_id').submit();
+		});
+	 });
+ </script>
+<script type="text/javascript">
+var result = document.getElementById("result"); 
+var input = document.getElementById("file_input"); 
+if(typeof FileReader==='undefined'){ 
+    result.innerHTML = "抱歉，你的浏览器不支持 FileReader"; 
+    input.setAttribute('disabled','disabled'); 
+}else{ 
+    input.addEventListener('change',readFile,false); 
+} 
+function readFile(){ 
+	var len = this.files.length;
+	var html= '<div class="uploadimg" id="result">';
+	var x = 0;
+	for(var i=0;i<len;i++){
+		var file = this.files[i]; 
+		if(!/image\/\w+/.test(file.type)){ 
+			alert("文件必须为图片！"); 
+			return false; 
+		} 
+		var reader = new FileReader(); 
+		reader.readAsDataURL(file); 
+		reader.onload = function(e){
+			var h = '<img src="'+this.result+'"/>';
+			html+=h;
+			x++;
+			if(x==len){
+				html=html+'</div>';
+				$("#up1").after(html);
+			}
+		}
+	}
+	<!-- html=html+'</div>'; -->
+	<!-- $("#up1").after(html); -->
+} 
+ <!-- $("#first").live("change", function() { -->
+    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
+	
+<!-- }); -->
+
+
+rat('star2','result2',1);
+function rat(star,result,m){
+
+	star= '.' + star;
+	result= '.' + result;
+	$(result).hide();//将结果DIV隐藏
+
+	$(star).raty({
+		hints: ['10','20', '30', '40', '50'],
+		path: "__PUBLIC__/home/images",
+		starOff: 'star-off-big.png',
+		starOn: 'star-on-big.png',
+		size: 100,
+		start: 10,
+		showHalf: true,
+		target: result,
+		targetKeep : true,//targetKeep 属性设置为true，用户的选择值才会被保持在目标DIV中，否则只是鼠标悬停时有值，而鼠标离开后这个值就会消失
+		click: function (score, evt) {
+			//第一种方式：直接取值
+			//alert();
+			//alert('你的评分是'+score*m+'.0分');
+			//$("#eee").html(score*m+".0分");
+		$(this).parents().siblings("span").html(score*m+".0");
+		}
+	});
+
+	/*第二种方式可以设置一个隐蔽的HTML元素来保存用户的选择值，然后可以在脚本里面通过jQuery选中这个元素来处理该值。 弹出结果
+	var text = $(result).text();
+	$('img').click(function () {
+		if ($(result).text() != text) {
+			alert('你的评分是'+$(result).text()/m+'分');
+			alert(result);
+			return;
+		}
+	});*/
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<style type="text/css">
+	#line-chart {
+		height:300px;
+		width:800px;
+		margin: 0px auto;
+		margin-top: 1em;
+	}
+	.brand { font-family: georgia, serif; }
+	.brand .first {
+		color: #ccc;
+		font-style: italic;
+	}
+	.brand .second {
+		color: #fff;
+		font-weight: bold;
+	}
+	#tanchuang{
+		display:none;
+		font-size:25px;
+		text-align:center;
+		border-radius:10px;
+		color:white;
+		position:fixed;
+		top:40%;
+		left:40%;
+		right:40%;
+		bottom:40%;
+		min-width:180px;
+		height:50px;
+		line-height:50px;
+		margin:0 auto;
+		background:rgba(0,0,0,0.8);
+		z-index:9999999999;
+	}
+	input {
+		border:1;
+	}
+
+</style>
+<div class="footer">
+				<div class="footer-inner">
+					<!-- #section:basics/footer -->
+					<div class="footer-content">
+						<span class="bigger-120">
+							<small>Copyright &copy; 2015 <a href="/" target="_blank">超级矿资源</a> All Rights Reserved.</small>
+						</span>
+					</div>
+
+					<!-- /section:basics/footer -->
+				</div>
+			</div>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+<div id="tanchuang">
+	错误
+</div>
+<script>
+	function tanchu(text){
+		$("#tanchuang").html(text);
+		$("#tanchuang").show();
+		setTimeout(function(){$("#tanchuang").fadeOut(2000)},2000);
+	}
+</script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>{$current['title']}-{$Think.CONFIG.title}</title>
+				<style>
+					.grouptd{position:relative;}
+					.group{display:inline-block;width:100%;}
+					.groupselect{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+				</style>
+		<meta name="keywords" content="{$Think.CONFIG.keywords}" />
+		<meta name="description" content="{$Think.CONFIG.description}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+		<include file="Public/head" />
+   </head>
+
+	<body class="no-skin">
+		<include file="Public/header" />
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<include file="Public/sidebar" />
+			<div class="main-content">
+				<div class="main-content-inner">
+					<!-- #section:basics/content.breadcrumbs -->
+					<include file="Public/breadcrumbs" />
+
+					<!-- /section:basics/content.breadcrumbs -->
+					<div class="page-content">
+						<include file="Public/set" />
+
+						<!-- /section:settings.box -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="row" style="margin-left: 410px;">
+									<form class="form-inline" action="" method="get">
+										<label class="inline">标题查询</label>
+											<input type="text" name="title" class="form-control">
+											<button type="submit" class="btn btn-purple btn-sm">
+												<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+												Search
+											</button>
+									</form>
+								</div>
+								<div class="space-4"></div>
+								<div class="row">
+									<form id="form" method="post" action="{:U('message_del')}">
+										<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th class="center" style="width:5%"><input class="check-all" type="checkbox" value=""></th>
+												<th style="width:5%" class="center">id</th>												
+												<th style="width:8%" class="center">发布人</th>
+												<th style="width:8%" class="center">身份</th>
+												<th style="width:8%" class="center">用户公司</th>
+												<th class="center" style="width:8%">发布时间</th>
+												<th class="center" style="width:8%">类型</th>
+												<th class="center" style="width:8%">状态</th>
+												<th class="center" style="width:8%">是否失效</th>
+												<th class="center" style="width:8%">信息标题</th>
+												<th class="center" style="width:8%">电话</th>
+												<th class="center" style="width:8%">备注</th>
+												<th class="center" style="width:8%">操作</th>
+											</tr>
+										</thead>
+										<tbody>
+
+										<volist name="message" id="val">
+											<tr>
+												<td class="center">
+													<input class="uids" type="checkbox" name="aids[]" value="{$val['ids']}">
+												</td>
+												<td class="grouptd" style="text-align: center;">{$val['uid']}</td>												
+												<td class="grouptd" style="text-align: center;">{$val['name']}</td>
+												<td class="center"><if condition="$val.role_id eq 1">货主
+													<elseif condition="$val.role_id eq 0"/>车主
+													<else /> 信息部</if></td>
+												<td class="grouptd" style="text-align: center;">{$val['name1']}</td>
+												<td><if condition="$val.publish_time eq ''">暂无时间<else/>{$val['publish_time']|date="Y-m-d H:i:s",###}</if></td>
+												<td class="grouptd" style="text-align: center;">{$val['type']}</td>
+												<td class="center"><eq name="val.status" value="0">显示<else/>撤销</eq></td>
+												<td class="grouptd" style="text-align: center;"><if condition="$val.deline_time gt ($now)">有效<else/>无效</if></td>
+												<td class="grouptd" style="text-align: center;">{$val['title']}</td>
+												<td class="grouptd" style="text-align: center;">{$val['phone_number']}</td>
+												<td class="grouptd" style="text-align: center;">{$val['remark']}</td>
+												<td class="center"><a class="del" href="javascript:;" val="{:U('message_del')}?aids={$val['ids']}" title="删除">删除</a>&nbsp;&nbsp;<a style="text-decoration: none;" href="{:U('message_edit')}?aid={$val['uid']}">查看</a></td>
+											</tr>
+										</volist>
+										</tbody>
+									</table>
+									</form>
+									<div class="cf">
+										<input id="submit" class="btn btn-info" type="button" value="删除">
+									</div>
+								{$pagestr}
+								</div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+			<include file="Public/footer" />
+			
+		</div><!-- /.main-container -->
+
+		<include file="Public/footerjs" />
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+		$(function(){
+			$(".group").click(function(){
+				$(this).addClass('hide');
+				$(this).parent().find(".groupselect").removeClass('hide');
+			})
+			$(".groupselect").on("change",function(){
+				var ob = $(this);
+				var gid=ob.val();
+				var uid = ob.parent().find('.group').attr('val');
+				$.get("{:U('update')}?ajax=yes&uid="+uid+"&gid="+gid,function(data){
+					var text = ob.find("option:selected").text();
+					ob.parent().find(".group").removeClass('hide').html(text);
+					ob.addClass('hide');
+				 });
+			})
+			
+			$(".check-all").click(function(){
+				$(".uids").prop("checked", this.checked);
+			});
+			$(".uids").click(function(){
+				var option = $(".ids");
+				option.each(function(i){
+					if(!this.checked){
+						$(".check-all").prop("checked", false);
+						return false;
+					}else{
+						$(".check-all").prop("checked", true);
+					}
+				});
+			});
+			$("#submit").click(function(){
+				bootbox.confirm({
+					title: "系统提示",
+					message: "是否要删除所选用户？", 
+					callback:function(result){
+						if(result){
+							$("#form").submit();
+						}
+					},
+					buttons: {
+						"cancel" : {"label" : "取消"},
+						"confirm" : {
+								"label" : "确定",
+								"className" : "btn-danger"
+							}
+					}
+				});
+			});
+			$(".del").click(function(){
+				var url = $(this).attr('val');
+				bootbox.confirm({
+					title: "系统提示",
+					message: "是否要该用户?", 
+					callback:function(result){
+						if(result){
+							window.location.href = url;
+						}
+					},
+					buttons: {
+						"cancel" : {"label" : "取消"},
+						"confirm" : {
+								"label" : "确定",
+								"className" : "btn-danger"
+							}
+					}
+				});
+			});
+		})
+		</script>
+	</body>
+</html>

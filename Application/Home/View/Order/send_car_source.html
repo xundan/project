@@ -1,0 +1,600 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>发布车源</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/common.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+<!--发布货源-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".guan").click(function(){
+		$(".little").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function() {
+		var eekrn = "";
+	    $('.heavy').click(function(){
+			$(".little").show();	
+			});
+		});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function() {
+	    $('.leixing').click(function(){
+			if(eekrn)
+			{
+				$('.miaosu').html(eekrn);
+			}
+			
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".leixing p").click(function(){
+	 eekrn = $(this).html();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".guan").click(function(){
+		$(".stock").hide()
+		});
+		
+	})
+</script>
+
+ <script type="text/javascript">
+	 $(function() {
+		var fggw = "";
+	    $('.vehicle').click(function(){
+			$(".stock").show();	
+			});
+		});
+	</script>
+    
+    <script type="text/javascript">
+	 $(function() {
+	    $('.stock').click(function(){
+			if(fggw)
+			{
+				$('.care').html(fggw);
+			}
+			
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".stock p").click(function(){
+	 fggw = $(this).html();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+	</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".guan").click(function(){
+		$(".people").hide()
+		});
+
+	})
+</script>
+ <!--<script type="text/javascript">
+	 $(function() {
+		var fbfa = "";
+	    $('.touch').click(function(){
+			$(".people").show();
+			});
+		});
+	</script>-->
+    <script type="text/javascript">
+	 $(function() {
+	    $('.handset').click(function(){
+			if(fbfa)
+			{
+				$('.lianxi').html(fbfa);
+			}
+			});
+		});
+	</script>
+ <script type="text/javascript">
+	 $(document).ready(function(){
+   $(".handset p").click(function(){
+	 fbfa = $(this).html();
+   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+  })
+})
+	 
+</script>
+ <script type="text/javascript">
+$(document).ready(function(){
+	$("#vanish").click(function(){
+		$("#intact").hide();
+		});
+	});
+</script>
+    <!--是否短途调配-->
+    <script type="text/javascript">
+        function subAction(){
+        	 var fbqcFhSStr=$("#fbqcFh").val();//发货地址
+        	 if(fbqcFhSStr==""){
+        	 	tanchu("请选择发货地址");
+        	 	return;
+        	 }
+        	 var fbqcShSStr=$("#fbqcSh").val();//目的地址
+        	 if(fbqcShSStr==""){
+        	 	tanchu("请选择目的地址");
+        	 	return;
+        	 }
+            var tiaopei = $("#div2").attr('class');
+            if(tiaopei=='open2')
+            {
+                $short_location = 0;
+                $('input[name=short_location]').val($short_location);
+            }else{
+                $short_location = 1;
+                $('input[name=short_location]').val($short_location);
+            }
+            var subData=$("#form1").serialize();
+            // alert(subData);return;
+            var url="{:U('send_car_source_action')}";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:subData,
+                success:function(data){
+                    if(data!=""){
+                        var jsonObj=eval("("+data+")");
+                        if(jsonObj.status){
+                            $("#intact").show();
+                        }else{
+                            tanchu(jsonObj.msg);
+                        }
+                    }
+                }
+            });
+        }
+        $(function()
+      {
+        var choice = "";
+       $('.slip').click(function()
+       {
+          $("#location").show();  
+       });
+      });
+     $(function()
+      {
+        var choice = "";
+       $('.delivery').click(function()
+       {
+          $("#location1").show();  
+       });
+      });
+    </script>
+    <!--省市联动关闭-->
+    <script type="text/javascript">
+        $(function(){
+            $('.guan').click(function(){
+                $('.send').html($("#districtSelected").text());
+                $('#location').hide();
+            });
+
+            $('#off1').click(function(){
+                $('.back').html($("#districtSelected1").text());
+                $('#location1').hide();
+            });
+        });
+    </script>
+    <!--点层消失的效果-->
+    <script type="text/javascript">
+     /* /!*  //判断层的消失
+        $(function(){
+            //alert($('#districtNameStr').attr('attr'));
+
+        });*!/
+        function xiaoshi(obj)
+        {
+         var quyu_type = $('#districtNameStr').attr('attr');
+         if(quyu_type!=undefined)
+         {
+         $(obj).hide();
+         }
+        }*/
+    </script>
+</head>
+<body style="background:#EBEBEB">
+<include file="Common:common"/>
+ <div id="box">
+      <div id="header" style="margin-bottom:0%">
+          <a href="{:U('Index/index')}">
+             <div class="return">
+                 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+             </div>
+          </a>
+              <div class="indent">发布车源</div>
+       </div>
+            <div id="content">
+               <div class="point">
+                <form action="{:U('Order/send_car_source_action')}" method="POST" id="form1">
+               <div class="slip">
+            <div class="slip-left">出发地址
+              <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+              <span class="send"></span>
+              <input type="hidden" name="area1" id="fbqcFh">
+            </div>
+            <div class="slip-right">
+              <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+            </div>
+         </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                <div class="place"><img src="__PUBLIC__/home/images/lanse.png" id="area1"  width="20" height="23"/>　
+                    <input type="text" placeholder="（详情地址，必填）" name="detail_area1" value="" />
+                </div>
+                 <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                 <div class="delivery">
+                          <div class="delivery-left">目的地址
+                <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                <span id="back" class="back"></span>
+                <input type="hidden" name="area2" id="fbqcSh">
+                <input type="hidden" name="origin" value="2">
+              </div>
+                          <div class="delivery-right">
+                <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+              </div>
+                  </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                 <div class="place"><img src="__PUBLIC__/home/images/cheng.png" id="area2"  width="20" height="23"/>　
+                     <input type="text" name="detail_area2" placeholder="（详细地址，必填）" value="" />
+                 </div>
+                 <!--<div class="freight" style="margin-top:2%">装车时间<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
+                     <input type="date"  name="loading_time" style="width:70%"/>
+                 </div>-->
+
+
+
+                    <div class="sdskl" style="background:#FFF; height:45px; line-height:45px; padding-left:2%">
+                        <div class="demo" style="margin:10px auto 0 auto; background:#FFF">
+                            <div class="lie">装车时间&nbsp;&nbsp;<input  id="beginTime" name="loading_time" class="kbtn" /></div>
+                            <!--<div class="lie">日期设置-2:<input id="endTime" class="kbtn" /></div>-->
+                        </div>
+                        <div id="datePlugin"></div>
+
+                    </div>
+
+
+                 <div class="opan" style="margin-top:2%; margin-bottom:2%">短途调配<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
+                     <div id="div1" class="open1">
+                        <div id="div2" class="open2"></div>
+                     </div>
+                 </div><input type="hidden" name="short_location" value=""/>
+                   <div class="heavy">
+                          <div class="heavy-left">货物类型<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
+                              <span class="miaosu"></span>
+                          </div>
+                          <div class="heavy-right"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16"/></div>
+                  </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="vehicle">
+                          <div class="vehicle-left">车辆类型<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
+                              <span class="care"></span>
+                          </div>
+                          <div class="vehicle-right"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16"/></div>
+                  </div>
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                   <div id="expand" style="height:100px; line-height:25px; margin-bottom:2%">车源描述<textarea class="reda" name="car_resource_descri" style="height:60px;line-height:25px"></textarea>
+                    </div>
+                     <div class="touch">
+                          <div class="touch-left">联系电话<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
+                              &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="phone" value=""></div>
+
+                     </div>
+               </div>
+               <div class="issue"><input type="button" value="发 布" onclick="subAction()"/></div>
+                </form>
+                <div class="little">
+                    <div class="leixing">
+                        <volist name="goods" id="vo_goods">
+                            <p>{$vo_goods['type']}<input type="hidden" name="product_type_id" value="{$vo_goods['id']}"></p>
+                        </volist>
+                        <div class="guan"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
+                    </div>
+                </div>
+                <div class="stock">
+                    <div class="factor">
+                        <volist name="car" id="car_vo">
+                            <p>{$car_vo['car_type']}<input type="hidden" name="sendcar_carinfo_typeid" value="{$car_vo['id']}"></p>
+                        </volist>
+                        <div class="guan"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
+                    </div>
+
+                </div>
+                <div id="intact">
+                   <div class="chenggong">
+                      <div id="vanish"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="26"/></div>
+                      <a href="{:U('Index/index')}"><div class="wancheng"><input type="button" value="发布完成"></div></a>
+                      <a href=""><div class="geren"><input type="button" value="继续发布"></div></a>
+                   </div>
+               </div>
+   </div>
+ </div>
+ <!--发货地址省的显示-->
+               <div id="location" class="syfclass">
+                   <div class="state province">
+                                                  <!--lisy-->
+                                                  <span id="districtSelected"><span id="provinceNameStr"  attr="0" val=""></span>&nbsp;&nbsp;<span id="cityNameStr" val=""></span>&nbsp;&nbsp;<span id="districtNameStr" val=""></span></span>
+                                                         <span id="getAllCity">
+             <volist name="province" id="pro_vo">
+             <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+             </volist>
+             </span>
+             <div id="off">
+                <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+             </div>
+             <span onclick="getMyAddress()" >确定</span>
+                       <div class="guan"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
+                   </div>
+               </div>
+               <script type="text/javascript">
+                   $(function(){
+                       $('#location').click(function(e){
+                         e = window.event || e;
+                         obj = $(e.srcElement || e.target);
+                         if (obj.attr('class') == 'syfclass') {
+                         	 $('.send').html($(this).find("#districtSelected").text());
+                         	 $('#location').hide();
+                         }
+                     });
+                  });
+                   $(function(){
+                       $('#location1').click(function(e){
+                         e = window.event || e;
+                         obj = $(e.srcElement || e.target);
+                         if (obj.attr('class') == 'otherClassStr') {
+                         	 $('#back').html($(this).find("#districtSelected1").text());
+                         	 $('#location1').hide();
+                         }
+                     });
+                  });
+               </script>
+
+        <!--收货地址省的显示-->
+        <!--收货地址省的显示-->
+               <div id="location1" class="otherClassStr">
+              <div class="state1 province1">
+                  <span id="districtSelected1"><span id="provinceNameStr"  attr="0" val=""></span>&nbsp;&nbsp;<span id="cityNameStr" val="" ></span>&nbsp;&nbsp;<span id="districtNameStr" val="" ></span></span>
+                             <span id="getAllCity">
+             <volist name="province" id="pro_vo">
+             <p attr="{$pro_vo.id}"  type="{$pro_vo.pid}" dis_type="{$pro_vo.dis_type}">{$pro_vo.area}</p>
+             </volist>
+             </span>
+             <div id="off1">
+                <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+             </div>
+             <span onclick="getMyAddress1()" >确定</span>
+                                                </div>
+               </div>
+               <!--发布货源开始-->
+  <script type="text/javascript">
+      function getMyAddress(){
+              $('.send').html($("#districtSelected").text());
+              // var districtStrIdNo=$("#districtSelected").children("span #cityNameStr").attr("val");
+              // if(districtStrIdNo==""||districtStrIdNo==null){
+              //   tanchu("请选择所在区域");
+              //            return;
+              // }
+              // $("#fbqcFh").val(districtStrIdNo);
+              $("#location").hide();
+
+      }
+      function getMyAddress1(){
+              // var districtStrIdNo=$("#districtSelected1").children("span #cityNameStr").attr("val");
+              // if(districtStrIdNo==""||districtStrIdNo==null){
+              //   tanchu("请选择所在区域");
+              //            return;
+              // }
+              // $("#fbqcSh").val(districtStrIdNo);
+              $('.back').html($("#districtSelected1").text());
+              $("#location1").hide();
+     }
+    	$(document).ready(function()
+     {
+    /*******************修改lisy*******************/
+       $(".state p").click(function()
+       {
+        choice = $(this).text();
+        var realId=$(this).attr("attr");
+        $("#fbqcFh").val(realId);
+         $('.send').html(choice);
+         var type=0;
+         if(type){
+         }else{
+          $(this).parent().parent().find("span #provinceNameStr").html(choice);
+         }
+          $(this).addClass("yangshi").siblings().removeClass("yangshi");
+      })
+    /*******************修改lisy*******************/
+    });
+   $(document).ready(function()
+   {
+     $(".state1 p").click(function()
+     {
+       var realId=$(this).attr("attr");
+       $("#fbqcSh").val(realId);
+       gsge = $(this).text();
+       var type=0;
+         if(type){
+         }else{
+          //$(this).parent().parent().find("span #provinceNameStr").html(choice);
+          $(this).parent().parent().find("span #provinceNameStr").html(gsge);
+      }
+       $(this).addClass("yangshi").siblings().removeClass("yangshi");
+     })
+  })
+      $(function()
+              {
+              $(".province p").click(test);
+              $(".province").find("span #provinceNameStr").click(test);
+              $(".province").find("span #cityNameStr").click(test);
+              $(".province").find("span #districtNameStr").click(test);
+              $(".province1 p").click(test1);
+              $(".province1").find("span #provinceNameStr").click(test1);
+              $(".province1").find("span #cityNameStr").click(test1);
+              $(".province1").find("span #districtNameStr").click(test1);
+            });
+       //从哪出发联动
+      function test(){
+                  var pro_id = $(this).attr('attr');
+                  var obj=$(this);
+        var url="{:U('Home/Send/ajax_sheng')}";
+        $.ajax({
+          type:"post",
+          url:url,
+          data:{pro_id:pro_id},
+          success:function(data){
+             // alert(data);return;
+            if(data!=0){
+              var a = eval(data);
+              var proStr="";
+              jQuery.each(a, function(k, val)
+              {
+                // console.log(val.area);
+                proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+              });
+              obj.parent().parent().find("#getAllCity").html(proStr);
+              $(".province p").click(test);
+              $('.state p').click(function(){
+                 choice = $(this).text();
+                 var pid=$(this).attr('pid');
+                 var realId=$(this).attr('attr');
+                                                            $('.send').html(choice);
+                                                                 var type1=$(this).attr('dis_type');
+                                                                    if(type1){
+                                                                      if(type1=='1'){
+                                                                            $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                                                            $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                                                            $(this).parent().parent().find("span #provinceNameStr").html(choice);
+                                                                            $(this).parent().parent().find("span #cityNameStr").html("");
+                                                                            $(this).parent().parent().find("span #districtNameStr").html("");
+                                                                            $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                                                            $("#fbqcFh").val(realId);
+                                                                           }
+                                                                      if(type1=='2'){
+                                                                          $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                                                          $(this).parent().parent().children("span").find("#cityNameStr").attr('val',realId);
+                                                                          $(this).parent().parent().find("span #cityNameStr").html(choice);
+                                                                          $(this).parent().parent().find("span #districtNameStr").html("");
+                                                                          $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                                                          $("#fbqcFh").val(realId);
+                                                                      }
+                                                                    if(type1=='3'){
+                                                                            $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                                                            $(this).parent().parent().children("span").find("#districtNameStr").attr('val',realId);
+                                                                            $("#fbqcFh").val($(this).val());
+                                                                            $(this).parent().parent().find("span #districtNameStr").html(choice);
+                                                                            $("#fbqcFh").val(realId);
+                                                                           }
+                                                                      }
+                                                                     
+                                                                     $(this).addClass("yangshi").siblings().removeClass("yangshi");
+              });
+            }
+          },
+          error:function(XMLHttpRequest,textStatus,errorThrown){
+            alert("出现错误！！！");
+          }
+        });
+              }
+       //到哪里联动
+        function test1(){
+                  var pro_id = $(this).attr('attr');
+                  var obj=$(this);
+        var url="{:U('Home/Send/ajax_sheng')}";
+        $.ajax({
+          type:"post",
+          url:url,
+          data:{pro_id:pro_id},
+          success:function(data){
+            if(data!=0){
+              var a = eval(data);
+              var proStr="";
+              jQuery.each(a, function(k, val)
+              {
+                console.log(val.area);
+                proStr=proStr+"<p attr='"+val.id+"'  pid='"+val.pid+"' dis_type='"+val.dis_type+"'>"+val.area+"</p>";
+              });
+              obj.parent().parent().find("#getAllCity").html(proStr);
+              $(".province1 p").click(test1);
+              $('.state1 p').click(function(){
+                 choice = $(this).text();
+                 var pid=$(this).attr('pid');
+                 var realId=$(this).attr('attr');
+                                                            $('.back').html(choice);
+                                                                 var type1=$(this).attr('dis_type');
+                                                                    if(type1){
+                                                                      if(type1=='1'){
+                                                                            $(this).parent().parent().children("span").find("#provinceNameStr").attr('attr',0);
+                                                                            $(this).parent().parent().children("span").find("#provinceNameStr").attr('val',realId);
+                                                                          $(this).parent().parent().find("span #provinceNameStr").html(choice);
+                                                                          $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                                                          $(this).parent().parent().find("span #cityNameStr").html("");
+                                                                          $(this).parent().parent().find("span #districtNameStr").html("");
+                                                                          $("#fbqcSh").val(realId);
+                                                                           }
+                                                                      if(type1=='2'){
+                                                                        $(this).parent().parent().find("span #cityNameStr").attr('attr',pid);
+                                                                        $(this).parent().parent().find("span #cityNameStr").attr('val',realId);
+                                                                          $(this).parent().parent().find("span #cityNameStr").html(choice);
+                                                                          $(this).parent().parent().find("span #districtNameStr").html("");
+                                                                          $(this).parent().parent().children("span").find("#districtNameStr").attr('val',"");
+                                                                          $("#fbqcSh").val(realId);
+                                                                           }
+                                                                    if(type1=='3'){
+                                                                            $(this).parent().parent().find("span #districtNameStr").attr('attr',pid);
+                                                                            $(this).parent().parent().find("span #districtNameStr").attr('val',realId);
+                                                                          $(this).parent().parent().find("span #districtNameStr").html(choice);
+                                                                          $("#fbqcSh").val(realId);
+                                                                           }
+                                                                      }
+                                                                     $(this).addClass("yangshi").siblings().removeClass("yangshi");
+              });
+            }
+          },
+          error:function(XMLHttpRequest,textStatus,errorThrown){
+            alert("出现错误！！！");
+          }
+        });
+              }
+    	window.onload=function(){
+        var div2=document.getElementById("div2");
+        var div1=document.getElementById("div1");
+        div2.onclick=function(){
+          div1.className=(div1.className=="close1")?"open1":"close1";
+          div2.className=(div2.className=="close2")?"open2":"close2";
+        }
+    }
+    </script>
+<script type="text/javascript" src="__PUBLIC__/home/js/date.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/iscroll.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#beginTime').date();
+        $('#endTime').date({theme:"datetime"});
+    });
+</script>
+</body>
+</html>

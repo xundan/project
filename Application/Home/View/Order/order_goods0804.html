@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>货主订单</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
+</head>
+
+<body style=" background:#EAECEB">
+ <div id="box">
+    <div id="header">
+         <a href="{:U('Send/vip_center')}"><div class="return"><img src="__PUBLIC__/home/images/fanhui.png" width="33" height="33" /></div>
+          <div class="indent">我的订单</div>
+     </div>
+     <!--配货订单-->
+     <volist name="order_list" id="vo">
+     <div id="matter">
+          <div class="headline">
+             <div class="date">{$vo['ctime']|date='Y-m-d H:i:s',###}</div>
+             <a href="#"><div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></a>
+          </div>
+          <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
+              <?php
+                    $data['id'] = $vo['pid1'];
+                    $districts = M('districts')->where($data)->find();
+              $data_one['id'] = $districts['pid'];
+              $districts_one = M('districts')->where($data_one)->find();
+              ?>
+            <input type="text" value="{$districts_one['area']}{$districts['area']}{$vo['area']}{$vo['detail_area1']}" /></div>
+          <div class="address"><img src="__PUBLIC__/home/images/cheng.png"width="20" height="23" />
+              <?php
+                    $data2['id'] = $vo['pid'];
+                    $districts2 = M('districts')->where($data2)->find();
+              $data_one2['id'] = $districts2['pid'];
+              $districts_one2 = M('districts')->where($data_one2)->find();
+              ?>
+           <input type="text" value="{$districts_one2['area']}{$districts2['area']}{$vo['area2']}{$vo['detail_area2']}" /></div>
+           <div class="nom">
+               <?php
+                    $type['id'] = $vo['product_type_id'];
+                    $type_info = M('product_type')->where($type)->find();
+               ?>
+              <div class="yaopin1">煤炭种类：{$type_info['type']}</div>
+               <?php
+                    $data['id'] = $vo['sendcar_carinfo_typeid'];
+                    $res_info = M('relation_carinfo_type')->where($data)->find();
+               ?>
+              <div class="count1">车辆类型：{$res_info['car_type']}</div>
+              <div class="skip"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" /></div>
+           </div>
+     </div>
+     </volist>
+     <div class="rank"></div>
+     <!--交易订单-->
+     <div id="matter">
+         <div class="headline">
+             <div class="date">7月8日</div>
+             <a href="#"><div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div></a>
+         </div>
+         <div class="firm">
+             货品名称<input type="text" value="农副产品" />
+         </div>
+         <div class="firm">
+             货品数量<input type="text" value="53箱" />
+         </div>
+         <div class="firm">
+             购买人/公司<input type="text" value="赵新月" />
+         </div>
+         <div class="firm">
+             买家地址<input type="text" value="山东省济南市历下区天辰路699号" />
+         </div>
+         <div class="arrival">
+             发货日期<input type="text" value="2013-07-09" />
+             发货日期<input type="text" value="2013-07-09"  class="arrival-right"/>
+         </div>
+     </div>
+ </div>
+</body>
+</html>
