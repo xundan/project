@@ -9,6 +9,7 @@
 namespace Views\Controller;
 
 use Think\Controller\RestController;
+use Think\Log;
 
 class PullMessagesController extends RestController
 {
@@ -33,7 +34,7 @@ class PullMessagesController extends RestController
             case 'get': // get请求处理代码
                 $msg = $this->get_message($wx);
                 if ($msg) {
-                    $data['message'] = "【" . $msg['category'] . "】" . $msg['content'];
+                    $data['message'] = $msg['content'];
                     $data['result_code'] = "201";
                     $data['reason'] = "获取成功";
                     $data['result'] = "OK";
@@ -112,22 +113,27 @@ class PullMessagesController extends RestController
      */
     private function get_message($wx)
     {
-        //不能瞎echo，否则GLOBAL解析json会出错
+        //此处不能瞎echo，否则GLOBAL解析json会出错
 //        echo "start ";
         if (!$wx) return null;
         $relation = D("RelationM2W")->where("invalid_id=0 AND wx='" . $wx . "'")->find();
 
         if ($relation) {
-//            echo "here is $relation";
             $msg_id = $relation['msg_id'];
-//            echo "<br/>here is $msg_id";
-            $msg = D('message')->find($msg_id);
-//            echo "<br/> that's $msg";
+            $msg = D('message')->where("invalid_id=0 AND id=$msg_id")->find();
+            if($msg===null){
+                // 消息找不到，说明审核有异步操作，导致先审核过了，又被别人审核删了，保险删掉此消息，应有log
+                $update_data['invalid_id'] = 3;
+                D('RelationM2W')->where("invalid_id=0 AND msg_id=$msg_id")
+                    ->save($update_data);
+                Log::record('PullMessages:get_message('.$wx.'):小消息'.$msg_id.'找不到了，被删除。','WARN');
+                return false;
+            }
+            // 用了之后就删
             if ($msg) {
                 $this->set_used($wx, $msg_id);
             }
             return $msg;
-
         }
         return false;
     }

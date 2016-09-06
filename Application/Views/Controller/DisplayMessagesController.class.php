@@ -19,7 +19,7 @@ class DisplayMessagesController extends Controller
         if (true) {
 //        if ($_SESSION['cur_user']) {
             // 有where包装的时候不要直接find($id)，否则where会失效
-            $data = D('DisplayMessages')->where("invalid_id=0 AND status=0 AND id=" . $id)->find();
+            $data = D('Message')->where("invalid_id=0 AND status=0 AND id=" . $id)->find();
             $this->assign("data", $data);
             $this->assign("id", $id);
             $cur_user = $_SESSION['cur_user'];
@@ -67,7 +67,7 @@ class DisplayMessagesController extends Controller
 
             $this->success('提交成功', 'showDemo?id=' . $this->find_next($id));
         } else {
-            $this->error('四个主要类型（求购，供应，求车，其他）至少选一个。', 'showDemo?id=' . $id);
+            $this->error('四个主要类型（求购，供应，找车，其他）至少选一个。', 'showDemo?id=' . $id);
         }
     }
 
@@ -87,10 +87,11 @@ class DisplayMessagesController extends Controller
 
     }
 
-    private function exist($rid, $label_name)
+    private function exist_invalid_relation($rid, $label_name)
     {
+        // 寻找失效的关系
         if (D('RelationLabel')->
-        where("object_rid='%s' and label_name='%s'", array($rid, $label_name))->find()
+        where("object_rid='%s' and label_name='%s' and invalid_id>0", array($rid, $label_name))->find()
         ) {
             return true;
         }
@@ -105,13 +106,13 @@ class DisplayMessagesController extends Controller
             "invalid_id" => 2,
         );
 
-        if (D('DisplayMessages')->save($update_delete)) echo 'deleted';
+        if (D('Message')->save($update_delete)) echo 'deleted';
     }
 
     public function find_prev($id)
     {
         if ($id < 1) return -1;
-        $prev = D('DisplayMessages')->where("invalid_id=0 AND status=0 AND id<" . $id)
+        $prev = D('Message')->where("invalid_id=0 AND status=0 AND id<" . $id)
             ->order('id desc')->find();
         if ($prev) {
             return $prev['id'];
@@ -122,7 +123,7 @@ class DisplayMessagesController extends Controller
 
     public function find_next($id)
     {
-        $next = D('DisplayMessages')->where("invalid_id=0 AND status=0 AND id>" . $id)
+        $next = D('Message')->where("invalid_id=0 AND status=0 AND id>" . $id)
             ->order('id asc')->find();
         if ($next) {
             return $next['id'];
@@ -176,9 +177,9 @@ class DisplayMessagesController extends Controller
         foreach ($tags as $tag) {
             $data['object_rid'] = $rid;
             $data['label_name'] = $tag;
-            $data['invalid_id'] = 0;
+            $data['invalid_id'] = 0; // data是有效的
             // 如果关系已经存在，刷新有效性，否则就insert
-            if ($this->exist($data['object_rid'], $data['label_name'])) {
+            if ($this->exist_invalid_relation($data['object_rid'], $data['label_name'])) {
                 // 如果数据库没有变化，下面表达式会返回0，（所以不能把它作为成功失败的判断依据）
                 // save只返回变化的行数
                 $Relations->
@@ -202,16 +203,31 @@ class DisplayMessagesController extends Controller
      */
     private function update_message($id, $main_tag)
     {
+        // 如果没有主标签，就不处理内容了
         $update_trans = array(
             "id" => $id,
             "category" => $main_tag,
             "status" => 102,
         );
-        $check = D('Message')->save($update_trans);
-        if ($check == false) {
-            //TODO 写日志
-            $this->error('提交失败401', 'showDemo?id=' . $id);
+        if($main_tag){
+            // 如果有主标签，则处理一下内容的抬头
+            $msg = D('Message')->where("id = $id AND invalid_id=0 ")->find();
+            if ($msg){
+                $content = $msg['content'];
+                // 检查是否已经有了前缀
+                $prefix = substr($content,0,12);
+                if (($prefix!="【".$main_tag."】")){
+                    $content = "【".$main_tag."】".$content;
+                }
+                $update_trans = array(
+                    "id" => $id,
+                    "category" => $main_tag,
+                    "content"=> $content,
+                    "status" => 102,
+                );
+            }
         }
+        D('Message')->save($update_trans);
     }
 
     /**
@@ -222,7 +238,7 @@ class DisplayMessagesController extends Controller
     {
         $valid_check = false;
         foreach ($tags as $tag) {
-            if ($tag == "求购" || $tag == "供应" || $tag == "求车" || $tag == "其他") {
+            if ($tag == "求购" || $tag == "供应" || $tag == "找车" || $tag == "其他") {
                 $valid_check = $tag;
                 break;
             }

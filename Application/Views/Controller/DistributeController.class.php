@@ -12,27 +12,17 @@ use Think\Controller\RestController;
 class DistributeController extends RestController
 {
     public function index(){
-
+        echo "distribute works";
     }
 
     public function create($recorder){
-//        $record=array(
-//            'message'=>$content,
-//            'type'=>'plain',
-//            'remark'=>'0',
-//        );
-//        D('Distribute')->add($record);
 
         $Raw = D('Raw');
         $Message=D('Message');
 
-//        $map['remark'] = '0';
         $map['status'] = 0;
-//        $map['type'] = 'plain';// 把查询条件传入查询方法
         $transferring=$Raw->where($map)->select();
         $count=count($transferring);
-
-//        var_dump($transferring);
 
         $insert_trans=array(
             "title"=>null,
@@ -91,12 +81,15 @@ class DistributeController extends RestController
                 //TODO 写日志，通知开发
             }
         }
-        $record=array(
-            'message'=>'transfer_'.$count,
-            'type'=>'plain',
-            'remark'=>''.$count,
-        );
-        D('Distribute')->add($record);
+        // 只有转移数量大于0时，才记录
+        if ($count>0) {
+            $record = array(
+                'message' => 'Raw_to_Msg:' . $count,
+                'type' => 'Raw_to_Msg',
+                'remark' => '' . $count,
+            );
+            D('Distribute')->add($record);
+        }
     }
 
 
