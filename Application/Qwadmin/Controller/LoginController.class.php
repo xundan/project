@@ -19,17 +19,17 @@ class LoginController extends BaseController {
     }
     public function login(){
 		$verify = isset($_POST['verify'])?trim($_POST['verify']):'';
-		if (!$this->check_verify($verify,'login')) {
-			$this -> error('验证码错误！',U("login/index"));
+		if (!$this->check_verify($verify,'Login')) {
+			$this -> error('验证码错误！',U("Login/index"));
 		}
 
 		$username = isset($_POST['user'])?trim($_POST['user']):'';
 		$password = isset($_POST['password'])?password(trim($_POST['password'])):'';
 		$remember = isset($_POST['remember'])?$_POST['remember']:0;
 		if ($username=='') {
-			$this -> error('用户名不能为空！',U("login/index"));
+			$this -> error('用户名不能为空！',U("Login/index"));
 		} elseif ($password=='') {
-			$this -> error('密码必须！',U("login/index"));
+			$this -> error('密码必须！',U("Login/index"));
 		}
 
 		$model = M("Member");
@@ -47,7 +47,7 @@ class LoginController extends BaseController {
 			}
 		}else{
 			addlog('登录失败。',$username);
-			$this -> error('登录失败，请重试！',U("login/index"));
+			$this -> error('登录失败，请重试！',U("Login/index"));
 		}
     }
 	
@@ -60,7 +60,7 @@ class LoginController extends BaseController {
 		'imageH'=>30,
 		);
 		$verify = new \Think\Verify($config);
-		$verify -> entry('login');
+		$verify -> entry('Login');
 	}
 	
 	function check_verify($code, $id = '') {

@@ -329,7 +329,6 @@ class OrderController extends   ComController {
     //发布车源页面
     public function send_car_source()
     {
-//        echo $this->getLevel(1);exit;
         //省份显示
         $pro_data['pid'] = 0;
         $province = M('districts')->where($pro_data)->select();
@@ -339,8 +338,16 @@ class OrderController extends   ComController {
         //车辆类型查询
         $car = M('relation_carinfo_type')->select();
         $this->assign('car',$car);
-        //用户所有手机号
+        //用户手机号查询
         $uid = $_SESSION['user_info']['uid'];
+        $phoo['uid'] = $uid;
+        $phone = M('users')->where($phoo)->find();
+        $this->assign('phone',$phone);
+//        NEWADD
+//        核载吨数查询
+        $car_undertake_weight = M('users')->where($phoo)->find();
+        $this->assign('weight',$car_undertake_weight);
+//        NEWADDEND
         $this->assign("province",$province);
         $temp['client_id'] = $uid;
         $this->display();
@@ -387,12 +394,14 @@ class OrderController extends   ComController {
     //发布车源信息处理方法
     public function send_car_source_action()
     {
+//        print_r($_POST);exit;
         $uid = $_SESSION['user_info']['uid'];
         $data['clients_id'] = $uid;
         $area1 = I('post.area1','','strip_tags');
         $area2 = I('post.area2','','strip_tags');
         $detail_area1 = I('post.detail_area1','','strip_tags');
         $datail_area2 = I('post.detail_area2','','strip_tags');
+        $undertake_weight = I('post.undertake_weight','','strip_tags');
         $phone=I('post.phone','','strip_tags')?I('post.phone','','strip_tags'):"";
         $data['phone'] = I('post.phone','','strip_tags');
         $data['clients_id'] = $_SESSION['user_info']['uid'];
@@ -400,12 +409,13 @@ class OrderController extends   ComController {
         $data['detail_area2'] = I('post.detail_area2','','strip_tags');
         $data['short_location'] = I('post.short_location','','strip_tags');
         $sendcar_carinfo_typeid = I('post.sendcar_carinfo_typeid','','strip_tags');
+        $data['undertake_weight'] = I('post.undertake_weight','','strip_tags');
         $data['origin'] = 1;
         $data['area1'] = $area1;
         $data['area2'] = $area2;
         $data['sendcar_carinfo_typeid'] = I('post.sendcar_carinfo_typeid','','strip_tags');
-        $goods_type_id = I('post.product_type_id','','strip_tags');
-        $data['product_type_id'] = I('post.product_type_id','','strip_tags');
+//        $goods_type_id = I('post.product_type_id','','strip_tags');
+//        $data['product_type_id'] = I('post.product_type_id','','strip_tags');
         $loading_time = I('post.loading_time','','strip_tags');
         $data['loading_time'] = strtotime(I('post.loading_time','','strip_tags'));
         $data['car_resource_descri'] = strtotime(I('post.car_resource_descri','','strip_tags'));
@@ -422,16 +432,23 @@ class OrderController extends   ComController {
             $returnArr['msg']="装车时间不能为空";
             echo jsonEcho($returnArr);exit;
         }
-        if(empty($goods_type_id)){
-            $returnArr['status']=0;
-            $returnArr['msg']="货物类型不为空。";
-            echo jsonEcho($returnArr);exit;
-        }
+//        if(empty($goods_type_id)){
+//            $returnArr['status']=0;
+//            $returnArr['msg']="货物类型不能为空。";
+//            echo jsonEcho($returnArr);exit;
+//        }
         if(empty($sendcar_carinfo_typeid)){
             $returnArr['status']=0;
-            $returnArr['msg']="车辆类型不为空";
+            $returnArr['msg']="车辆类型不能为空";
             echo jsonEcho($returnArr);exit;
         }
+//        NEWADD
+        if(empty($undertake_weight)){
+            $returnArr['status']=0;
+            $returnArr['msg']="核载吨数不能为空";
+            echo jsonEcho($returnArr);exit;
+        }
+//        NEWADDEND
         if(empty($phone)){
             $returnArr['status']=0;
             $returnArr['msg']="电话不能为空。";

@@ -70,9 +70,9 @@
              <div class='sangar-slideshow-container' id='sangar-example'>
                  <div class='sangar-content-wrapper' style='display:none;'>
                      <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/kuang.png'/></div>
                      <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
-                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
-                     <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
+                     <div class='sangar-content'><img src='__PUBLIC__/home/images/kuang.png'/></div>
                      <div class='sangar-content'><img src='__PUBLIC__/home/images/index_yes.jpg'/></div>
 
                  </div>
@@ -127,15 +127,24 @@
                 </a>
             </dt>
                 </if>
-                <dd><a href="#">发布信息</a></dd>
+                <dd>
+                    <if condition="$_SESSION['user_info']['role_id'] eq '1'">
+                    <a href="{:U('Send/send_forcar')}" style="text-decoration: none">发布信息</a>
+                        <else/>
+                        <a href="{:U('Order/send_car_source')}" style="text-decoration: none">发布信息</a>
+                    </if>
+                </dd>
+                <!--<dd><a href="{:U('Send/send_forcar')}" style="text-decoration: none">发布信息</a></dd>-->
             </dl>
              <dl>
                 <dt><a href="{:U('Find/driver_find_live')}"><img src="__PUBLIC__/home/images/index_05.png" width="80" height="80" /></a></dt>
-                <dd><a href="#">司机找活</a></dd>
+                <!--<dd><a href="#">司机找活</a></dd>-->
+                <dd><a href="{:U('Find/driver_find_live')}" style="text-decoration: none">司机找活</a></dd>
             </dl>
              <dl>
                <dt><a href="{:U('Find/goods_find_car')}"><img src="__PUBLIC__/home/images/index_07.png" width="80" height="80" /></a></dt>
-                <dd><a href="#">货源找车</a></dd>
+                <!--<dd><a href="#">货源找车</a></dd>-->
+                <dd><a href="{:U('Find/goods_find_car')}" style="text-decoration: none">货源找车</a></dd>
         </dl>
           <input type="hidden" class="role_do" value="{$user_info['role_id']}">
              <dl>
@@ -144,7 +153,8 @@
                        <img src="__PUBLIC__/home/images/index_09.png" class="role_img" width="80" height="80"/>
                    </a>
                </dt>
-                <dd><a href="#">买卖查询</a></dd>
+                <!--<dd><a href="#">买卖查询</a></dd>-->
+                <dd><a class="trading_inquiry" href="#" style="text-decoration: none">买卖查询</a></dd>
         </dl>
       </div>
       <!--<div id="inquire">
@@ -192,6 +202,18 @@
             else
             {
                 $(this).parent('.parent_img').attr('href',"{:U('Info/index')}");
+            }
+        });
+        $('.trading_inquiry').click(function(){
+            var role_else = $('.role_do').val();
+            if(role_else==0)
+            {
+                tanchu('亲,不能操作哟~');
+                return;
+            }
+            else
+            {
+                $(this).attr('href',"{:U('Info/index')}");
             }
         });
     });

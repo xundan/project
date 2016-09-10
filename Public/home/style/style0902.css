@@ -81,6 +81,7 @@ a{text-decoration:none;}
    textarea::-webkit-input-placeholder {
       color: #fff;
    }
+
 .gain .code{ background:#FFF; color:#52BDF4; float:right; width:30%; height:34px;font-size:1em;}
 .tel input{ border:none; background:url(../images/people.png) no-repeat left center; color:#FFF; padding-left:10%; height:34px; line-height:34px; font-size:1em}
 .pass{ margin-top:8%}
@@ -124,7 +125,7 @@ input[type="radio"] {
 .demo--radio:checked + .demo--radioInput:after{background:url(../images/dui.png) no-repeat;border-radius:100%;content:"";display:inline-block;height:30px;width:30px}
 .demo--checkbox.demo--radioInput,.demo--radio:checked + .demo--checkbox.demo--radioInput:after{border-radius:0}
 /*弹窗*/
-#succ,#intact,#einrichten,.goos-info{ filter:alpha(opacity=50); background:rgba(0,0,0,0.5)!important; display:none;position:absolute; height:105%; width:100%; top:0; left:0; opacity:1;z-index:21;}
+#succ,#intact,#einrichten,.goos-info{ filter:alpha(opacity=50); background:rgba(0,0,0,0.5)!important; display:none;position:absolute; height:800px; width:100%; top:0; left:0; opacity:1}
 .chenggong{ width:90%; margin:50% auto; height:200px; border-radius:3px; background:#FFF}
 .phrase{ font-size:1.5em; text-align:center; color:#5a5a5a; padding-top:5%}
 .wancheng,.geren{width:100%; margin:0 auto; text-align:center}
@@ -198,22 +199,22 @@ input[type="radio"] {
 .slip-right,.delivery-right,.manner-right,.heavy-right,.vehicle-right,.touch-right,.myple-right,.sex-right,.region-right,.rule-right,.voiture-right,.awake-right,.railway-right{ float:right; width:10%; padding-top:4%}
 .place{height:45px; line-height:45px;width:96%; padding-left:2%; padding-right:2%;font-size:1.2em; background:#FFF;}
 .place input{ color:black; font-size:0.9em;}
-#location_coal_name_need,#location_granularity_need,#location_granularity_sendcar,#location_granularity,#location,#location1,#location2,.room,.room-one,.kind,.field,.pay,.sparent,.little,.stock,.people,.icon,.ubiety,.genre,.ercial,.glad,.exam,#location1-1{filter:alpha(opacity=50); background:rgba(0,0,0,0.5)!important;position:absolute; height:105%; width:100%; top:0; left:0; opacity:1; display:none;position:fixed;}
-.state_gran_need,.state_coal_name_need,.state_gran_sendcar,.state_gran,.state,.state1,.state3,.state1-1,.shengfen,.shengfen-one,.speci,.sweden,.wechet,.sterious,.leixing,.factor,.handset,.women,.ences,.qita,.ance,.repture,.smoky,.state1-1{ width:80%; margin:70% auto; padding-bottom:8%;border-radius:3px; background:#FFF; position:relative; padding-left:10%; padding-right:10%; padding-top:10%; height:150px; overflow-y:auto}
-.state_gran_need p,.state_coal_name_need p,.state_gran_sendcar p,.state_gran p,.state p,.state1 p,.state3 p,.shengfen p,.state1-1 p,.shengfen-one p,.speci p,.sweden p,.wechet p,.sterious p,.leixing p,.factor p,.handset p,.women p,.ences p,.qita p,.ercial p,.glad p,.location1-1 p{ padding-left:40%;height:40px; line-height:40px; font-size:1em; color:#333; width:60%;}
+#location,#location1,#location2,.room,.room-one,.kind,.field,.pay,.sparent,.little,.stock,.people,.icon,.ubiety,.genre,.ercial,.glad,.exam,#location1-1{filter:alpha(opacity=50); background:rgba(0,0,0,0.5)!important;position:absolute; height:700px; width:100%; top:0; left:0; opacity:1; display:none}
+.state,.state1,.state3,.state1-1,.shengfen,.shengfen-one,.speci,.sweden,.wechet,.sterious,.leixing,.factor,.handset,.women,.ences,.qita,.ance,.repture,.smoky,.state1-1{ width:80%; margin:70% auto; padding-bottom:8%;border-radius:3px; background:#FFF; position:relative; padding-left:10%; padding-right:10%; padding-top:10%; height:150px; overflow-y:auto}
+.state p,.state1 p,.state3 p,.shengfen p,.state1-1 p,.shengfen-one p,.speci p,.sweden p,.wechet p,.sterious p,.leixing p,.factor p,.handset p,.women p,.ences p,.qita p,.ercial p,.glad p,.location1-1 p{ padding-left:40%;height:40px; line-height:40px; font-size:1em; color:#333; width:60%;}
 .smoky p{ position:relative; border:#4AC9F6 1px solid; border-radius:2px; height:35px; line-height:35px; text-align:center; width:50%; margin:0 auto;margin-top:5%;}
 .handset p{ padding-left:30%;}
-#off_coal_name_need,#off_gran_need,#off_gran,#off_gran_sendcar,#off,#off1,#off2,.turnoff,.guan,.off1-1{ position:absolute; top:4%;left:3%}
+#off,#off1,#off2,.turnoff,.guan,.off1-1{ position:absolute; top:4%;left:3%}
 /*.curenrt{ display:none}
 .state p img{ margin-left:10%;display:none;}*/
 .yangshi{ border-bottom:#808080 2px solid; border-top:#808080 2px solid}
-.typegran_need,.typesss_need,.typegran_sendcar,.typegran,.send,.back,.typess,.typesss,.areas,.hands,.snes,.siew,.wrtay,.cargo,.miaosu,.care,.lianxi,.fmale,.yjyr,.whrw,.oyer,.hrwr{ margin-left:4%; color:black}
+.send,.back,.typess,.typesss,.areas,.hands,.snes,.siew,.wrtay,.cargo,.miaosu,.care,.lianxi,.fmale,.yjyr,.whrw,.oyer,.hrwr{ margin-left:4%; color:black}
 .measure,.freight,.telephone{height:45px; line-height:45px;width:96%; padding-left:2%; padding-right:2%;font-size:1em; margin-top:3%; background:#FFF; margin-bottom:3%}
 .freight{ margin-top:0%; margin-bottom:0%}
 .telephone{ margin-bottom:0%}
 .telephone input{color:black;font-size:1em; margin-left:2%}
 .measure input{color:black;font-size:1em; width:70%; margin-left:2%}
-.freight input{color:black;font-size:1em; width:70%; margin-left:2%}
+.freight input{color:black;font-size:1em; width:80%; margin-left:2%}
 .issue,.affirm,.friend{width:96%;text-align:center; margin:0 auto; margin-bottom:15%}
 .affirm{ margin-top:30%}
 .determine{width:96%;text-align:center; margin:0 auto; margin-bottom:15%}
@@ -224,7 +225,7 @@ input[type="radio"] {
 #vanish{ padding-top:2%; margin-left:2%}
 
 /*发布货源*/
-.coal_name_need,.coal_granularity_need,.coal,.origin,.business,.price,.opan,#launch,#expand,.purchase,.tech,.hope,.manner,.boolean,.coal_name{height:45px; line-height:45px;width:96%; padding-left:2%; padding-right:2%;font-size:1em; margin-top:3%; background:#FFF; }
+.coal,.origin,.business,.price,.opan,#launch,#expand,.purchase,.tech,.hope,.manner,.boolean,.coal_name{height:45px; line-height:45px;width:96%; padding-left:2%; padding-right:2%;font-size:1em; margin-top:3%; background:#FFF; }
 .origin,.business,.opan,.tech,.manner{ margin-top:0%}
 .coal-left,.origin-left,.business-left,.purchase-left,.tech-left,.manner-left,.boolean-left,.coal_name-left{ float:left; width:90%;font-size:1em;}
 .coal-right,.origin-right,.business-right,.purchase-right,.tech-right,.manner-right,.boolean-right,.coal_name-right{ float:right; width:10%; padding-top:3%}
@@ -268,7 +269,7 @@ input[type="radio"] {
     }
 #launch{overflow:hidden;zoom:1}
 .launch-left{ float:left;width:90%;}
-.launch-right{ float:right;width:10%; padding-top:2%}
+.launch-right{ float:right;width:10%; padding-top:4%}
 #expand{ margin-top:0%}
 #expand{ height:60px; line-height:60px; margin-bottom:10%;padding-top:2%}
 #expand .reda{resize:none;outline:none; border:none;color:black;font-size:1em; margin-left:2%; width:60%;}
@@ -413,57 +414,3 @@ input[type="radio"] {
 			font-family: "microsoft yahei";
 		}
 .riqi{ background:#FFF;font-size:1em; height:45px; line-height:45px; padding-left:2%}
-#inquire-one{ background:#EBEBEB;width:92%; padding-left:4%; padding-right:4%;overflow:hidden;zoom:1; padding-bottom:6%; margin:0 auto;}
-.main-center{ overflow:hidden;zoom:1; margin-top:5%}
-#inquire-one a{ display:inline-block;width:47%; text-align:center; position:relative}
-#inquire-one .persona{ float:left; }
-#inquire-one .service{ float:right; }
-#inquire-one .guide{ float:left;}
-#inquire-one .clothing{ float:right;}
-#inquire-one .webpage{ position:absolute; top:10%; left:39%;font-size:1.2em; font-weight:800; color:#FFF}
-#inquire-one .enquiry{ position:absolute; top:55%; left:40%;font-size:0.8em; color:#FFF}
-@media only screen and (min-device-width : 768px) and (max-device-width:1024px){
-    #inquire-one .webpage{ position:absolute; top:10%; left:45%;font-size:1.2em; font-weight:800; color:#FFF}
-    #inquire-one .enquiry{ position:absolute; top:55%; left:45%;font-size:0.8em; color:#FFF}
-
-} /* 兼容ipad */
-.up_expand{
-    background: url("../images/up_detail_new.png") no-repeat;
-    /*background-position-x: 5px;background-position-y: 5px;*/
-    /*background-position: 25% 50%;*/
-}
-.down_expand{
-    background: url("../images/down_detail_new.png") no-repeat;
-    /*background-position-x: 5px;background-position-y: 5px;*/
-    /*background-position: 25% 50%;*/
-}
-
-/*NEWADD 核定载重*/
-.undertake_weight{
-    overflow:hidden;zoom:1; height:45px; line-height:45px;width:96%; padding-left:2%; padding-right:2%;  background:#FFF;
-}
-.undertake_weight-left{
-    float:left; width:90%;font-size:1em;
-}
-.undertake_weight input{
-    color:black; font-size:0.9em;
-}
-/*NEWADDEND*/
-/*NEWADD 粒度*/
-.coal_granularity,.coal_granularity_sendcar{
-    height:45px; line-height:45px;width:96%; padding-left:2%; padding-right:2%;font-size:1em; margin-top:3%; background:#FFF;
-}
-.coal_granularity-left{
-    float:left; width:90%;font-size:1em;
-}
-.coal_granularity-right{
-    float:right; width:10%; padding-top:3%
-}
-
-/*.state_gran{*/
-    /*width:80%; margin:70% auto; padding-bottom:8%;border-radius:3px; background:black; position:relative; padding-left:10%; padding-right:10%; padding-top:10%; height:150px; overflow-y:auto*/
-/*}*/
-/*.state_gran p{*/
-    /*padding-left:40%;height:40px; line-height:40px; font-size:1em; color:#333; width:60%;*/
-/*}*/
-/*NEWADDEND*/

@@ -14,7 +14,7 @@
             top: 0%;
             left: 0%;
             width: 100%;
-            height: 100%;
+            height: 300%;
             background-color: black;
             z-index:1001;
             -moz-opacity: 0.8;
@@ -27,7 +27,7 @@
             top: 35%;
             left: 10%;;
             width: 80%;
-            height:25%;
+            height:30%;
             margin: 0 auto;
 
             background-color: #FFF;
@@ -37,12 +37,12 @@
         }
         .white_content .worn{
             color: #FF5A3E; font-size: 0.9em; border-bottom: #CCC 1px solid;
-            height: 35px; line-height: 35px; margin-bottom:8%}
+            height: 35px; line-height: 35px; margin-bottom:10%}
         .white_content p{
             font:18px 微软雅黑;
             text-align:center;
 
-            margin-bottom:10px;
+            margin-bottom:12px;
         }
         .white_content a{
             font:18px 微软雅黑 !important;
@@ -144,7 +144,8 @@ $(document).ready(function(){
 
                       <div class="personne-right" style="color:#333;">
                           <if condition="$list['role_id'] eq '0'">
-                              <a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                              <!--<a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">-->
+                              <a href="javascript:void(0)" onclick = "call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
                                   <img src="__PUBLIC__/home/images/tel.png" width="22" height="22" />&nbsp;拨打电话
                               </a>
                               <else/>
@@ -170,6 +171,12 @@ $(document).ready(function(){
                               <img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 发煤量
                               <span>{$mes_vo['coal_quantity']}</span>
                           </div>
+                       <!--NEWADD-->
+                          <div class="column">
+                              <img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 粒度
+                              <span>{$mes_vo['granularity_str']}</span>
+                          </div>
+                       <!--NEWADDEND-->
                           <div class="column">
                               <img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 发货日期
                               <span>{$mes_vo['loading_time']}</span>
@@ -201,12 +208,12 @@ $(document).ready(function(){
                       </dl>
 
                       <div class="personne-right" style="color:#333;">
-                          <a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                          <!--<a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">-->
+                          <a href="javascript:void(0)" onclick = "call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
                           <img src="__PUBLIC__/home/images/tel.png" width="22" height="22" />&nbsp;拨打电话
                           </a>
                       </div>
                    </div>
-                   <div style="border:#C2C2C2 1px solid"></div>
                    <div class="describe"> 
                    <div class="dizhi">
                        <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
@@ -221,6 +228,12 @@ $(document).ready(function(){
                               <img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 发煤量
                               <span>{$mes_vo['coal_quantity']}</span>
                           </div>
+                       <!--NEWADD-->
+                          <div class="column">
+                               <img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 粒度
+                               <span>{$mes_vo['granularity_str']}</span>
+                          </div>
+                       <!--NEWADDEND-->
                           <div class="column">
                               <img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 发货日期
                               <span>{$mes_vo['loading_time']}</span>
@@ -231,6 +244,7 @@ $(document).ready(function(){
                           </div>
                       </div>
                    </div>
+      <div style="border:#C2C2C2 1px solid"></div>
   </span>
   </span>
 <!--克隆对象结束-->
@@ -305,12 +319,14 @@ $(document).ready(function(){
                         }
     function call_js(obj,class_id,message,role)
     {
-		if(role=='0')
+		if(role==0)
 		{
 			var phone_res = class_id;
 			$(".tanceng_res").html(phone_res);
 			var link = "tel:"+phone_res;
 			$('.call_you').attr('href',link);
+            document.getElementById('light').style.display='block';
+            document.getElementById('fade').style.display='block';
 			url="__CONTROLLER__/ajax_order";
 			$.ajax
 			({

@@ -16,6 +16,7 @@ class FindController extends ComController {
     public function driver_find_live()
     {
         $subInfo=I("post.");
+//        dump($subInfo);
         if($subInfo['page']){
             $page=(int)$subInfo['page'];
         }else{
@@ -72,7 +73,7 @@ class FindController extends ComController {
         $temp['sm.origin'] = 3;
         $time = time();
         $lists=M()->query(
-            "SELECT su.role_id,su.headimgurl,su.phone_number,su.uid,sm.id,sm.area1,sm.area2,sm.detail_area1,sm.detail_area2,sm.coal_quantity,sm.loading_time,sm.publish_time,
+            "SELECT sm.product_id,su.name,su.role_id,su.headimgurl,su.phone_number,su.uid,sm.id,sm.area1,sm.area2,sm.detail_area1,sm.detail_area2,sm.coal_quantity,sm.loading_time,sm.publish_time,
 (CASE
 WHEN sm.area1='' THEN 2
 WHEN sm.area1=$districtId THEN 1
@@ -81,13 +82,20 @@ WHEN (select pid from su_districts where id=(select pid from su_districts where 
 ELSE 2 END)  AS district
 FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid WHERE sm.status = 0 AND sm.origin = 3 AND sm.deline_time > $time AND $whereCondition ORDER BY $orderStr LIMIT $beginStr,$countRow"
         );
+
+//        dump($lists);exit;
         $sqlStr=M()->getLastSql();
         foreach($lists as &$list){
+//            $list=array();
             if(!empty($list['area1'])){
                 $list['area1_str']=$this->getAllAddress($list['area1']);
             }
             if(!empty($list['area2'])){
                 $list['area2_str']=$this->getAllAddress($list['area2']);
+            }
+            if(!empty($list['product_id'])){
+                $temp=$this->getProductAttr($list['product_id']);
+                $list['granularity_str']=$temp['granularity'];
             }
             if(empty($list['publish_time'])){
                 $list['publish_time'] = '暂无时间';
@@ -111,6 +119,7 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid WHERE sm.statu
             $list_str = substr($avg['0']['avg'],0,3);
 			$list['avg']=$list_str;
         }
+//        dump($lists);exit;
         if(empty($lists)){
             $nextPage=$page;
         }else{
@@ -228,7 +237,7 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid WHERE sm.statu
         $temp['sm.origin'] = 1;
            $beginStr=(int)(($page-1)*$countRow);
            $lists=M()->query(
-               "SELECT srct.car_type,su.role_id,su.headimgurl,su.phone_number,su.uid,sm.id,sm.detail_area1,sm.publish_time,sm.area1,
+               "SELECT sm.undertake_weight,srct.car_type,su.role_id,su.headimgurl,su.phone_number,su.uid,sm.id,sm.detail_area1,sm.publish_time,sm.area1,
 (CASE
 WHEN sm.area1='' THEN 2
 WHEN sm.area1=$districtId THEN 1
@@ -237,6 +246,7 @@ WHEN (select pid from su_districts where id=(select pid from su_districts where 
 ELSE 2 END)  AS district
 FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid INNER JOIN su_relation_carinfo_type srct on srct.id = sm.sendcar_carinfo_typeid WHERE sm.status = 0 AND sm.origin = 1 AND $selectInfo AND sm.deline_time > $time ORDER BY $orderStr LIMIT $beginStr,$countRow"
            );
+//        dump($lists);exit;
         $sql=M()->getLastSql();
         if(empty($lists)){
             $nextPage=$page;

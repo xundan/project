@@ -85,6 +85,7 @@
          </div>
      </div>
      </div>
+         <div style="border:#C2C2C2 1px solid"></div>
      </volist>
     <span id="orderPoint"></span>
 
@@ -93,6 +94,7 @@
      <div onclick="getDeal()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div>
  </div>
  <div style="display:none" id="cloneObj">
+     <div id="matters">
        <div id="matter">
           <div class="headline">
              <div class="date">{$vo['ctime']}</div>
@@ -117,6 +119,8 @@
          </div>
      </div>
      </div>
+         <div style="border:#C2C2C2 1px solid"></div>
+         </div>
  </div>
  <script type="text/javascript">
                         /*
@@ -136,7 +140,7 @@
                                      }else{
                                           jQuery.each(jsonObj.data, function(k, val)
                                           {
-                                               var tempObj=$("#cloneObj").children("div #matter").clone(true);
+                                               var tempObj=$("#cloneObj").children("div #matters").clone(true);
                                                tempObj.find(".date").html(val.ctime);
                                                tempObj.find(".address").eq(0).children("input").val(val.area1_str+val.detail_area1);
                                                tempObj.find(".address").eq(1).children("input").val(val.area2_str+val.detail_area2);

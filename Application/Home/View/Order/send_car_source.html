@@ -9,80 +9,41 @@
 <link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/common.css"/>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
 <!--发布货源-->
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$(".guan").click(function(){
-		$(".little").hide()
-		});
-		
-	})
-</script>
-
  <script type="text/javascript">
-	 $(function() {
-		var eekrn = "";
-	    $('.heavy').click(function(){
-			$(".little").show();	
-			});
-		});
-	</script>
-    
-    <script type="text/javascript">
-	 $(function() {
-	    $('.leixing').click(function(){
-			if(eekrn)
-			{
-				$('.miaosu').html(eekrn);
-			}
-			
-			});
-		});
-	</script>
- <script type="text/javascript">
-	 $(document).ready(function(){
-   $(".leixing p").click(function(){
-	 eekrn = $(this).html();
-   $(this).addClass("yangshi").siblings().removeClass("yangshi");
-  })
-})
+//	 $(document).ready(function(){
+//   $(".leixing p").click(function()
+//   {
+//	 eekrn = $(this).html();
+//   $(this).addClass("yangshi").siblings().removeClass("yangshi");
+//       $('.miaosu').html(eekrn);
+//   });
+//     $('.heavy').click(function(){
+//         $(".little").show();
+//     });
+//     $(".guan").click(function(){
+//         $(".little").hide();
+//         $('.miaosu').html('');
+//     });
+//
+//})
 	 
 	</script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$(".guan").click(function(){
-		$(".stock").hide()
-		});
-		
-	})
-</script>
 
- <script type="text/javascript">
-	 $(function() {
-		var fggw = "";
-	    $('.vehicle').click(function(){
-			$(".stock").show();	
-			});
-		});
-	</script>
-    
-    <script type="text/javascript">
-	 $(function() {
-	    $('.stock').click(function(){
-			if(fggw)
-			{
-				$('.care').html(fggw);
-			}
-			
-			});
-		});
-	</script>
  <script type="text/javascript">
 	 $(document).ready(function(){
    $(".stock p").click(function(){
 	 fggw = $(this).html();
    $(this).addClass("yangshi").siblings().removeClass("yangshi");
-  })
+       $('.care').html(fggw);
+  });
+ $('.vehicle').click(function(){
+     $(".stock").show();
+ });
+ $(".guan").click(function(){
+     $(".stock").hide();
+     $(".care").html('');
+ });
+
 })
 	 
 	</script>
@@ -94,14 +55,6 @@ $(document).ready(function(){
 
 	})
 </script>
- <!--<script type="text/javascript">
-	 $(function() {
-		var fbfa = "";
-	    $('.touch').click(function(){
-			$(".people").show();
-			});
-		});
-	</script>-->
     <script type="text/javascript">
 	 $(function() {
 	    $('.handset').click(function(){
@@ -190,31 +143,19 @@ $(document).ready(function(){
     <script type="text/javascript">
         $(function(){
             $('.guan').click(function(){
-                $('.send').html($("#districtSelected").text());
+                $('.send').html('');
                 $('#location').hide();
             });
 
             $('#off1').click(function(){
-                $('.back').html($("#districtSelected1").text());
+                $('.back').html('');
                 $('#location1').hide();
             });
         });
     </script>
     <!--点层消失的效果-->
     <script type="text/javascript">
-     /* /!*  //判断层的消失
-        $(function(){
-            //alert($('#districtNameStr').attr('attr'));
 
-        });*!/
-        function xiaoshi(obj)
-        {
-         var quyu_type = $('#districtNameStr').attr('attr');
-         if(quyu_type!=undefined)
-         {
-         $(obj).hide();
-         }
-        }*/
     </script>
 </head>
 <body style="background:#EBEBEB">
@@ -282,12 +223,12 @@ $(document).ready(function(){
                         <div id="div2" class="open2"></div>
                      </div>
                  </div><input type="hidden" name="short_location" value=""/>
-                   <div class="heavy">
-                          <div class="heavy-left">货物类型<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
-                              <span class="miaosu"></span>
-                          </div>
-                          <div class="heavy-right"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16"/></div>
-                  </div>
+                   <!--<div class="heavy">-->
+                          <!--<div class="heavy-left">货物类型<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>-->
+                              <!--<span class="miaosu"></span>-->
+                          <!--</div>-->
+                          <!--<div class="heavy-right"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16"/></div>-->
+                  <!--</div>-->
                   <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
                     <div class="vehicle">
                           <div class="vehicle-left">车辆类型<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
@@ -295,31 +236,70 @@ $(document).ready(function(){
                           </div>
                           <div class="vehicle-right"><img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16"/></div>
                   </div>
+                  <!--NEWADD-->
+                  <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
+                    <div class="undertake_weight">
+                        <div class="undertake_weight_left"><span>核载吨数</span><img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
+                            <input type="text" placeholder="请填写吨数" value="{$weight['car_undertake_weight']}" name="undertake_weight" id="undertake_weight" class="preg_num"/><span style="float: right">吨</span>
+                        </div>
+                    </div>
+                  <!--NEWADDEND-->
+
                   <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
                    <div id="expand" style="height:100px; line-height:25px; margin-bottom:2%">车源描述<textarea class="reda" name="car_resource_descri" style="height:60px;line-height:25px"></textarea>
                     </div>
                      <div class="touch">
                           <div class="touch-left">联系电话<img src="__PUBLIC__/home/images/biyao.png" width="10" height="10"/>
-                              &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="phone" value=""></div>
+                              &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="phone" value="{$phone['phone_number']}"></div>
 
                      </div>
-               </div>
+               <!--</div>-->
                <div class="issue"><input type="button" value="发 布" onclick="subAction()"/></div>
                 </form>
-                <div class="little">
-                    <div class="leixing">
-                        <volist name="goods" id="vo_goods">
-                            <p>{$vo_goods['type']}<input type="hidden" name="product_type_id" value="{$vo_goods['id']}"></p>
-                        </volist>
-                        <div class="guan"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
-                    </div>
-                </div>
+                <!--NEWADD-->
+                <script type="text/javascript">
+                    function getId(id){
+                        return document.getElementById(id);
+                    }
+                    $(function() {
+                        $(".preg_num").blur(function () {
+                            var str = $(this).siblings('span').html();
+                            var input_value = getId(this.id).value;
+                            if (!input_value) {
+                                return;
+                            } else {
+                                if (!input_value.trim().match(/^(-?\d+)(\.\d+)?$/)) {
+                                    tanchu(str + "只能填数字");
+                                    return;
+                                } else {
+                                    //alert('输入正确');
+                                    return;
+                                }
+                            }
+                        });
+                    });
+                </script>
+                <!--NEWADDEND-->
+                <!--<div class="little">-->
+                    <!--<div class="leixing" style="position: fixed;z-index:99999999;">-->
+                        <!--<volist name="goods" id="vo_goods">-->
+                            <!--<p>{$vo_goods['type']}<input type="hidden" name="product_type_id" value="{$vo_goods['id']}"></p>-->
+                        <!--</volist>-->
+                        <!--<div class="guan">-->
+                            <!--<img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>-->
+                        <!--</div>-->
+                        <!--<div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displays()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="stock">
-                    <div class="factor">
+                    <div class="factor" style="position: fixed;z-index:99999999;">
                         <volist name="car" id="car_vo">
                             <p>{$car_vo['car_type']}<input type="hidden" name="sendcar_carinfo_typeid" value="{$car_vo['id']}"></p>
                         </volist>
-                        <div class="guan"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
+                        <div class="guan">
+                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
+                        </div>
+                        <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="display()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
                     </div>
 
                 </div>
@@ -327,14 +307,14 @@ $(document).ready(function(){
                    <div class="chenggong">
                       <div id="vanish"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="26"/></div>
                       <a href="{:U('Index/index')}"><div class="wancheng"><input type="button" value="发布完成"></div></a>
-                      <a href=""><div class="geren"><input type="button" value="继续发布"></div></a>
+                      <div class="geren"><input type="button" value="继续发布"></div>
                    </div>
                </div>
    </div>
  </div>
  <!--发货地址省的显示-->
                <div id="location" class="syfclass">
-                   <div class="state province">
+                   <div class="state province" style="position: fixed;z-index:99999999;">
                                                   <!--lisy-->
                                                   <span id="districtSelected"><span id="provinceNameStr"  attr="0" val=""></span>&nbsp;&nbsp;<span id="cityNameStr" val=""></span>&nbsp;&nbsp;<span id="districtNameStr" val=""></span></span>
                                                          <span id="getAllCity">
@@ -343,9 +323,9 @@ $(document).ready(function(){
              </volist>
              </span>
              <div id="off">
-                <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
              </div>
-             <span onclick="getMyAddress()" >确定</span>
+                       <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="getMyAddress()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
                        <div class="guan"><img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/></div>
                    </div>
                </div>
@@ -355,7 +335,7 @@ $(document).ready(function(){
                          e = window.event || e;
                          obj = $(e.srcElement || e.target);
                          if (obj.attr('class') == 'syfclass') {
-                         	 $('.send').html($(this).find("#districtSelected").text());
+                         	 $('.send').html('');
                          	 $('#location').hide();
                          }
                      });
@@ -365,17 +345,54 @@ $(document).ready(function(){
                          e = window.event || e;
                          obj = $(e.srcElement || e.target);
                          if (obj.attr('class') == 'otherClassStr') {
-                         	 $('#back').html($(this).find("#districtSelected1").text());
+                         	 $('#back').html('');
                          	 $('#location1').hide();
                          }
                      });
                   });
+                   //货物类型
+//                   $(function(){
+//                       $('.little').click(function(e){
+//                           e = window.event || e;
+//                           obj = $(e.srcElement || e.target);
+//                           if (obj.attr('class') == 'little') {
+//                               $('.miaosu').html('');
+//                               $('.little').hide();
+//                           }
+//                       });
+//                   });
+                   //车辆类型
+                   $(function(){
+                       $('.stock').click(function(e){
+                           e = window.event || e;
+                           obj = $(e.srcElement || e.target);
+                           if (obj.attr('class') == 'stock') {
+                               $('.care').html('');
+                               $('.stock').hide();
+                           }
+                       });
+                   });
+                   $('.geren').click(function(){
+                       $('#intact').hide();
+                   });
                </script>
+                <!--确定以后层消失-->
+                <script type="text/javascript">
+//                    //货物类型
+//                    function displays()
+//                    {
+//                        $(".little").hide();
+//                    }
+                    //车辆类型
+                    function display()
+                    {
+                        $(".stock").hide();
+                    }
+                </script>
 
         <!--收货地址省的显示-->
-        <!--收货地址省的显示-->
                <div id="location1" class="otherClassStr">
-              <div class="state1 province1">
+              <div class="state1 province1" style="position: fixed;z-index:99999999;">
                   <span id="districtSelected1"><span id="provinceNameStr"  attr="0" val=""></span>&nbsp;&nbsp;<span id="cityNameStr" val="" ></span>&nbsp;&nbsp;<span id="districtNameStr" val="" ></span></span>
                              <span id="getAllCity">
              <volist name="province" id="pro_vo">
@@ -383,10 +400,10 @@ $(document).ready(function(){
              </volist>
              </span>
              <div id="off1">
-                <img src="__PUBLIC__/home/images/icon-off.jpg" width="25" height="25"/>
+                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
              </div>
-             <span onclick="getMyAddress1()" >确定</span>
-                                                </div>
+                  <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="getMyAddress1()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+            </div>
                </div>
                <!--发布货源开始-->
   <script type="text/javascript">

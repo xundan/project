@@ -111,6 +111,7 @@ WHERE m.status = 0 AND m.deline_time >= $nowTime AND $authWhere
 ORDER BY $orderStr LIMIT $beginStr,$countRow"
             );
         }
+//           dump($lists);exit;
            $sqlStr=M()->getlastsql();
            foreach($lists as &$return){
                $uid = $return['uid'];
@@ -123,6 +124,8 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
                    $return['avg'] = $list_str;
                }
            }
+//        dump($lists);exit;
+//        dump($return);exit;
         if(empty($lists)){
             $next=$page;
         }else{
@@ -147,6 +150,12 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
             }else{
                 $list['role_name']="个人货主";
             }
+            if(!empty($list['product_id'])){
+                $temp=$this->getProductAttr($list['product_id']);
+                $list['protype_str']=$temp['type'];
+                $list['descri_str']=$temp['descri'];
+                $list['granularity_str']=$temp['granularity'];
+            }
             switch($list['origin']){
                 case 2:
                     if(!empty($list['caigou_area'])){
@@ -168,7 +177,8 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
             $list['publish_time']=date("Y-m-d",$list['publish_time']);
             $list['deline_time']=date("Y-m-d",$list['deline_time']);
         }
-       // dump($lists);
+//        dump($lists);exit;
+//        dump($list);exit;
         if($isAjax){
             $returnArr=array();
             $returnArr['nextPage']=$next;

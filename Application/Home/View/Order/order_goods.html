@@ -42,6 +42,7 @@
         <div id="content">
             <div class="point">
                <div style="display:none" id="objParent">
+                   <div id="matters">
                       <div id="matter">
                         <div class="headline">
                             <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
@@ -63,6 +64,8 @@
                             </a>
                         </div>
                     </div>
+                       <div style="border:#C2C2C2 1px solid"></div>
+                   </div>
                 </div>
                 <!--配货订单-->
                 <volist name="order_list" id="vo">
@@ -87,6 +90,7 @@
                             </a>
                         </div>
                     </div>
+                    <div style="border:#C2C2C2 1px solid"></div>
                 </volist>
                   <span id="phPoint"></span>
                 <div class="rank"></div>
@@ -119,8 +123,10 @@
                         </a>
                     </div>
                 </div>
+                    <div style="border:#C2C2C2 1px solid"></div>
                 </volist>
                 <div style="display:none" id="orderCloneObj">
+                    <div id="matters">
                     <div id="matter">
                     <div class="headline">
                         <div class="date"><if condition="$vo_order.ctime eq ''">暂无时间<else/>{$vo_order['ctime']|date='Y-m-d H:i:s',###}</if></div>
@@ -144,6 +150,8 @@
                         </a>
                     </div>
                 </div>
+                        <div style="border:#C2C2C2 1px solid"></div>
+                    </div>
                 </div>
                  <span id="jyPoint"></span>
                  <input type="hidden" id="dealPage" value="{$nextPage}"/>
@@ -170,7 +178,7 @@
                                      }else{
                                           jQuery.each(jsonObj.data, function(k, val)
                                           {
-                                               var tempObj=$("#orderCloneObj").children("div #matter").clone(true);
+                                               var tempObj=$("#orderCloneObj").children("div #matters").clone(true);
                                                tempObj.find(".date").html(val.ctime);
                                                tempObj.find(".firm").eq(0).children("span").html(val.type);
                                                tempObj.find(".firm").eq(1).children("span").html(val.granularity);

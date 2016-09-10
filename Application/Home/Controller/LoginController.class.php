@@ -136,7 +136,7 @@ class LoginController extends Controller {
                 if(!empty($r)){//验证用户是否注册
                     $returnArr['status']=0;
                     $returnArr['msg']="该手机号已经注册过。";
-                    echo jsonEcho($returnArr);exit;
+                    echo json_encode($returnArr);exit;
                 }
                 $data['phone_number'] = $phone_numbers;
                 $data['role_id'] = I('post.type','','strip_tags');

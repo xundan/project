@@ -1,11 +1,11 @@
 <?php
 /**
 *
-* °æÈ¨ËùÓÐ£ºÇ¡Î¬ÍøÂç<qwadmin.qiawei.com>
-* ×÷    Õß£ºº®´¨<hanchuan@qiawei.com>
-* ÈÕ    ÆÚ£º2016-01-17
-* °æ    ±¾£º1.0.0
-* ¹¦ÄÜËµÃ÷£ººóÌ¨µÇ³ö¿ØÖÆÆ÷¡£
+* ï¿½ï¿½È¨ï¿½ï¿½ï¿½Ð£ï¿½Ç¡Î¬ï¿½ï¿½ï¿½ï¿½<qwadmin.qiawei.com>
+* ï¿½ï¿½    ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½<hanchuan@qiawei.com>
+* ï¿½ï¿½    ï¿½Ú£ï¿½2016-01-17
+* ï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½1.0.0
+* ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *
 **/
 
@@ -14,7 +14,7 @@ use Qwadmin\Controller\ComController;
 class LogoutController extends ComController {
     public function index(){
 		cookie('user',null);
-		$url = U("login/index");
+		$url = U("Login/index");
 		header("Location: {$url}");
 		exit(0);
     }

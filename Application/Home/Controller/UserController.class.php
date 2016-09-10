@@ -15,8 +15,8 @@ class UserController extends Controller
         // 如果一个页面（方法）里有两个跳转，则不会执行第二个
 //        echo "user.index";
 //        $this->redirect('edit','',2,'jump to...');
-//        $this->success('success to...',U('User/login'),3);
-//        $this->error('error to...',U('User/login'),5);
+//        $this->success('success to...',U('User/Login'),3);
+//        $this->error('error to...',U('User/Login'),5);
 
         //ajax数据返回
 //        $this->ajaxReturn(getTestData(),'json');
@@ -32,7 +32,7 @@ class UserController extends Controller
     }
 
     public function login(){
-//        echo "user.login";
+//        echo "user.Login";
 
         $user=I('get.user',null);
         if(!$user){
@@ -45,9 +45,9 @@ class UserController extends Controller
     }
 
     public function test(){
-        echo "User/login: <a href=\"".U('Home/User/login/user/xcl')."\">".U('Home/User/login/user/xcl')."</a>";
+        echo "User/Login: <a href=\"".U('Home/User/Login/user/xcl')."\">".U('Home/User/Login/user/xcl')."</a>";
         echo '<hr>';
-        echo "User/login: <a href=\"".U('Home/User/login/user/lcx')."\">".U('Home/User/login/user/lcx')."</a>";
+        echo "User/Login: <a href=\"".U('Home/User/Login/user/lcx')."\">".U('Home/User/Login/user/lcx')."</a>";
         echo '<hr>';
     }
 }

@@ -26,6 +26,9 @@ class SendController extends ComController {
         //煤的品质查询
         $proQuality = M('product_descri')->select();
         $this->assign('proQuality',$proQuality);
+        //煤的粒度查询
+        $proGranularity = M('product_granularity')->select();
+        $this->assign('proGranularity',$proGranularity);
         //当前登录人手机号
         $phone = M('users')->where("uid='$uid'")->find();
         $this->assign('phone',$phone);
@@ -48,6 +51,9 @@ class SendController extends ComController {
     //发布求车信息提交处理页面
     public function send_forcar_action()
     {
+       // dump($_POST);
+//        echo json_encode($_POST);exit;
+//        echo time();exit;
         $area1=I('post.area1','','strip_tags')?I('post.area1','','strip_tags'):"";
         $area2=I('post.area2','','strip_tags')?I('post.area2','','strip_tags'):"";
         $phone=I('post.phone','','strip_tags')?I('post.phone','','strip_tags'):"";
@@ -56,7 +62,9 @@ class SendController extends ComController {
         $data['clients_id'] = $_SESSION['user_info']['uid'];
         $data['detail_area1'] = I('post.detail_area1','','strip_tags');
         $data['detail_area2'] = I('post.detail_area2','','strip_tags');
-        $data['coal_quantity'] = I('post.coal_quantity','','strip_tags');
+//        NEWADD
+//        $data['granularity_id'] = I('post.granularity_id','','strip_tags');
+//        NEWADDEND
         $data['path_price'] = I('post.path_price','','strip_tags');
         $data['loading_time'] = strtotime(I('post.loading_time','','strip_tags'));
         $data['unloading_expense'] = strtotime(I('post.unloading_expense','','strip_tags'));
@@ -74,14 +82,20 @@ class SendController extends ComController {
             $returnArr['msg']="参数不完整";
             echo jsonEcho($returnArr);exit;
         }
+        //装车时间判断
+        if((time()-$data['loading_time']) > 3600*24){
+            $returnArr['status']=0;
+            $returnArr['msg']="装车时间不能低于现在时间";
+            echo jsonEcho($returnArr);exit;
+        }
         if(empty($phone)){
             $returnArr['status']=0;
-            $returnArr['msg']="发货人电话为能为空。";
+            $returnArr['msg']="发货人电话不能为空。";
             echo jsonEcho($returnArr);exit;
         }
         if(empty($save_phone)){
             $returnArr['status']=0;
-            $returnArr['msg']="收货人电话为能为空。";
+            $returnArr['msg']="收货人电话不能为空。";
             echo jsonEcho($returnArr);exit;
         }
         $data['origin'] = I('post.origin','','strip_tags');
@@ -89,21 +103,34 @@ class SendController extends ComController {
         $data['area2'] = I('post.area2','','strip_tags');
         $data['phone'] = I('post.phone','','strip_tags');
         $data['save_phone'] = I('post.save_phone','','strip_tags');
-        $res = M('messages')->add($data);
-        if($res){
-            $returnArr['status']=1;
-            $returnArr['msg']="操作成功";
+        $data['coal_quantity'] = I('post.coal_quantity','','strip_tags');
+        $product['granularity_id'] = I('post.granularity_id','','strip_tags');
+        $rs=M('product')->add($product);
+        if($rs){
+            $data['product_id'] = $rs;
+            $res = M('messages')->add($data);
+            if($res){
+                $returnArr['status']=1;
+                $returnArr['msg']="操作成功";
+                echo jsonEcho($returnArr);
+            }else{
+                $returnArr['status']=0;
+                $returnArr['msg']="操作失败";
+                echo jsonEcho($returnArr);
+                M("product")->delete($rs);
+            }
         }else{
             $returnArr['status']=0;
-            $returnArr['msg']="操作失败";
+            $returnArr['msg']="新增记录失败。";
+            echo jsonEcho($returnArr);exit;
         }
-        echo jsonEcho($returnArr);
     }
     //发布货源信息提交处理页面
     public function send_proinfo_action()
     {
         $subInfo=I("post.","",'strip_tags');
-        //dump($subInfo);exit;
+//        dump($subInfo);exit;
+//        dump($_POST['granularity_id']);exit;
         $returnArr=array();
         if(empty($subInfo['area1'])||empty($subInfo['area2'])){
             $returnArr['status']=0;
@@ -117,6 +144,9 @@ class SendController extends ComController {
         }
         $data['protype_id']=$subInfo['product_type_id'];//煤炭种类
         $data['descri_id']=$subInfo['descri_id'];//煤炭品质
+        //NEWADD
+        $data['granularity_id']=$subInfo['granularity_id'];//煤炭粒度
+        //NEWADDEND
         $data['supply_company']=$subInfo['company_supply'];//供货公司
         $data['place_origin_id']=$subInfo['area1'];//产地
         $data['place_delivery_id']=$subInfo['area2'];//交割地
@@ -128,14 +158,14 @@ class SendController extends ComController {
         $data['total_water']=$subInfo['total_water'];//全水分
         $rs=M("Product")->add($data);//新增到产品表
         if($rs){
-            $ins['product_id']=$rs;
-            $ins['area1']=$subInfo['area1'];//产地
-            $ins['purchasing_tonnage']=$subInfo['purchasing_tonnage'];
-            $ins['clients_id']=$_SESSION['user_info']['uid'];
-            $ins['remark']=$subInfo['remark'];
-            $ins['rezhi_max']=$subInfo['rezhi_max'];//高位热值
-            $ins['rezhi_min']=$subInfo['rezhi_min'];//低位热值
-            $ins['valid_time']=strtotime($subInfo['goods_validity_period']);//有效期
+            $ins['product_id'] = $rs;
+            $ins['area1'] = $subInfo['area1'];//产地
+            $ins['purchasing_tonnage'] = $subInfo['purchasing_tonnage'];
+            $ins['clients_id'] = $_SESSION['user_info']['uid'];
+            $ins['remark'] = $subInfo['remark'];
+            $ins['rezhi_max'] = $subInfo['rezhi_max'];//高位热值
+            $ins['rezhi_min'] = $subInfo['rezhi_min'];//低位热值
+            $ins['valid_time'] = $this->getDelineTime();//有效期
             $ins['deline_time'] = $this->getDelineTime();
             $ins['publish_time'] = time();
             $ins['origin'] = $subInfo['origin'];
@@ -172,16 +202,29 @@ class SendController extends ComController {
             $ins['deline_time'] = $this->getDelineTime();
             $ins['publish_time'] = time();
             $ins['origin'] = $subInfo['origin'];
-            $res_add = M('messages')->add($ins);//新增到信息表
-            if($res_add){
-                $returnArr['status']=1;
-                $returnArr['msg']="发布成功。";
-                echo jsonEcho($returnArr);
+            $product['protype_id'] = $subInfo['protype_id'];
+            $product['descri_id'] = $subInfo['descri_id'];
+            $product['granularity_id'] = $subInfo['granularity_id'];
+//            dump($product['protype_id']);exit;
+            $rs=M('product')->add($product);
+            if($rs){
+                $ins['product_id'] = $rs;
+                $res_add = M('messages')->add($ins);//新增到信息表
+                if($res_add){
+                    $returnArr['status']=1;
+                    $returnArr['msg']="发布成功。";
+                    echo jsonEcho($returnArr);
+                }else{
+                    $returnArr['status']=0;
+                    $returnArr['msg']="发布失败。";
+                    echo jsonEcho($returnArr);
+                }
             }else{
                 $returnArr['status']=0;
-                $returnArr['msg']="发布失败。";
+                $returnArr['msg']="新增记录失败。";
                 echo jsonEcho($returnArr);
             }
+
     }
     //设置密码页面
     public function set_password()
@@ -340,10 +383,10 @@ class SendController extends ComController {
         //邀请人查询
         $uid = $_SESSION['user_info']['uid'];
         $temp['uid'] = $uid;
-        $invite = M('users')->table('su_users su')->where($temp)->field('scc.name as name2,su.gooder_work_type_id,su.invitation_code,su.birthday,su.name,su.district_id,su.area_detail,su.sex,su.headimgurl,su.work_time,su.work_description,su.gooder_position,su.gooder_be_department')
-            ->join('su_client_company scc on scc.id = su.company_id')
+        $invite = M('users')->table('su_users su')->where($temp)->field('scc.name as name2,su.gooder_work_type_id,su.phone_number,su.invitation_code,su.birthday,su.name,su.district_id,su.area_detail,su.sex,su.headimgurl,su.work_time,su.work_description,su.gooder_position,su.gooder_be_department')
+            ->join('su_client_company scc on scc.id = su.company_id',left)
             ->find();
-        // dump($invite);exit;
+//        dump($invite);exit;
         $asp['clients_id'] = $invite['invitation_code'];
         $invite_people = M('users')->where($asp)->find();
         $name = $invite_people['name'];
@@ -379,7 +422,7 @@ class SendController extends ComController {
         //邀请人查询
         $uid = $_SESSION['user_info']['uid'];
         $temp['su.uid'] = $uid;
-        $invite =  M('users')->table('su_users su')->where($temp)->field('srcc.plate_number,srcc.photo_front,srcc.photo_after,srcc.photo_left,srcc.photo_right,su.id_card,su.jiashi_card,su.gooder_work_type_id,su.invitation_code,su.birthday,su.name,su.district_id,su.area_detail,su.sex,su.headimgurl,su.work_time,su.work_description,su.gooder_position,su.gooder_be_department')
+        $invite =  M('users')->table('su_users su')->where($temp)->field('su.car_id,srcc.plate_number,srcc.photo_front,srcc.photo_after,srcc.photo_left,srcc.photo_right,su.id_card,su.jiashi_card,su.gooder_work_type_id,su.invitation_code,su.birthday,su.name,su.district_id,su.area_detail,su.sex,su.headimgurl,su.work_time,su.work_description,su.gooder_position,su.gooder_be_department,su.phone_number,su.car_undertake_weight')
             ->join('su_relation_carinfo_client srcc on srcc.id = su.car_id')
             ->find();
         $carInfo=M('relation_carinfo_client')->where(array("id"=>$invite['car_id']))->find();
@@ -504,6 +547,18 @@ class SendController extends ComController {
         {
             $car['plate_number'] = I('post.plate_number','','strip_tags');
         }
+//        NEWADD
+        if($_POST['car_undertake_weight']=="")
+        {
+            $car['car_undertake_weight'] = $car_info['car_undertake_weight'];
+            $subInfo['car_undertake_weight'] = $xianshi['car_undertake_weight'];
+        }
+        else
+        {
+            $car['car_undertake_weight'] = I('post.car_undertake_weight','','strip_tags');
+            $subInfo['car_undertake_weight'] = I('post.car_undertake_weight','','strip_tags');
+        }
+//        NEWADDEND
         if(!empty($_POST['phone1']))
         {
             $phone1['phone_number'] = I('post.phone1','','strip_tags');
@@ -551,6 +606,7 @@ class SendController extends ComController {
             $subInfo['car_id'] = $car_id['id'];
             $temp_user['uid'] = $uid;
 			$user_add = M('users')->where($temp_user)->save($subInfo);
+//            dump($subInfo);exit;
 			if($user_add)
 			{
 				$this->success('资料修改成功',U('vip_center'));
@@ -621,10 +677,11 @@ class SendController extends ComController {
     //货主基本资料处理页面
     public function owner_data_do()
     {
-        // dump($_POST);exit;
+//         dump($_POST);exit;
         $uid = $_SESSION['user_info']['uid'];
         $aspp['uid'] = $uid;
         $xianshi = M('users')->where($aspp)->find();
+//        dump($xianshi);exit;
         if (is_empty($_FILES))
         {
             $upload = new \Think\Upload();
@@ -731,6 +788,7 @@ class SendController extends ComController {
         $data['record_time'] = time();
         $temp_user['uid'] = $uid;
         $user_add = M('users')->where($temp_user)->save($data);
+//        dump($user_add);exit;
         if($user_add)
         {
             $this->success('资料修改成功',U('vip_center'));
@@ -743,7 +801,7 @@ class SendController extends ComController {
     //货主从业资料处理页面
     public function owner_data_do_do()
     {
-        // dump($_POST);
+//         dump($_POST);exit;
         $uid = $_SESSION['user_info']['uid'];
         $aspp['uid'] = $uid;
         $xianshi = M('users')->where($aspp)->find();
@@ -828,7 +886,7 @@ class SendController extends ComController {
         }
         $work_sdf['uid'] = $uid;
         $finally_res = M('users')->where($work_sdf)->save($data);
-
+//        dump($finally_res);exit;
         if($finally_res)
         {
             $this->success('资料修改成功',U('vip_center'));

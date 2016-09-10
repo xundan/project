@@ -12,21 +12,22 @@
 			height = $(document).height();
 			$("body").css("height", height);
 		}
-		window.onresize = function() {
-			window.location.reload();
-			height = $(document).height();
-			$("body").css("height", height);
-		}
+//		window.onresize = function() {
+//			window.location.reload();
+//			height = $(document).height();
+//			$("body").css("height", height);
+//		}
 	</script>
 	<style>
 		body {
 			Overflow: Hidden;
 			background-color: RGB(235, 235, 235);
+			height:0px;
 		}
 		
 		.head {
 			width: 100%;
-			height: 33%;
+			/*height: 33%;*/
 			background-color: RGB(73, 201, 246);
 		}
 		
@@ -91,13 +92,21 @@
 			z-index: 20;
 		}
 		.head-top1 a{
-			font-size: 40px;
-			font-weight: bold;
+			font-size:2em;
+			/*font-weight: bold;*/
+			/*position: relative;*/
+			/*color:#fff;*/
+			/*text-decoration:none;*/
+			/*top:-85px;*/
+			/*float:right;*/
+
+			/*font-weight: bold;*/
 			position: relative;
-			color:#fff;
-			text-decoration:none;
-			top:-85px;
-			float:right;
+			color: #fff;
+			text-decoration: none;
+			top: -39px;
+			float: right;
+			left: -17px;
 		}
 		
 		.list-group-item img {
@@ -111,12 +120,12 @@
 			top: -30px;
 			color: rgb(126, 126, 126);
 			font-family: "Microsoft YaHei";
-			font-size: 40px;
+			font-size:2em;
 		}
 		
 		.bageOne {
 			color: rgb(255, 255, 255);
-			font-weight: bold;
+			/*font-weight: bold;*/
 			width: 33%;
 			height: 100%;
 			background-image: url(__PUBLIC__/home/img/star.png);
@@ -130,7 +139,7 @@
 		
 		.bageTwo {
 			color: rgb(255, 255, 255);
-			font-weight: bold;
+			/*font-weight: bold;*/
 			font-size: 100%;
 			width: 33%;
 			height: 100%;
@@ -145,8 +154,8 @@
 		
 		.bageThree {
 			color: rgb(255, 255, 255);
-			font-weight: bold;
-			font-size: 100%;
+			/*font-weight: bold;*/
+			/*font-size: 100%;*/
 			width: 33%;
 			height: 100%;
 			background-image: url(__PUBLIC__/home/img/royal.png);
@@ -180,7 +189,7 @@
 		.headOne {
 			left: -5px;
 			position: relative;
-			top: -50px;
+			top: -40px;
 			height: 200px;
 			width: 200px;
 			border-radius: 50%;
@@ -193,36 +202,36 @@
 		}
 		
 		.return {
-			height:60px;
+			/*height:60px;*/
 			position: relative;
 			left: 20px;
 			top: 20px;
 		}
 		.head-top{
-			font-size: 40px;
-			font-weight: bold;
+			font-size:1.8em;
+			/*font-weight: bold;*/
 			position: relative;
 			color:RGB(255,255,255);
-			top: -95px;
+			top: -57px;
 		}
 		.head-bottom{
-			font-size: 35px;
-			font-weight: bold;
+			font-size: 1.4em;
+			/*font-weight: bold;*/
 			position: relative;
 			color:RGB(255,255,255);
-			top: 0px;
+			top: -22px;
 		}
 		.recom{
 			margin-top:80px;
-			font-size:30px;
+			font-size: 1.5em;
 		}
 			.grade{
 			margin-top:80px;
-			font-size:30px;
+				font-size: 1.5em;
 		}
 		.integral{
 					margin-top:80px;
-			font-size:30px;
+			font-size: 1.5em;
 		}
 	</style>
 	<style type="text/css">
@@ -239,12 +248,12 @@
 		}
 		.brand .second {
 			color: #fff;
-			font-weight: bold;
+			/*font-weight: bold;*/
 		}
 		#tanchuang{
 			display:none;
-			font-size:50px;
-			font-weight: bold;
+			font-size: 1.2em;
+			/*font-weight: bold;*/
 			text-align:center;
 			border-radius:10px;
 			color:white;
@@ -292,7 +301,7 @@
 						<else/><img src="__PUBLIC__/home/img/huozhu.png" style="height:75px;width:80px;" class="head-s"></if>
 				</div>
 			<br>
-			<table style="margin-top: 30px;">
+			<table style="margin-top: 30px;font-size: 2em">
 			<tr><td><font class="head-bottom">用户名：</font></td><td><font class="head-bottom">{$xianshi['name']}</font><td><br>
 			<tr><td><font class="head-bottom">&emsp;角色：</font></td><td><font class="head-bottom">{$user_info['role_name']}</font><td><br>
 			</table>
@@ -361,12 +370,12 @@
 <script type="text/javascript">
 	$(function(){
 		$('.grade').click(function(){
-			$('#tanchuang').css('font-size','50px');
+			$('#tanchuang').css('font-size','1.2em');
 			tanchu('系统正在维护');
 		});
 
 		$('.recom').click(function(){
-			$('#tanchuang').css('font-size','50px');
+			$('#tanchuang').css('font-size','1.2em');
 			tanchu('系统正在维护');
 		});
 	});

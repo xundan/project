@@ -18,7 +18,7 @@ class ComController extends BaseController {
 		C(setting());
 		$user = cookie('user');
 		$this->USER = $user;
-		$url = U("login/index");
+		$url = U("Login/index");
 		if(!$user){
 			header("Location: {$url}");
 			exit(0);

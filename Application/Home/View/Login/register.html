@@ -42,7 +42,8 @@ $(function() {
               <input type="text"  placeholder="请输入您的手机号" style="width:60%;" value="" name="phone_number" class="phone"/>
               <span class="fasong" style="cursor:pointer">
                  <span id="pin">
-                     <span id="codeRandom" class="code" onclick="creatRandomCode()" style="position: absolute;top:0;left:65%;  width: 35%; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;获取验证码</span>
+                     <!--<span id="codeRandom" class="code" onclick="creatRandomCode()" style="position: absolute;top:0;left:65%;  width: 35%; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;获取验证码</span>-->
+                     <span id="codeRandom" class="code" onclick="creatRandomCode()" style="position: absolute;top:0;left:65%;  width: 35%; text-align: center;">获取验证码</span>
                  </span>
               </span>
           </div>
@@ -72,7 +73,7 @@ $(function() {
                </div>
                <input type="hidden" name="type" value="" id="typeVal">
            <div class="agree">
-             <label class="demo--label"><input class="demo--radio" type="checkbox" name="demo-checkbox1">
+             <label class="demo--label"><input class="demo--radio" type="checkbox" name="demo-checkbox1" checked="checked">
         <span class="demo--checkbox demo--radioInput"></span>阅读并同意服务条款
     </label>
             </div>
@@ -115,15 +116,18 @@ $(function() {
             {
                 tanchu('请阅读服务条款');
             }
-            else if($('#code').val()=="")
+            else if($('input[name=code]').val()=="")
             {
                 tanchu("请填写验证码");
             }
-            /*else if(!$(".checked").siblings().val())
+            else if($("input[name=phone_number]").val()=="")
             {
-                tanchu("请选择角色");
-            }*/
-
+                tanchu("请填写手机号");
+            }
+            else if($("input[name=phone_number]").val().length!=11)
+            {
+                tanchu("请确认手机号位数");
+            }
             else
             {
                 var typeVal=$(".checked").siblings().val();
@@ -138,6 +142,7 @@ $(function() {
                     url:url,
                     data:{code:code,phone_number:phone_number,invitation_code:invitation_code,type:typeVal},
                     success:function(data){
+
                         if(data!="")
                         {
                             var jsonObj=eval("("+data+")");
@@ -166,9 +171,9 @@ $(function() {
     });
 </script>
 <script type="text/javascript">
-    var allowClike=1;
+    var allowClick = 1;
     function creatRandomCode(){
-        if(allowClike==0){
+        if(allowClick==0){
             return;
         }
         var phoneCode=$("input[name=phone_number]").val();
@@ -181,7 +186,7 @@ $(function() {
             tanchu('请确认位数');
             return;
         }
-        allowClike=0;
+        allowClick = 0;
         url="{:U('Home/Login/randomCodeReg')}";
         $.ajax({
             type: "post",
@@ -191,17 +196,26 @@ $(function() {
                  // alert(data);
                 $("#codeRandom").remove();
                 setTimeout(clearSession, 1000*60);
-                var num = 61;
+                var num = 62;
+                var num1 = 0;
                 var i = setInterval(function() {
                     num--;
-                    if(num<10){
-                        num="0"+num;
+                    if(num<12){
+                        num1="0"+(num-2);
+                        if(num == 1){
+                            $(".fasong").html("<span style='float: right; margin-left: -15%'>00秒后重新发送</span>");
+                        }
                     }
-                    $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num+"秒！");
+                    else num1 = num-2;
+//                    $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num+"秒后重新发送！");
+                    if(num>=2){
+//               $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num1+"秒后重新发送");
+                        $(".fasong").html("<span style='float: right;margin-left: -15%'>"+num1+"秒后重新发送</span>");
+                    }
                     if (num==0){
-                        allowClike=1;
+                        allowClick = 1;
                         clearInterval(i);
-                        $(".fasong").html("<span id='pin'><span id='codeRandom' class='code' onclick='creatRandomCode()'>&nbsp;&nbsp;&nbsp;&nbsp;发送验证码</span></span>");
+                        $(".fasong").html("<span id='pin'><span id='codeRandom' class='code' onclick='creatRandomCode()'>发送验证码</span></span>");
                     }
                 },1000);
             },

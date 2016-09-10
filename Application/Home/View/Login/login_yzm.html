@@ -70,12 +70,13 @@
    });
 </script>
 <script type="text/javascript">
-   var allowClike=1;
+   var allowClick=1;
    function creatRandomCode(){
-      if(allowClike==0){
+      if(allowClick==0){
          return;
       }
-      console.log(allowClike);
+//      allowClick=0;
+      console.log(allowClick);
       var phoneCode=$("input[name=phone]").val();
       if(phoneCode==''||phoneCode==null){
          tanchu('请填写手机号！');
@@ -86,8 +87,8 @@
          tanchu('请确认位数');
          return;
       }
-      allowClike=0;
-     url="{:U('Home/Login/randomCode')}";
+      allowClick = 0;
+      url="{:U('Home/Login/randomCode')}";
       $.ajax({
          type: "post",
          data:{phone:phoneCode},
@@ -96,17 +97,26 @@
              // alert(data);return;
             $("#codeRandom").remove();
            setTimeout(clearSession, 1000*60);
-            var num = 61;
-            var i = setInterval(function() {
+            var num =62;
+            var num1=0;
+            var i = setInterval(function(){
                num--;
-               if(num<10){
-                  num="0"+num;
+               if(num<12){
+                  num1="0"+(num-2);
+                  if(num == 1){
+//                     $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;00秒后重新发送！");
+                     $(".fasong").html("<span style='float: right; margin-left: -15%'>00秒后重新发送</span>");
+                  }
                }
-               $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num+"秒！");
+               else num1=num-2;
+               if(num>=2){
+//               $(".fasong").html("&nbsp;&nbsp;&nbsp;&nbsp;"+num1+"秒后重新发送");
+               $(".fasong").html("<span style='float: right;margin-left: -15%'>"+num1+"秒后重新发送</span>");
+               }
                if (num==0){
-                  allowClike=1;
+                  allowClick=1;
                   clearInterval(i);
-                  $(".fasong").html("<span id='pin'><span id='codeRandom' class='code' style='position: absolute;top:0;left:65%;  width: 35%; text-align: center;' onclick='creatRandomCode()'>&nbsp;&nbsp;&nbsp;&nbsp;发送验证码</span></span>");
+                  $(".fasong").html("<span id='pin'><span id='codeRandom' class='code' onclick='creatRandomCode()'>&nbsp;&nbsp;&nbsp;&nbsp;发送验证码</span></span>");
                }
             },1000);
          },

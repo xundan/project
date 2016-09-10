@@ -19,6 +19,29 @@ class ComController extends Controller {
         }
         return $areaStr;
     }
+    public function getProductAttr($product_id){
+        $productStrArray=array();
+//        $product=M('Product');
+        $tempProduct=M('product')->find($product_id);
+//        $tempProduct为产品记录，包含产品各种信息
+        $productStrArray['sulfur']=$tempProduct['sulfur'];
+        $productStrArray['ash_content']=$tempProduct['ash_content'];
+        $productStrArray['total_water']=$tempProduct['total_water'];
+        $productStrArray['volatile_parts']=$tempProduct['volatile_parts'];
+//        煤炭种类名
+        $temp=M('product_type')->find($tempProduct['protype_id']);
+        $tempStr=$temp['type'];
+        $productStrArray['type']=$tempStr;
+        //        煤炭品质名
+        $temp=M('product_descri')->find($tempProduct['descri_id']);
+        $tempStr=$temp['descri'];
+        $productStrArray['descri']=$tempStr;
+        //        煤炭种类名
+        $temp=M('product_granularity')->find($tempProduct['granularity_id']);
+        $tempStr=$temp['granularity'];
+        $productStrArray['granularity']=$tempStr;
+        return $productStrArray;
+    }
     public function getDelineTime(){
         $role_id=$_SESSION['user_info']['role_id'];
         if($role_id==null){

@@ -45,13 +45,13 @@ death masks are:
    sad: 2
    <<: {magnificent: 4}
 
-login: &login
+login: &Login
    adapter: mysql
    host: localhost
 
 development:
    database: rails_dev
-   <<: *login
+   <<: *Login
 
 "key": "value:"
 colon_only: ":"
