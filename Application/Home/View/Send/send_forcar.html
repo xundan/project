@@ -136,7 +136,36 @@
         })
     </script>
 
-
+    <!--求车粒度-->
+    <script type="text/javascript">
+        $(function()
+        {
+//            var adkagran = "";
+            $('.coal_granularity_sendcar').click(function()
+            {
+                $("#location_granularity_sendcar").show();
+//                $("#test").show();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $(".state_gran_sendcar p").click(function()
+            {
+                $("#granularity_id_sendcar").val($(this).attr("attr"));
+                var adkagran = $(this).text();
+                $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                $('.typegran_sendcar').html(adkagran);
+            })
+            $("#off_gran_sendcar").click(function()
+            {
+                $("#location_granularity_sendcar").hide();
+                $('.typegran_sendcar').html('');
+            });
+        })
+    </script>
+    <!--求车粒度结束-->
 
 
     <!--发布货源-->
@@ -184,7 +213,7 @@
     <script type="text/javascript">
         $(function()
         {
-            var adka = "";
+            var adkaa = "";
             $('.coal_name').click(function()
             {
                 $("#location1-1").show();
@@ -209,6 +238,36 @@
         })
     </script>
     <!--品质结束-->
+    <!--粒度-->
+    <script type="text/javascript">
+        $(function()
+        {
+            var adkagran = "";
+            $('.coal_granularity').click(function()
+            {
+                $("#location_granularity").show();
+//                $("#test").show();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $(".state_gran p").click(function()
+            {
+                $("#granularity_id").val($(this).attr("attr"));
+                var adkagran = $(this).text();
+                $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                $('.typegran').html(adkagran);
+            })
+            $("#off_gran").click(function()
+            {
+                $("#location_granularity").hide();
+                $('.typegran').html('');
+            });
+        })
+    </script>
+    <!--粒度结束-->
     <script type="text/javascript">
         $(function()
         {
@@ -219,6 +278,65 @@
             });
         });
     </script>
+    <!--发布采购品质-->
+    <script type="text/javascript">
+        $(function()
+        {
+            var adkaa = "";
+            $('.coal_name_need').click(function()
+            {
+                $("#location_coal_name_need").show();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $(".state_coal_name_need p").click(function()
+            {
+                $("#descri_id_need").val($(this).attr("attr"));
+                var adkaa = $(this).text();
+                $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                $('.typesss_need').html(adkaa);
+            })
+            $("#off_coal_name_need").click(function()
+            {
+                $("#location_coal_name_need").hide();
+                $('.typesss_need').html('');
+            });
+        })
+    </script>
+    <!--发布采购品质结束-->
+    <!--发布采购粒度-->
+    <script type="text/javascript">
+        $(function()
+        {
+            var adkagran = "";
+            $('.coal_granularity_need').click(function()
+            {
+                $("#location_granularity_need").show();
+//                $("#test").show();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $(".state_gran_need p").click(function()
+            {
+                $("#granularity_id_need").val($(this).attr("attr"));
+                var adkagran = $(this).text();
+                $(this).addClass("yangshi").siblings().removeClass("yangshi");
+                $('.typegran_need').html(adkagran);
+            })
+            $("#off_gran_need").click(function()
+            {
+                $("#location_granularity_need").hide();
+                $('.typegran_need').html('');
+            });
+        })
+    </script>
+    <!--发布采购粒度结束-->
     <script type="text/javascript">
         $(document).ready(function()
         {
@@ -400,6 +518,16 @@
                     $('#back').html('');
                 }
             });
+            //NEWADD 粒度部分
+            $('#location_granularity_sendcar').click(function(e){
+                e = window.event || e;
+                obj = $(e.srcElement || e.target);
+                if (obj.attr('id') == 'location_granularity_sendcar') {
+                    $("#location_granularity_sendcar").hide();
+                    $('.typegran_sendcar').html('');
+                }
+            });
+            //NEWADDEND 粒度部分结束
             /*发布货源部分*/
             /*煤炭种类部分 */
             $('#location2').click(function(e){
@@ -419,6 +547,16 @@
                     $('.typesss').html('');
                 }
             });
+            //NEWADD 粒度部分
+            $('#location_granularity').click(function(e){
+                e = window.event || e;
+                obj = $(e.srcElement || e.target);
+                if (obj.attr('id') == 'location_granularity') {
+                    $("#location_granularity").hide();
+                    $('.typegran').html('');
+                }
+            });
+            //NEWADDEND 粒度部分结束
             $('.room').click(function(e){
                 e = window.event || e;
                 obj = $(e.srcElement || e.target);
@@ -451,6 +589,22 @@
                 if (obj.attr('class') == 'kind') {
                     $('.snes').html('');
                     $('.kind').hide();
+                }
+            });
+            $('#location_coal_name_need').click(function(e){
+                e = window.event || e;
+                obj = $(e.srcElement || e.target);
+                if (obj.attr('id') == 'location_coal_name_need') {
+                    $("#location_coal_name_need").hide();
+                    $('.typesss_need').html('');
+                }
+            });
+            $('#location_granularity_need').click(function(e){
+                e = window.event || e;
+                obj = $(e.srcElement || e.target);
+                if (obj.attr('id') == 'location_granularity_need') {
+                    $("#location_granularity_need").hide();
+                    $('.typegran_need').html('');
                 }
             });
             /*支付*/
@@ -879,10 +1033,25 @@
                         <input type="text" placeholder="请填写详细信息" value="" name="detail_area2" id="detail_area2"/>
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
-                    <div class="measure"><span>发煤量</span>
+                    <div class="measure" style="margin-bottom: 1px"><span>发煤量</span>
                         <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
                         <input type="text" placeholder="请填写吨数" value="" name="coal_quantity" id="coal_quantity" class="preg_num"/><span style="float: right">吨</span>
                     </div>
+                    <!--NEWADD-->
+                    <input type="hidden" name="granularity_id" id="granularity_id_sendcar" value="">
+                    <div class="coal_granularity_sendcar" style="margin-top: 0%">
+                        <div class="coal_granularity-left">粒度
+                            <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                            <span class="typegran_sendcar"></span>
+                            <!--<input type="hidden" name="product_granularity" id="product_granularity">-->
+                            <input type="hidden" name="origin" value="3">
+                        </div>
+                        <div class="coal_granularity-right">
+                            <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                        </div>
+                    </div>
+                    <div style="border-bottom:#F0F0F0 2px solid; "></div>
+                    <!--NEWADDEND-->
                     <div class="freight"><span>运费</span><input type="text" style="color:black;" value="" name="path_price" id="path_price" class="preg_num"/><span style="float: right">元/吨</span></div>
                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
                     <div class="sdskl" style="background:#FFF; height:45px; line-height:45px; padding-left:2%">
@@ -910,7 +1079,7 @@
             <script type="text/javascript">
                 function subAction(){
                     var subData=$("#form1").serialize();
-                    // alert(subData);
+//                     alert(subData);
                     if($("#detail_area1").val()==""){
                         tanchu("发货地址不能为空。");
                         return;
@@ -919,29 +1088,33 @@
                         tanchu("收货详情不能为空。");
                         return;
                     }
-                    if($("#coal_quantity").val()==""){
-                        tanchu("发货量不能为空。");
-                        return;
-                    }
+//                    if($("#coal_quantity").val()==""){
+//                        tanchu("发货量不能为空。");
+//                        return;
+//                    }
                     if($("#coal_quantity").val()==""){
                         tanchu("发煤量不能为空。");
                         return;
                     }
-                    if($("#path_price").val()==""){
-                        tanchu("运费不能为空。");
+                    if($("#granularity_id_sendcar").val()==""){
+                        tanchu("煤炭粒度不能为空。");
                         return;
                     }
-                    if($("#loading_expense").val()==""){
-                        tanchu("装车费不能为空。");
-                        return;
-                    }
+//                    if($("#path_price").val()==""){
+//                        tanchu("运费不能为空。");
+//                        return;
+//                    }
+//                    if($("#loading_expense").val()==""){
+//                        tanchu("装车费不能为空。");
+//                        return;
+//                    }
                     if($("input[name=loading_time]").val()==""){
                         tanchu("装车时间还没有填写。");
                     }
-                    if($("#unloading_expense").val()==""){
-                        tanchu("卸车费不能为空。");
-                        return;
-                    }
+//                    if($("#unloading_expense").val()==""){
+//                        tanchu("卸车费不能为空。");
+//                        return;
+//                    }
                     if($("#phoneNum").val()==""){
                         tanchu("发货人电话不能为空。");
                         return;
@@ -956,8 +1129,10 @@
                         url:url,
                         data:subData,
                         success:function(data){
+//                            alert(subData);
                             if(data!=""){
                                 var jsonObj=eval("("+data+")");
+//                                console.log(data);
                                 if(jsonObj.status){
                                     $("#loadIndex").val(0);
                                     $("#intact").show();
@@ -968,16 +1143,29 @@
                         }
                     });
                 }
+                //NEWADD 发布求车-图层消失-粒度
+                function displaygran_sendcar()
+                {
+                    $('#location_granularity_sendcar').hide();
+                }
+                //NEWADDEND
                 //图层消失-煤炭种类
                 function displays()
                 {
                     $('#location2').hide();
                 }
+                //图层消失-煤炭种类
                 //图层消失-品质
                 function displayss()
                 {
                     $('#location1-1').hide();
                 }
+                //NEWADD 发布货源-图层消失-粒度
+                function displaygran()
+                {
+                    $('#location_granularity').hide();
+                }
+                //NEWADDEND
                 //图层消失-煤炭种类
                 function displaysss()
                 {
@@ -988,10 +1176,27 @@
                 {
                     $('.pay').hide();
                 }
+                //发布采购-品质-图层消失
+                function display_coal_name_need()
+                {
+                    $('#location_coal_name_need').hide();
+                }
+                //发布采购-粒度-图层消失
+                function displaygran_need()
+                {
+                    $('#location_granularity_need').hide();
+                }
                 //品质内容添加
                 $(function(){
                     var typesss = $('.typesss').attr('attr');
-                    $('#type_str_new').val(typesss);
+//                    $('#type_str_new').val(typesss);
+                    $('#descri_id').val(typesss);
+                });
+                //粒度内容添加
+                $(function(){
+                    var typegran = $('.typegran').attr('attr');
+//                    $('#product_granularity').val(typegran);
+                    $('#granularity_id').val(typegran);
                 });
             </script>
             <!--判断停留页面-->
@@ -1046,6 +1251,22 @@
                     <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="getMyAddress1()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
                 </div>
             </div>
+            <!--NEWADD-->
+            <div id="location_granularity_sendcar">
+                <!--<div id="test" style="background-color: white;width: 60%;height: 150px;">aaaaaA</div>-->
+                <div class="state_gran_sendcar" style="position: fixed;z-index:99999999;">
+                    <volist name="proGranularity" id="pro_gran">
+                        <p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>
+                    </volist>
+                    <div id="off_gran_sendcar" style="position: relative;">
+                        <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                    </div>
+                    <!--</div>-->
+                    <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran_sendcar()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                </div>
+            </div>
+            <!--NEWADDEND-->
+
             <!--发布货源开始-->
             <div class="point">
                 <form action="{:U('send_proinfo_action')}" method="POST" id="form2">
@@ -1078,6 +1299,21 @@
                         </div>
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid; "></div>
+                    <!--NEWADD-->
+                    <input type="hidden" name="granularity_id" id="granularity_id" value="">
+                    <div class="coal_granularity" style="margin-top: 0%">
+                        <div class="coal_granularity-left">粒度
+                            <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                            <span class="typegran"></span>
+                            <!--<input type="hidden" name="product_granularity" id="product_granularity">-->
+                            <input type="hidden" name="origin" value="0">
+                        </div>
+                        <div class="coal_granularity-right">
+                            <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                        </div>
+                    </div>
+                    <div style="border-bottom:#F0F0F0 2px solid; "></div>
+                    <!--NEWADDEND-->
                     <div class="trait">供货公司
                         <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
                         <input type="text" name="company_supply" id="company_supply"/>
@@ -1096,6 +1332,7 @@
                     <div style="border-bottom:#F0F0F0 1px solid; "></div>
                     <div class="business">
                         <div class="business-left">交割地
+                            <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
                             <span class="hands"></span>
                         </div>
                         <input type="hidden" name="area2" id="jgPlaceStr">
@@ -1122,44 +1359,66 @@
                     </div>
 
                     <div id="launch">
-                        <div class="launch-left">详细描述</div>
+                        <div class="launch-left">详细指标</div>
                         <div class="launch-right">
-                            <img src="__PUBLIC__/home/images/down_detail.png" width="12" height="10" />
+                            <a id="arrow_img" href="javascript:;" class="down_expand up_expand">&nbsp&nbsp&nbsp&nbsp&nbsp
+                                <!--<img src="__PUBLIC__/home/images/down_detail.png" width="12" height="10" id="down_expand"/>-->
+                            </a>
                         </div>
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid; "></div>
                     <div id="atom">
-                        <div class="trait"><span>热值低位</span>
+                        <div class="trait"><span style="color: #656565;">热值低位</span>
                             <input type="text" name="rezhi_min" id="rezhi_min" class="preg_num"/><span style="float: right">卡</span>
                         </div>
                         <div style="border-bottom:#F0F0F0 1px solid; "></div>
-                        <div class="trait">全水份
+                        <div class="trait"><span style="color: #656565;">全水份</span>
                             <input type="text" name="total_water" id="water_percent"/></div>
                         <div style="border-bottom:#F0F0F0 1px solid; ">
 
                         </div>
-                        <div class="trait">灰份
+                        <div class="trait"><span style="color: #656565;">灰份</span>
                             <input type="text" name="ash_content" />
                         </div>
                         <div style="border-bottom:#F0F0F0 1px solid; "></div>
-                        <div class="trait">硫份
+                        <div class="trait"><span style="color: #656565;">硫份</span>
                             <input type="text" name="sulfur"/>
                         </div>
                         <div style="border-bottom:#F0F0F0 1px solid; "></div>
-                        <div class="trait">挥发份
+                        <div class="trait"><span style="color: #656565;">挥发份</span>
                             <input type="text" name="volatile_parts"/>
                         </div>
                         <div style="border-bottom:#F0F0F0 1px solid; "></div>
                     </div>
                     <div class="trait">有效期
-                        <input type="date" style="width:70%;" name="goods_validity_period" />
+                        <!--<input type="date" style="width:70%;" value="3天" name="goods_validity_period"/>-->
 
+                        <if condition="$phone['role_id'] eq '0'">
+                            <span>3天</span>
+                            <else/>
+                            <span>7天</span>
+                        </if>
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid;"></div>
                     <div id="expand">详细描述
 							 <textarea class="reda" name="remark">
 							 </textarea>
                     </div>
+                    <!--&lt;!&ndash;NEWADD&ndash;&gt;-->
+                    <!--<div id="location_granularity_sendcar">-->
+                        <!--&lt;!&ndash;<div id="test" style="background-color: white;width: 60%;height: 150px;">aaaaaA</div>&ndash;&gt;-->
+                        <!--<div class="state_gran" style="position: fixed;z-index:99999999;">-->
+                            <!--<volist name="proGranularity" id="pro_gran">-->
+                                <!--<p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>-->
+                            <!--</volist>-->
+                            <!--<div id="off_gran_sendcar" style="position: relative;">-->
+                                <!--<img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--<div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran_sendcar()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;NEWADDEND&ndash;&gt;-->
                     <div id="location2" class="location2" style="height:105%;">
                         <div class="state3" style="position: fixed;z-index:99999999;">
                             <volist name="productTypes" id="productType">
@@ -1179,9 +1438,25 @@
                             <div id="off1-1" style="position:relative;">
                                 <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
                             </div>
-                        </div>
+                        <!--</div>-->
                         <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displayss()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                        </div>
+                     </div>
+                    <!--NEWADD-->
+                    <div id="location_granularity">
+                        <!--<div id="test" style="background-color: white;width: 60%;height: 150px;">aaaaaA</div>-->
+                        <div class="state_gran" style="position: fixed;z-index:99999999;">
+                            <volist name="proGranularity" id="pro_gran">
+                                <p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>
+                            </volist>
+                            <div id="off_gran" style="position: relative;">
+                                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                            </div>
+                        <!--</div>-->
+                        <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                        </div>
                     </div>
+                    <!--NEWADDEND-->
                     <div class="room">
                         <div class="shengfen" style="position: fixed;z-index:99999999;">
                             <span id="districtSelected2"><span id="provinceNameStr"  attr="0" val=""></span>&nbsp;&nbsp;<span id="cityNameStr" val=""></span>&nbsp;&nbsp;<span id="districtNameStr" val=""></span></span>
@@ -1283,13 +1558,18 @@
                         $("#is_open").val(1);
                     }
                     var subData=$("#form2").serialize();
-                    // alert(subData);return;
+//                     alert(subData);return;
                     if($("#col_type_Str").val()==""){
                         tanchu("煤炭种类不能为空。");
                         return;
                     }
-                    if($("#type_str_new").val()==""){
+//                    if($("#type_str_new").val()==""){
+                    if($("#descri_id").val()==""){
                         tanchu("煤炭品质不能为空。");
+                        return;
+                    }
+                    if($("#granularity_id").val()==""){
+                        tanchu("煤炭粒度不能为空。");
                         return;
                     }
                     if($("#company_supply").val()==""){
@@ -1335,6 +1615,7 @@
                 }
             </script>
             <!--发布货源结束-->
+
             <!--发布采购开始-->
             <div class="point">
                 <form action="{:U('send_buy_action')}" method="POST" id="form4">
@@ -1349,6 +1630,33 @@
                             <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
                         </div>
                     </div>
+                    <div style="border-bottom:#F0F0F0 2px solid; "></div>
+                    <input type="hidden" name="descri_id" id="descri_id_need" value="">
+                    <div class="coal_name_need" style="margin-top: 0%">
+                        <div class="coal_name-left">品质
+                            <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                            <span class="typesss_need"></span>
+                            <input type="hidden" name="origin" value="2">
+                        </div>
+                        <div class="coal_name-right">
+                            <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                        </div>
+                    </div>
+                    <div style="border-bottom:#F0F0F0 2px solid; "></div>
+                    <!--NEWADD-->
+                    <input type="hidden" name="granularity_id" id="granularity_id_need" value="">
+                    <div class="coal_granularity_need" style="margin-top: 0%">
+                        <div class="coal_granularity-left">粒度
+                            <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                            <span class="typegran_need"></span>
+                            <!--<input type="hidden" name="product_granularity" id="product_granularity">-->
+                            <input type="hidden" name="origin" value="2">
+                        </div>
+                        <div class="coal_granularity-right">
+                            <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                        </div>
+                    </div>
+                    <!--NEWADDEND-->
                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
                     <div class="tech">
                         <div class="tech-left">产地
@@ -1414,6 +1722,33 @@
                         <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="getMyAddress4()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
                     </div>
                 </div>
+                <!--NEWADD-->
+                <div id="location_coal_name_need">
+                    <div class="state_coal_name_need" style="position: fixed;z-index:99999999;">
+                        <volist name="proQuality" id="pro_vo">
+                            <p attr="{$pro_vo['id']}">{$pro_vo['descri']}</p>
+                        </volist>
+                        <div id="off_coal_name_need" style="position:relative;">
+                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                        </div>
+                        <!--</div>-->
+                        <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="display_coal_name_need()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                    </div>
+                </div>
+                <div id="location_granularity_need">
+                    <!--<div id="test" style="background-color: white;width: 60%;height: 150px;">aaaaaA</div>-->
+                    <div class="state_gran_need" style="position: fixed;z-index:99999999;">
+                        <volist name="proGranularity" id="pro_gran">
+                            <p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>
+                        </volist>
+                        <div id="off_gran_need" style="position: relative;">
+                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                        </div>
+                        <!--</div>-->
+                        <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran_need()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
+                    </div>
+                </div>
+                <!--NEWADDEND-->
                 <script>
                     function publishPick(){
                         var subData=$("#form4").serialize();
@@ -1421,6 +1756,7 @@
                             tanchu("请选择煤炭种类。");
                             return;
                         }
+
                         if($("#changdiStrDing").val()==""){
                             tanchu("请选择产地。");
                             return;
@@ -1447,6 +1783,7 @@
                             url:url,
                             data:subData,
                             success:function(data){
+                                alert(subData);
                                 if(data!=""){
                                     var jsonObj=eval("("+data+")");
                                     if(jsonObj.status){
@@ -1464,10 +1801,10 @@
                 </script>
                 <div class="pay">
                     <div class="wechet" style="position: fixed;z-index:99999999;">
-                        <p val="0">面谈</p>
-                        <p val="1">支付宝</p>
-                        <p val="2">微信支付</p>
-                        <p val="3">支付宝</p>
+                        <p val="0">预先付款</p>
+                        <p val="1">货到付款</p>
+                        <p val="2">电话沟通</p>
+                        <!--<p val="3">支付宝</p>-->
                         <div class="turnoff">
                             <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
                         </div>
@@ -1492,9 +1829,20 @@
         $("#launch").click(function(){
             <!--$("#atom").toggle();-->
             $("#atom").slideToggle("slow");
+//            $("#down_expand").attr("src","__PUBLIC__/home/images/up_detail.png");
+//            $("#down_expand").toggle();
+//            alert($("#down_expand").attr);
+            $("#arrow_img").toggleClass("down_expand");
+//            alert($(this).children(".launch-right").find("a").html());
+            return false;
+        });
+        /*$("#launch").toggle(function(){
+         $(this).attr("src","__PUBLIC__/home/images/down_detail.png");alert(2);
+         },function(){
 
-        })
-
+         $(this).attr("src","__PUBLIC__/home/images/up_detail.png");alert(1);
+         });*/
+//        $("#down_expand").attr("src","__PUBLIC__/home/images/up_detail.png");
     });
     function reloadPage(){
         /*if(val){
