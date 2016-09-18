@@ -556,8 +556,6 @@ $('.indent').html(title);
                                     <div class="lie">生日&nbsp;&nbsp;<input  id="beginTime" name="birthday" value="{$invite['birthday']|date='Y-m-d',###}"  class="kbtn" /></div>
                                     <!--<div class="lie">日期设置-2:<input id="endTime" class="kbtn" /></div>-->
                                 </div>
-                                <div id="datePlugin"></div>
-
                             </div>
 
                             <div class="launch-right">
@@ -694,11 +692,11 @@ $('.indent').html(title);
                    <div class="timeTitle" style="margin-top:2%">从业时间<span class="year"></span></div>
                    <div style="border-bottom:#F0F0F0 1px solid; "></div>
 			       <div class="riqi" style="background:#FFF">
-                       <input id="begin" type="month" name="work_time_start">　至　 &nbsp;
-                       <input id="end" type="month" name="work_time_end">
+                       <input id="beginTime1" name="work_time_start" placeholder="开始时间">至　 &nbsp;
+                       <input id="beginTime10" name="work_time_end" placeholder="结束时间">
                    </div>
                       <div id="launch" style="margin-top:2%">
-                            <div class="launch-left">车辆购买时间<input type="date" name="buy_car_time" style="font-size:1em; margin-left:2%;color:black;"/></div>
+                            <div class="launch-left">车辆购买时间<!--<input type="date" name="buy_car_time" style="font-size:1em; margin-left:2%;color:black;"/>--><input id="beginTime11" name="buy_car_time" placeholder="车辆购买时间" value="{$invite['buy_car_time']}"></div>
                             <div class="launch-right">
                                 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
                             </div>
@@ -713,6 +711,7 @@ $('.indent').html(title);
             </div>
   </div>
  </div>
+<div id="datePlugin"></div>
 <script type="text/javascript">
     /*性别确定消失*/
     function displays()
@@ -849,7 +848,10 @@ $(function() {
 <script type="text/javascript">
     $(function(){
         $('#beginTime').date();
-        $('#endTime').date({theme:"datetime"});
+        $('#beginTime1').date();
+        $('#beginTime10').date();
+        $('#beginTime11').date();
+        // $('#endTime').date({theme:"datetime"});
     });
 </script>
 </body>

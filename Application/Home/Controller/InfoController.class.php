@@ -16,6 +16,7 @@ class InfoController extends ComController {
 //           dump(I("post."));exit;
         $messageModel=M("Messages");
         $role=$_SESSION['user_info']['role_id'];
+        $uid = $_SESSION['user_info']['uid'];
         $districtId=(int)$_SESSION['user_info']['district_id'];
         $map=array();
         $map['m.status']=0;
@@ -94,7 +95,7 @@ WHEN (select pid from su_districts where id=m.area1)=$districtId then 1
 WHEN (select pid from su_districts where id=(select pid from su_districts where id=m.area1))=$districtId then 1
 ELSE 2 END)  AS district
 FROM su_messages m INNER JOIN su_users u on m.clients_id=u.uid
-WHERE m.status = 0 AND m.deline_time >= $nowTime AND $selectStr AND $authWhere
+WHERE m.status = 0 AND u.role_id=1 AND (m.origin=0 or m.origin=2) AND m.deline_time >= $nowTime AND $selectStr AND $authWhere
 ORDER BY $orderStr LIMIT $beginStr,$countRow"
             );
         }else{
@@ -107,7 +108,7 @@ WHEN (select pid from su_districts where id=m.area1)=$districtId then 1
 WHEN (select pid from su_districts where id=(select pid from su_districts where id=m.area1))=$districtId then 1
 ELSE 2 END)  AS district
 FROM su_messages m INNER JOIN su_users u on m.clients_id=u.uid
-WHERE m.status = 0 AND m.deline_time >= $nowTime AND $authWhere
+WHERE m.status = 0 AND u.role_id=1 AND (m.origin=0 or m.origin=2) AND m.deline_time >= $nowTime AND $authWhere
 ORDER BY $orderStr LIMIT $beginStr,$countRow"
             );
         }
@@ -119,9 +120,9 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
                $list = $Dao->query("select avg(comment_star) as avg from su_orders where clients_id='$uid'");
                $list_str = substr($list['0']['avg'],0,3);
                if(empty($list_str)){
-                   $return['avg']=0;
+                   $return['avg']=3;
                }else{
-                   $return['avg'] = $list_str;
+                   $return['avg'] = floor($list_str);
                }
            }
 //        dump($lists);exit;
@@ -186,10 +187,12 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
             $returnArr['whereCase']=$whereCase;
             $returnArr['data']=$lists;
             $returnArr['sql']=$sqlStr;
-            echo json_encode($returnArr,JSON_UNESCAPED_UNICODE);exit;
+            echo json_encode($returnArr);exit;
+//            echo json_encode($returnArr,JSON_UNESCAPED_UNICODE);exit;
         }
         $this->assign('index',I("post.index"));
         $this->assign('next',$next);
+        $this->assign('uid',$uid);
         $this->assign('orderCondition',I("post.orderCondition"));
         $this->assign('whereCase',$whereCase);
         $this->assign('list',$lists);
@@ -221,7 +224,7 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
         $uid=$_SESSION['user_info']['uid'];
         if($uid==$messageInfo['clients_id']){
             $returnArr['status']=0;
-            $returnArr['msg']="操作不允许。";
+            $returnArr['msg']="该订单为您自己发布";
             echo jsonEcho($returnArr);exit;
         }
         if($role==0){//车主
@@ -244,7 +247,7 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
         if(!empty($res))
         {
                 $returnArr['status']=0;
-                $returnArr['msg']="您已经接过这个单了。";
+                $returnArr['msg']="可在我的订单中查询";
                 echo jsonEcho($returnArr);exit;
         }
         else

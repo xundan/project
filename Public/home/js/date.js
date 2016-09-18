@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * 日期插件
  * 滑动选取日期（年，月，日）
  * V1.1
@@ -12,7 +12,7 @@
         var nowdate = new Date();
         var indexY=1,indexM=1,indexD=1;
         var indexH=1,indexI=1,indexS=0;
-        var initY=parseInt((nowdate.getYear()+"").substr(1,2));
+        var initY=parseInt((nowdate.getFullYear()))-1900;
         var initM=parseInt(nowdate.getMonth()+"")+1;
         var initD=parseInt(nowdate.getDate()+"");
         var initH=parseInt(nowdate.getHours());
@@ -21,8 +21,8 @@
         var yearScroll=null,monthScroll=null,dayScroll=null;
         var HourScroll=null,MinuteScroll=null,SecondScroll=null;
         $.fn.date.defaultOptions = {
-            beginyear:2000,                 //日期--年--份开始
-            endyear:2048,                   //日期--年--份结束
+            beginyear:1900,                 //日期--年--份开始
+            endyear:nowdate.getFullYear()+50,                   //日期--年--份结束
             beginmonth:1,                   //日期--月--份结束
             endmonth:12,                    //日期--月--份结束
             beginday:1,                     //日期--日--份结束
@@ -30,8 +30,8 @@
             beginhour:1,
             endhour:12,
             beginminute:00,
-            endminute:59,
-            curdate:true,                   //打开日期是否定位到当前日期
+            endminute:30,
+            curdate:false,                   //打开日期是否定位到当前日期
             theme:"date",                    //控件样式（1：日期，2：日期+时间）
             mode:null,                       //操作模式（滑动模式）
             event:"click",                    //打开日期插件默认方式为点击后后弹出日期 
@@ -43,7 +43,6 @@
         if(!opts.show){
             that.unbind('click');
         }
-		/*www.sucaijiayuan.com*/
         else{
             //绑定事件（默认事件为获取焦点）
             that.bind(opts.event,function () {
@@ -89,7 +88,7 @@
         function resetInitDete(){
             if(opts.curdate){return false;}
             else if(that.val()===""){return false;}
-            initY = parseInt(that.val().substr(2,2));
+            initY = parseInt(that.val().substr(0,4))-opts.beginyear;
             initM = parseInt(that.val().substr(5,2));
             initD = parseInt(that.val().substr(8,2));
         }
@@ -105,7 +104,7 @@
                      }else{
                         $("#Hourwrapper ul li:eq("+indexH+")").html(parseInt($("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Hourwrapper ul li:eq("+indexH+")").html().length-1)))
                      }
-                     datestr+=" "+$("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexH+")").html().length-1)+":"+
+                     datestr+=" "+$("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexI+")").html().length-1)+":"+
                              $("#Minutewrapper ul li:eq("+indexI+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexI+")").html().length-1);
                          indexS=0;
                 }
@@ -286,11 +285,13 @@
         //创建 --分-- 列表
         function createMINUTE_UL(){
             var str="<li>&nbsp;</li>";
+			
             for(var i=opts.beginminute;i<=opts.endminute;i++){
                 if(i<10){
                     i="0"+i
                 }
                 str+='<li>'+i+'分</li>'
+				i+=29;
             }
             return str+"<li>&nbsp;</li>";;
         }

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>订单详情货主123</title>
+<title>订单详情货主</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
 	<style>
@@ -76,6 +76,7 @@ $(function(){
 				imgUrl = imgUrl.replace(".png","-on.png");
 			$(this).css("background-image",imgUrl);
 				}
+		return false;
 	});
 }); 
 </script>
@@ -102,7 +103,7 @@ $(function(){
                         <dd style="color:#000">{$list['role_name']}</dd>
                       </dl>
                       <div class="item-right">
-						  <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$list['phone_number']});" style="color:#333;">
+						  <a href = "javascript:void(0)" onclick = "call_js(this,{$list['phone_number']});" style="color:#333;">
 							  <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
 						  </a>
 					  </div>
@@ -113,11 +114,11 @@ $(function(){
                       <div class="pump-right"></div>
                    </div>
                    <div class="describe" style="padding-bottom:4%; padding-top:0%"> 
-                    <div class="column"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 煤炭种类 <span>{$list.type}</span></div>
+                    <div class="column"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 核载吨数 <span>{$list.undertake_weight}</span></div>
                           <div class="column"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 创建时间&nbsp;&nbsp;<span>{$list['ctime']}</span></div>
-                          <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 供货公司 <span>{$list.name}</span></div>
-                   <div class="dizhi" style="margin-top:2%"><img src="__PUBLIC__/home/images/-3.png" width="20" height="23" />是否调配&nbsp;&nbsp;<span>{$list['short_location']}</span></div>
-                   <div class="dizhi"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" />车辆类型&nbsp;&nbsp;<span>{$list['car_type']}</span><span style="margin-left:50px;" onclick="message_js(this,{$list['id']});">撤销信息</span></div>
+                          <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 装车时间 <span>{$list['loading_time']}</span></div>
+                   <div class="dizhi" style="margin-top:2%"><img src="__PUBLIC__/home/images/-3.png" width="20" height="23" />&nbsp;&nbsp;是否调配&nbsp;&nbsp;<span>{$list['short_location']}</span></div>
+                   <div class="dizhi"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" />&nbsp;&nbsp;车辆类型&nbsp;&nbsp;<span>{$list['car_type']}</span><span class="cancel" onclick="message_js(this,{$list['id']});">撤销订单</span></div>
 				   </div>
                    <div class="pump" style="margin-top:2%">
                       <div class="pump-left"></div>
@@ -132,7 +133,7 @@ $(function(){
 				      </div>
                     <div class="juzhong">
 				     <div class="pingjiaxing">
-					      <div class="star2" ></div>
+					      <div class="star2" style="width:90%"></div>
                           <div class="result2"></div>
 						 <span ></span>
 			       </p>
@@ -174,10 +175,10 @@ $(function(){
 			 success:function(data){
 				 if(data==0)
 				 {
-					 tanchu('撤销信息成功');
+					 tanchu('撤销定单成功');
 				 }
 				 else{
-					 tanchu('已撤销信息');
+					 tanchu('已撤销订单');
 				 }
 			 },
 			 error:function(XMLHttpRequest,textStatus,errorThrown){
@@ -188,6 +189,8 @@ $(function(){
 	 //拨打电话 电话号码的显示
 	 function call_js(obj,class_id)
 	 {
+		 document.getElementById('light').style.display='block';
+		 document.getElementById('fade').style.display='block';
 		 var phone_res = class_id;
 		 $(".tanceng_res").html(phone_res);
 		 var link = "tel:"+phone_res;
@@ -216,7 +219,29 @@ $(function(){
 
 		 //验证表单元素
 		$('.tijiao').click(function(){
-			$('#form_id').submit();
+//			$('#form_id').submit();
+			var url="{:U('order_good_sale_do')}";
+			var subData=$("#form_id").serialize();
+			$.ajax({
+				type:"post",
+				url:url,
+				data:subData,
+				success:function(data){
+//					 console.log(data);;return;
+					if(data!=""){
+						var jsonObj=eval("("+data+")");
+//						 console.log(jsonObj);return;
+						if(jsonObj.status){
+							tanchu(jsonObj.msg);
+							$('.commit').html('<div class="commit"><span class="tijiao" style="display: inline-block;padding:0">感谢您的评价！</span></div>');
+						}else{
+							tanchu(jsonObj.msg);
+						}
+					}else{
+						tanchu("返回结果错误。");
+					}
+				}
+			});
 		});
 	 });
  </script>
@@ -251,13 +276,13 @@ function readFile(){
 			}
 		}
 	}
-	<!-- html=html+'</div>'; -->
-	<!-- $("#up1").after(html); -->
-} 
- <!-- $("#first").live("change", function() { -->
-    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
-	
-<!-- }); -->
+//	<!-- html=html+'</div>'; -->
+//	<!-- $("#up1").after(html); -->
+}
+// <!-- $("#first").live("change", function() { -->
+//    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
+//
+//<!-- }); -->
 
 
 

@@ -43,10 +43,13 @@
             <div class="point">
                <div style="display:none" id="objParent">
                    <div id="matters">
+                       <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
                       <div id="matter">
                         <div class="headline">
                             <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
-                            <a href="#"><div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></a>
+                            <!--<a href="#">-->
+                                <div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <!--</a>-->
                         </div>
                         <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
                             <span>{$vo['area1_str']}{$vo['detail_area1']}</span>
@@ -55,24 +58,28 @@
                            <span>{$vo['area2_str']}{$vo['detail_area2']}</span>
                             </div>
                         <div class="nom">
-                            <div class="yaopin1">煤炭种类：<span>{$vo['type']}</span></div>
-                            <div class="count1">车辆类型：<span>{$vo['car_type']}</span></div>
-                            <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
+                            <!--<div class="yaopin1">煤炭种类：<span>{$vo['type']}</span></div>-->
+                            <div class="yaopin1">车辆类型：<span>{$vo['car_type']}</span></div>
+                            <!--<a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">-->
                                 <div class="skip">
                                     <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
                                 </div>
-                            </a>
+                            <!--</a>-->
                         </div>
                     </div>
+                           </a>
                        <div style="border:#C2C2C2 1px solid"></div>
                    </div>
                 </div>
                 <!--配货订单-->
                 <volist name="order_list" id="vo">
+                    <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
                     <div id="matter">
                         <div class="headline">
                             <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
-                            <a href="#"><div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></a>
+                            <!--<a href="#">-->
+                                <div class="underway">配货订单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <!--</a>-->
                         </div>
                         <div class="address"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
                             <span>{$vo['area1_str']}{$vo['detail_area1']}</span>
@@ -81,15 +88,16 @@
                            <span>{$vo['area2_str']}{$vo['detail_area2']}</span>
                             </div>
                         <div class="nom">
-                            <div class="yaopin1">煤炭种类：<span>{$vo['type']}</span></div>
-                            <div class="count1">车辆类型：<span>{$vo['car_type']}</span></div>
-                            <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
+                            <!--<div class="yaopin1">煤炭种类：<span>{$vo['type']}</span></div>-->
+                            <div class="yaopin1">车辆类型：<span>{$vo['car_type']}</span></div>
+                            <!--<div class="count1">车辆类型：<span>{$vo['car_type']}</span></div>-->
+                            <!--<a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">-->
                                 <div class="skip">
                                     <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
                                 </div>
-                            </a>
+                            <!--</a>-->
                         </div>
-                    </div>
+                    </div></a>
                     <div style="border:#C2C2C2 1px solid"></div>
                 </volist>
                   <span id="phPoint"></span>
@@ -100,56 +108,75 @@
             <div class="point">
                 <!--交易订单-->
                 <volist name="order_info" id="vo_order">
-                <div id="matter">
+                    <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                <div id="matter" style="color:black">
                     <div class="headline">
-                        <div class="date"><if condition="$vo_order.ctime eq ''">暂无时间<else/>{$vo_order['ctime']|date='Y-m-d H:i:s',###}</if></div>
-                        <a href="#"><div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div></a>
+                            <div class="date">{$vo_order['ctime']}</div>
+                        <!--<a href="#">-->
+                            <div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div>
+                        <!--</a>-->
                     </div>
                     <div class="firm">
-                        煤炭种类<span style="margin-left:20px;">{$vo_order['type']}</span>
+                        煤炭种类<span style="margin-left:20px;">{$vo_order['types']}</span>
                     </div>
                     <div class="firm">
                         煤炭粒度<span style="margin-left:20px;">{$vo_order['granularity']}</span>
                     </div>
                     <div class="firm">
-                        交易对象<span style="margin-left:20px;">{$vo_order['name']}</span>
+                            产地<span style="margin-left:20px;">{$vo_order['area1_str']}{$vo_order['detail_area1']}</span>
                     </div>
                     <div class="firm">
-                        价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['price']}</span>
-                        <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                            吨数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['purchasing_tonnage']}</span>
+                        <!--<a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">-->
                             <div class="skip">
                                 <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
                             </div>
-                        </a>
+                        <!--</a>-->
                     </div>
                 </div>
+                        </a>
                     <div style="border:#C2C2C2 1px solid"></div>
                 </volist>
                 <div style="display:none" id="orderCloneObj">
                     <div id="matters">
-                    <div id="matter">
+                        <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                    <div id="matter" style="color:black">
                     <div class="headline">
-                        <div class="date"><if condition="$vo_order.ctime eq ''">暂无时间<else/>{$vo_order['ctime']|date='Y-m-d H:i:s',###}</if></div>
-                        <a href="#"><div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div></a>
+                            <div class="date">{$vo_order['ctime']}</div>
+                        <!--<a href="#">-->
+                            <div class="underway">交易订单&nbsp;&nbsp;&nbsp;</div>
+                        <!--</a>-->
                     </div>
                     <div class="firm">
-                        煤炭种类<span style="margin-left:20px;">{$vo_order['type']}</span>
+                        煤炭种类<span style="margin-left:20px;">{$vo_order['types']}</span>
                     </div>
                     <div class="firm">
                         煤炭粒度<span style="margin-left:20px;">{$vo_order['granularity']}</span>
                     </div>
+                    <!--<div class="firm">-->
+                        <!--交易对象<span style="margin-left:20px;">{$vo_order['name']}</span>-->
+                    <!--</div>-->
+                    <!--<div class="firm">-->
+                        <!--价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['price']}</span>-->
+                        <!--&lt;!&ndash;<a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">&ndash;&gt;-->
+                            <!--<div class="skip">-->
+                                <!--<img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />-->
+                            <!--</div>-->
+                        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                    <!--</div>-->
                     <div class="firm">
-                        交易对象<span style="margin-left:20px;">{$vo_order['name']}</span>
+                        产地<span style="margin-left:20px;">{$vo_order['area1_str']}{$vo_order['detail_area1']}</span>
                     </div>
                     <div class="firm">
-                        价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['price']}</span>
-                        <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
-                            <div class="skip">
-                                <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
-                            </div>
-                        </a>
+                        吨数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="margin-left:20px;">{$vo_order['purchasing_tonnage']}</span>
+                        <!--<a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">-->
+                        <div class="skip">
+                            <img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
+                        </div>
+                            <!--</a>-->
                     </div>
                 </div>
+                            </a>
                         <div style="border:#C2C2C2 1px solid"></div>
                     </div>
                 </div>
@@ -177,14 +204,15 @@
                                           tanchu("暂无数据");
                                      }else{
                                           jQuery.each(jsonObj.data, function(k, val)
-                                          {
+                                          {console.log(val.id);
                                                var tempObj=$("#orderCloneObj").children("div #matters").clone(true);
                                                tempObj.find(".date").html(val.ctime);
-                                               tempObj.find(".firm").eq(0).children("span").html(val.type);
+                                               tempObj.find(".firm").eq(0).children("span").html(val.types);
                                                tempObj.find(".firm").eq(1).children("span").html(val.granularity);
-                                               tempObj.find(".firm").eq(2).children("span").html(val.name);
-                                               tempObj.find(".firm").eq(3).children("span").html(val.price);
-                                               tempObj.find(".firm").eq(3).children("a").attr("href","{:U('Order/order_goods_car')}?ids="+val.id);
+                                               tempObj.find(".firm").eq(2).children("span").html(val.area_str1+val.detail_area1);
+                                               tempObj.find(".firm").eq(3).children("span").html(val.purchasing_tonnage);
+//                                               tempObj.find(".firm").eq(3).children("a").attr("href","{:U('Order/order_goods_car')}?ids="+val.id);
+                                               tempObj.find(".firm").parent().parent().attr("href","{:U('Order/order_goods_car')}?ids="+val.id);
                                                tempObj.appendTo("#jyPoint");
                                           });
                                           $("#dealPage").val(jsonObj.nextPage);
@@ -207,18 +235,40 @@
                                 data:{page:page,isAjax:1,getType:1},
                                 success:function(data){
                                     var jsonObj=eval("("+data+")");
+//                                    console.log(jsonObj.data);
                                     if(jsonObj.data==null){
                                           tanchu("暂无数据");
                                      }else{
                                           jQuery.each(jsonObj.data, function(k, val)
                                           {
-                                               var tempObj=$("#objParent").children("div #matter").clone(true);
+                                               var tempObj=$("#objParent").children("div #matters").clone(true);
                                                tempObj.find(".date").html(val.ctime);
-                                               tempObj.find(".address").eq(0).children("span").html(val.area1_str+val.detail_area1);
-                                               tempObj.find(".address").eq(1).children("span").html(val.area2_str+val.detail_area2);
-                                               tempObj.find(".yaopin1").children("span").html(val.type);
-                                               tempObj.find(".count1").children("span").html(val.car_type);
-                                               tempObj.find(".nom").children("a").attr("href","{:U('Order/order_goods_sale')}?ids="+val.id);
+                                               if(val.area1_str==""||val.area1_str==null){
+                                                      var area1Str="";
+                                               }else{
+                                                       var area1Str=val.area1_str;
+                                               }
+                                               if(val.detail_area1==""||val.detail_area1==null){
+                                                     var detailArea1="";
+                                               }else{
+                                                     var detailArea1=val.detail_area1;
+                                               }
+                                               if(val.area2_str==""||val.area2_str==null){
+                                                     var area2Str="";
+                                               }else{
+                                                     var area2Str=val.area2_str;
+                                               }
+                                               if(val.detail_area2==""||val.detail_area2==null){
+                                                     var detailArea2="";
+                                               }else{
+                                                     var detailArea2=val.detail_area2;
+                                               }
+                                               tempObj.find(".address").eq(0).children("span").html(area1Str+detailArea1);
+                                               tempObj.find(".address").eq(1).children("span").html(area2Str+detailArea2);
+                                               tempObj.find(".yaopin1").children("span").html(val.car_type);
+//                                               tempObj.find(".count1").children("span").html(val.car_type);
+//                                               tempObj.find(".nom").children("a").attr("href","{:U('Order/order_goods_sale')}?ids="+val.id);
+                                               tempObj.find(".nom").parent().parent().attr("href","{:U('Order/order_goods_sale')}?ids="+val.id);
                                                tempObj.appendTo("#phPoint");
                                           });
                                           $("#phPage").val(jsonObj.nextPage);

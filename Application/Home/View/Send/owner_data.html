@@ -522,10 +522,7 @@ $("#content .point").eq(index).show().siblings().hide();
 									<div class="lie">生日&nbsp;&nbsp;<input  id="beginTime" name="birthday" class="kbtn" value="{$invite['birthday']|date='Y-m-d',###}" /></div>
 									<!--<div class="lie">日期设置-2:<input id="endTime" class="kbtn" /></div>-->
 								</div>
-								<div id="datePlugin"></div>
-
 							</div>
-
 
                             <div class="launch-right">
 								<img src="__PUBLIC__/home/images/zhuandao.png" width="10" height="16" />
@@ -598,8 +595,8 @@ $("#content .point").eq(index).show().siblings().hide();
                    <div class="timeTitle">从业时间<span class="year"></span></div>
                    <div style="border-bottom:#F0F0F0 1px solid; "></div>
 			       <div class="riqi" style="background:#FFF">
-					   <input id="begin" name="work_time_start" type="month">
-					   　至　 &nbsp; <input id="end" name="work_time_end" type="month">
+					   <input id="beginTime1" name="work_time_start" placeholder="开始时间">
+					   　至&nbsp; <input id="beginTime10" name="work_time_end" placeholder="结束时间">
 				   </div>
                        <div style="border-bottom:#F0F0F0 1px solid; "></div>
                        <div class="freight">公司名称<input type="text" name="" id="clone" style="font-size:1em" value="" placeholder=""/></div>
@@ -628,6 +625,7 @@ $("#content .point").eq(index).show().siblings().hide();
             </div>
   </div>
  </div>
+ <div id="datePlugin"></div>
 <script type="text/javascript">
 	//图层消失-付款方式
 	function displays()
@@ -788,7 +786,9 @@ $(function() {
 <script type="text/javascript">
 	$(function(){
 		$('#beginTime').date();
-		$('#endTime').date({theme:"datetime"});
+		$('#beginTime1').date();
+		$('#beginTime10').date();
+		//$('#endTime').date({theme:"datetime"});
 	});
 </script>
 </body>

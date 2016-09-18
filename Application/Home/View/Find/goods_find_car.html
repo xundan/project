@@ -11,6 +11,7 @@
         .black_overlay{
             display: none;
             position: absolute;
+            position:fixed;
             top: 0%;
             left: 0%;
             width: 100%;
@@ -146,29 +147,22 @@ $(document).ready(function(){
 			   <volist name="lists" id="mes_vo">
                     <div class="personne" style="margin-top: 0px;">
                       <dl class="personne-left">
-                        <dt><if condition="$mes_vo['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" height="57" style="border-radius:50%;"/></if></dt>
-                        <dd>{$mes_vo['name']}  <img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" />{$mes_vo['avg']}</dd>
+                        <dt><a href="{:U('Send/my_rate')}?ids={$mes_vo['uid']}"><if condition="$mes_vo['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" height="57" style="border-radius:50%;"/></if></a></dt>
+                        <dd>{$mes_vo['name']}  <img src="__PUBLIC__/home/images/xing.png"  width="16"  height="15" /><input type="hidden" value="{$mes_vo['avg']}" class="starNum"></dd>
                         <dd>{$mes_vo['role_name']}</dd>
                       </dl>
 
                         <div class="item-right">
-                            <if condition="$user_role eq '1'">
-                                <a href = "javascript:void(0)" onclick = "call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                                <a href = "javascript:void(0)" onclick = "call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id},{$mes_vo['uid']});" style="color:#333;">
                                     <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
                                 </a>
-                                <else/>
-                                <a href = "javascript:void(0)" onclick = "call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
-                                    <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
-                                </a>
-                                </if>
-
                         </div>
 
                    </div>
                    <div class="describe">
                    <div class="dizhi">
                        <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
-                       <span>{$mes_vo['detail_area1']}</span>
+                       <span>{$mes_vo['area1_str']}{$mes_vo['detail_area1']}</span>
                    </div>
                       <div class="describe-left" style="width:100%">
                           <div class="column">
@@ -192,18 +186,18 @@ $(document).ready(function(){
                 <span id="insertPoint"></span>
                 <input type="hidden" id="dealPage" value="{$nextPage}" />
                 <input type="hidden" id="orderCaseId" value="{$orderCase}" />
-                <div onclick="getMore()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div>
+                <div onclick="getMore()" style="background-color: #4AC9F6;text-align: center;height:30px;line-height:30px;color:#fff;">加载更多</div><input type="hidden" id="roleId" value="{$role_id}">
                  </div> 
                  <span style="display:none" id="cloneObj">
                   <span>
                       <div class="personne" style="margin-top: 0px;">
                       <dl class="personne-left">
-                        <dt><if condition="$mes_vo['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" height="57" style="border-radius:50%;"/></if></dt>
-                        <dd><span>{$mes_vo['name']} </span> <img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" /><span>{$mes_vo['avg']}</span></dd>
+                        <dt><a href="{:U('Send/my_rate')}?ids={$mes_vo['uid']}"><if condition="$mes_vo['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png" width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$mes_vo['headimgurl']}" width="55" height="57" style="border-radius:50%;"/></if></a></dt>
+                        <dd><span>{$mes_vo['name']}</span> <img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" /><span><input type="hidden" value="{$mes_vo['avg']}" class="starNum"></span></dd>
                         <dd>{$mes_vo['role_name']}</dd>
                       </dl>
                         <div class="item-right">
-                            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id});" style="color:#333;">
+                            <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$mes_vo['phone_number']},{$mes_vo['id']},{$role_id},{$mes_vo['uid']});" style="color:#333;">
                                 <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
                             </a>
                         </div>
@@ -211,7 +205,7 @@ $(document).ready(function(){
                    <div class="describe">
                    <div class="dizhi">
                        <img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />
-                       <span>{$mes_vo['detail_area1']}</span>
+                       <span>{$mes_vo['area1_str']}{$mes_vo['detail_area1']}</span>
                    </div>
                       <div class="describe-left" style="width:100%">
                           <div class="column">
@@ -236,6 +230,10 @@ $(document).ready(function(){
       </div>
    </div>
 </div>
+<!--克隆星级-->
+<div id="proStr" style="display: none;"><img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" /></div>
+<!--当前登录人id-->
+<input type="hidden" value="{$uid}" id="userRole">
  <!--电话弹层-->
 <div id="light" class="white_content" style="position:fixed;">
     <p class="worn">小矿建议您谨慎交易，"货"比三家哦！</p>
@@ -265,12 +263,15 @@ $(document).ready(function(){
                                 data:{page:page,isAjax:1,orderCondition:orderCaseStr,whereOrigin:tempWhere},
                                 success:function(data){
                                     var jsonObj=eval("("+data+")");
+                                    var role_id = $('#roleId').val();
+//                                    console.log(role_id);
                                     // console.log(jsonObj.sql);
                                     if(jsonObj.data==null||jsonObj.data==""){
                                           tanchu("暂无数据");
                                      }else{
                                           jQuery.each(jsonObj.data, function(k, val)
                                           {
+//                                               console.log(jsonObj.role_id);return;
                                                var tempObj=$("#cloneObj").children("span").clone(true);
                                                if(val.headimgurl==""){
                                                   tempObj.find(".personne-left").children("dt").children("img").attr("src","__PUBLIC__/home/images/touxiang.png");    
@@ -278,12 +279,13 @@ $(document).ready(function(){
                                                     tempObj.find(".personne-left").children("dt").children("img").attr("src","__ROOT__"+val.headimgurl);  
                                                }
                                                tempObj.find(".personne-left").children("dd").children("span").eq(0).html(val.name); 
-                                               tempObj.find(".personne-left").children("dd").children("span").eq(1).html(val.avg);
+                                               tempObj.find(".personne-left").children("dd").children("span").eq(1).find('input').val(val.avg);
                                                tempObj.find(".personne-left").children("dd").eq(1).html(val.role_name);
-                                               tempObj.find(".item-right").children("a").attr("onclick","call_js(this,"+val.phone_number+","+val.id+","+jsonObj.role_id+");");
-                                               tempObj.find(".dizhi").children("span").html(val.detail_area1);
+                                               tempObj.find(".item-right").children("a").attr("onclick","call_js(this,"+val.phone_number+","+val.id+","+role_id+","+val.uid+");");
+                                               tempObj.find(".dizhi").children("span").html(val.area1_str+val.detail_area1);
                                                tempObj.find(".column").eq(0).children("span").html(val.car_type);
-                                               tempObj.find(".column").eq(1).children("span").html(val.publish_time);
+                                               tempObj.find(".column").eq(1).children("span").html(val.undertake_weight);
+                                               tempObj.find(".column").eq(2).children("span").html(val.publish_time);
                                                tempObj.appendTo("#insertPoint");
                                           });
                                           $("#dealPage").val(jsonObj.nextPage);
@@ -296,48 +298,71 @@ $(document).ready(function(){
                           }
                          });
                         }
-    function call_js(obj,class_id,message,role_id)
+    function call_js(obj,class_id,message,role_id,uid)
     {
-		if(role_id=='1')
+        var userRole = $('#userRole').val();
+        if(userRole==uid)
+        {
+            tanchu('该订单为您自己发布');
+            return false;
+        }
+		if(role_id=='0')
 		{
-			var phone_res = class_id;
-			$(".tanceng_res").html(phone_res);
-			var link = "tel:"+phone_res;
-			$('.call_you').attr('href',link);
+			tanchu('权限不允许哟~');
+		}else
+        {
+            var phone_res = class_id;
+            $(".tanceng_res").html(phone_res);
+            var link = "tel:"+phone_res;
+            $('.call_you').attr('href',link);
             document.getElementById('light').style.display='block';
             document.getElementById('fade').style.display='block';
-			url="__CONTROLLER__/ajax_order_goods";
-			$.ajax
-			({
-				type:"post",
-				url:url,
-				data:{message:message},
-				success:function(data)
-				{
-					if(data==0)
-                          {
-                               tanchu('可在我的订单查询');
-                          }
-                          else if(data==1)
-                          {
-                            tanchu('接单成功');
-                          }
-                           else
-                           {
-                             tanchu('接单失败');
-                          }
-				},
-				error:function(XMLHttpRequest,textStatus,errorThrown)
-				{
-					tanchu("出现错误！！！");
-				}
-			});
-		}
-		else
-		{
-                var phone_res = class_id;
-                $(".tanceng_res").html(phone_res);
-			tanchu('抱歉~无法接单哟');
-		}
+            url="__CONTROLLER__/ajax_order_goods";
+            $.ajax
+            ({
+                type:"post",
+                url:url,
+                data:{message:message},
+                success:function(data)
+                {
+                    if(data==0)
+                    {
+                        tanchu('可在我的订单查询');
+                    }
+                    else if(data==1)
+                    {
+                        tanchu('接单成功');
+                    }
+                    else if(data==1024)
+                    {
+                        tanchu('没有接单权限');
+                    }
+                    else if(data==2048)
+                    {
+                        tanchu('消息不存在或已撤销。');
+                    }
+                    else
+                    {
+                        tanchu('接单失败');
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown)
+                {
+                    tanchu("出现错误！！！");
+                }
+            });
+        }
     }
+    //星级显示
+    $(function(){
+        $(".personne-left").each(function(){
+           var starNum = $(this).find("dd").eq(0).find('input').val();
+            for(i=0;i<starNum-1;i++)
+            {
+                cloneObj = $('#proStr img').clone(true);
+                $(this).find("dd").eq(0).append(cloneObj);
+            }
+        });
+
+    });
 </script>

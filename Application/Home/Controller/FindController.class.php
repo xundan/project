@@ -117,7 +117,11 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid WHERE sm.statu
             }
 			$avg = M()->query("select avg(comment_star) as avg from su_orders where clients_id='$uid'");
             $list_str = substr($avg['0']['avg'],0,3);
-			$list['avg']=$list_str;
+            if($list_str==0)
+            {
+                $list_str = 3;
+            }
+			$list['avg']=floor($list_str);
         }
 //        dump($lists);exit;
         if(empty($lists)){
@@ -140,7 +144,11 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid WHERE sm.statu
         $this->assign('orderCase',$orderCase);
         //货物类型查询下拉
         $type = M('product_type')->select();
+//        dump($role_id);
         $this->assign('role_id',$role_id);
+        //用户id
+        $uid = $_SESSION['user_info']['uid'];
+        $this->assign('uid',$uid);
         $this->display();
     }
     //司机找活ajax接单
@@ -237,7 +245,7 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid WHERE sm.statu
         $temp['sm.origin'] = 1;
            $beginStr=(int)(($page-1)*$countRow);
            $lists=M()->query(
-               "SELECT sm.undertake_weight,srct.car_type,su.role_id,su.headimgurl,su.phone_number,su.uid,sm.id,sm.detail_area1,sm.publish_time,sm.area1,
+               "SELECT sm.undertake_weight,srct.car_type,su.role_id,su.name,su.headimgurl,su.phone_number,su.uid,sm.id,sm.detail_area1,sm.publish_time,sm.area1,
 (CASE
 WHEN sm.area1='' THEN 2
 WHEN sm.area1=$districtId THEN 1
@@ -260,6 +268,9 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid INNER JOIN su_
             else{
                 $list['publish_time']=date("Y-m-d",$list['publish_time']);
             }
+            if(!empty($list['area1'])){
+                $list['area1_str']=$this->getAllAddress($list['area1']);
+            }
 			if($list['role_id']==0){
                 $list['role_name'] = '车主';
             }
@@ -267,7 +278,15 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid INNER JOIN su_
                 $list['role_name'] = '货主';
             }
 			$avg = M()->query("select avg(comment_star) as avg from su_orders where clients_id='$uid'");
-            $list_str = substr($avg['0']['avg'],0,3);
+            $list_strs = substr($avg['0']['avg'],0,3);
+            if($list_strs==false)
+            {
+                $list_str = 3;
+            }
+            else
+            {
+                $list_str = intval($list_strs);;
+            }
 			$list['avg']=$list_str;
         }
         if($isAjax){
@@ -279,6 +298,7 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid INNER JOIN su_
             $returnArr['sql']=$sql;
             echo jsonEcho($returnArr);exit;
         }
+//        dump($lists);exit;
         $this->assign('lists',$lists);
         //货物类型查询下拉
         $type = M('product_type')->select();
@@ -295,11 +315,32 @@ FROM su_messages sm left JOIN su_users su on sm.clients_id=su.uid INNER JOIN su_
         $addd['uid'] = $uid;
         $user_role = M('users')->where($addd)->find();
         $this->assign('user_role',$user_role);
+        $uid = $_SESSION['user_info']['uid'];
+        $this->assign('uid',$uid);
         $this->display();
     }
     //货源找车ajax接单
     public function ajax_order_goods($message)
     {
+        $role=$_SESSION['user_info']['role_id'];
+        $messageInfo=M("Messages")->where("status=0")->find($message);
+        $uid=$_SESSION['user_info']['uid'];
+        if($uid==$messageInfo['clients_id']){
+            echo 1024;exit;
+        }
+        if(empty($messageInfo)){
+            echo 2048;exit;//消息撤销或不存在
+        }
+        if($role==0){//车主只能接求车单。
+            if($messageInfo['origin']!=3){
+                echo 1024;exit;
+            }
+        }
+        if($role==1){//货主不能接求车单
+            if($messageInfo['origin']==3){
+                echo 1024;exit;
+            }
+        }
         $temp['message_id'] = $message;
         $temp['clients_id'] = $_SESSION['user_info']['uid'];
         $res = M('orders')->where($temp)->select();

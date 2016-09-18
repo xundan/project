@@ -125,7 +125,7 @@ input[type="radio"] {
 .demo--checkbox.demo--radioInput,.demo--radio:checked + .demo--checkbox.demo--radioInput:after{border-radius:0}
 /*弹窗*/
 #succ,#intact,#einrichten,.goos-info{ filter:alpha(opacity=50); background:rgba(0,0,0,0.5)!important; display:none;position:absolute; height:105%; width:100%; top:0; left:0; opacity:1;z-index:21;}
-.chenggong{ width:90%; margin:50% auto; height:200px; border-radius:3px; background:#FFF}
+.chenggong{ width:90%; margin:50% auto; height:230px; border-radius:3px; background:#FFF}
 .phrase{ font-size:1.5em; text-align:center; color:#5a5a5a; padding-top:5%}
 .wancheng,.geren{width:100%; margin:0 auto; text-align:center}
 .wancheng input,.geren input{ background:#2CABEE; color:#FFF; width:80%; height:35px; line-height:35px; border-radius:3px; margin-top:5%}
@@ -136,7 +136,7 @@ input[type="radio"] {
 .indent{ text-align:center; color:#FFF;width:80%;float:left; font-size:1.2em}
 .omit{ float:right;padding-top:2%;width:10%; }
 
-#matter{ background:#FFF;padding-left:2%; padding-right:2%; width:96%; padding-bottom:4%}
+#matter{ background:#FFF;padding-left:2%; padding-right:2%; width:96%; padding-bottom:4%;}
 .headline{ overflow:hidden;zoom:1;padding-top:2%;}
 .date{ float:left; color:#a1a1a1}
 .underway{ float:right;color:#a1a1a1}
@@ -150,7 +150,7 @@ input[type="radio"] {
 
 
 /*货主订单*/
-.firm{ margin-top:3%; }    
+.firm{ margin-top:3%;}
 
 .firm input{ width:65%; color:#a1a1a1;font-size:1em; margin-left:5%;}
 
@@ -203,7 +203,7 @@ input[type="radio"] {
 .state_gran_need p,.state_coal_name_need p,.state_gran_sendcar p,.state_gran p,.state p,.state1 p,.state3 p,.shengfen p,.state1-1 p,.shengfen-one p,.speci p,.sweden p,.wechet p,.sterious p,.leixing p,.factor p,.handset p,.women p,.ences p,.qita p,.ercial p,.glad p,.location1-1 p{ padding-left:40%;height:40px; line-height:40px; font-size:1em; color:#333; width:60%;}
 .smoky p{ position:relative; border:#4AC9F6 1px solid; border-radius:2px; height:35px; line-height:35px; text-align:center; width:50%; margin:0 auto;margin-top:5%;}
 .handset p{ padding-left:30%;}
-#off_coal_name_need,#off_gran_need,#off_gran,#off_gran_sendcar,#off,#off1,#off2,.turnoff,.guan,.off1-1{ position:absolute; top:4%;left:3%}
+#off_coal_name_need,#off_gran_need,#off_gran,#off_gran_sendcar,#off,#off1,#off2,.turnoff,.guan,.off1-1,#off1-1{ position:absolute; top:4%;left:3%;}
 /*.curenrt{ display:none}
 .state p img{ margin-left:10%;display:none;}*/
 .yangshi{ border-bottom:#808080 2px solid; border-top:#808080 2px solid}
@@ -342,14 +342,14 @@ input[type="radio"] {
 .anonymity p{overflow:hidden;}
 .imgupload{overflow:hidden; height:0px}
 .imgupload input[type='file']{left:0;top:0;opacity:0;filter: alpha(opacity=0);cursor: pointer;overflow:hidden;}
-.pingjiaxing{overflow:hidden; text-align:center; width:70%; margin:0 auto;}
+.pingjiaxing{overflow:hidden; text-align:center; width:203px; margin:0 auto;}
 .star2{width:90%; margin:0 auto}
 .star2 img{float:left;margin-left:15px;margin-top:1%;}
 .pingjiaxing span,.fuwu span,.wuliu span{display:block;margin-bottom:-20px;font:0px Microsoft yahei;color:#FFF}
-.juzhong{ width:98%; text-align:center;height:50%}
+.juzhong{ width:203px; text-align:center;height:50%; margin: 0 auto}
 @media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
-.pingjiaxing{overflow:hidden; text-align:center; width:80%; margin:0 auto;}
-.star2 img{float:left;margin-left:12px;margin-top:1%;}
+.pingjiaxing{overflow:hidden; text-align:center; width:203px; margin:0 auto;}
+.star2 img{float:left;margin-left:8px;margin-top:1%;}
 .juzhong{ width:98%; text-align:center;height:50%}
 
 } /* 兼容iphone5 */
@@ -358,14 +358,22 @@ input[type="radio"] {
 .star2 img{float:left;margin-left:12px;margin-top:1%;}
 .juzhong{ width:100%; text-align:center;height:50%}
 } /* 兼容ipad */
-.donym{ background:#FFF; width:96%; padding-left:5%; padding-right:2%; padding-top:3%; margin:0 auto; padding-bottom:4%}
+.donym{ background:#FFF; width:100%; padding-left:8%; padding-right:2%; padding-top:3%; margin:0 auto; padding-bottom:4%}
 .donym a{ background:url(../images/short.png); display:inline-block; width:98px; height:27px; line-height:27px; color:#4BC8F8; font-size:1em; margin-top:3%;  padding-left:5px; margin-left:5px}
 .donym .long{ background:url(../images/long.png); width:141px; line-height:27px; height:27px;padding-left:5px}
 .depict{  background:#FFF; text-align:center;padding-bottom:4%}
 .depict textarea{resize:none;outline:none; border:none;color:#a1a1a1;font-size:1em; width:90%; padding-left:2%; padding-right:2%; border:#CCC 1px solid; margin:0 auto; height:70px;}
 .commit{ background:#FFF; text-align:center;padding-bottom:4%}
 .commit input{ border:none; background:#FF593F; width:96%;padding-left:2%; padding-right:2%; height:35px; line-height:35px; color:#FFF; border-radius:2px; font-size:1em}
+.tijiao{ border:none; background:#FF593F; width:96%;padding-left:2%; padding-right:2%; height:35px; line-height:35px; color:#FFF; border-radius:2px; font-size:1em}
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    .donym{ background:#FFF; width:100%; padding-left:2%; padding-right:2%;}
 
+} /* 兼容iphone5 */
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){
+    .donym{ background:#FFF; width:100%; padding-left:2%; padding-right:2%;}/* 兼容iphone4/4s */
+
+}
 .buler{ background:#4AC9F6; padding-bottom:15%;text-align:center;padding-top:2%; margin-bottom:4%}
 .cence{ background:#BAE8FE; border-radius:50px; width:100px; height:100px; margin:0 auto;}
 .cence dl{padding-top:5%; position:relative}
@@ -459,7 +467,14 @@ input[type="radio"] {
 .coal_granularity-right{
     float:right; width:10%; padding-top:3%
 }
-
+.cancel{
+    float:right;
+    border:1px solid #4AC9F6;
+    border-radius:10%;
+    background-color:#4AC9F6;
+    font-size:1em;
+    color:#fff;
+}
 /*.state_gran{*/
     /*width:80%; margin:70% auto; padding-bottom:8%;border-radius:3px; background:black; position:relative; padding-left:10%; padding-right:10%; padding-top:10%; height:150px; overflow-y:auto*/
 /*}*/

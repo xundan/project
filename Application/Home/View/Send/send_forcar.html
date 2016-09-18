@@ -32,6 +32,7 @@
                 $('.send').html($("#districtSelected").text());
                 $("#location").hide();
                 $(".send").html('');
+                $('#districtSelected').val('');
             });
 
         });
@@ -92,6 +93,7 @@
                 $('.back').html($("#districtSelected1").text());
                 $("#location1").hide();
                 $('#back').html('');
+                $('#districtSelected1').val('');
             });
 
         })
@@ -162,6 +164,7 @@
             {
                 $("#location_granularity_sendcar").hide();
                 $('.typegran_sendcar').html('');
+                $('#granularity_id_sendcar').val('');
             });
         })
     </script>
@@ -197,6 +200,7 @@
             {
                 $("#location2").hide();
                 $('.typess').html('');
+                $('#col_type_Str').val('');
             });
         })
 
@@ -234,6 +238,7 @@
             {
                 $("#location1-1").hide();
                 $('.typesss').html('');
+                $('#descri_id').val('');
             });
         })
     </script>
@@ -264,6 +269,7 @@
             {
                 $("#location_granularity").hide();
                 $('.typegran').html('');
+                $('#granularity_id').val('');
             });
         })
     </script>
@@ -303,6 +309,7 @@
             {
                 $("#location_coal_name_need").hide();
                 $('.typesss_need').html('');
+                $('#descri_id_need').val('');
             });
         })
     </script>
@@ -333,6 +340,7 @@
             {
                 $("#location_granularity_need").hide();
                 $('.typegran_need').html('');
+                $('#granularity_id_need').val('');
             });
         })
     </script>
@@ -507,6 +515,7 @@
                     $('.send').html($(this).find("#districtSelected").text());
                     $('#location').hide();
                     $(".send").html('');
+                    $('#districtSelected').val('');
                 }
             });
             $('#location1').click(function(e){
@@ -516,6 +525,7 @@
                     $('#back').html($(this).find("#districtSelected1").text());
                     $('#location1').hide();
                     $('#back').html('');
+                    $('#districtSelected1').val('');
                 }
             });
             //NEWADD 粒度部分
@@ -525,6 +535,7 @@
                 if (obj.attr('id') == 'location_granularity_sendcar') {
                     $("#location_granularity_sendcar").hide();
                     $('.typegran_sendcar').html('');
+                    $('#granularity_id_sendcar').val('');
                 }
             });
             //NEWADDEND 粒度部分结束
@@ -536,6 +547,7 @@
                 if (obj.attr('class') == 'location2') {
                     $("#location2").hide();
                     $('.typess').html('');
+                    $('#col_type_Str').val('');
                 }
             });
             /*品质部分*/
@@ -545,6 +557,7 @@
                 if (obj.attr('id') == 'location1-1') {
                     $("#location1-1").hide();
                     $('.typesss').html('');
+                    //$('#descri_id').val('');
                 }
             });
             //NEWADD 粒度部分
@@ -554,6 +567,7 @@
                 if (obj.attr('id') == 'location_granularity') {
                     $("#location_granularity").hide();
                     $('.typegran').html('');
+                    $('#granularity_id').val('');
                 }
             });
             //NEWADDEND 粒度部分结束
@@ -589,6 +603,7 @@
                 if (obj.attr('class') == 'kind') {
                     $('.snes').html('');
                     $('.kind').hide();
+                    $('col_type_Str_new').val('');
                 }
             });
             $('#location_coal_name_need').click(function(e){
@@ -597,6 +612,7 @@
                 if (obj.attr('id') == 'location_coal_name_need') {
                     $("#location_coal_name_need").hide();
                     $('.typesss_need').html('');
+                    $('#descri_id_need').val('');
                 }
             });
             $('#location_granularity_need').click(function(e){
@@ -605,6 +621,7 @@
                 if (obj.attr('id') == 'location_granularity_need') {
                     $("#location_granularity_need").hide();
                     $('.typegran_need').html('');
+                    $('#granularity_id_need').val('');
                 }
             });
             /*支付*/
@@ -1081,11 +1098,11 @@
                     var subData=$("#form1").serialize();
 //                     alert(subData);
                     if($("#detail_area1").val()==""){
-                        tanchu("发货地址不能为空。");
+                        tanchu("发货地址详情不能为空。");
                         return;
                     }
                     if($("#detail_area2").val()==""){
-                        tanchu("收货详情不能为空。");
+                        tanchu("收货地址详情不能为空。");
                         return;
                     }
 //                    if($("#coal_quantity").val()==""){
@@ -1108,9 +1125,9 @@
 //                        tanchu("装车费不能为空。");
 //                        return;
 //                    }
-                    if($("input[name=loading_time]").val()==""){
-                        tanchu("装车时间还没有填写。");
-                    }
+//                    if($("input[name=loading_time]").val()==""){
+//                        tanchu("装车时间还没有填写。");
+//                    }
 //                    if($("#unloading_expense").val()==""){
 //                        tanchu("卸车费不能为空。");
 //                        return;
@@ -1189,6 +1206,7 @@
                 //品质内容添加
                 $(function(){
                     var typesss = $('.typesss').attr('attr');
+//                    alert(typesss);
 //                    $('#type_str_new').val(typesss);
                     $('#descri_id').val(typesss);
                 });
@@ -1216,6 +1234,13 @@
                             <input type="button" value="继续发布" onclick="reloadPage()">
                         </div>
                     </a>
+                    <!--NEWADD-->
+                    <a href="{:U('Send/owner_data')}">
+                        <div class="wancheng" style="margin-top:6%">
+                            <input type="button" onclick="reloadPage(0)" value="前往完善个人信息">
+                        </div>
+                    </a>
+                    <!--NEWADDEND-->
                 </div>
 
             </div>
@@ -1258,8 +1283,9 @@
                     <volist name="proGranularity" id="pro_gran">
                         <p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>
                     </volist>
-                    <div id="off_gran_sendcar" style="position: relative;">
-                        <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                    <div id="off_gran_sendcar">
+                        <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
+                        <!--top:-145px;left:-25px;-->
                     </div>
                     <!--</div>-->
                     <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran_sendcar()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
@@ -1435,8 +1461,9 @@
                             <volist name="proQuality" id="pro_vo">
                                 <p attr="{$pro_vo['id']}">{$pro_vo['descri']}</p>
                             </volist>
-                            <div id="off1-1" style="position:relative;">
-                                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                            <div id="off1-1" style="position: absolute">
+                                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;position:fixed;" width="25" height="25"/>
+                                <!--top:-145px;left:-25px;-->
                             </div>
                         <!--</div>-->
                         <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displayss()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
@@ -1449,8 +1476,8 @@
                             <volist name="proGranularity" id="pro_gran">
                                 <p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>
                             </volist>
-                            <div id="off_gran" style="position: relative;">
-                                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                            <div id="off_gran">
+                                <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
                             </div>
                         <!--</div>-->
                         <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
@@ -1584,14 +1611,14 @@
                         tanchu("请选择交割地。");
                         return;
                     }
-                    if($("#valPriceSt").val()==""){
-                        tanchu("价格不能为空。");
-                        return;
-                    }
-                    if($("#purchasing_tonnage").val()==""){
-                        tanchu("吨数不能为空。");
-                        return;
-                    }
+//                    if($("#valPriceSt").val()==""){
+//                        tanchu("价格不能为空。");
+//                        return;
+//                    }
+//                    if($("#purchasing_tonnage").val()==""){
+//                        tanchu("吨数不能为空。");
+//                        return;
+//                    }
 
                     var url="{:U('send_proinfo_action')}";
                     $.ajax({
@@ -1599,6 +1626,7 @@
                         url:url,
                         data:subData,
                         success:function(data){
+                            //alert(data);return;
                             if(data!=""){
                                 var jsonObj=eval("("+data+")");
                                 if(jsonObj.status){
@@ -1669,7 +1697,9 @@
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
                     <div class="trait"><span>热值（低位）</span>
-                        <input type="text" name="rezhi_min" id="rezhi_min_pick" class="preg_num"/><span style="float: right">卡</span>
+                        <img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
+                        <input type="text" name="rezhi_min" id="rezhi_min_pick" class="preg_num"/>
+                        <span style="float: right">卡</span>
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
                     <div class="trait"><span>吨数</span>
@@ -1680,7 +1710,7 @@
                     <div id="expand" style="margin-bottom:2%">详细描述
                         <textarea class="reda" name="remark"></textarea>
                     </div>
-                    <div class="hope"><span>期望价格</span>
+                    <div class="hope"><span>期望价格</span><img src="__PUBLIC__/home/images/biyao.png" width="10" height="10" />
                         <input type="text" placeholder="最低价" name="product_min_price" id="product_min_price_pick" class="preg_num"/>———<input type="text" placeholder="最高价" name="product_max_price" id="product_max_price_pick" class="preg_num"/><span style="float: right">元</span>
                     </div>
                     <div style="border-bottom:#F0F0F0 1px solid; margin-top:0%"></div>
@@ -1728,8 +1758,8 @@
                         <volist name="proQuality" id="pro_vo">
                             <p attr="{$pro_vo['id']}">{$pro_vo['descri']}</p>
                         </volist>
-                        <div id="off_coal_name_need" style="position:relative;">
-                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                        <div id="off_coal_name_need">
+                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
                         </div>
                         <!--</div>-->
                         <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="display_coal_name_need()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
@@ -1741,8 +1771,8 @@
                         <volist name="proGranularity" id="pro_gran">
                             <p attr="{$pro_gran['id']}">{$pro_gran['granularity']}</p>
                         </volist>
-                        <div id="off_gran_need" style="position: relative;">
-                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:absolute;top:-145px;left:-25px;" width="25" height="25"/>
+                        <div id="off_gran_need">
+                            <img src="__PUBLIC__/home/images/icon-off.jpg" style="position:fixed;" width="25" height="25"/>
                         </div>
                         <!--</div>-->
                         <div style="text-align: center;position:absolute;top:62%;left:3%;position: fixed;z-index:999999999999999999;"><input type="button" onclick="displaygran_need()" style="border:1px solid #4AC9F6;width:150%;border-radius:10%;height:35px;background-color:#4AC9F6;font-size:1.2em;line-height:35px;color:#fff; display:inline-block" value="确定"/></div>
@@ -1756,11 +1786,18 @@
                             tanchu("请选择煤炭种类。");
                             return;
                         }
-
-                        if($("#changdiStrDing").val()==""){
-                            tanchu("请选择产地。");
+                        if($("#descri_id_need").val()==""){
+                            tanchu("请选择煤炭品质。");
                             return;
                         }
+                        if($("#granularity_id_need").val()==""){
+                            tanchu("请选择煤炭粒度。");
+                            return;
+                        }
+//                        if($("#changdiStrDing").val()==""){
+//                            tanchu("请选择产地。");
+//                            return;
+//                        }
                         if($("#rezhi_min_pick").val()==""){
                             tanchu("请填写热值。");
                             return;
@@ -1783,7 +1820,7 @@
                             url:url,
                             data:subData,
                             success:function(data){
-                                alert(subData);
+//                                alert(subData);
                                 if(data!=""){
                                     var jsonObj=eval("("+data+")");
                                     if(jsonObj.status){

@@ -18,4 +18,10 @@ class PublicController extends ComController {
     public function header(){
     	$this->display();
     }
+    /**
+    *TODO定时清理session程序
+    */
+    public function clearSession(){
+	
+    }
 }

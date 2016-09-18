@@ -67,10 +67,10 @@ class SendController extends ComController {
 //        NEWADDEND
         $data['path_price'] = I('post.path_price','','strip_tags');
         $data['loading_time'] = strtotime(I('post.loading_time','','strip_tags'));
-        $data['unloading_expense'] = strtotime(I('post.unloading_expense','','strip_tags'));
+        $data['unloading_expense'] = I('post.unloading_expense','','strip_tags');
         $data['loading_expense'] = I('post.loading_expense','','strip_tags');
-        $data['deline_time'] = $this->getDelineTime();
-        $data['publish_time'] = time();
+//        $data['deline_time'] = $this->getDelineTime();
+//        $data['publish_time'] = time();
         $returnArr=array();
         if(empty($area1)||empty($area2)){
             $returnArr['status']=0;
@@ -83,7 +83,9 @@ class SendController extends ComController {
             echo jsonEcho($returnArr);exit;
         }
         //装车时间判断
-        if((time()-$data['loading_time']) > 3600*24){
+        if(empty($data['loading_time'])){
+
+        }elseif((time()-$data['loading_time']) > 3600*24){
             $returnArr['status']=0;
             $returnArr['msg']="装车时间不能低于现在时间";
             echo jsonEcho($returnArr);exit;
@@ -104,6 +106,14 @@ class SendController extends ComController {
         $data['phone'] = I('post.phone','','strip_tags');
         $data['save_phone'] = I('post.save_phone','','strip_tags');
         $data['coal_quantity'] = I('post.coal_quantity','','strip_tags');
+	$records=M("messages")->where($data)->find();
+	if(!empty($records)){
+            $returnArr['status']=0;
+            $returnArr['msg']="信息重复。";
+            echo jsonEcho($returnArr);exit;
+        }
+	$data['deline_time'] = $this->getDelineTime();
+        $data['publish_time'] = time();
         $product['granularity_id'] = I('post.granularity_id','','strip_tags');
         $rs=M('product')->add($product);
         if($rs){
@@ -137,15 +147,19 @@ class SendController extends ComController {
             $returnArr['msg']="产地或交割地为空。";
             echo jsonEcho($returnArr);exit;
         }
-        if(empty($subInfo['price'])){
-            $returnArr['status']=0;
-            $returnArr['msg']="价格不能为空。";
-            echo jsonEcho($returnArr);exit;
-        }
+//        if(empty($subInfo['price'])){
+//            $returnArr['status']=0;
+//            $returnArr['msg']="价格不能为空。";
+//            echo jsonEcho($returnArr);exit;
+//        }
         $data['protype_id']=$subInfo['product_type_id'];//煤炭种类
         $data['descri_id']=$subInfo['descri_id'];//煤炭品质
         //NEWADD
-        $data['granularity_id']=$subInfo['granularity_id'];//煤炭粒度
+        if($subInfo['granularity_id']){
+            $data['granularity_id']=$subInfo['granularity_id'];//煤炭粒度
+        }else{
+            $data['granularity_id']="";//煤炭粒度
+        }
         //NEWADDEND
         $data['supply_company']=$subInfo['company_supply'];//供货公司
         $data['place_origin_id']=$subInfo['area1'];//产地
@@ -156,6 +170,24 @@ class SendController extends ComController {
         $data['sulfur']=$subInfo['sulfur'];//硫分
         $data['ash_content']=$subInfo['ash_content'];//灰分
         $data['total_water']=$subInfo['total_water'];//全水分
+        //echo jsonEcho($data);exit;
+        $ms=M("Product")->where($data)->find();
+        if(!empty($ms)){
+            $megRecord=M("messages")->where(array("clients_id"=>$_SESSION['user_info']['uid'],"product_id"=>$ms['id']))->find();
+            if(!empty($megRecord)){
+                if($megRecord['area1']==$subInfo['area1']
+                    &&$megRecord['purchasing_tonnage']==$subInfo['purchasing_tonnage']
+                    &&$megRecord['remark']==$subInfo['remark']
+                    &&$megRecord['rezhi_max']==$subInfo['rezhi_max']
+                    &&$megRecord['rezhi_min']==$subInfo['rezhi_min']
+                    &&$megRecord['origin']==$subInfo['origin']
+                 ){
+                    $returnArr['status']=0;
+                    $returnArr['msg']="发布信息重复。";
+                    echo jsonEcho($returnArr);exit;
+                }
+            }
+        }
         $rs=M("Product")->add($data);//新增到产品表
         if($rs){
             $ins['product_id'] = $rs;
@@ -199,6 +231,13 @@ class SendController extends ComController {
             $ins['remark']=$subInfo['remark'];
             $ins['product_min_price']=$subInfo['product_min_price'];
             $ins['product_max_price']=$subInfo['product_max_price'];
+            $ins['origin'] = $subInfo['origin'];
+            $records=M("messages")->where($ins)->find();
+            if(!empty($records)){
+               $returnArr['status']=0;
+               $returnArr['msg']="信息重复。";
+               echo jsonEcho($returnArr);exit;
+            }
             $ins['deline_time'] = $this->getDelineTime();
             $ins['publish_time'] = time();
             $ins['origin'] = $subInfo['origin'];
@@ -272,10 +311,15 @@ class SendController extends ComController {
         $this->display();
     }
     //我的评级页面
-    public function my_rate()
+    public function my_rate($ids="")
     {
-        $user_info = $_SESSION['user_info'];
-        $uid = $user_info['uid'];
+        if (empty($ids)){
+            $user_info = $_SESSION['user_info'];
+            $uid = $user_info['uid'];
+        }else{
+            $uid = $ids;
+        }
+
         $data['uid'] = $uid;
         $list = M('users')->where($data)->field('headimgurl')->select();
         foreach($list as &$lists)
@@ -384,7 +428,7 @@ class SendController extends ComController {
         $uid = $_SESSION['user_info']['uid'];
         $temp['uid'] = $uid;
         $invite = M('users')->table('su_users su')->where($temp)->field('scc.name as name2,su.gooder_work_type_id,su.phone_number,su.invitation_code,su.birthday,su.name,su.district_id,su.area_detail,su.sex,su.headimgurl,su.work_time,su.work_description,su.gooder_position,su.gooder_be_department')
-            ->join('su_client_company scc on scc.id = su.company_id',left)
+            ->join('su_client_company scc on scc.id = su.company_id','left')
             ->find();
 //        dump($invite);exit;
         $asp['clients_id'] = $invite['invitation_code'];

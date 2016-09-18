@@ -105,7 +105,7 @@ $(document).ready(function(){
 
 </head>
 
-<body style="background:#EBEBEB">
+<body style="background:#EBEBEB;position: relative">
 <include file="Common:common"/>
  <div id="box">
       <div id="header" style="margin-bottom:0%">
@@ -168,25 +168,30 @@ $(document).ready(function(){
                <div class="point">
                <!--开始-->
                <span id="inserPoint">
-                 <div style="display:none">
+
+                   <div style="display:none">
                  <span id="cloneObj">
                          <div class="personne" >
-                         <input type="hidden" name="mid" value="{$val['id']}">
-                      <dl class="personne-left">
-                        <dt><img src="__ROOT__/{$val['headimgurl']}" width="55" style="border-radius: 50%;" height="57" /></dt>
-                        <dd><span>{$val['username']}</span><img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /><span>{$val['avg']}</span></dd>
-                        <dd>
-                             <if condition="$val['role_id'] eq 0">个人车主
-                                 <else/>个人货主
-                             </if>
-                        </dd>
-                      </dl>
-                      <div class="personne-right">
-                          <a allow="1" href = "javascript:void(0)" onclick = "call_js(this,{$val['phone_number']},{$val['id']});" style="color:#333;">
-                              <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
-                          </a>
-                      </div>
-                   </div>
+                             <input type="hidden" name="mid" value="{$val['id']}">
+                             <dl class="personne-left">
+                                 <dt><a href="{:U('Send/my_rate')}?ids={$val['uid']}"><if condition="$val['headimgurl'] eq ''">
+                                     <img src="__PUBLIC__/home/images/touxiang.png" width="55" style="border-radius: 50%;" height="57" /><else/>
+                                     <img src="__ROOT__{$val['headimgurl']}" width="55" style="border-radius: 50%;" height="57" />
+                                 </if></a></dt>
+                                 <dd class="userNameText"><span>{$val['username']}</span><br/><img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /><span><input type="hidden" value="{$val['avg']}" class="starNum"></span></dd>
+                                 <dd>
+                                     <if condition="$val['role_id'] eq 0">个人车主
+                                         <else/>个人货主
+                                     </if>
+                                 </dd>
+                             </dl>
+                             <span style="font-family: 华文行楷;font-size: 1.5em;margin-left: -7%"><if condition="$val['origin'] eq '0'">货源<else/>采购</if></span>
+                             <div class="personne-right">
+                                 <a href = "javascript:void(0)" onclick = "call_js(this,{$val['phone_number']},{$val['id']},{$val['uid']});" style="color:#333;">
+                                     <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
+                                 </a>
+                             </div>
+                         </div>
                      <div></div>
                    <div class="describe">
                    <div class="dizhi"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" /> <span>{$val['area1_str']}{$val['detail_area1']}</span></div>
@@ -198,29 +203,34 @@ $(document).ready(function(){
                           <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 有效时间 <span>{$val['deline_time']}</span></div>
                       </div>
                       <div class="describe-right">
-                        <span>{$val['coal_quantity']}</span><a></a>
+                          <span>{$val['purchasing_tonnage']}吨</span>
+                          <!--<a><if condition="$val['coal_quantity'] neq 0">吨</if></a>-->
                       </div>
                    </div>
                  </span>
-                     <div style="border:#C2C2C2 1px solid"></div>
-                 </div>
+                       <div style="border:#C2C2C2 1px solid"></div>
+                   </div>
                  <volist name="list" id="val">
                   <div class="personne" style="margin-top: 0px;">
                       <input type="hidden" name="mid" value="{$val['id']}">
                       <dl class="personne-left">
-                        <dt><if condition="$val['headimgurl'] eq ''">
+                        <dt><a href="{:U('Send/my_rate')}?ids={$val['uid']}"><if condition="$val['headimgurl'] eq ''">
                             <img src="__PUBLIC__/home/images/touxiang.png" width="55" style="border-radius: 50%;" height="57" /><else/>
                             <img src="__ROOT__{$val['headimgurl']}" width="55" style="border-radius: 50%;" height="57" />
-                        </if></dt>
-                        <dd class="userNameText">{$val['username']}<img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /><span>{$val['avg']}</span></dd>
+                        </if></a></dt>
+                        <dd class="userNameText"><span>{$val['username']}</span><br/>
+                            <img src="__PUBLIC__/home/images/xing.png" width="16" height="15" />
+                            <span><input type="hidden" value="{$val['avg']}" class="starNum"></span>
+                        </dd>
                         <dd>
                              <if condition="$val['role_id'] eq 0">个人车主
                                  <else/>个人货主
                              </if>
                         </dd>
                       </dl>
+                      <span style="font-family: 华文行楷;font-size: 1.5em;margin-left: -7%"><if condition="$val['origin'] eq '0'">货源<else/>采购</if></span>
                       <div class="personne-right">
-                          <a allow="{$val[is_allow]}" href = "javascript:void(0)" onclick = "call_js(this,{$val['phone_number']},{$val['id']});" style="color:#333;">
+                          <a allow="{$val[is_allow]}" href = "javascript:void(0)" onclick = "call_js(this,{$val['phone_number']},{$val['id']},{$val['uid']});" style="color:#333;">
                               <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
                           </a>
                       </div>
@@ -237,7 +247,8 @@ $(document).ready(function(){
                           <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 有效时间 <span>{$val['deline_time']}</span></div>
                       </div>
                       <div class="describe-right">
-                        <span>{$val['coal_quantity']}</span><a><if condition="$val['coal_quantity'] neq 0">元</if></a>
+                        <span>{$val['purchasing_tonnage']}吨</span>
+                          <!--<a><if condition="$val['coal_quantity'] neq 0">吨</if></a>-->
                       </div>
                    </div>
                      <div style="border:#C2C2C2 1px solid"></div>
@@ -260,12 +271,16 @@ $(document).ready(function(){
       </div> 
    </div>
 </div>
+<!--克隆星级-->
+<div id="proStr" style="display: none;"><img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" /></div>
+<!--当前登录人身份-->
+<input type="hidden" value="{$uiddd}" id="roleInfo">
 <div id="light" class="white_content" style="position: fixed;">
     <p class="worn">小矿建议您谨慎交易，"货"比三家哦！</p>
     <p class="tanceng_res" style=" margin-bottom: 8%">15020011277</p>
     <a href="tel:15020011277" class="call_you">拨号</a>
 </div>
-<div id="fade" class="black_overlay" style="height:1000%;" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
+<div id="fade" class="black_overlay" style="height:100%; position: fixed;" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
 <script type="text/javascript">
    function lodingMore(){
        var url="{:U('Home/Info/index')}";
@@ -284,17 +299,19 @@ $(document).ready(function(){
                 }else{
                     jQuery.each(jsonObj.data, function(k, val)
                     {
+                        console.log(val);
                         var tempObj=$("#cloneObj").clone(true);
-                        tempObj.children("div").children("div").children("a").attr("onclick","call_js(this,"+val.phone_number+","+val.id+");");
+                        tempObj.children("div").children("div").children("a").attr("onclick","call_js(this,"+val.phone_number+","+val.id+","+val.uid+");");
                         tempObj.children("div").children("div").children("a").attr("allow",val.is_allow);
                         tempObj.children("div").children("input").val(val.id);
                         if(val.headimgurl==null){
-                          tempObj.children("div").children("dl").children("dt").children("img").attr("src","__PUBLIC__/home/images/touxiang.png");
+                          tempObj.children("div").children("dl").children("dt").children("a").children("img").attr("src","__PUBLIC__/home/images/touxiang.png");
                         }else{
-                        tempObj.children("div").children("dl").children("dt").children("img").attr("src","__ROOT__/"+val.headimgurl);
+                        tempObj.children("div").children("dl").children("dt").children("a").children("img").attr("src","__ROOT__/"+val.headimgurl);
                         }
                         tempObj.children("div").children("dl").children("dd").children("span").eq(0).html(val.username);
-                        tempObj.children("div").children("dl").children("dd").children("span").eq(1).html(val.avg);
+                        tempObj.children("div").children("dl").children("dd").eq(0).children("span").eq(1).find('input').val(val.avg);
+                        //alert(tempObj.children("div").children("dl").children("dd").children("span").eq(1).find('input').val());
                         tempObj.children("div").children("dl").children("dd").eq(1).html(val.role_name);
                         var addressStr1=val.area1_str;
                         if(addressStr1==null){
@@ -305,10 +322,13 @@ $(document).ready(function(){
                             addressStr2="";
                         }
                         tempObj.children("div").eq(2).children("div").children("span").html(addressStr1+addressStr2);
-                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(0).children("input").val(val.remark);
-                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(1).children("span").html(val.publish_time);
-                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(2).children("span").html(val.deline_time);
-                        tempObj.children("div").eq(2).children("div .describe-right").children("span").html(val.coal_quantity);
+                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(0).children("span").val(val.protype_str);
+//                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(0).children("input").val(val.remark);
+                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(1).children("span").html(val.descri_str);
+                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(2).children("span").html(val.granularity_str);
+                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(3).children("span").html(val.publish_time);
+                        tempObj.children("div").eq(2).children("div .describe-left").children("div").eq(4).children("span").html(val.deline_time);
+//                        tempObj.children("div").eq(2).children("div .describe-right").children("span").html(val.coal_quantity);
                         if(val.coal_quantity!=null){
                            tempObj.children("div").eq(2).children("div .describe-right").children("a").html("元");
                         }
@@ -327,41 +347,60 @@ $(document).ready(function(){
 </script>
 <script type="text/javascript">
     //拨打电话 电话号码的显示
-    function call_js(obj,class_id,message)
+    function call_js(obj,class_id,message,role)
     {
-        var allowStr=$(obj).attr("allow");
-        // alert(allowStr);
-        if(allowStr==0){
-             tanchu("不允许操作。");
-             return;
+        var roleInfo = $("#roleInfo").val();
+        if(roleInfo!=role)
+        {
+            document.getElementById('light').style.display='block';
+            document.getElementById('fade').style.display='block';
+            var phone_res = class_id;
+            $(".tanceng_res").html(phone_res);
+            var link = "tel:"+phone_res;
+            $('.call_you').attr('href',link);
+            var url="__CONTROLLER__/ajax_order_goods";
+            $.ajax({
+                type:"post",
+                url:url,
+                data:{message:message},
+                success:function(data){
+                    if(data!=""){
+                        var jsonObj=eval("("+data+")");
+                        if(jsonObj==1){
+                            tanchu("接单成功。");
+                        }else{
+                            tanchu(jsonObj.msg);
+                        }
+                    }else{
+                        tanchu("操作失败。");
+                    }
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){
+                    tanchu("操作失败。");
+                }
+            });
         }
-        document.getElementById('light').style.display='block';
-        document.getElementById('fade').style.display='block';
-        var phone_res = class_id;
-        $(".tanceng_res").html(phone_res);
-        var link = "tel:"+phone_res;
-        $('.call_you').attr('href',link);
-        var url="__CONTROLLER__/ajax_order_goods";
-        $.ajax({
-          type:"post",
-          url:url,
-          data:{message:message},
-          success:function(data){
-              if(data!=""){
-                  var jsonObj=eval("("+data+")");
-                  if(jsonObj==1){
-                     tanchu("接单成功。");
-                  }else{
-                    tanchu(jsonObj.msg);
-                  }
-              }else{
-                tanchu("操作失败。");
-              }
-          },
-          error:function(XMLHttpRequest,textStatus,errorThrown){
-             tanchu("操作失败。");
-          }
-         });
+        else
+        {
+            tanchu('该单为您自己发布');
+            return false;
+        }
+
+    }
+    //星级显示
+    $(function(){
+        $(".personne-left").each(function(){
+            starFun(this);
+        });
+    });
+    function starFun(obj)
+    {
+        var starNum = $(obj).find("dd").eq(0).find('input').val();
+        for(i=0;i<starNum-1;i++)
+        {
+            cloneObj = $('#proStr img').clone(true);
+            $(obj).find("dd").eq(0).append(cloneObj);
+        }
     }
 </script>
 </body>

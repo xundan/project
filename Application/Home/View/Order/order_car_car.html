@@ -112,7 +112,7 @@ if(imgUrl.indexOf("-on")>0){
 					   <div class="column"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 接单时间&nbsp;<span>{$order[0]['ctime']}</span></div>
 					   <div class="dizhi" style="margin-top:2%"><img src="__PUBLIC__/home/images/lanse.png" width="20" height="23" />发货地址&nbsp;<span>{$order[0]['area1_str']}{$order[0]['detail_area1']}</span></div>
 					   <div class="dizhi" style="margin-top:2%"><img src="__PUBLIC__/home/images/cheng.png" width="20" height="23" />收货地址&nbsp;<span>{$order[0]['area2_str']}{$order[0]['detail_area2']}</span></div>
-					   <div class="dizhi"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" />装货时间&nbsp;<span>{$order[0]['loading_time']}</span><span style="margin-left:50px;" onclick="message_js(this,{$order[0]['id']});">撤销信息</span></div>
+					   <div class="dizhi"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" />装货时间&nbsp;<span>{$order[0]['loading_time']}</span><span class="cancel" onclick="message_js(this,{$order[0]['id']});">撤销订单</span></div>
 				   </div>
 
                    <div class="pump" style="margin-top:2%">
@@ -123,7 +123,7 @@ if(imgUrl.indexOf("-on")>0){
 				   <form action="{:U('order_car_comment_do')}" method="post" id="form_id">
 					  <div class="anonymity">
 						  <!--显示星级-->
-						  <input type="hidden" name="star_info" value="">
+						  <input type="hidden" name="star_info" value="" id="star_info">
 						  <!--订单id-->
 						  <input type="hidden" name="order_infos" value="{$order[0]['id']}">
 					   <p>
@@ -144,7 +144,7 @@ if(imgUrl.indexOf("-on")>0){
                    <a href="#" class="long" attr="{$comment_vo['id']}">{$comment_vo['comment_content']}<input type="hidden" name="official_comment_id[]" value=""></a>
 				</volist>
                  </div>
-                 <div class="depict"><textarea name="comment_content"></textarea></div>
+                 <div class="depict"><textarea name="comment_content" id="comment_content"></textarea></div>
                  <div class="commit" style="padding-bottom:50%"><input type="button" class="tijiao" value="提交评价"/></div>
 		   </form>
         </div>
@@ -178,10 +178,10 @@ if(imgUrl.indexOf("-on")>0){
 			success:function(data){
 				if(data==0)
 				{
-					tanchu('撤销信息成功');
+					tanchu('撤销订单成功');
 				}
 				else{
-					tanchu('已撤销信息');
+					tanchu('已撤销订单');
 				}
 			},
 			error:function(XMLHttpRequest,textStatus,errorThrown){
@@ -208,11 +208,44 @@ if(imgUrl.indexOf("-on")>0){
 			 }else{
 				 $(this).find("input").val("");
 			 }
+			 return false;
 		 });
 
 		 //验证表单元素
 		 $('.tijiao').click(function(){
-			 $('#form_id').submit();
+//			 var subData=$("#form_id").serialize();
+//			 alert(subData);
+//			 alert($('#star_info'));
+//			 var temp=$('#comment_content');
+//			 console.log(temp);return;
+//			 alert($('.official_comment_id[]'));
+//			 if($(''))
+
+//			 $('#form_id').submit();
+
+//			 console.log($('.official_comment_id'));
+			 var url="{:U('order_car_comment_do')}";
+			 var subData=$("#form_id").serialize();
+			 $.ajax({
+				 type:"post",
+				 url:url,
+				 data:subData,
+				 success:function(data){
+//					 console.log(data);;return;
+					 if(data!=""){
+						 var jsonObj=eval("("+data+")");
+//						 console.log(jsonObj);return;
+						 if(jsonObj.status){
+							 tanchu(jsonObj.msg);
+							 $('.commit').html('<div class="commit"><span class="tijiao" style="display: inline-block;padding:0">感谢您的评价！</span></div>');
+						 }else{
+							 tanchu(jsonObj.msg);
+						 }
+					 }else{
+						 tanchu("返回结果错误。");
+					 }
+				 }
+			 });
 		 });
 	 });
  </script>
@@ -247,13 +280,13 @@ function readFile(){
 			}
 		}
 	}
-	<!-- html=html+'</div>'; -->
-	<!-- $("#up1").after(html); -->
+//	<!-- html=html+'</div>'; -->
+//	<!-- $("#up1").after(html); -->
 } 
  <!-- $("#first").live("change", function() { -->
-    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
-	
-<!-- }); -->
+//    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
+//
+//<!-- }); -->
 
 
 rat('star2','result2',1);
