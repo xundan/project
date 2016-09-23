@@ -54,6 +54,9 @@ class DisplayMessagesController extends Controller
     public function check($id)
     {
         $tags = I('post.tag');
+        $content = I('post.content');
+//        $content = $_REQUEST["content"];
+
         // 检测tags里有没有包含必选项
         $main_tag = $this->is_check_valid($tags);
 
@@ -63,7 +66,7 @@ class DisplayMessagesController extends Controller
             // 更新与微信关系表
             $this->add_relation_wx($id, $wx_arr);
             // 更新消息表状态
-            $this->update_message($id, $main_tag);
+            $this->update_message($id, $main_tag, $content);
 
             $this->success('提交成功', 'showDemo?id=' . $this->find_next($id));
         } else {
@@ -198,34 +201,34 @@ class DisplayMessagesController extends Controller
     }
 
     /**
+     * 更新message表
      * @param $id
      * @param $main_tag
+     * @param $new_content
      */
-    private function update_message($id, $main_tag)
+    private function update_message($id, $main_tag, $new_content)
     {
         // 如果没有主标签，就不处理内容了
         $update_trans = array(
             "id" => $id,
             "category" => $main_tag,
+            "content" => $new_content,
             "status" => 102,
         );
-        if($main_tag){
+        if ($main_tag) {
             // 如果有主标签，则处理一下内容的抬头
-            $msg = D('Message')->where("id = $id AND invalid_id=0 ")->find();
-            if ($msg){
-                $content = $msg['content'];
-                // 检查是否已经有了前缀
-                $prefix = substr($content,0,12);
-                if (($prefix!="【".$main_tag."】")){
-                    $content = "【".$main_tag."】".$content;
-                }
-                $update_trans = array(
-                    "id" => $id,
-                    "category" => $main_tag,
-                    "content"=> $content,
-                    "status" => 102,
-                );
+            $content = $new_content;
+            // 检查是否已经有了前缀
+            $prefix = substr($content, 0, 12);
+            if (($prefix != "【" . $main_tag . "】")) {
+                $content = "【" . $main_tag . "】" . $content;
             }
+            $update_trans = array(
+                "id" => $id,
+                "category" => $main_tag,
+                "content" => $content,
+                "status" => 102,
+            );
         }
         D('Message')->save($update_trans);
     }
