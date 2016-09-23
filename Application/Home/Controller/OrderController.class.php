@@ -243,15 +243,17 @@ class OrderController extends   ComController {
         //当前登录人id
         $uid = $_SESSION['user_info']['uid'];
         $data['so.id'] = $_GET['ids'];
-        $order_lists = M('orders')->table('su_orders so')->where($data)->field('so.id,so.ctime,scc.name as names,su.name,su.role_id,su.phone_number,su.headimgurl,srcc.plate_number,sm.id as idd,sm.caigou_area,sm.short_location,sm.short_location,sm.clients_id,spt.type,sp.place_origin_id')
+        $order_lists = M('orders')->table('su_orders so')->where($data)->field('sgwt.gooder_work_type,so.id,so.ctime,scc.name as names,su.name,su.role_id,su.phone_number,su.headimgurl,srcc.plate_number,sm.id as idd,sm.caigou_area,sm.short_location,sm.short_location,sm.clients_id,spt.type,sp.place_origin_id')
             ->join('su_messages sm on sm.id = so.message_id','left')
             ->join('su_users su on su.uid = sm.clients_id','left')
             ->join('su_client_company scc on scc.id = su.company_id','left')
             ->join('su_relation_carinfo_client srcc on srcc.id = su.car_id','left')
             ->join('su_product sp on sp.id = sm.product_id','left')
             ->join('su_product_type spt on spt.id = sp.protype_id','left')
+            ->join('su_gooder_work_type sgwt on sgwt.id = su.gooder_work_type_id','left')
             ->order('ctime desc')
             ->select();
+//        dump($order_lists);
         foreach($order_lists as $list){
             if($list['role_id']==0){
                 $list['role_name']="个人车主";
