@@ -43,7 +43,7 @@
             <div class="point">
                <div style="display:none" id="objParent">
                    <div id="matters">
-                       <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
+                       <a href="{:U('Order/order_goods_car')}?ids={$vo['id']}">
                       <div id="matter">
                         <div class="headline">
                             <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
@@ -73,7 +73,7 @@
                 </div>
                 <!--配货订单-->
                 <volist name="order_list" id="vo">
-                    <a href="{:U('Order/order_goods_sale')}?ids={$vo['id']}">
+                    <a href="{:U('Order/order_goods_car')}?ids={$vo['id']}">
                     <div id="matter">
                         <div class="headline">
                             <div class="date"><if condition="$vo.ctime eq ''">暂无时间<else/>{$vo['ctime']}</if></div>
@@ -108,7 +108,7 @@
             <div class="point">
                 <!--交易订单-->
                 <volist name="order_info" id="vo_order">
-                    <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                    <a href="{:U('Order/order_goods_sale')}?ids={$vo_order['id']}">
                 <div id="matter" style="color:black">
                     <div class="headline">
                             <div class="date">{$vo_order['ctime']}</div>
@@ -139,7 +139,7 @@
                 </volist>
                 <div style="display:none" id="orderCloneObj">
                     <div id="matters">
-                        <a href="{:U('Order/order_goods_car')}?ids={$vo_order['id']}">
+                        <a href="{:U('Order/order_goods_sale')}?ids={$vo_order['id']}">
                     <div id="matter" style="color:black">
                     <div class="headline">
                             <div class="date">{$vo_order['ctime']}</div>

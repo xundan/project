@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+	<!--克隆星级-->
+	<div id="proStr" style="display: none;"><img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" /></div>
 <title>订单详情车主</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
@@ -93,7 +94,7 @@ if(imgUrl.indexOf("-on")>0){
                   <div class="item">
                       <dl class="item-left">
                         <dt><img src="__ROOT__{$order[0]['headimgurl']}"width="55" style="border-radius: 50%;" height="57" /></dt>
-                        <dd>{$order[0]['name']}<img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /> {$list_str}</dd>
+                        <dd><div>{$order[0]['name']}</div><!--名字单独div可以让名字单独一行--><img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /><!--{$list_str}--><span><input type="hidden" value="{$list_str}" class="starNum"></span></dd>
                         <dd class="plate" style="color:#A1A1A1">发煤量:{$order[0]['coal_quantity']}</dd>
                       </dl>
 					  <div class="item-right">
@@ -327,5 +328,23 @@ function rat(star,result,m){
 }
 </script>
  <include file="Common:common"/>
+ <script>
+	 $(function(){
+		 $(".item-left").each(function(){
+			 starFun(this);
+		 });
+	 });
+	 function starFun(obj)
+	 {
+		 var starNum = $(obj).find("dd").eq(0).find('input').val();
+//                                    var starNum=4;
+//        alert(starNum);return;
+		 for(i=0;i<starNum-1;i++)
+		 {
+			 cloneObj = $('#proStr img').clone(true);
+			 $(obj).find("dd").eq(0).append(cloneObj);
+		 }
+	 }
+ </script>
 </body>
 </html>

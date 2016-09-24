@@ -171,7 +171,7 @@ class OrderController extends   ComController {
         $this->display();
     }
     //货主配货订单详情
-    public function order_goods_sale()
+    public function order_goods_car()
     {
         //当前登录人id
         $uid = $_SESSION['user_info']['uid'];
@@ -221,6 +221,8 @@ class OrderController extends   ComController {
         $Dao = M();
         $list = $Dao->query("select avg(comment_star) as avg from su_orders where clients_id='$uidd'");
         $list_str = substr($list['0']['avg'],0,3);
+
+        $list_str = floor($list_str);
         $this->assign('list_str',$list_str);
         $this->display();
     }
@@ -238,7 +240,7 @@ class OrderController extends   ComController {
         }
     }
     //货主交易订单详情
-    public function order_goods_car()
+    public function order_goods_sale()
     {
         //当前登录人id
         $uid = $_SESSION['user_info']['uid'];
@@ -250,10 +252,9 @@ class OrderController extends   ComController {
             ->join('su_relation_carinfo_client srcc on srcc.id = su.car_id','left')
             ->join('su_product sp on sp.id = sm.product_id','left')
             ->join('su_product_type spt on spt.id = sp.protype_id','left')
-            ->join('su_gooder_work_type sgwt on sgwt.id = su.gooder_work_type_id','left')
+            ->join('su_gooder_work_type sgwt on su.gooder_work_type_id = sgwt.id','left')
             ->order('ctime desc')
             ->select();
-//        dump($order_lists);
         foreach($order_lists as $list){
             if($list['role_id']==0){
                 $list['role_name']="个人车主";
@@ -272,6 +273,7 @@ class OrderController extends   ComController {
             if(!empty($list['caigou_area'])){
                 $list['chandi']=$this->getAllAddress($list['caigou_area']);
             }
+
             $list['ctime']=date("Y-m-d",$list['ctime']);
         }
         $this->assign('list',$list);
@@ -288,10 +290,17 @@ class OrderController extends   ComController {
         //平均星级分计算
         $Dao = M();
         $list = $Dao->query("select avg(comment_star) as avg from su_orders where clients_id='$uid'");
+
         $list_str = substr($list['0']['avg'],0,3);
-        $this->assign('list_str',$list_str);//dump($list_str);
+//        dump($list);
+        $list_str = floor($list_str);
+//        $list_stars_number =floor($list);
+//        dump($list_str);
+        $this->assign('list_str',$list_str);
+//        dump($list_str);
         $this->display();
     }
+
     //评论提交方法
     public function order_good_sale_do()
     {
@@ -424,7 +433,7 @@ class OrderController extends   ComController {
 //            $this->error('评价失败');
 //        }
 //    }
-    //货主租车评论提交方法
+    //货主交易评论提交方法
     public function order_good_sales_do()
     {
         $subInfo = I("post.","",'strip_tags');
@@ -546,11 +555,13 @@ class OrderController extends   ComController {
         {
             $list_str = 3;
         }
+        $list_str=floor($list_str);//星数取整.没转换类型.可(int)floor()强转.(0924)
         $this->assign('list_str',$list_str);
         $this->assign('comment_info',$comment_info);
-        $this->assign('list_str',$list_str);
+//        $this->assign('list_str',$list_str);
         $this->assign('order',$order);
         $this->display();
+
     }
     //发布车源信息处理方法
     public function send_car_source_action()

@@ -114,6 +114,8 @@ ORDER BY $orderStr LIMIT $beginStr,$countRow"
         }
 //           dump($lists);exit;
            $sqlStr=M()->getlastsql();
+//           dump($sqlStr);exit;
+
            foreach($lists as &$return){
                $uid = $return['uid'];
                $Dao = M();

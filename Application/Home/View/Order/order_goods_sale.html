@@ -3,9 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>订单详情货主</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
+<title>交易订单详情</title>
 	<style>
 		*{ margin: 0;padding: 0}
 		.black_overlay{
@@ -37,7 +35,7 @@
 		}
 		.white_content .worn{
 			color: #FF5A3E; font-size: 0.9em; border-bottom: #CCC 1px solid;
-		 height: 35px; line-height: 35px; margin-bottom:8%}
+			height: 35px; line-height: 35px; margin-bottom:8%}
 		.white_content p{
 			font:18px 微软雅黑;
 			text-align:center;
@@ -62,108 +60,124 @@
 			border-radius:5px;
 		}
 	</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css"  rel="stylesheet" href="__PUBLIC__/home/style/style.css"/>
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery-2.2.4.min.js"></script>
-
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.5.1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.raty.js"></script>
 <script type="text/javascript" >
 $(function(){
-
-	$(".donym a").click(function(){
-		var imgUrl = $(this).css("background-image");
-		if(imgUrl.indexOf("-on")>0){
-			imgUrl = imgUrl.replace("-on.png",".png");
-			$(this).css("background-image",imgUrl);
-			}else{
-				imgUrl = imgUrl.replace(".png","-on.png");
-			$(this).css("background-image",imgUrl);
-				}
-		return false;
-	});
+$(".donym a").click(function(){
+var imgUrl = $(this).css("background-image");
+if(imgUrl.indexOf("-on")>0){
+	imgUrl = imgUrl.replace("-on.png",".png");
+	$(this).css("background-image",imgUrl);
+	}else{
+		imgUrl = imgUrl.replace(".png","-on.png");
+	$(this).css("background-image",imgUrl);
+		}
+}); 
 }); 
 </script>
 <body style="background:#EBEBEB">
-<include file="Common:common"/>
+<!--克隆星级-->
+<div id="proStr" style="display: none;"><img src="__PUBLIC__/home/images/xing.png"  width="16" height="15" /></div>
  <div id="box">
       <div id="header" style="margin-bottom:0%">
-             <a href="{:U('Order/order_goods')}">
-				 <div class="return">
-					 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
-				 </div>
-			 </a>
+		  <a href="{:U('Order/order_goods')}">
+             <div class="return">
+				 <img src="__PUBLIC__/home/images/fanhui.png" width="26" height="26" />
+			 </div>
+		  </a>
               <div class="indent">订单详情</div>
        </div>
     <div class="tab">
             <div id="content">
-
                <div class="point">
-
                   <div class="item">
                       <dl class="item-left">
-                        <dt><if condition="$list['headimgurl'] eq ''"><img src="__PUBLIC__/home/images/touxiang.png"width="55" height="57" style="border-radius:50%;"/><else/><img src="__ROOT__{$list['headimgurl']}"width="55" height="57" style="border-radius:50%;"/></if></dt>
-                        <dd>{$list['uname']} <img src="__PUBLIC__/home/images/xing.png" width="16" height="15" />{$list_str} &nbsp;<span style="color:#000">{$order_count}单</span></dd>
-                        <dd style="color:#000">{$list['role_name']}</dd>
+                        <dt><if condition="$list['headimgurl'] eq ''">
+							<img src="__PUBLIC__/home/images/touxiang.png"width="55" style="border-radius:50%;" height="57" />
+							<else/>
+								<img src="__ROOT__{$list['headimgurl']}"width="55" style="border-radius:50%;" height="57" />
+						    </if>
+						</dt>
+                        <dd><div>{$list['name']}</div><img src="__PUBLIC__/home/images/xing.png" width="16" height="15" /><input type="hidden" value="{$list_str}" class="starNum"></dd>
+                          <dd><span style="color:#000">{$order_count}单</span></dd>
+                        <dd class="plate"><div>{$list['gooder_work_type']}</div> {$list['car_type']}</dd>
                       </dl>
                       <div class="item-right">
-						  <a href = "javascript:void(0)" onclick = "call_js(this,{$list['phone_number']});" style="color:#333;">
-							  <img src="__PUBLIC__/home/images/tel.png" width="22" height="22"/> 拨打电话
-						  </a>
+						    <a href="javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';call_js(this,{$list['phone_number']})" style="color:#333;">
+							  <img src="__PUBLIC__/home/images/tel.png" width="22" height="22" />&nbsp;拨打电话
+				  			</a>
 					  </div>
                    </div>
-                   <div class="pump">
-                      <div class="pump-left"></div>
-                      <div class="pump-center">订单详情</div>
-                      <div class="pump-right"></div>
-                   </div>
-                   <div class="describe" style="padding-bottom:4%; padding-top:0%"> 
-                    <div class="column"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 核载吨数 <span>{$list.undertake_weight}</span></div>
-                          <div class="column"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 创建时间&nbsp;&nbsp;<span>{$list['ctime']}</span></div>
-                          <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 装车时间 <span>{$list['loading_time']}</span></div>
-                   <div class="dizhi" style="margin-top:2%"><img src="__PUBLIC__/home/images/-3.png" width="20" height="23" />&nbsp;&nbsp;是否调配&nbsp;&nbsp;<span>{$list['short_location']}</span></div>
-                   <div class="dizhi"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" />&nbsp;&nbsp;车辆类型&nbsp;&nbsp;<span>{$list['car_type']}</span><span class="cancel" onclick="message_js(this,{$list['id']});">撤销订单</span></div>
+				   <div class="pump">
+					   <div class="pump-left"></div>
+					   <div class="pump-center">订单详情</div>
+					   <div class="pump-right"></div>
+				   </div>
+				   <div class="describe" style="padding-bottom:4%; padding-top:0%">
+					   <div class="column"><img src="__PUBLIC__/home/images/-1.png" width="22" height="18" /> 煤炭种类 <span>{$list['type']}</span></div>
+					   <div class="column"><img src="__PUBLIC__/home/images/-3.png" width="22" height="20" /> 供货公司 <span>{$list['names']}</span></div>
+					   <div class="column"><img src="__PUBLIC__/home/images/lanse.png" width="22" height="20" /> 产地 <span>{$list['chandi']}</span></div>
+					   <div class="column"><img src="__PUBLIC__/home/images/21.png" width="22" height="20" /> 创建时间&nbsp;<span>{$list['ctime']}</span><span class="cancel" onclick="message_js(this,{$list['id']});">撤销订单</span></div>
 				   </div>
                    <div class="pump" style="margin-top:2%">
                       <div class="pump-left"></div>
                       <div class="pump-center">匿名评价</div>
                       <div class="pump-right"></div>
                    </div>
-			   <form action="{:U('order_good_sales_do')}" method="post" id="form_id">
-                  <div class="anonymity">
-		           <p>
-				     <div class="imgupload">
-                        <a href="#" id="up1"><input id="file_input" type="file" name="upload" multiple></a>
-				      </div>
-                    <div class="juzhong">
-				     <div class="pingjiaxing">
-					      <div class="star2" style="width:90%"></div>
-                          <div class="result2"></div>
-						 <span ></span>
-			       </p>
-                     </div>
-                   </div>
-                </div> 
-                <div class="donym">
-					<!--显示星级-->
-					<input type="hidden" name="star_info" value="">
-					<!--订单id-->
-					<input type="hidden" name="order_infos" value="{$list['id']}">
-				<volist name="comment_info" id="com_vo">
-                   <a href="#" class="long" attr="{$com_vo['id']}">{$com_vo['comment_content']}<input type="hidden" name="official_comment_id[]" value=""></a>
-				</volist>
-                 </div>
-                 <div class="depict"><textarea name="comment"></textarea></div>
-                 <div class="commit"><input type="button" class="tijiao" value="提交评价"/></div>
-			   </form>
+				   <form action="{:U('order_good_sales_do')}" method="post" id="form_id">
+					   <div class="anonymity">
+						   <p>
+						   <div class="imgupload">
+							   <a href="#" id="up1"><input id="file_input" type="file" name="upload" multiple></a>
+						   </div>
+						   <div class="juzhong">
+							   <div class="pingjiaxing">
+								   <div class="star2"></div>
+								   <div class="result2"></div>
+								   <span ></span>
+								   </p>
+							   </div>
+						   </div>
+					   </div>
+					   <div class="donym">
+						   <!--显示星级-->
+						   <input type="hidden" name="star_info" value="">
+						   <!--订单id-->
+						   <input type="hidden" name="order_infos" value="{$list['id']}">
+						   <volist name="comment_info" id="com_vo">
+							   <a href="#" class="long" attr="{$com_vo['id']}">{$com_vo['comment_content']}<input type="hidden" name="official_comment_id[]" value=""></a>
+						   </volist>
+						   <!--<a href="#">工作负责</a>
+                           <a href="#" class="long">车内整洁/卫生</a>　&nbsp;&nbsp;
+                           <a href="#" class="long">车内整洁/卫生</a>
+                           <a href="#">工作负责</a>-->
+					   </div>
+					   <div class="depict"><textarea name="comment"></textarea></div>
+					   <div class="commit"><input type="button" class="tijiao" value="提交评价"/></div>
+				   </form>
         </div>
-
       </div>
    </div>
 </div>
-<div id="light" class="white_content" style="position:fixed;">
-	<p class="worn">小矿建议您谨慎交易，"货"比三家哦！</p>
-	<p class="tanceng_res" style=" margin-bottom: 8%">15020011277</p>
-	<a href="tel:15020011277" class="call_you">拨号</a>
-</div>
-<div id="fade" class="black_overlay" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
+ <!--电话弹层-->
+ <div id="light" class="white_content" style="position:fixed;">
+	 <p class="worn">小矿建议您谨慎交易，"货"比三家哦！</p>
+	 <p class="tanceng_res" style=" margin-bottom: 8%">15020011277</p>
+	 <a href="tel:15020011277" class="call_you">拨号</a>
+ </div>
+ <div id="fade" class="black_overlay" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></div>
  <script type="text/javascript">
+	 function call_js(obj,class_id)
+	 {
+		 var phone_res = class_id;
+		 $(".tanceng_res").html(phone_res);
+		 var link = "tel:"+phone_res;
+		 $('.call_you').attr('href',link);
+	 }
 	 //撤销信息ajax
 	 function message_js(obj,order_id)
 	 {
@@ -175,7 +189,7 @@ $(function(){
 			 success:function(data){
 				 if(data==0)
 				 {
-					 tanchu('撤销定单成功');
+					 tanchu('撤销订单成功');
 				 }
 				 else{
 					 tanchu('已撤销订单');
@@ -186,63 +200,54 @@ $(function(){
 			 }
 		 });
 	 }
-	 //拨打电话 电话号码的显示
-	 function call_js(obj,class_id)
-	 {
-		 document.getElementById('light').style.display='block';
-		 document.getElementById('fade').style.display='block';
-		 var phone_res = class_id;
-		 $(".tanceng_res").html(phone_res);
-		 var link = "tel:"+phone_res;
-		 $('.call_you').attr('href',link);
-	 }
  </script>
  <script type="text/javascript">
+
 	 $(function(){
 		 //星级显示
 		 $('.star2 img').click(function(){
-			var star_num = $(this).attr('alt');
+			 var star_num = $(this).attr('alt');
 			 //alert(star_num);
-			$("input[name=star_info]").val(star_num);
+			 $("input[name=star_info]").val(star_num);
 		 });
 		 //所选评价项显示
 		 $('.long').click(function(){
 			 var css = $(this).css('background-image');
-			var str = $(this).attr('attr');
+			 var str = $(this).attr('attr');
 			 css = css.substr(-8,2);
 			 if(css=="on"){
-				 	$(this).find('input').val(str);
+				 $(this).find('input').val(str);
 			 }else{
-				 	$(this).find("input").val("");
+				 $(this).find("input").val("");
 			 }
 		 });
 
 		 //验证表单元素
-		$('.tijiao').click(function(){
-//			$('#form_id').submit();
-			var url="{:U('order_good_sale_do')}";
-			var subData=$("#form_id").serialize();
-			$.ajax({
-				type:"post",
-				url:url,
-				data:subData,
-				success:function(data){
+		 $('.tijiao').click(function(){
+//			 $('#form_id').submit();
+			 var url="{:U('order_good_sales_do')}";
+			 var subData=$("#form_id").serialize();
+			 $.ajax({
+				 type:"post",
+				 url:url,
+				 data:subData,
+				 success:function(data){
 //					 console.log(data);;return;
-					if(data!=""){
-						var jsonObj=eval("("+data+")");
+					 if(data!=""){
+						 var jsonObj=eval("("+data+")");
 //						 console.log(jsonObj);return;
-						if(jsonObj.status){
-							tanchu(jsonObj.msg);
-							$('.commit').html('<div class="commit"><span class="tijiao" style="display: inline-block;padding:0">感谢您的评价！</span></div>');
-						}else{
-							tanchu(jsonObj.msg);
-						}
-					}else{
-						tanchu("返回结果错误。");
-					}
-				}
-			});
-		});
+						 if(jsonObj.status){
+							 tanchu(jsonObj.msg);
+							 $('.commit').html('<div class="commit"><span class="tijiao" style="display: inline-block;padding:0">感谢您的评价！</span></div>');
+						 }else{
+							 tanchu(jsonObj.msg);
+						 }
+					 }else{
+						 tanchu("返回结果错误。");
+					 }
+				 }
+			 });
+		 });
 	 });
  </script>
 <script type="text/javascript">
@@ -266,8 +271,8 @@ function readFile(){
 		} 
 		var reader = new FileReader(); 
 		reader.readAsDataURL(file); 
-		reader.onload = function(e){
-			var h = '<img src="'+this.result+'"/>';
+		reader.onload = function(e){ 
+			var h = '<img src="'+this.result+'" />';
 			html+=h;
 			x++;
 			if(x==len){
@@ -276,25 +281,21 @@ function readFile(){
 			}
 		}
 	}
-//	<!-- html=html+'</div>'; -->
-//	<!-- $("#up1").after(html); -->
-}
-// <!-- $("#first").live("change", function() { -->
-//    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
-//
-//<!-- }); -->
+	<!-- html=html+'</div>'; -->
+	<!-- $("#up1").after(html); -->
+} 
+ <!-- $("#first").live("change", function() { -->
+    <!-- var val1=$(this).after("<a href='##'><input type='file' name='upload'></a>"); -->
+	
+<!-- }); -->
 
 
-
-</script>
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery-1.5.1.js"></script>
-<script type="text/javascript" src="__PUBLIC__/home/js/jquery.raty.js"></script>
-<script type="text/javascript" >
- rat('star2','result2',1);
+rat('star2','result2',1);
 function rat(star,result,m){
+
 	star= '.' + star;
 	result= '.' + result;
-	$(result).hide();
+	$(result).hide();//将结果DIV隐藏
 
 	$(star).raty({
 		hints: ['10','20', '30', '40', '50'],
@@ -311,21 +312,29 @@ function rat(star,result,m){
 			//alert();
 			//alert('你的评分是'+score*m+'.0分');
 			//$("#eee").html(score*m+".0分");
-			$(this).parents().siblings("span").html(score*m+".0");
+		$(this).parents().siblings("span").html(score*m+".0");
 		}
 	});
-
-	/*第二种方式可以设置一个隐蔽的HTML元素来保存用户的选择值，然后可以在脚本里面通过jQuery选中这个元素来处理该值。 弹出结果
-	 var text = $(result).text();
-	 $('img').click(function () {
-	 if ($(result).text() != text) {
-	 alert('你的评分是'+$(result).text()/m+'分');
-	 alert(result);
-	 return;
-	 }
-	 });*/
 }
 </script>
+ <script>
+     $(function(){
+         $(".item-left").each(function(){
+             starFun(this);
+         });
+     });
+     function starFun(obj)
+     {
+         var starNum = $(obj).find("dd").eq(0).find('input').val();
+//                                    var starNum=4;
+//        alert(starNum);return;
+         for(i=0;i<starNum-1;i++)
+         {
+             cloneObj = $('#proStr img').clone(true);
+             $(obj).find("dd").eq(0).append(cloneObj);
+         }
+     }
+ </script>
 </body>
-
+<include file="Common:common"/>
 </html>
