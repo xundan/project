@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>问题单 登录界面</title>
+</head>
+<body>
+<h1>问题单 登录界面</h1>
+<form action="{:U('Qlist/Login/tijiao')}" name="login" method="post">
+    <dl>
+        <dd>
+            <label>用户名：</label>
+            <div>
+                <input class="form-control" name="username" type="text" value="" placeholder="请输入用户名" />
+            </div>
+        </dd>
+        <dd>
+            <label>密 码：</label>
+            <div>
+                <input class="form-control" name="password" type="password" value="" placeholder="请输入密码" >
+            </div>
+        </dd>
+        <br>
+        <dd>
+            <input type="submit" onclick="submit()" name="submit" class="btn" value="提交">
+        </dd>
+    </dl>
+</form>
+<br>
+</body>
+</html>

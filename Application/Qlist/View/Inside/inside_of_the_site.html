@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>问题单操作界面</title>
+    <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/jsNoUse/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+<h1 align="center"><font size="4" color="#4b0082">迅单技术部<br/><br/></font>问题单</h1>
+<span style="font-size: 25px">你好 <i>{$asd}！</i></span>
+
+<form action="{:U('Qlist/Inside/tijiaowenti')}" name="login" method="post">
+    <dl>
+        <dd>
+            <label>问题描述：</label>
+            <div>
+                <input class="form-control" name="detail" type="text" value="" placeholder="请输入细节" />
+            </div>
+        </dd>
+        <dd>
+            <input type="submit"  name="submit" class="btn" value="提交">
+        </dd>
+    </dl>
+</form>
+<!--<p>{$xijie[4]['username']}</p>
+<p>{$xijie[4]['completed_or_not']}</p>
+<p>{$xijie[4]['creat_time']}</p>
+
+<?php
+$arr = $xijie[6];
+foreach($arr as $value){
+echo $value.'<br />';
+}
+?>
+<p>分割线===============================================</p>-->
+<form name="biao" action="{:U('Qlist/Inside/three_buttons')}" method="post" id="biao">
+<table class="table table-condensed">
+    <caption>问题单</caption>
+    <thead>
+    <tr>
+        <th width="100">#</th>
+        <th width="100" >名字</th>
+        <th width="500">问题描述</th>
+        <th width="200">创建时间</th>
+        <th width="100">问题状态</th>
+        <th width="300">按钮列</th>
+        <th width="300">完成时间</th>
+    </tr>
+    </thead>
+    <!--<tbody>-->
+    <!--</tbody>-->
+<!--</table>-->
+
+<volist name="xijie" id="vo">
+<!--<table class="table &lt;!&ndash;table-condensed&ndash;&gt;">-->
+    <tbody>
+    <tr class="active">
+        <td width="100">{$vo.id}</td>
+        <td width="100">{$vo.username}</td>
+        <td width="500"><textarea id="abc">{$vo.detail}</textarea><input type="hidden" name="changes" id="changes123"></td>
+        <script>
+            function qqq(obj,id) {
+//                alert(2);
+//                var b = document.getElementById('abc').value;
+//                var a = document.getElementsByName('changes').val(b);
+                var b =$(obj).parent().parent().children('td').eq(2).children('textarea').val();
+//              $(obj).parent().parent().children('td').eq(2).children('input').val(b);\
+                $('input[name=changes]').val(b);
+//                alert($('input[name=changes]').val());return;
+//                alert($('#changes123').val());return;
+//                alert(c);return;
+                document.biao.action="{:U('Qlist/Inside/three_buttons')}?id="+id+"&user=qwe";
+//                document.biao.submit();
+                $('#biao').submit();
+//                alert(3);
+//                alert(b);return;
+            }
+
+
+        </script>
+        <td width="200">{$vo.creat_time}</td>
+        <td width="100">{$vo.completed_or_not}</td>
+        <td width="300">
+            <input type="submit" value="{$vo.id}" name="qiehuan"><-切换
+            <input type="button" value="update" name="xiugai" id="xiugai" onclick="qqq(this,{$vo.id})">
+            <input type="submit" value="{$vo.id}" name="shanchu"><-删除
+        </td>
+        <td width="200">{$vo.completeted_time}</td>
+    </tr>
+    </tbody>
+</volist>
+</table>
+</form>
+
+<!--<script>
+    function switch2(){<!--函数不能命名为 switch() -->
+<!--//        alert("edcxs");-->
+        <!--$("").submit();-->
+    }
+<!--//</script>&ndash;&gt;-->
+
+</body>
+</html>
