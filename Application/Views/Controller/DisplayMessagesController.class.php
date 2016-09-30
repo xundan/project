@@ -19,7 +19,7 @@ class DisplayMessagesController extends Controller
         if (true) {
 //        if ($_SESSION['cur_user']) {
             // 有where包装的时候不要直接find($id)，否则where会失效
-            $data = D('Message')->where("invalid_id=0 AND status=0 AND id=" . $id)->find();
+            $data = D('Message')->where("invalid_id=0 AND status=0 AND id=%d", $id)->find();
             $this->assign("data", $data);
             $this->assign("id", $id);
             $cur_user = $_SESSION['cur_user'];
