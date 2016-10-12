@@ -62,9 +62,9 @@ class ChatRecordController extends RestController
         }
     }
 
+    // 拉取还未发送出去的消息
     Public function unsent_record()
     {
-    // 拉取还未发送出去的消息
         $data = $this->defaultResponse();
         switch ($this->_method) {
             case 'get': // get请求处理代码
@@ -101,8 +101,8 @@ class ChatRecordController extends RestController
                 break;
         }
     }
-    // 按id重置信息的状态，用以标记已经发出的信息
 
+    // 按id重置信息的状态，用以标记已经发出的信息
     Public function status()
     {
         $data = $this->defaultResponse();
@@ -401,5 +401,33 @@ class ChatRecordController extends RestController
         $result1 = $GLOBALS['HTTP_RAW_POST_DATA'];
         $object2 = json_decode($result1, true);
         return $object2;
+    }
+
+    /**
+     * @param $wx_list
+     * @return string
+     */
+    private function assemble_wx_in_sql($wx_list)
+    {
+        $wx_in = "(";
+        foreach ($wx_list as $wx) {
+            $wx_in .= "'$wx',";
+        }
+        $wx_in .= "'suffix')";
+        return $wx_in;
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    private function noMoreDataResponse($data)
+    {
+        $data['result_code'] = "202";
+        $data['reason'] = "没有更多数据了";
+        $data['error_code'] = 0;
+        $data['message_id'] = 0;
+        $data['result'] = "";
+        return $data;
     }
 }
