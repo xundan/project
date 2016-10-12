@@ -23,6 +23,7 @@ class ChatRecordController extends RestController
         echo "ChatRecord api works";
     }
 
+    //　记录一条历史消息
     Public function record()
     {
         $data = $this->defaultResponse();
@@ -63,7 +64,7 @@ class ChatRecordController extends RestController
 
     Public function unsent_record()
     {
-        mb_internal_encoding('utf-8');
+    // 拉取还未发送出去的消息
         $data = $this->defaultResponse();
         switch ($this->_method) {
             case 'get': // get请求处理代码
@@ -78,19 +79,17 @@ class ChatRecordController extends RestController
 
                     $fetch = $this->fetch_unsent_record($self_wx);
                     if ($fetch) {
-                        $data['result_code'] = utf8_encode("201");
-                        $data['reason'] = utf8_encode("获取数据成功");
+                        $data['result_code'] = "201";
+                        $data['reason'] = "获取数据成功";
                         $data['error_code'] = 0;
-                        $data['message_id'] = utf8_encode($fetch["id"]);
-                        $data['name']=utf8_encode($fetch["client_name"]);
-                        $data['word']=utf8_encode($fetch["content"]);
-                        $data['result'] = utf8_encode(json_encode($fetch));
+                        $data['message_id'] = $fetch["id"];
+                        $data['name']=$fetch["client_name"];
+                        $data['word']=$fetch["content"];
+                        $data['result'] = "success";
+//                        $data['result'] = utf8_encode(json_encode($fetch));
+                        Log::record("The response data: $data", Log::NOTICE);
                     } elseif($fetch===null) {
-                        $data['result_code'] = "202";
-                        $data['reason'] = "没有更多数据了";
-                        $data['error_code'] = 0;
-                        $data['message_id'] = "";
-                        $data['result'] = "";
+                        $data = $this->noMoreDataResponse($data);
                     } else{
                         $data = $this->dbErrorResponse($data);
                     }
@@ -102,7 +101,7 @@ class ChatRecordController extends RestController
                 break;
         }
     }
-
+    // 按id重置信息的状态，用以标记已经发出的信息
 
     Public function status()
     {
@@ -126,11 +125,7 @@ class ChatRecordController extends RestController
                         $data['message_id'] = $id;
                         $data['result'] = "update status to ".$status;
                     } elseif($update===0) {
-                        $data['result_code'] = "202";
-                        $data['reason'] = "没有可以更新的数据了";
-                        $data['error_code'] = 0;
-                        $data['message_id'] = $id;
-                        $data['result'] = "there is no id = ".$id;
+                        $data = $this->noMoreDataResponse($data);
                     } else{
                         $data = $this->dbErrorResponse($data);
                     }
@@ -144,6 +139,150 @@ class ChatRecordController extends RestController
         }
     }
 
+    // 按self_wx与client_name重置type，用以标记已完成的转人工
+    // 测试json:{"self_wx":"test","client_name":"test2","type":"plain"}
+    Public function set_type()
+    {
+        $data = $this->defaultResponse();
+        switch ($this->_method) {
+            case 'get': // get请求处理代码
+                $this->defaultGetAction();
+                break;
+            case 'post': // post请求处理代码
+                $object2 = $this->decodeJSONFromBody();
+
+                if ($object2) {
+                    $self_wx= $object2['self_wx'];
+                    $client_name= $object2['client_name'];
+                    $r_type = $object2['type'];
+
+                    $update = $this->update_type($self_wx, $client_name, $r_type);
+                    if ($update) {
+                        $data['result_code'] = "201";
+                        $data['reason'] = "更新数据成功";
+                        $data['error_code'] = 0;
+                        $data['message_id'] = $update;
+                        $data['result'] = "update status to ".$r_type;
+                    } elseif($update===0) {
+                        $data = $this->noMoreDataResponse($data);
+                    } else{
+                        $data = $this->dbErrorResponse($data);
+                    }
+                } else {
+                    $data = $this->internalErrorResponse($data);
+
+                }
+
+                $this->response($data, 'json');
+                break;
+        }
+    }
+
+    // 获取某微信号对某个客户的聊天记录
+    Public function distinct_record()
+    {
+        $data = $this->defaultResponse();
+        switch ($this->_method) {
+            case 'get': // get请求处理代码
+                $this->defaultGetAction();
+                break;
+            case 'post': // post请求处理代码
+                $object2 = $this->decodeJSONFromBody();
+
+                if ($object2) {
+                    $self_wx = $object2['self_wx'];
+                    $client_name = $object2['client_name'];
+
+                    $fetch = $this->fetch_distinct_record($self_wx, $client_name);
+                    if ($fetch) {
+                        $record_list = "";
+                        foreach ($fetch as $a_record){
+                            if ($a_record){
+                                if ($a_record["isme"]){
+                                    $record_list .= "我:";
+                                }else{
+                                    $record_list .= $a_record["client_name"].":";
+                                }
+                                $record_list .= $a_record["content"]."<br>";
+                            }
+                        }
+                        $data['result_code'] = "201";
+                        $data['reason'] = "获取数据成功";
+                        $data['error_code'] = 0;
+                        $data['message_id'] = count($fetch);
+                        $data['result'] = $record_list;
+                    } elseif($fetch===null) {
+                        $data = $this->noMoreDataResponse($data);
+                    } else{
+                        $data = $this->dbErrorResponse($data);
+                    }
+                } else {
+                    $data = $this->internalErrorResponse($data);
+                }
+
+                $this->response($data, 'json');
+                break;
+        }
+    }
+
+    // 取出所有的待转人工列表
+    // 测试json:{"wx_list":["test","test2"]}
+    Public function all_distinct_record()
+    {
+        $data = $this->defaultResponse();
+        switch ($this->_method) {
+            case 'get': // get请求处理代码
+                $this->defaultGetAction();
+                break;
+            case 'post': // post请求处理代码
+                $object2 = $this->decodeJSONFromBody();
+                if ($object2) {
+                    $wx_list = $object2['wx_list'];
+                    if ($wx_list){
+                        $wx_in = $this->assemble_wx_in_sql($wx_list);
+                        $fetch = $this->fetch_all_distinct_record($wx_in);
+
+                        if ($fetch) {
+                            $data['result_code'] = "201";
+                            $data['reason'] = "获取数据成功";
+                            $data['error_code'] = 0;
+                            $data['message_id'] = count($fetch);
+                            $data['result'] = $fetch;
+                        } elseif($fetch===null) {
+                            $data = $this->noMoreDataResponse($data);
+                        } else{
+                            $data = $this->dbErrorResponse($data);
+                        }
+                    }else{
+                        $data = $this->noMoreDataResponse($data);
+                    }
+
+                } else {
+                    $data = $this->internalErrorResponse($data);
+                }
+
+                $this->response($data, 'json');
+                break;
+        }
+    }
+
+    private function fetch_all_distinct_record($wx_in)
+    {
+        $fetch = D('ChatRecord')->field('content',true)->where("isme=0 AND type='plain' AND invalid_id=0 AND self_wx IN "
+            .$wx_in)->group('client_name')->order('record_time asc')->select();
+        return $fetch;
+    }
+
+    private function fetch_distinct_record($self_wx, $client_name)
+    {
+        $whereAttr = array(
+            'self_wx' => $self_wx,
+            'client_name'=> $client_name,
+            'invalid_id' => 0,
+        );
+        $find = D('ChatRecord')->where($whereAttr)->order('record_time asc')->select();
+        return $find;
+    }
 
     private function fetch_unsent_record($self_wx)
     {
@@ -153,7 +292,7 @@ class ChatRecordController extends RestController
             'status' =>0,
             'invalid_id' => 0,
         );
-        $find = D('ChatRecord')->where($whereAttr)->find();
+        $find = D('ChatRecord')->where($whereAttr)->order('record_time asc')->find();
         return $find;
     }
 
@@ -185,6 +324,17 @@ class ChatRecordController extends RestController
     {
         $data['status']=$status;
         $insert = D('ChatRecord')->where('id=%d',$id)->save($data);
+        return $insert;
+    }
+
+    private function update_type($self_wx, $client_name, $r_type)
+    {
+        $attribute = array(
+            'self_wx' => $self_wx,
+            'client_name' => $client_name,
+        );
+        $data['type']=$r_type;
+        $insert = D('ChatRecord')->where($attribute)->save($data);
         return $insert;
     }
 
