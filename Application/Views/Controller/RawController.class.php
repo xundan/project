@@ -58,27 +58,13 @@ class RawController extends RestController
 
                 if ($object2) {
                     $content = $object2['content'];
-                    $sender = "";
-                    $sender_wx = "";
+                    $sender = $object2['sender'];
+                    $sender_wx = $object2['sender_wx'];
+                    $owner = $object2['owner'];
                     date_default_timezone_set('PRC');
                     $title = date('y-m-d_h:i', time());
-                    $pattern = '/@\s*(.+)\s*\#\s*(.+)\s*\$([\s\S]*[0-9]{11}[\s\S]*)/';
-                    $res = preg_match($pattern, $content, $match);
-                    $owner = null;
-                    if ($res) {
-                        $owner = $match[1];
-                        $sender_wx = $match[2];
-                        $sender = $sender_wx;
-                        $content = $match[3];
-                    } else {
-                        // TODO 不符合格式的消息 通知开发检查手机端过滤逻辑
-                        $data['result_code'] = "301";
-                        $data['reason'] = "数据格式不合法，本地过滤失效";
-                        $data['error_code'] = "10301";
-                        $data['message_id'] = $title;
-                        $data['result'] = $object2['content'];
-                    }
-                    $title .= substr($content, 0, 26);
+                    $title .= "@";
+                    $title .= $owner;
 
                     $insert = $this->createRaw($title, $content, $owner, $sender, $sender_wx);
                     if ($insert) {
