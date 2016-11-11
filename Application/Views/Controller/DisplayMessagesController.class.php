@@ -9,6 +9,7 @@
 namespace Views\Controller;
 
 use Think\Controller;
+use Think\Exception;
 
 class DisplayMessagesController extends Controller
 {
@@ -59,6 +60,13 @@ class DisplayMessagesController extends Controller
 
         // 检测tags里有没有包含必选项
         $main_tag = $this->is_check_valid($tags);
+
+        // 删掉内容里的标签
+        try{
+            $content = preg_replace("/<span.*?span>|<b.*?>/"," ",$content);
+        }catch (Exception $e){
+            // todo sth here
+        }
 
         if ($main_tag) {
             // 更新与标签关系表
