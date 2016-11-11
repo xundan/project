@@ -64,6 +64,7 @@ class DisplayMessagesController extends Controller
         // 删掉内容里的标签
         try{
             $content = preg_replace("/<span.*?span>|<b.*?>/"," ",$content);
+            $content = preg_replace("/&lt;span.*?span&gt;|&lt;b.*?&gt;/"," ",$content);
         }catch (Exception $e){
             // todo sth here
         }
